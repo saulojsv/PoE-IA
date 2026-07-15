@@ -25,6 +25,14 @@ def read_csv(name):
         return list(csv.DictReader(f))
 
 
+def finite(value):
+    try:
+        value = float(value or 0)
+    except (TypeError, ValueError):
+        return 0
+    return value if math.isfinite(value) else 0
+
+
 def first_item_name(text):
     lines = [x.strip() for x in text.splitlines() if x.strip()]
     if len(lines) >= 2 and not lines[0].startswith(("Rarity:", "Item Class:")):
@@ -143,24 +151,24 @@ def parse_xml(path):
         "class": build.attrib.get("className", "") if build is not None else "",
         "ascendancy": build.attrib.get("ascendClassName", "") if build is not None else "",
         "level": int(build.attrib.get("level", 0)) if build is not None and build.attrib.get("level", "0").isdigit() else 0,
-        "combined_dps": stats.get("CombinedDPS") or stats.get("TotalDPS") or 0,
-        "ehp": stats.get("TotalEHP") or stats.get("EffectiveHitPool") or 0,
-        "life": stats.get("Life") or 0,
-        "energy_shield": stats.get("EnergyShield") or 0,
-        "fire_resist": stats.get("FireResist") or 0,
-        "cold_resist": stats.get("ColdResist") or 0,
-        "lightning_resist": stats.get("LightningResist") or 0,
-        "chaos_resist": stats.get("ChaosResist") or 0,
-        "block": stats.get("EffectiveBlockChance") or stats.get("BlockChance") or 0,
-        "spell_block": stats.get("EffectiveSpellBlockChance") or stats.get("SpellBlockChance") or 0,
-        "suppression": stats.get("EffectiveSpellSuppressionChance") or stats.get("SpellSuppressionChance") or 0,
-        "attack_speed": stats.get("HitSpeed") or stats.get("Speed") or 0,
-        "crit_multi": stats.get("CritMultiplier") or 0,
-        "max_phys_hit": stats.get("PhysicalMaximumHitTaken") or 0,
-        "max_fire_hit": stats.get("FireMaximumHitTaken") or 0,
-        "max_cold_hit": stats.get("ColdMaximumHitTaken") or 0,
-        "max_lightning_hit": stats.get("LightningMaximumHitTaken") or 0,
-        "max_chaos_hit": stats.get("ChaosMaximumHitTaken") or 0,
+        "combined_dps": finite(stats.get("CombinedDPS") or stats.get("TotalDPS")),
+        "ehp": finite(stats.get("TotalEHP") or stats.get("EffectiveHitPool")),
+        "life": finite(stats.get("Life")),
+        "energy_shield": finite(stats.get("EnergyShield")),
+        "fire_resist": finite(stats.get("FireResist")),
+        "cold_resist": finite(stats.get("ColdResist")),
+        "lightning_resist": finite(stats.get("LightningResist")),
+        "chaos_resist": finite(stats.get("ChaosResist")),
+        "block": finite(stats.get("EffectiveBlockChance") or stats.get("BlockChance")),
+        "spell_block": finite(stats.get("EffectiveSpellBlockChance") or stats.get("SpellBlockChance")),
+        "suppression": finite(stats.get("EffectiveSpellSuppressionChance") or stats.get("SpellSuppressionChance")),
+        "attack_speed": finite(stats.get("HitSpeed") or stats.get("Speed")),
+        "crit_multi": finite(stats.get("CritMultiplier")),
+        "max_phys_hit": finite(stats.get("PhysicalMaximumHitTaken")),
+        "max_fire_hit": finite(stats.get("FireMaximumHitTaken")),
+        "max_cold_hit": finite(stats.get("ColdMaximumHitTaken")),
+        "max_lightning_hit": finite(stats.get("LightningMaximumHitTaken")),
+        "max_chaos_hit": finite(stats.get("ChaosMaximumHitTaken")),
         "points_used": len(nodes),
         "gems": sorted(set(gems)),
         "items": sorted(set(items)),
@@ -224,7 +232,7 @@ def main():
         "top_nodes": node_counts.most_common(80),
     }
 
-    (DASH / "build_dashboard_data.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    (DASH / "build_dashboard_data.json").write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False), encoding="utf-8")
     if not (DASH / "index.html").exists():
         (DASH / "index.html").write_text(HTML, encoding="utf-8")
     print(DASH / "index.html")
