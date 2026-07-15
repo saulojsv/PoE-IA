@@ -57,7 +57,7 @@ el("q").oninput=render;el("sort").onchange=render;
 function pct(n,b){return b?((n-b)/b*100):0}
 function chips(xs,n=8){return (xs||[]).slice(0,n).map(x=>`<span class=pill>${x[0]} <small>${x[1]}</small></span>`).join("")}
 function safeFile(s){return (s||"").normalize("NFKD").replace(/[^\w.-]+/g,"_").replace(/^_+|_+$/g,"")}
-function spriteSrc(it,slot=""){if(!it)return "";let rare=["Rare","Magic","Normal"].includes(it.rarity),src=rare?(sprites[it.base]||sprites[it.name]):(sprites[it.name]||sprites[it.base]);return src||""}
+function spriteSrc(it,slot=""){if(!it)return "";let rare=["Rare","Magic","Normal"].includes(it.rarity),src="";if(rare){src=sprites[it.base]||""}else{src=sprites[it.name]||sprites[it.base]||""}return src||""}
 function img(it,slot=""){let src=spriteSrc(it,slot);return src?`<img class=sprite src="${src}" alt="">`:`<div class=missing-sprite>missing<br>sprite</div>`}
 function rows(){let q=el("q").value.toLowerCase();let r=[...data.skills].filter(x=>(x.skill+" "+JSON.stringify(x.classes)+" "+JSON.stringify(x.items)).toLowerCase().includes(q));let s=el("sort").value;r.sort((a,b)=>s=="dps"?b.best_dps-a.best_dps:s=="space"?b.candidate_space-a.candidate_space:s=="name"?a.skill.localeCompare(b.skill):b.builds-a.builds);return r}
 function renderStats(){let s=data.summary,total=data.skills.reduce((a,x)=>a+x.candidate_space,0);el("stats").innerHTML=[["XMLs",s.xml_builds],["Skills",s.skills_with_xml],["Gems",s.unique_gems],["Itens",s.unique_items],["Nodos",s.unique_nodes],["Combinações",total]].map(x=>`<div class=stat><span>${x[0]}</span><b>${fmt(x[1])}</b></div>`).join("")}

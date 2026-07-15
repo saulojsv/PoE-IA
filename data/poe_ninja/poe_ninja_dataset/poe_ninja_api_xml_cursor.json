@@ -1,29 +1,26 @@
 {
   "cycle": 85,
   "last_batch": [
-    "Seismic Trap of Swells"
+    "Shattering Steel"
   ],
-  "next_az_order": 235,
-  "next_skill": "Shattering Steel",
+  "next_az_order": 236,
+  "next_skill": "Shattering Steel of Ammunition",
   "league": "mirage",
   "version": "1746-20260715-01167",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T18:14:04Z",
+  "updated_at": "2026-07-15T18:19:00Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Seismic Trap of Swells",
-      "normalized_name": "seismic_trap_of_swells",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
-      "skipped_same_class": [
-        {
-          "account": "r4m4nr4-1182",
-          "character": "Orgaismic_Trap",
-          "class": "Saboteur"
-        }
-      ]
+      "status": "partial",
+      "skill": "Shattering Steel",
+      "normalized_name": "shattering_steel",
+      "generated": [
+        "cg_clark_0615_dooooori",
+        "yuhneumann_5982_yuhbleedglad"
+      ],
+      "xml_count": 2,
+      "unique_class_count": 2,
+      "skipped_same_class": []
     }
   ],
   "status": "advanced"
