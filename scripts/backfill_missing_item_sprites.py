@@ -11,7 +11,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 XML_ROOT = ROOT / "data" / "poe_ninja" / "poe_ninja_dataset" / "xml"
-SPRITES = ROOT / "assets" / "poe_item_sprites"
+SPRITES = ROOT / "assets" / "poe1_item_sprites"
 INDEX = ROOT / "dashboard" / "item_sprite_index.json"
 BASE = "https://www.poewiki.net"
 UA = "PoE-Agent-Dashboard/1.0"
@@ -58,7 +58,7 @@ def direct_download(session, name):
             out = SPRITES / file_name
             if not out.exists():
                 out.write_bytes(r.content)
-            return "../assets/poe_item_sprites/" + file_name
+            return "../assets/poe1_item_sprites/" + Path(file_name).with_suffix(".webp").name
         if r.status_code == 429:
             return None
     return None
@@ -77,7 +77,7 @@ def page_download(session, name):
         out = SPRITES / file_name
         if not out.exists():
             out.write_bytes(img.content)
-        return "../assets/poe_item_sprites/" + file_name
+        return "../assets/poe1_item_sprites/" + Path(file_name).with_suffix(".webp").name
     return None
 
 
