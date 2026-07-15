@@ -1,40 +1,37 @@
 {
-  "cycle": 76,
+  "cycle": 77,
   "last_batch": [
-    "Poacher's Mark"
+    "Poisonous Concoction of Bouncing"
   ],
-  "next_az_order": 204,
-  "next_skill": "Poisonous Concoction",
+  "next_az_order": 205,
+  "next_skill": "Poisonous Concoction of Bouncing",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:29:20Z",
+  "updated_at": "2026-07-15T14:39:14Z",
   "results": [
     {
-      "status": "complete",
-      "skill": "Poacher's Mark",
-      "normalized_name": "poachers_mark",
+      "status": "partial",
+      "skill": "Poisonous Concoction of Bouncing",
+      "normalized_name": "poisonous_concoction_of_bouncing",
       "generated": [
-        "baizenx_2069_baizennowae",
-        "alexflyuk_5847_lightdevka",
-        "the_vladlen_2028_older_brother"
+        "mrkingg_1250_ckoyba"
       ],
-      "xml_count": 3,
-      "unique_class_count": 3,
+      "xml_count": 1,
+      "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "nares1-6989",
-          "character": "Mirage_NareS",
-          "class": "Slayer"
+          "account": "LARISO_EROTICO_NE_DOROGO-0643",
+          "character": "Mirage_BOROV",
+          "class": "Pathfinder"
         },
         {
-          "account": "blackcaker-0644",
-          "character": "zhirniiparen",
-          "class": "Slayer"
+          "account": "TheRisenOne-2322",
+          "character": "RizenMirage",
+          "class": "Pathfinder"
         }
-      ],
-      "next_action": "advance"
+      ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }

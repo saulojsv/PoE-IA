@@ -13,6 +13,7 @@ EXPORTS = ROOT / "data" / "exports"
 DASH = ROOT / "dashboard"
 OVERRIDES = ROOT / "data" / "items" / "item_category_overrides.json"
 BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
+ITEM_BASE_MODS = ROOT / "data" / "items" / "item_base_mods.json"
 
 
 def load_overrides():
@@ -26,10 +27,27 @@ def load_base_names():
     if BASES_DIR.exists():
         for path in BASES_DIR.glob("*.lua"):
             names.update(re.findall(r'itemBases\["([^"]+)"\]', path.read_text(encoding="utf-8", errors="ignore")))
+    if ITEM_BASE_MODS.exists():
+        data = json.loads(ITEM_BASE_MODS.read_text(encoding="utf-8"))
+        names.update(data.get("bases", {}).keys())
     return names
 
 
 BASE_NAMES = load_base_names()
+BASE_NAMES_BY_LENGTH = sorted(BASE_NAMES, key=len, reverse=True)
+
+
+def flask_base_from_name(name):
+    match = re.search(r"((?:Divine|Eternal|Quicksilver|Silver|Topaz|Ruby|Sapphire|Granite|Jade|Quartz|Amethyst|Bismuth|Basalt|Stibnite|Sulphur|Diamond|Gold|Aquamarine|Corundum|Iron|Life|Mana|Hybrid)[A-Za-z ]* Flask)", name or "")
+    return match.group(1) if match else ""
+
+
+def base_from_item_name(name):
+    text = f" {name or ''} ".lower()
+    for base in BASE_NAMES_BY_LENGTH:
+        if f" {base.lower()} " in text:
+            return base
+    return ""
 
 
 def slug_to_name(slug):
@@ -78,6 +96,14 @@ def parse_item(text):
         base = first_base_line(lines, 2)
     elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
         base = lines[1]
+    if not base or base.startswith(("Unique ID:", "Item Level:", "Crafted:")):
+        base = first_base_line(lines, 2)
+    flask_base = flask_base_from_name(name)
+    if flask_base:
+        base = flask_base
+    named_base = base_from_item_name(name)
+    if named_base and (not base or base == name or flask_base):
+        base = named_base
     item_level = 0
     implicit_lines = []
     for line in lines:

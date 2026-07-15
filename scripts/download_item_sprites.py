@@ -17,6 +17,7 @@ MANIFEST = OUT / "manifest.json"
 FAILURES = OUT / "failures.json"
 DASH_INDEX = ROOT / "dashboard" / "item_sprite_index.json"
 BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
+ITEM_BASE_MODS = ROOT / "data" / "items" / "item_base_mods.json"
 BASE = "https://www.poewiki.net"
 API = BASE + "/w/api.php"
 UA = "PoE-Agent-Dashboard/1.0"
@@ -37,10 +38,22 @@ def load_base_names():
     if BASES_DIR.exists():
         for path in BASES_DIR.glob("*.lua"):
             names.update(re.findall(r'itemBases\["([^"]+)"\]', path.read_text(encoding="utf-8", errors="ignore")))
+    if ITEM_BASE_MODS.exists():
+        data = json.loads(ITEM_BASE_MODS.read_text(encoding="utf-8"))
+        names.update(data.get("bases", {}).keys())
     return names
 
 
 BASE_NAMES = load_base_names()
+BASE_NAMES_BY_LENGTH = sorted(BASE_NAMES, key=len, reverse=True)
+
+
+def base_from_item_name(name):
+    text = f" {name or ''} ".lower()
+    for base in BASE_NAMES_BY_LENGTH:
+        if f" {base.lower()} " in text:
+            return base
+    return ""
 
 
 def first_base_line(lines, start=2):
@@ -71,6 +84,9 @@ def extract_items():
             flask_match = re.search(r"((?:Divine|Eternal|Quicksilver|Silver|Topaz|Ruby|Sapphire|Granite|Jade|Quartz|Amethyst|Bismuth|Basalt|Stibnite|Sulphur|Diamond|Gold|Aquamarine|Corundum|Iron|Life|Mana|Hybrid)[A-Za-z ]* Flask)", name)
             if flask_match:
                 base = flask_match.group(1)
+            named_base = base_from_item_name(name)
+            if named_base and (not base or base == name or flask_match):
+                base = named_base
             if not base:
                 base = name
             counts[name] += 1
@@ -138,6 +154,12 @@ def download_icon(session, icon_name, file_name):
     return False, f"download_{r.status_code}"
 
 
+def write_json(path, data):
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(path)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8")) if MANIFEST.exists() else {}
@@ -149,11 +171,11 @@ def main():
     items = extract_items()
     wiki, rate_limited_index = load_wiki_index(session, items)
     if rate_limited_index and not wiki:
-        DASH_INDEX.write_text(json.dumps({
+        write_json(DASH_INDEX, {
             name: "../assets/poe_item_sprites/" + data["file"]
             for name, data in manifest.items()
             if isinstance(data, dict) and data.get("file")
-        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        })
         print("rate_limited: kept existing manifest; run again later")
         return
     total = len(items)
@@ -198,21 +220,21 @@ def main():
             failures[item_name] = {"error": result, "matched_name": matched_name, "sprite_name": icon_name}
             rate_limited = rate_limited + 1 if result == 429 else 0
         if done % 10 == 0 or ok:
-            MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-            FAILURES.write_text(json.dumps(failures, ensure_ascii=False, indent=2), encoding="utf-8")
+            write_json(MANIFEST, manifest)
+            write_json(FAILURES, failures)
             print(f"{done}/{total} sprites={len(manifest)} failures={len(failures)}")
         if rate_limited >= 2:
             print("rate_limited: stopped safely; run again later")
             break
         time.sleep(0.25)
 
-    MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
-    FAILURES.write_text(json.dumps(failures, ensure_ascii=False, indent=2), encoding="utf-8")
-    DASH_INDEX.write_text(json.dumps({
+    write_json(MANIFEST, manifest)
+    write_json(FAILURES, failures)
+    write_json(DASH_INDEX, {
         name: "../assets/poe_item_sprites/" + data["file"]
         for name, data in manifest.items()
         if isinstance(data, dict) and data.get("file")
-    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    })
     print(f"done sprites={len(manifest)} failures={len(failures)} out={OUT}")
 
 
