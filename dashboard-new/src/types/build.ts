@@ -110,3 +110,63 @@ export interface BuildStageOption {
   label: string
   description: string
 }
+
+export interface ExploreFilters {
+  query: string
+  skill: string
+  ascendancy: string
+  gem: string
+  item: string
+  minLevel: number
+  minDps: number
+  minEhp: number
+  minLife: number
+  minEnergyShield: number
+  minResistance: number
+  minBlock: number
+  minSuppression: number
+}
+
+export interface DraftItem extends ItemDetail {
+  id: string
+  equippedSlot?: SlotKey | 'flask' | 'jewel'
+}
+
+export interface BuildDraft {
+  id: string
+  name: string
+  source: 'dataset' | 'xml' | 'manual'
+  sourceFile?: string
+  createdAt: string
+  updatedAt: string
+  skill: string
+  className: string
+  ascendancy: string
+  level: number
+  baseline?: BuildRow
+  gems: string[]
+  items: DraftItem[]
+  nodes: string[]
+}
+
+export interface PassiveTreeNode {
+  id: string
+  name: string
+  x: number
+  y: number
+  stats: string[]
+  isNotable?: boolean
+  isKeystone?: boolean
+  isMastery?: boolean
+  out: string[]
+}
+
+export interface PassiveTreeData {
+  version: '3.28'
+  min_x: number
+  min_y: number
+  max_x: number
+  max_y: number
+  nodes: Record<string, PassiveTreeNode>
+  classes: Array<{ name: string; startNodeId: string }>
+}
