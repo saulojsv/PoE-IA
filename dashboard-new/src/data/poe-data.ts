@@ -18,12 +18,19 @@ const bowUniques = /\b(widowhail|voltaxic rift|windripper|lioneye's glare|death'
 
 export async function loadDashboardData() {
   const [data, sprites, baseMods, tierMods] = await Promise.all([
-    fetch('/data/dashboard/build_dashboard_data.json').then(r => r.json()),
-    fetch('/data/dashboard/item_sprite_index.json').then(r => r.json()),
-    fetch('/data/dashboard/item_base_mod_summary.json').then(r => r.json()).catch(() => ({ bases: {} })),
-    fetch('/data/dashboard/item_mod_tiers.json').then(r => r.json()).catch(() => null),
+    loadJson('/poe-data/dashboard/build_dashboard_data.json'),
+    loadJson('/poe-data/dashboard/item_sprite_index.json'),
+    loadJson('/poe-data/dashboard/item_base_mod_summary.json').catch(() => ({ bases: {} })),
+    loadJson('/poe-data/dashboard/item_mod_tiers.json').catch(() => null),
   ])
   return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: tierMods || baseMods }
+}
+
+async function loadJson(path: string) {
+  const response = await fetch(path)
+  const type = response.headers.get('content-type') || ''
+  if (!response.ok || !type.includes('application/json')) throw new Error(`Invalid local dataset response: ${path}`)
+  return response.json()
 }
 
 export function validSkills(data: BuildData) {

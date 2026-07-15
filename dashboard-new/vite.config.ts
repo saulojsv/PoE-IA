@@ -1,41 +1,28 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { existsSync, createReadStream, statSync } from 'node:fs'
-import { extname, join, normalize, resolve } from 'node:path'
+import { createReadStream, existsSync, statSync } from 'node:fs'
+import { extname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const rootDir = resolve(fileURLToPath(new URL('..', import.meta.url)))
-const staticMounts: Record<string, string> = {
-  '/data/dashboard/': resolve(rootDir, 'dashboard'),
-  '/data/items/': resolve(rootDir, 'data/items'),
-  '/assets/': resolve(rootDir, 'assets'),
-}
-
+const repoRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
+const assetsRoot = resolve(repoRoot, 'assets')
 const mime: Record<string, string> = {
-  '.css': 'text/css',
-  '.html': 'text/html',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.js': 'text/javascript',
   '.json': 'application/json',
   '.png': 'image/png',
   '.webp': 'image/webp',
 }
 
-function serveRepoStatic() {
+function repoAssets() {
   return {
-    name: 'serve-poe-repo-static',
+    name: 'repo-assets',
     configureServer(server: any) {
       server.middlewares.use((req: any, res: any, next: any) => {
         const url = decodeURIComponent((req.url || '').split('?')[0])
-        const mount = Object.keys(staticMounts).find(prefix => url.startsWith(prefix))
-        if (!mount) return next()
-
-        const base = staticMounts[mount]
-        const file = normalize(join(base, url.slice(mount.length)))
-        if (!file.startsWith(base) || !existsSync(file) || !statSync(file).isFile()) return next()
-
+        if (!url.startsWith('/assets/')) return next()
+        const file = resolve(assetsRoot, url.slice('/assets/'.length))
+        const rel = relative(assetsRoot, file)
+        if (rel.startsWith('..') || rel.includes(`..${sep}`) || !existsSync(file) || !statSync(file).isFile()) return next()
         res.setHeader('Content-Type', mime[extname(file).toLowerCase()] || 'application/octet-stream')
         createReadStream(file).pipe(res)
       })
@@ -44,7 +31,7 @@ function serveRepoStatic() {
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), serveRepoStatic()],
+  plugins: [react(), tailwindcss(), repoAssets()],
   server: {
     host: '127.0.0.1',
     port: 5173,
