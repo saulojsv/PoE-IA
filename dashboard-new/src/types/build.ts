@@ -1,4 +1,4 @@
-export type BuildStage = 'items' | 'defense' | 'damage' | 'tree' | 'league-start' | 'early-maps' | 'mid-game' | 'endgame' | 'min-max'
+export type BuildStage = 'items' | 'defense' | 'damage' | 'combinations' | 'tree' | 'league-start' | 'early-maps' | 'mid-game' | 'endgame' | 'min-max'
 export type ItemRarity = 'normal' | 'magic' | 'rare' | 'unique'
 export type MetricTone = 'blue' | 'green' | 'red' | 'yellow' | 'cyan'
 export type SlotKey = 'weapon' | 'helmet' | 'offhand' | 'amulet' | 'body' | 'ring1' | 'ring2' | 'gloves' | 'belt' | 'boots'

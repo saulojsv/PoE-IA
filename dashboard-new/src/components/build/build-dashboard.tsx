@@ -9,6 +9,7 @@ const stages: { id: BuildStage; label: string; description: string }[] = [
   { id: 'items', label: 'Items', description: 'PoE Ninja / Mobalytics paper-doll' },
   { id: 'defense', label: 'Defense', description: 'Life, ES, EHP, resists, block' },
   { id: 'damage', label: 'DPS', description: 'Damage, speed, crit, scaling' },
+  { id: 'combinations', label: 'Combinations', description: 'Builds, slots and candidate swaps' },
   { id: 'tree', label: 'Passive Tree', description: 'Nodes, links, notables, masteries' },
 ]
 
@@ -41,7 +42,7 @@ function SkillList({ skills, selected, onSelect }: { skills: SkillGroup[]; selec
   </section>
 }
 
-function BuildHeader({ skill, build }: { skill: SkillGroup; build: BuildRow }) {
+function BuildHeader({ skill, build, league, onLeagueChange }: { skill: SkillGroup; build: BuildRow; league: string; onLeagueChange: (league: string) => void }) {
   return <section className="build-hero">
     <div className="skill-orb"><Zap /></div>
     <div className="hero-copy">
@@ -49,6 +50,11 @@ function BuildHeader({ skill, build }: { skill: SkillGroup; build: BuildRow }) {
       <h1>{skill.skill}</h1>
       <div className="badges"><span className="green">{build.ascendancy || build.class || 'Class'}</span><span className="purple">Level {build.level || '-'}</span><span className="blue">poe.ninja XML</span><span>{fmt(skill.candidate_space)} combos</span></div>
       <p>Arquivo <b>{shortFile(build.file)}</b><i /> Pontos usados <b>{build.points_used}</b><i /> Itens reais do XML</p>
+    </div>
+    <div className="league-control">
+      <label>Liga</label>
+      <input value={league} onChange={e => onLeagueChange(e.target.value)} placeholder="Editar liga" />
+      <small>Visual local, sem alterar XML.</small>
     </div>
   </section>
 }
@@ -103,6 +109,42 @@ function BuildRanking({ skill, onSelect }: { skill: SkillGroup; onSelect: (build
   return <section className="panel ranking"><div className="panel-title"><span><Activity /> Ranking</span><small>score local</small></div>{ranked.map(build => <button key={build.file} onClick={() => onSelect(build)}><span>{shortFile(build.file)}</span><i><b style={{ width: `${Math.max(4, scoreBuild(build) / max * 100)}%` }} /></i><strong>{fmt(scoreBuild(build))}</strong></button>)}</section>
 }
 
+function BuildExplorer({ skill, selectedBuild, onSelect }: { skill: SkillGroup; selectedBuild: BuildRow; onSelect: (build: BuildRow) => void }) {
+  const [q, setQ] = useState('')
+  const rows = skill.build_rows
+    .filter(build => `${build.file} ${build.class} ${build.ascendancy} ${build.items.join(' ')}`.toLowerCase().includes(q.toLowerCase()))
+    .sort((a, b) => scoreBuild(b) - scoreBuild(a))
+  return <section className="panel build-explorer">
+    <div className="panel-title"><span><Search /> Builds da skill</span><small>{rows.length} XMLs</small></div>
+    <div className="skill-search"><input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar build, classe, item..." /></div>
+    <div className="build-list">
+      {rows.map(build => <button key={build.file} className={selectedBuild.file === build.file ? 'active' : ''} onClick={() => onSelect(build)}>
+        <b>{shortFile(build.file)}</b>
+        <span>{build.ascendancy || build.class || 'Class'} · Lv {build.level || '-'} · DPS {fmt(build.combined_dps)} · EHP {fmt(build.ehp)}</span>
+      </button>)}
+    </div>
+  </section>
+}
+
+function CombinationPanel({ skill, build, pools, sprites, onBuild, onSwap }: { skill: SkillGroup; build: BuildRow; pools: Partial<Record<SlotKey, ItemDetail[]>>; sprites: Record<string, string>; onBuild: (build: BuildRow) => void; onSwap: (slot: SlotKey, item: ItemDetail) => void }) {
+  const total = Object.values(pools).reduce((acc, items) => acc + (items?.length || 0), 0)
+  return <div className="combination-grid">
+    <BuildExplorer skill={skill} selectedBuild={build} onSelect={onBuild} />
+    <section className="panel combo-pools">
+      <div className="panel-title"><span><Sparkles /> Pools de combinação</span><small>{fmt(total)} candidatos</small></div>
+      {slotOrder.map(slot => <div className="combo-slot" key={slot}>
+        <h3>{SLOT_LABELS[slot]} <small>{pools[slot]?.length || 0}</small></h3>
+        <div>
+          {(pools[slot] || []).slice(0, 24).map(item => <button key={`${slot}-${item.name}-${item.base}`} onClick={() => onSwap(slot, item)}>
+            {spriteFor(item, sprites) && <img src={spriteFor(item, sprites)} alt="" />}
+            <span><b>{item.name}</b><small>{item.base}</small></span>
+          </button>)}
+        </div>
+      </div>)}
+    </section>
+  </div>
+}
+
 function DefensePanel({ build }: { build: BuildRow }) {
   const rows = [['EHP', build.ehp], ['Life', build.life], ['ES', build.energy_shield], ['Block', build.block], ['Spell Block', build.spell_block], ['Suppress', build.suppression], ['Fire', build.fire_resist], ['Cold', build.cold_resist], ['Lightning', build.lightning_resist], ['Chaos', build.chaos_resist]]
   return <section className="panel stat-table"><div className="panel-title"><span><Shield /> Defesa</span></div>{rows.map(([k, v]) => <p key={k as string}><span>{k}</span><b>{fmt(v as number)}</b></p>)}</section>
@@ -145,8 +187,10 @@ export function BuildDashboard() {
   const [stage, setStage] = useState<BuildStage>('items')
   const [overrides, setOverrides] = useState<Partial<Record<SlotKey, ItemDetail>>>({})
   const [selectedItem, setSelectedItem] = useState<EquipmentItem | undefined>()
+  const [league, setLeague] = useState(() => localStorage.getItem('poe-dashboard-league') || 'PoE 1')
 
   useEffect(() => { loadDashboardData().then(setBundle) }, [])
+  useEffect(() => { localStorage.setItem('poe-dashboard-league', league) }, [league])
   const skills = useMemo(() => bundle ? validSkills(bundle.data) : [], [bundle])
   const skill = selectedSkill || skills[0]
   const build = selectedBuild || skill?.build_rows?.[0]
@@ -175,7 +219,7 @@ export function BuildDashboard() {
   return <div className="dashboard react-dashboard">
     <SkillList skills={skills} selected={skill} onSelect={next => { setSelectedSkill(next); setSelectedBuild(next.build_rows[0]); setOverrides({}); setStage('items') }} />
     <div className="dashboard-main">
-      <BuildHeader skill={skill} build={build} />
+      <BuildHeader skill={skill} build={build} league={league} onLeagueChange={setLeague} />
       <StageSelector selected={stage} onSelect={setStage} />
       <Kpis build={build} />
       {stage === 'items' && <div className="dashboard-grid">
@@ -185,6 +229,7 @@ export function BuildDashboard() {
       </div>}
       {stage === 'defense' && <DefensePanel build={build} />}
       {stage === 'damage' && <DamagePanel build={build} />}
+      {stage === 'combinations' && <CombinationPanel skill={skill} build={build} pools={pools} sprites={bundle.sprites} onBuild={next => { setSelectedBuild(next); setOverrides({}) }} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)); setStage('items') }} />}
       {stage === 'tree' && <PassiveTree build={build} skill={skill} />}
     </div>
   </div>
