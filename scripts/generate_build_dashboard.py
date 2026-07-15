@@ -106,6 +106,7 @@ def parse_item(text):
         base = named_base
     item_level = 0
     implicit_lines = []
+    explicit_lines = []
     for line in lines:
         if line.startswith("Item Level:"):
             try:
@@ -119,6 +120,11 @@ def parse_item(text):
             except ValueError:
                 count = 0
             implicit_lines = [x for x in lines[idx + 1:idx + 1 + count] if not x.startswith("{crafted}")]
+            explicit_lines = [
+                x.replace("{crafted}", "")
+                for x in lines[idx + 1 + count:]
+                if not x.startswith(("Rarity:", "Unique ID:", "Item Level:", "LevelReq:", "Implicits:", "<", "--------"))
+            ]
             break
     return {
         "name": name,
@@ -127,6 +133,7 @@ def parse_item(text):
         "item_level": item_level,
         "slot": item_slot(name, base or name),
         "implicits": implicit_lines[:4],
+        "explicits": explicit_lines[:12],
     }
 
 
