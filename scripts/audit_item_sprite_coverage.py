@@ -1,80 +1,61 @@
 import json
-import re
-import xml.etree.ElementTree as ET
-from collections import Counter
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-XML_ROOT = ROOT / "data" / "poe_ninja" / "poe_ninja_dataset" / "xml"
+DATA = ROOT / "dashboard" / "build_dashboard_data.json"
 INDEX = ROOT / "dashboard" / "item_sprite_index.json"
-OUT = ROOT / "data" / "items" / "missing_sprite_bases.json"
-BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
-
-
-def clean(line):
-    return re.sub(r"<[^>]+>", "", line).strip()
-
-
-def load_base_names():
-    names = set()
-    if BASES_DIR.exists():
-        for path in BASES_DIR.glob("*.lua"):
-            names.update(re.findall(r'itemBases\["([^"]+)"\]', path.read_text(encoding="utf-8", errors="ignore")))
-    return names
-
-
-BASE_NAMES = load_base_names()
-
-
-def first_base_line(lines, start=2):
-    for line in lines[start:14]:
-        if line in BASE_NAMES:
-            return line
-    return ""
-
-
-def parse_item(text):
-    lines = [clean(x) for x in text.splitlines() if clean(x)]
-    if not lines:
-        return None
-    rarity = lines[0].replace("Rarity:", "").strip().title() if lines[0].startswith("Rarity:") else ""
-    name = lines[1] if rarity and len(lines) > 1 else lines[0]
-    base = ""
-    if rarity in {"Rare", "Magic"} and len(lines) > 2:
-        base = first_base_line(lines, 2)
-    elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
-        base = lines[1]
-    return {"name": name, "base": base or name, "rarity": rarity}
+OUT = ROOT / "data" / "items" / "dashboard_sprite_validation.json"
+FINAL = ROOT / "data" / "items" / "sprite_final_missing.json"
+IGNORED = {"xml", "extraction samples", "root"}
 
 
 def main():
-    sprites = json.loads(INDEX.read_text(encoding="utf-8")) if INDEX.exists() else {}
-    missing = Counter()
-    covered = Counter()
-    for path in XML_ROOT.rglob("*.xml"):
-        try:
-            root = ET.parse(path).getroot()
-        except Exception:
+    data = json.loads(DATA.read_text(encoding="utf-8"))
+    sprites = json.loads(INDEX.read_text(encoding="utf-8"))
+    missing, non_webp, poe2_refs, broken = [], set(), set(), set()
+
+    for skill in data.get("skills", []):
+        if str(skill.get("skill", "")).lower() in IGNORED:
             continue
-        for node in root.findall(".//Item"):
-            if not node.text:
-                continue
-            item = parse_item(node.text)
-            if not item:
-                continue
-            key = item["base"] if item["rarity"] in {"Rare", "Magic", "Normal"} else item["name"]
-            if sprites.get(key) or sprites.get(item["base"]):
-                covered[key] += 1
-            else:
-                missing[key] += 1
-    result = {
-        "covered_keys": len(covered),
-        "missing_keys": len(missing),
-        "missing": [{"name_or_base": k, "uses": v} for k, v in missing.most_common()],
+        for build in skill.get("build_rows", []):
+            for item in build.get("item_details", []):
+                rarity = item.get("rarity")
+                key = item.get("base") if rarity in {"Rare", "Magic", "Normal"} else item.get("name")
+                src = sprites.get(key) or (sprites.get(item.get("base")) if rarity not in {"Rare", "Magic", "Normal"} else "")
+                if not src:
+                    missing.append({"skill": skill.get("skill"), "item": item.get("name"), "base": item.get("base"), "key": key})
+                    continue
+                if not src.endswith(".webp"):
+                    non_webp.add(src)
+                if "poe2_item_sprites" in src:
+                    poe2_refs.add(src)
+                if not (ROOT / src.replace("../", "")).exists():
+                    broken.add(src)
+
+    summary = {
+        "dashboard_missing": len(missing),
+        "unique_missing": len({x["key"] for x in missing}),
+        "non_webp_refs": len(non_webp),
+        "poe2_refs": len(poe2_refs),
+        "broken_file_refs": len(broken),
     }
-    OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-    print({"covered_keys": result["covered_keys"], "missing_keys": result["missing_keys"], "out": str(OUT)})
+    OUT.write_text(json.dumps({
+        "summary": summary,
+        "missing": missing,
+        "non_webp_refs": sorted(non_webp),
+        "poe2_refs": sorted(poe2_refs),
+        "broken_file_refs": sorted(broken),
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    FINAL.write_text(json.dumps({
+        "rule": "dashboard_uses_poe1_webp_only_rare_magic_normal_use_base_unique_use_name_then_base_no_fallback",
+        "missing_items": len(missing),
+        "missing_unique": sorted({x["key"] for x in missing}),
+        "non_webp_refs": sorted(non_webp),
+        "poe2_refs": sorted(poe2_refs),
+        "broken_file_refs": sorted(broken),
+    }, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(summary)
 
 
 if __name__ == "__main__":
