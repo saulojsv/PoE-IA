@@ -1,0 +1,161 @@
+{
+  "id": "reduced",
+  "term": "Reduced",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.pathofexile.com/forum/view-thread/1642545",
+  "sections": {
+    "Definition": {
+      "text": "Reduced is an additive negative modifier term that decreases a quantity within the additive stage.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Purpose": {
+      "text": "Model additive penalty values with explicit language distinct from multiplicative Less.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Core Rules": {
+      "text": "Reduced participates in the same additive pool as Increased and is resolved before More/Less.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Internal Rules": {
+      "text": "Reduced values are expressed as negative additive deltas and merged with other additive terms before multiplier application.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Calculation Order": {
+      "text": "1) base value 2) aggregate Increased and Reduced into additive total 3) apply More/Less multipliers 4) cap/round.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Priority Rules": {
+      "text": "Mechanic-specific Reduced text overrides generic negative phrasing assumptions from comments or non-official summaries.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Preconditions": {
+      "text": "The target stat must allow additive scaling and have scope-compatible source semantics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Postconditions": {
+      "text": "Negative additive effect is integrated into the stage that feeds multiplier buckets.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Limitations": {
+      "text": "Reduced is not interchangeable with Less in storage or application semantics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Caps": {
+      "text": "No universal Reduced cap is defined in this pass; downstream systems may constrain final outcomes.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Formula": {
+      "text": "final = base * (1 + Σ Increased_i - Σ Reduced_j) * Π More_k * Π (1 - Less_l)",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Keywords": {
+      "text": ["Reduced", "Increased", "More", "Less", "Additive"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Related Mechanics": {
+      "depends_on": ["base value", "additive bucket", "More", "Less", "Increased"],
+      "modifies": ["final statistics", "final damage"],
+      "requires": ["modifier scope compatibility"],
+      "prevents": ["mistaken Less equivalence"],
+      "cannot_affect": ["systems without additive layer"],
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Dependencies": {
+      "text": ["modifier stack", "additive resolver", "scope filters"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Conflicts": {
+      "text": "Confusing Reduced with Less is the primary modeling conflict and must be normalized separately.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Exceptions": {
+      "text": "Specific game mechanics may cap negative values for specific systems without altering the token identity.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1963938"
+    },
+    "Hidden Rules": {
+      "text": "Maintain explicit token identity even when numeric behavior overlaps in narrow cases.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Developer Notes": {
+      "text": "Never replace Reduced with arithmetic against base to emulate Less or vice-versa.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Historical Changes": {
+      "text": "No documented core redefinition of Reduced semantics in this run.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Reduced remains additive as a negative scaling layer in the captured model.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": ["20% Increased and 15% Reduced yields +5% additive in the same stage.", "Two Reduced sources sum as one negative additive total before multipliers."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Common Misconceptions": {
+      "text": ["Reduced is the same as Less", "Reduced should be multiplied, not added with Increased"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1642545",
+        "https://www.pathofexile.com/forum/view-thread/1242841",
+        "https://www.pathofexile.com/forum/view-thread/1963938",
+        "https://www.pathofexile.com/wiki/Modifiers"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    }
+  },
+  "relationships": {
+    "depends_on": ["base_value", "additive_scale"],
+    "modifies": ["final_damage", "final_stat"],
+    "requires": ["scope eligibility"],
+    "prevents": ["multiplicative encoding of Reduced"],
+    "overrides": [],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["additive reduction"],
+    "removes": [],
+    "shares_with": ["Increased", "More", "Less"],
+    "is_scaled_by": ["system-specific modifiers", "scope gates"],
+    "cannot_affect": ["non-additive layers"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-13T10:55:45.3940497+01:00"
+}

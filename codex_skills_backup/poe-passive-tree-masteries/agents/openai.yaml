@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Passive Tree"
+  short_description: "Research passives/masteries."
+  default_prompt: "Use $poe-passive-tree-masteries to research passive tree data for one skill."
+policy:
+  allow_implicit_invocation: true

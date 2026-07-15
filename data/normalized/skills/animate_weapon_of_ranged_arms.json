@@ -1,0 +1,114 @@
+{
+  "id": "skill:animate_weapon_of_ranged_arms",
+  "entity_type": "transfigured_skill_gem",
+  "name": "Animate Weapon of Ranged Arms",
+  "normalized_name": "animate_weapon_of_ranged_arms",
+  "az_order": 8,
+  "category": "transfigured_skill_gem",
+  "variant_type": "transfigured",
+  "base_skill_id": null,
+  "patch": "3.28.0j",
+  "league": "Mirage",
+  "source_url": "https://www.poewiki.net/wiki/Animate_Weapon_of_Ranged_Arms",
+  "source_type": "poewiki",
+  "source_date": "2026-07-13T03:39:47Z",
+  "collected_at": "2026-07-14T01:22:39Z",
+  "last_verified_at": "",
+  "classification": "community",
+  "confidence": 0.48,
+  "status": "likely_current",
+  "data": {
+    "identity": {
+      "name": "Animate Weapon of Ranged Arms"
+    },
+    "raw_excerpt": " Animate Weapon of Ranged Arms | PoE Wiki document.documentElement.className=\"client-js\";RLCONF={\"wgBreakFrames\":false,\"wgSeparatorTransformTable\":[\"\",\"\"],\"wgDigitTransformTable\":[\"\",\"\"],\"wgDefaultDateFormat\":\"dmy\",\"wgMonthNames\":[\"\",\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"wgRequestId\":\"db83c46e93617354a5b17d3e\",\"wgCSPNonce\":\"NRTWXeNLHC4EFNSyxPav\",\"wgCanonicalNamespace\":\"\",\"wgCanonicalSpecialPageName\":false,\"wgNamespaceNumbe",
+    "tags": [],
+    "requirements": {},
+    "gems": {},
+    "supports": [],
+    "incompatibilities": [],
+    "sources": [
+      "https://www.poewiki.net/wiki/Animate_Weapon_of_Ranged_Arms",
+      "https://www.poewiki.net/wiki/List_of_transfigured_skill_gems"
+    ],
+    "research_focus": {
+      "name": "items_mods_jewels_flasks",
+      "fields": [
+        "item_synergies",
+        "jewels",
+        "cluster_jewels",
+        "flasks",
+        "modifiers"
+      ],
+      "queries": [
+        "unique items",
+        "mods",
+        "cluster jewel",
+        "flasks",
+        "crafting"
+      ]
+    },
+    "levels": [],
+    "quality_effects": [],
+    "support_relationships": [],
+    "gem_links": [],
+    "item_synergies": [],
+    "passives_ascendancies": [],
+    "builds": [],
+    "guides": [],
+    "market_usage": [],
+    "patch_changes": []
+  },
+  "conflicts": [],
+  "validation_errors": [],
+  "xml_status": "needs_source",
+  "research_cycle": 3,
+  "research_focus": {
+    "name": "items_mods_jewels_flasks",
+    "fields": [
+      "item_synergies",
+      "jewels",
+      "cluster_jewels",
+      "flasks",
+      "modifiers"
+    ],
+    "queries": [
+      "unique items",
+      "mods",
+      "cluster jewel",
+      "flasks",
+      "crafting"
+    ]
+  },
+  "missing_fields": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ],
+  "all_missing_fields": [
+    "tags",
+    "requirements",
+    "levels",
+    "quality_effects",
+    "mechanics",
+    "formulas",
+    "limits_breakpoints",
+    "support_relationships",
+    "gem_links",
+    "item_synergies",
+    "passives_ascendancies",
+    "builds",
+    "guides",
+    "market_usage",
+    "patch_changes"
+  ],
+  "next_research_priority": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ]
+}

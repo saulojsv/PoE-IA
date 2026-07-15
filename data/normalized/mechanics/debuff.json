@@ -1,0 +1,243 @@
+﻿{
+    "id":  "debuff",
+    "term":  "Debuff",
+    "status":  "research_pass",
+    "classification":  "Official Rule",
+    "source":  "https://www.poewiki.net/wiki/Buff",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "A Debuff is a primarily detrimental effect applied to a target, structurally paired with Buff and sharing effect-attachment mechanics.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Buff"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Represent negative modifier states so target statistics, damage handling, or resource interaction can be reduced.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Buff"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "A Debuff is an effect entry attached to an entity and applies negative modifiers as defined by the source mechanic.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Buff"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Debuff stacking, duration, and replacement behaviour are implemented per mechanic unless that mechanic explicitly allows stacking.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "1) application attempt 2) stack/override resolution 3) modifier application 4) duration/tick progression 5) expiration removal.",
+                                               "type":  "Official Rule",
+                                               "source":  "https://www.poewiki.net/wiki/Buff"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "By default multiple identical Debuff instances do not stack; strongest instance remains unless the mechanic explicitly allows stacking.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "Source mechanic must be valid to apply the Debuff and the target must satisfy source applicability constraints.",
+                                           "type":  "Official Rule",
+                                           "source":  "https://www.poewiki.net/wiki/Buff"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "Target receives negative modifier state and keeps it for effective Debuff duration or until overridden/removed.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                        },
+                     "Limitations":  {
+                                         "text":  "Some effect families are blocked from applying to enemy Debuffs; see mechanic-specific exceptions.",
+                                         "type":  "Official Rule",
+                                         "source":  "https://www.poewiki.net/wiki/Buff"
+                                     },
+                     "Caps":  {
+                                  "text":  "Stacking and duration caps are mechanic-specific; generic Debuff model defaults to non-stacking identical states.",
+                                  "type":  "Official Rule",
+                                  "source":  "https://www.poewiki.net/wiki/Buff"
+                              },
+                     "Formula":  {
+                                     "text":  "No universal formula applies to all Debuffs; each Debuff defines its own magnitude, duration, and scaling.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Buff"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Debuff",
+                                                   "negative modifier",
+                                                   "duration",
+                                                   "stacking exception",
+                                                   "Buff"
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Buff"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Buff"
+                                                              ],
+                                               "modifies":  [
+                                                                "target statistics",
+                                                                "resist layers",
+                                                                "action speed",
+                                                                "damage handling"
+                                                            ],
+                                               "requires":  [
+                                                                "valid source",
+                                                                "target attachment"
+                                                            ],
+                                               "prevents":  [
+                                                                "inversion of debuff direction"
+                                                            ],
+                                               "cannot_affect":  [
+                                                                     "effects blocked by immunity or avoidance"
+                                                                 ],
+                                               "source":  "https://www.poewiki.net/wiki/Buff"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "Attachment system",
+                                                       "Effect duration model",
+                                                       "mechanic-specific stacking tags"
+                                                   ],
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Buff"
+                                      },
+                     "Conflicts":  {
+                                       "text":  "Enemy Debuff interaction with auras and effect amplification changes by patch; apply mechanic version history when relevant.",
+                                       "type":  "Historical Behavior",
+                                       "source":  "https://www.poewiki.net/wiki/Buff"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Specific Debuffs can define layering, stacking, or immunity interactions that override generic Debuff defaults.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Buff"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "UI flags for buff/debuff are not equivalent to all mechanical constraints.",
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Buff"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "Treat Debuff as shared state machinery with mechanic-local overrides; do not use one global formula.",
+                                             "type":  "Official Rule",
+                                             "source":  "https://www.poewiki.net/wiki/Buff"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "Buff/Debuff framework fixes changed inversion and aura interaction behavior in patch history.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Buff"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+                                                        {
+                                                            "version":  "3.28.0e",
+                                                            "note":  "Buff effects transitioned through combat areas for temporary minions, Rage, Fortify, charges, and shrines.",
+                                                            "type":  "Official Rule",
+                                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                                        },
+                                                        {
+                                                            "version":  "3.16.2b",
+                                                            "note":  "Most buff effect modifiers could no longer invert buff effects.",
+                                                            "type":  "Official Rule",
+                                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                                        },
+                                                        {
+                                                            "version":  "3.10.1c",
+                                                            "note":  "Increased Effect of Auras on You modifiers stopped applying to enemy Debuff auras.",
+                                                            "type":  "Official Rule",
+                                                            "source":  "https://www.poewiki.net/wiki/Buff"
+                                                        }
+                                                    ],
+                                           "type":  "Official Rule"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "Withered applies as a Debuff-like negative state with explicit stacking and effect rules.",
+                                                   "Mark and Hex are Debuff-adjacent systems with curse-limit constraints."
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Buff"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Debuff is not interchangeable with Ailment in all calculations.",
+                                                                "Debuff icon absence does not mean no negative effect."
+                                                            ],
+                                                   "type":  "Official Rule",
+                                                   "source":  "https://www.poewiki.net/wiki/Buff"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/wiki/Buff",
+                                                           "https://www.pathofexile.com/forum/view-thread/3229187"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "Buff"
+                                         ],
+                          "modifies":  [
+                                           "stats",
+                                           "damage modifiers",
+                                           "target state"
+                                       ],
+                          "requires":  [
+                                           "source effect",
+                                           "valid target"
+                                       ],
+                          "prevents":  [
+                                           "inverted debuff effect"
+                                       ],
+                          "overrides":  [
+                                            "weaker same-source debuff state"
+                                        ],
+                          "inherits":  [
+                                           "Buff"
+                                       ],
+                          "creates":  [
+                                          "debuff instance"
+                                      ],
+                          "destroys":  [
+                                           "expired debuff instance"
+                                       ],
+                          "applies":  [
+                                          "negative modifiers"
+                                      ],
+                          "removes":  [
+                                          "debuff state when duration ends"
+                                      ],
+                          "shares_with":  [
+                                              "Ailment",
+                                              "Hex",
+                                              "Brittle",
+                                              "Scorch",
+                                              "Sap",
+                                              "Withered"
+                                          ],
+                          "is_scaled_by":  [
+                                               "effect modifiers",
+                                               "more/less modifiers"
+                                           ],
+                          "cannot_affect":  [
+                                                "enemy buff-only effect pipelines"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Official Rule",
+                                        "status":  "active",
+                                        "version":  "3.28.0e"
+                                    }
+                                ],
+    "collected_at":  "2026-07-13T11:10:53.482+01:00",
+    "metadata":  {
+                     "confidence":  "high",
+                     "source_date":  "unverified",
+                     "source_type":  "Official Rule",
+                     "source_authority":  "Path of Exile official terminology source",
+                     "status":  "active",
+                     "source_url":  "https://www.poewiki.net/wiki/Buff"
+                 }
+}

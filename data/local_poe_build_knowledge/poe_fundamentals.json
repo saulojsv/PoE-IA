@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "purpose": "Regras locais para interpretar builds de Path of Exile 1 antes de consultar XMLs.",
+  "hard_rules": {
+    "elemental_resistance_cap": "75% por padrão; pode subir com max resistance; hard cap geral 90%.",
+    "campaign_resistance_penalties": "Penalidades após atos reduzem resistências; build endgame deve revalidar resists no PoB.",
+    "chaos_resistance": "Ideal >= 0% para mapas; 75% para endgame robusto, salvo defesa alternativa clara.",
+    "accuracy_for_attack": "Ataques precisam hit chance alta; crit de ataque é enganoso se accuracy/hit chance for baixo.",
+    "crit_build": "Precisa base crit, crit chance, crit multiplier, accuracy se ataque, charges/diamond/lucky/uptime.",
+    "non_crit_build": "Precisa multiplicador substituto: DoT multi, Elemental Overload, gem levels, ailment, attribute stack, aura stack ou conversion scaling.",
+    "reservation": "Auras só são válidas se sobrar recurso para usar a skill principal.",
+    "recovery": "Toda build funcional precisa regen, leech, recoup, recharge, on block, life gain on hit ou flask sustain.",
+    "ailments": "Endgame precisa plano contra freeze, shock, ignite, bleed e corrupted blood.",
+    "movement": "Toda build jogável precisa movement skill ou movimento equivalente.",
+    "pob_config": "DPS de PoB precisa checar flasks, charges, curses, exposure, shock, full ramp, projectiles hit e enemy config."
+  },
+  "role_targets": {
+    "early_maps": {"dps": "300k-800k", "required": ["resists 75", "movement", "recovery"]},
+    "red_maps": {"dps": "1M-3M", "required": ["resists 75", "chaos plan", "ailment plan", "real recovery"]},
+    "endgame_mapper": {"dps": "3M-10M", "required": ["clear speed", "movement", "recovery while mapping", "defensive flasks"]},
+    "normal_bosser": {"dps": "5M-15M", "required": ["single target uptime", "max hit plan", "recovery while bossing"]},
+    "uber_bosser": {"dps": "15M+", "required": ["real uptime", "high max hit", "ailment immunity", "config audit"]}
+  },
+  "interpretation_order": [
+    "role",
+    "main_skill_tags",
+    "delivery_method",
+    "class_ascendancy_reason",
+    "damage_scaling",
+    "defense_layers",
+    "resource_reservation",
+    "items_required",
+    "tree_pathing",
+    "jewels_clusters",
+    "flasks",
+    "pob_assumptions",
+    "weakest_gate"
+  ],
+  "combination_rules": [
+    "Skill tags determinam supports e scaling legal.",
+    "Classe deve reduzir custo de pathing ou resolver mecânica central.",
+    "Ascendência deve entregar dano, defesa, recurso, charges, flasks, minions, totems, traps/mines ou ailment.",
+    "Itens obrigatórios só entram se habilitam mecânica; rares corrigem vida/ES/resists/atributos/custo.",
+    "Clusters só valem se o custo em pontos retornar dano/defesa/recurso melhor que árvore normal.",
+    "Combinação nova precisa passar gates antes de comparar DPS."
+  ]
+}

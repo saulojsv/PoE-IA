@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Guides PoB"
+  short_description: "Research guides/videos/PoB."
+  default_prompt: "Use $poe-guides-videos-pob to collect guide, video, and PoB evidence."
+policy:
+  allow_implicit_invocation: true

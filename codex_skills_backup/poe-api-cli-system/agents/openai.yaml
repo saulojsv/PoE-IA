@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE API CLI"
+  short_description: "Maintain API and CLI."
+  default_prompt: "Use $poe-api-cli-system to maintain the PoE knowledge API and CLI."
+policy:
+  allow_implicit_invocation: true

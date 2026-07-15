@@ -1,0 +1,100 @@
+{
+  "id": "000007_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000007_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Ballista Totem",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "19368835.502261",
+    "combined_dps": "19369587.90297",
+    "crit_chance": "100",
+    "crit_multiplier": "4.02",
+    "hit_chance": "100",
+    "ehp": "23941.773928661",
+    "life": "1",
+    "energy_shield": "5127",
+    "fire_res": "75",
+    "cold_res": "75",
+    "lightning_res": "75",
+    "chaos_res": "-60",
+    "mana_unreserved": "158",
+    "mana_cost": "39"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "energy shield",
+      "ES recovery"
+    ],
+    "main_supports": [
+      "Less Duration",
+      "Greater Volley",
+      "Invert the Rules",
+      "Concentrated Effect",
+      "Kinetic Fusillade"
+    ],
+    "auras_utility": [
+      "Discipline",
+      "Precision",
+      "Vitality",
+      "Wrath"
+    ],
+    "movement": [
+      "Lightning Warp"
+    ],
+    "required_or_enabling_uniques": [
+      "Replica Covenant",
+      "The Ephemeral Bond",
+      "Timeclasp",
+      "Wilma's Requital",
+      "Void Battery",
+      "Mageblood",
+      "Malachai's Loop",
+      "Bottled Faith",
+      "Stormshroud",
+      "Watcher's Eye",
+      "Grand Spectrum",
+      "Grand Spectrum",
+      "Rain of Splinters",
+      "The Light of Meaning",
+      "Unnatural Instinct",
+      "Grand Spectrum"
+    ],
+    "cluster_jewels": [],
+    "flasks": [
+      "Mageblood",
+      "Bottled Faith",
+      "Abecedarian's Granite Flask of the Curlew",
+      "Alchemist's Basalt Flask of the Lizard",
+      "Alchemist's Diamond Flask of Bog Moss",
+      "Abecedarian's Quicksilver Flask of the Rainbow"
+    ],
+    "passive_node_count": 135
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": false,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": [
+    "chaos_res_non_negative"
+  ]
+}

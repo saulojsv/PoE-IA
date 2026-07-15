@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "purpose": "Collect public poe.ninja PoE 1 Path of Building exports through the public API and decode them to validated XML by skill.",
+  "source_priority": [
+    "poe.ninja public API pathOfBuildingExport decoded to XML",
+    "external public Path of Building export code decoded to XML",
+    "pobb.in public build XML/export"
+  ],
+  "output_root": "data/poe_ninja/poe_ninja_dataset/xml",
+  "output_pattern": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}/{build_id}.xml",
+  "sidecar_pattern": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}/{build_id}.meta.json",
+  "rules": [
+    "Use poe.ninja public API only.",
+    "Follow A-Z order from data/normalized/skill_catalog_az.json.",
+    "Use data/poe_ninja/poe_ninja_dataset/poe_ninja_api_xml_cursor.json as cursor.",
+    "Do not invent passive trees, items, gems, PoB configs, or DPS values.",
+    "Write only decoded public PoB XML that parses as XML.",
+    "Target up to 6 XML files per skill by default, with at most 1 XML example per character class for each skill.",
+    "Add/update only; never delete existing XML or metadata.",
+    "On HTTP 429, stop the current run.",
+    "Skip new XML for a skill when its character class is already represented by an existing sidecar JSON.",
+    "Record source URL, endpoint, league, version, snapshot, character, class, level, collected_at, and status in sidecar JSON."
+  ],
+  "skill_json_fields_to_update": {
+    "xml_path": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}/{build_id}.xml",
+    "xml_meta_path": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}/{build_id}.meta.json",
+    "xml_status": "generated|needs_source|invalid|needs_review"
+  }
+}

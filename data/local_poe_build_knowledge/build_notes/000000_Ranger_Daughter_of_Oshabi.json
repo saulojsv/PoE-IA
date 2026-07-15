@@ -1,0 +1,103 @@
+{
+  "id": "000000_Ranger_Daughter_of_Oshabi",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000000_Ranger_Daughter_of_Oshabi.xml",
+  "identity": {
+    "class": "Ranger",
+    "ascendancy": "Daughter of Oshabi",
+    "level": "100",
+    "main_skill": "Trinity",
+    "delivery": "self-cast/self-attack"
+  },
+  "metrics": {
+    "dps": "19314201.966808",
+    "combined_dps": "19400708.183835",
+    "crit_chance": "100",
+    "crit_multiplier": "5.43",
+    "hit_chance": "100",
+    "ehp": "259359.48152278",
+    "life": "1",
+    "energy_shield": "8258",
+    "fire_res": "75",
+    "cold_res": "76",
+    "lightning_res": "75",
+    "chaos_res": "-29",
+    "mana_unreserved": "108",
+    "mana_cost": "25"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "energy shield",
+      "evasion",
+      "spell suppression",
+      "block",
+      "spell block",
+      "life recovery",
+      "ES recovery"
+    ],
+    "main_supports": [
+      "Greater Multistrike",
+      "Inspiration"
+    ],
+    "auras_utility": [
+      "Grace"
+    ],
+    "movement": [
+      "Frostblink",
+      "Whirling Blades"
+    ],
+    "required_or_enabling_uniques": [
+      "The Gull",
+      "The Squire",
+      "The Unseen Hue",
+      "Screams of the Desiccated",
+      "The Taming",
+      "Admiral's Arrogance",
+      "The Writhing Jar",
+      "The Writhing Jar",
+      "The Writhing Jar",
+      "Lethal Pride",
+      "Foulborn Ancestral Vision",
+      "Thread of Hope",
+      "The Light of Meaning"
+    ],
+    "cluster_jewels": [
+      "Oblivion Joy",
+      "Eagle Ornament",
+      "Fulgent Shine",
+      "Damnation Glimmer",
+      "Brood Ruin",
+      "Foe Wound"
+    ],
+    "flasks": [
+      "Screams of the Desiccated",
+      "The Writhing Jar",
+      "The Writhing Jar",
+      "The Writhing Jar",
+      "Spirit Splinter"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": false,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": [
+    "chaos_res_non_negative"
+  ]
+}

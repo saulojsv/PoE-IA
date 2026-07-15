@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Trans Gems"
+  short_description: "Research transfigured gems."
+  default_prompt: "Use $poe-transfigured-gems to research one transfigured PoE 1 gem."
+policy:
+  allow_implicit_invocation: true

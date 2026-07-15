@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Active Gems"
+  short_description: "Research active skill gems."
+  default_prompt: "Use $poe-active-skill-gems to research one active PoE 1 skill gem."
+policy:
+  allow_implicit_invocation: true

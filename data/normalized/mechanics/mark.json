@@ -1,0 +1,151 @@
+﻿{
+  "id": "mark",
+  "term": "Mark",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Mark",
+  "sections": {
+    "Definition": {
+      "text": "Mark is a Curse subset mechanic that applies a unique curse state and tracks one marked target per source by default.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Purpose": {
+      "text": "Create persistent marked-target state for curse interactions and reward behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Core Rules": {
+      "text": "A new Mark replaces prior Mark from the same source and is non-stackable by design.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Internal Rules": {
+      "text": "Mark state is removed when marker dies or source conditions invalidate the state.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Calculation Order": {
+      "text": "1) skill hits valid target 2) check existing Mark from same source 3) replace previous mark 4) apply new Mark state 5) resolve curse limits and conflicts.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Priority Rules": {
+      "text": "Per-source replacement is strongest rule: latest valid Mark replaces prior Mark state.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Preconditions": {
+      "text": "A valid Mark source must resolve on an eligible enemy target and valid source ownership.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Postconditions": {
+      "text": "Target has Marked state with active curse effects until source-target lifecycle ends.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Limitations": {
+      "text": "One Mark from the same source is active at a time, with history-sensitive permanence and removal conditions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Caps": {
+      "text": "Mark target cap is one per source owner; additional applications replace existing Mark.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Formula": {
+      "text": "No arithmetic formula across all Mark; state is replacement-based with curse-effect metadata.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Keywords": {
+      "text": ["Mark", "Curse", "Marked", "Duration removed", "single target"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Curse", "Hex", "Aura"],
+      "modifies": ["target curse state"],
+      "requires": ["Mark skill", "eligible target"],
+      "prevents": ["multiple simultaneous marks from same source"],
+      "cannot_affect": ["adding a second Mark from same source without replacement"],
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Dependencies": {
+      "text": ["Curse framework", "source ownership", "target identification"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Conflicts": {
+      "text": "Mark and Hex share curse-limit behavior; Mark state can be constrained by shared curse infrastructure.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Exceptions": {
+      "text": "Patch history changed Mark from temporary to permanent and changed behavior on source/target death and distance.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Hidden Rules": {
+      "text": "Mark may not display duration as a curse because status became permanent in 3.17.0.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Developer Notes": {
+      "text": "Represent Mark as state replacement machine rather than timed aura-like effect.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Historical Changes": {
+      "text": "3.17.0 made Mark curse skills permanent and removed Duration tag; 3.19.1 removed monster marks at long distance.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Patch History": {
+      "text": [
+        { "version": "3.12.0", "note": "Some curse skills were reworked into Mark as a subset.", "type": "Historical Behavior", "source": "https://www.poewiki.net/wiki/Mark" },
+        { "version": "3.17.0", "note": "Mark curse skills became permanent and lost the Duration tag; applied marks removed when marker dies.", "type": "Official Rule", "source": "https://www.poewiki.net/wiki/Mark" },
+        { "version": "3.19.1", "note": "Marks applied by monsters are removed if target moves far away.", "type": "Official Rule", "source": "https://www.poewiki.net/wiki/Mark" }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": ["Applying a second Mark from same source replaces the previous Mark.", "Monster-applied Mark is removed when the monster dies."],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Common Misconceptions": {
+      "text": ["Mark is not the same as generic Hex duration logic.", "Mark is generally permanent for source-owner state until removal condition."],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Mark"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Mark",
+        "https://www.pathofexile.com/forum/view-thread/3229187",
+        "https://www.pathofexile.com/forum/view-thread/3157230",
+        "https://www.pathofexile.com/forum/view-thread/3909681"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Curse framework", "Hex framework", "source ownership"],
+    "modifies": ["target curse state"],
+    "requires": ["Mark skill", "valid target"],
+    "prevents": ["multiple simultaneous marks by same source"],
+    "overrides": ["previous Mark from same source"],
+    "inherits": ["Curse"],
+    "creates": ["Marked state"],
+    "destroys": ["previous Mark state", "Mark on marker death or source loss"],
+    "applies": ["active Mark curse effects"],
+    "removes": ["Mark after marker/target removal or distance condition"],
+    "shares_with": ["Hex"],
+    "is_scaled_by": ["curse limit", "support modifiers"],
+    "cannot_affect": ["additional mark without replacement"]
+  },
+  "classification_timeline": [{"type": "Official Rule", "status": "active", "version": "3.19.1"}],
+  "collected_at": "2026-07-12T22:20:03+01:00"
+}

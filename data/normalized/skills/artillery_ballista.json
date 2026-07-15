@@ -1,0 +1,114 @@
+{
+  "id": "skill:artillery_ballista",
+  "entity_type": "active_skill_gem",
+  "name": "Artillery Ballista",
+  "normalized_name": "artillery_ballista",
+  "az_order": 14,
+  "category": "active_skill_gem",
+  "variant_type": "base",
+  "base_skill_id": null,
+  "patch": "3.28.0j",
+  "league": "Mirage",
+  "source_url": "https://www.poewiki.net/wiki/Artillery_Ballista",
+  "source_type": "poewiki",
+  "source_date": "2026-07-13T09:02:04Z",
+  "collected_at": "2026-07-14T01:22:39Z",
+  "last_verified_at": "",
+  "classification": "community",
+  "confidence": 0.48,
+  "status": "likely_current",
+  "data": {
+    "identity": {
+      "name": "Artillery Ballista"
+    },
+    "raw_excerpt": " Artillery Ballista | PoE Wiki document.documentElement.className=\"client-js\";RLCONF={\"wgBreakFrames\":false,\"wgSeparatorTransformTable\":[\"\",\"\"],\"wgDigitTransformTable\":[\"\",\"\"],\"wgDefaultDateFormat\":\"dmy\",\"wgMonthNames\":[\"\",\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"wgRequestId\":\"e51fda8babf47063054c5fcd\",\"wgCSPNonce\":\"09TRdJT/3nphpeiOQ6jv\",\"wgCanonicalNamespace\":\"\",\"wgCanonicalSpecialPageName\":false,\"wgNamespaceNumber\":0,\"wgPag",
+    "tags": [],
+    "requirements": {},
+    "gems": {},
+    "supports": [],
+    "incompatibilities": [],
+    "sources": [
+      "https://www.poewiki.net/wiki/Artillery_Ballista",
+      "https://www.poewiki.net/wiki/List_of_skill_gems"
+    ],
+    "research_focus": {
+      "name": "items_mods_jewels_flasks",
+      "fields": [
+        "item_synergies",
+        "jewels",
+        "cluster_jewels",
+        "flasks",
+        "modifiers"
+      ],
+      "queries": [
+        "unique items",
+        "mods",
+        "cluster jewel",
+        "flasks",
+        "crafting"
+      ]
+    },
+    "levels": [],
+    "quality_effects": [],
+    "support_relationships": [],
+    "gem_links": [],
+    "item_synergies": [],
+    "passives_ascendancies": [],
+    "builds": [],
+    "guides": [],
+    "market_usage": [],
+    "patch_changes": []
+  },
+  "conflicts": [],
+  "validation_errors": [],
+  "xml_status": "needs_source",
+  "research_cycle": 3,
+  "research_focus": {
+    "name": "items_mods_jewels_flasks",
+    "fields": [
+      "item_synergies",
+      "jewels",
+      "cluster_jewels",
+      "flasks",
+      "modifiers"
+    ],
+    "queries": [
+      "unique items",
+      "mods",
+      "cluster jewel",
+      "flasks",
+      "crafting"
+    ]
+  },
+  "missing_fields": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ],
+  "all_missing_fields": [
+    "tags",
+    "requirements",
+    "levels",
+    "quality_effects",
+    "mechanics",
+    "formulas",
+    "limits_breakpoints",
+    "support_relationships",
+    "gem_links",
+    "item_synergies",
+    "passives_ascendancies",
+    "builds",
+    "guides",
+    "market_usage",
+    "patch_changes"
+  ],
+  "next_research_priority": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "000001_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000001_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Ballista Totem",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "2085167.6902011",
+    "combined_dps": "2089500.9467959",
+    "crit_chance": "71.5188",
+    "crit_multiplier": "3.62",
+    "hit_chance": "100",
+    "ehp": "53156.469179139",
+    "life": "4578",
+    "energy_shield": "3138",
+    "fire_res": "75",
+    "cold_res": "80",
+    "lightning_res": "75",
+    "chaos_res": "75",
+    "mana_unreserved": "25",
+    "mana_cost": "20"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "life pool",
+      "energy shield",
+      "armour",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Kinetic Fusillade",
+      "Invert the Rules",
+      "Less Duration",
+      "Greater Volley"
+    ],
+    "auras_utility": [
+      "Anger",
+      "Determination",
+      "Precision",
+      "Tempest Shield"
+    ],
+    "movement": [
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Yoke of Suffering",
+      "Aegis Aurora",
+      "Balefire",
+      "Rain of Splinters",
+      "Watcher's Eye",
+      "Lethal Pride",
+      "The Light of Meaning"
+    ],
+    "cluster_jewels": [
+      "Brood Ruin",
+      "Vivid Sliver",
+      "Armageddon Solace"
+    ],
+    "flasks": [
+      "Specialist's Quartz Flask of the Tortoise",
+      "Analyst's Quicksilver Flask of the Kakapo",
+      "Clinician's Granite Flask of Stinging"
+    ],
+    "passive_node_count": 135
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

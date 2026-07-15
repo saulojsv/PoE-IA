@@ -1,0 +1,76 @@
+﻿{
+  \"id\": \"skill:ancestral_warchief\",
+  \"name\": \"Ancestral Warchief\",
+  \"normalized_name\": \"ancestral_warchief\",
+  \"az_order\": 1,
+  \"category\": \"summon\",
+  \"variant_type\": \"base\",
+  \"base_skill_id\": null,
+  \"aliases\": [],
+  \"introduced_in_patch\": \"2.3.0\",
+  \"removed_in_patch\": null,
+  \"legacy\": false,
+  \"current\": false,
+  \"patch\": \"3.25.0\",
+  \"league\": \"\",
+  \"collected_at\": \"2026-07-12T17:37:15Z\",
+  \"last_verified_at\": \"2026-07-12T17:37:15Z\",
+  \"confidence\": 0.72,
+  \"status\": \"needs_review\",
+  \"classification\": [\"active_skill\", \"melee\", \"totem\", \"slam\", \"area\", \"attack\"],
+  \"tags\": [\"attack\", \"totem\", \"melee\", \"slam\", \"area\"],
+  \"requirements\": {
+    \"level\": 28,
+    \"strength\": \"67-155\",
+    \"mana\": \"8-11\",
+    \"weapons\": [\"Claws\", \"Daggers\", \"One Hand Axes\", \"One Hand Maces\", \"One Hand Swords\", \"Two Hand Axes\", \"Two Hand Maces\", \"Sceptres\", \"Staves\", \"Warstaves\", \"Rune Daggers\", \"Unarmed\"]
+  },
+  \"levels\": [],
+  \"quality_effects\": [
+    {\"patch\": \"3.23.0\", \"type\": \"quality\", \"effect\": \"0-30% increased Activation range\", \"source\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\"}
+  ],
+  \"mechanics\": [
+    {\"patch\": \"2.3.0\", \"type\": \"identity\", \"text\": \"Summons an ancestor totem that attacks enemies with a powerful slam while nearby\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"},
+    {\"patch\": \"2.3.0\", \"type\": \"identity\", \"text\": \"Being near it grants more melee damage\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"},
+    {\"patch\": \"2.3.0\", \"type\": \"mechanic\", \"text\": \"Totem lasts 12 seconds; grants 8-18% more melee damage while active; 50% placement speed; +1 melee strike range; 90% attack speed multiplier\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"},
+    {\"patch\": \"3.23.0\", \"type\": \"patch_change\", \"text\": \"Quality now provides 0-30% increased Activation range\", \"source\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\"},
+    {\"patch\": \"3.25.0\", \"type\": \"patch_change\", \"text\": \"No longer offered as quest rewards\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"}
+  ],
+  \"formulas\": [],
+  \"limits_breakpoints\": [],
+  \"support_relationships\": [
+    {\"support\": \"Multistrike Support\", \"patch\": \"3.25.0\", \"compatibility\": \"supported\", \"restriction\": \"Vaal Ancestral Warchief does not work with Multistrike\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"},
+    {\"support\": \"Fortify Support\", \"patch\": \"unresolved\", \"compatibility\": \"totem gain Fortify, not player\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"}
+  ],
+  \"gem_links\": [
+    {\"patch\": \"2.3.0\", \"type\": \"alternate\", \"text\": \"Iron Maiden and Void alternate skill effects\", \"source\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\"},
+    {\"patch\": \"3.4.0\", \"type\": \"variant\", \"text\": \"Vaal Ancestral Warchief listed as related skill\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\"}
+  ],
+  \"item_synergies\": [],
+  \"passives_ascendancies\": [],
+  \"builds\": [],
+  \"guides\": [],
+  \"market_usage\": [],
+  \"patch_changes\": [
+    {\"patch\": \"2.3.0\", \"title\": \"Introduced\"},
+    {\"patch\": \"3.4.0\", \"title\": \"Vaal Ancestral Warchief added\"},
+    {\"patch\": \"3.23.0\", \"title\": \"Quality changed to activation range\"},
+    {\"patch\": \"3.25.0\", \"title\": \"No longer offered as quest rewards\"}
+  ],
+  \"sources\": [
+    {\"url\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\", \"source_type\": \"poewiki\", \"type\": \"official_fact\", \"confidence\": 0.9, \"status\": \"needs_review\", \"source_date\": \"2026-03-13\", \"source_url\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\", \"patch\": \"3.23.0\", \"collected_at\": \"2026-07-12T17:37:15Z\", \"last_verified_at\": \"2026-07-12T17:37:15Z\"},
+    {\"url\": \"https://poedb.tw/us/Ancestral_Warchief\", \"source_type\": \"poedb\", \"type\": \"community_consensus\", \"confidence\": 0.9, \"status\": \"needs_review\", \"source_date\": \"\", \"source_url\": \"https://poedb.tw/us/Ancestral_Warchief\", \"patch\": \"3.25.0\", \"collected_at\": \"2026-07-12T17:37:15Z\", \"last_verified_at\": \"2026-07-12T17:37:15Z\"}
+  ],
+  \"claims\": [
+    {\"patch\": \"2.3.0\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\", \"confirmed_at\": \"2026-07-12T17:37:15Z\", \"type\": \"identity\", \"reason\": \"Core mechanic and requirements\", \"status\": \"reviewed\"},
+    {\"patch\": \"3.23.0\", \"source\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\", \"confirmed_at\": \"2026-07-12T17:37:15Z\", \"type\": \"patch_change\", \"reason\": \"Version history entry\", \"status\": \"reviewed\"},
+    {\"patch\": \"3.25.0\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\", \"confirmed_at\": \"2026-07-12T17:37:15Z\", \"type\": \"patch_change\", \"reason\": \"Version history entry\", \"status\": \"reviewed\"}
+  ],
+  \"conflicts\": [
+    {\"patch\": \"unresolved\", \"source\": \"community vs wiki sources\", \"summary\": \"Metadados recentes de patch e estado current dependem de confirmação oficial\", \"status\": \"conflicted\", \"resolution\": null, \"reason\": \"requires official current patch source\"}
+  ],
+  \"validation\": [
+    {\"result\": \"ok\", \"http_status\": 200, \"source\": \"https://www.poewiki.net/wiki/Ancestral_Warchief\", \"check\": \"source_fetch\"},
+    {\"result\": \"warning\", \"check\": \"current_status\", \"source\": \"https://poedb.tw/us/Ancestral_Warchief\", \"details\": \"Current availability not fully confirmed\"}
+  ]
+}

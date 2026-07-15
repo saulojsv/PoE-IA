@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Trigger Skills"
+  short_description: "Research trigger skill rules."
+  default_prompt: "Use $poe-trigger-skills to research one PoE 1 trigger skill."
+policy:
+  allow_implicit_invocation: true

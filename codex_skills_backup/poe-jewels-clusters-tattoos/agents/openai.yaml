@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Jewels"
+  short_description: "Research jewels and tattoos."
+  default_prompt: "Use $poe-jewels-clusters-tattoos to research jewel and tattoo synergies for one skill."
+policy:
+  allow_implicit_invocation: true

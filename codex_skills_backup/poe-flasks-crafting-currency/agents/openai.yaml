@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Crafting"
+  short_description: "Research flasks/crafting."
+  default_prompt: "Use $poe-flasks-crafting-currency to research flask and crafting data for one skill."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Curses Marks"
+  short_description: "Research curses and marks."
+  default_prompt: "Use $poe-curse-mark-skills to research one curse or mark skill."
+policy:
+  allow_implicit_invocation: true

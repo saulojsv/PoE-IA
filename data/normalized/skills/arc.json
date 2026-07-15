@@ -1,0 +1,264 @@
+﻿{
+    "normalized_name":  "arc",
+    "requirements":  {
+                         "mana":  "8-23",
+                         "level":  12,
+                         "intelligence":  "33-155"
+                     },
+    "legacy":  false,
+    "validation":  [
+                       {
+                           "source":  "https://www.poewiki.net/wiki/Arc",
+                           "result":  "ok",
+                           "http_status":  200,
+                           "check":  "source_fetch"
+                       },
+                       {
+                           "source":  "https://poedb.tw/us/Arc",
+                           "result":  "ok",
+                           "http_status":  200,
+                           "check":  "source_fetch"
+                       },
+                       {
+                           "result":  "warning",
+                           "details":  "Not confirmed as current on official patch stream",
+                           "source":  "combined",
+                           "check":  "current_status"
+                       }
+                   ],
+    "passives_ascendancies":  [
+
+                              ],
+    "league":  "",
+    "levels":  [
+                   {
+                       "patch":  "3.23.0",
+                       "source":  "https://www.poewiki.net/wiki/Arc",
+                       "type":  "base",
+                       "notes":  "Current per-level damage and requirements shown for active gem lines from patch-history-tracked page"
+                   }
+               ],
+    "id":  "skill:arc",
+    "base_skill_id":  null,
+    "aliases":  [
+
+                ],
+    "market_usage":  [
+
+                     ],
+    "status":  "needs_review",
+    "confidence":  0.72,
+    "last_verified_at":  "2026-07-12T17:42:16Z",
+    "name":  "Arc",
+    "guides":  [
+
+               ],
+    "removed_in_patch":  null,
+    "classification":  [
+                           "active_skill",
+                           "spell",
+                           "chaining",
+                           "lightning"
+                       ],
+    "support_relationships":  [
+                                  {
+                                      "effect_summary":  "Supports skills that can chain",
+                                      "compatibility":  "compatible",
+                                      "source":  "https://www.poewiki.net/wiki/Arc",
+                                      "restriction":  "Chain support applies -2%? page shows supported skills deal less damage",
+                                      "conditions":  "any skill or projectiles that support chain",
+                                      "patch":  "3.23.0",
+                                      "support":  "support:chain_support"
+                                  }
+                              ],
+    "quality_effects":  [
+                            {
+                                "effect":  "Quality grants Chains +(0-1) times",
+                                "patch":  "3.23.0",
+                                "source":  "https://www.poewiki.net/wiki/Arc",
+                                "type":  "quality"
+                            }
+                        ],
+    "patch_changes":  [
+                          {
+                              "patch":  "3.23.0",
+                              "source":  "https://www.poewiki.net/wiki/Arc",
+                              "title":  "Quality now changes chain count; base crit=6%"
+                          },
+                          {
+                              "patch":  "3.17.0",
+                              "source":  "https://www.poewiki.net/wiki/Arc",
+                              "title":  "Damage scaling table updated"
+                          },
+                          {
+                              "patch":  "3.9.0",
+                              "source":  "https://www.poewiki.net/wiki/Arc",
+                              "title":  "Chain range increased to 35"
+                          },
+                          {
+                              "patch":  "3.6.0",
+                              "source":  "https://www.poewiki.net/wiki/Arc",
+                              "title":  "Base mana/cast/damage adjustment"
+                          }
+                      ],
+    "patch":  "3.23.0",
+    "builds":  [
+
+               ],
+    "variant_type":  "base",
+    "mechanics":  [
+                      {
+                          "patch":  "3.23.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "identity",
+                          "text":  "Arc is a lightning spell that chains to other enemies; each chain creates a secondary arc that can hit one additional enemy and cannot chain further"
+                      },
+                      {
+                          "patch":  "3.23.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "identity",
+                          "text":  "Arc needs at least three unique targets for secondary-chain restriction to cycle"
+                      },
+                      {
+                          "patch":  "3.23.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "identity",
+                          "text":  "Vaal Arc: 25 souls per use, 1 stored use, 2s soul gain prevention, base added-damage effectiveness 220%"
+                      },
+                      {
+                          "patch":  "3.23.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "patch_change",
+                          "text":  "Quality changed from shock-chance bonus to chain-count bonus; base critical chance raised to 6%"
+                      },
+                      {
+                          "patch":  "3.17.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "patch_change",
+                          "text":  "Damage ramp at gem level 1 and 20 changed to 6-32 and 198-1122"
+                      },
+                      {
+                          "patch":  "3.9.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "patch_change",
+                          "text":  "Chain range changed to 35 units from 25"
+                      }
+                  ],
+    "category":  "active",
+    "az_order":  2,
+    "current":  false,
+    "conflicts":  [
+                      {
+                          "source":  "community sources",
+                          "resolution":  null,
+                          "patch":  "unresolved",
+                          "summary":  "Skill current/active status and patch currentness not confirmed via official source on this run",
+                          "reason":  "official current patch verification missing",
+                          "status":  "conflicted"
+                      }
+                  ],
+    "introduced_in_patch":  null,
+    "collected_at":  "2026-07-12T17:42:16Z",
+    "tags":  [
+                 "spell",
+                 "chaining",
+                 "lightning",
+                 "damage"
+             ],
+    "limits_breakpoints":  [
+                               {
+                                   "patch":  "1.1.2",
+                                   "source":  "https://poedb.tw/us/Arc",
+                                   "metric":  "base_chains",
+                                   "value":  "4-7 (current by level range from page table)",
+                                   "type":  "range"
+                               }
+                           ],
+    "claims":  [
+                   {
+                       "source":  "https://poedb.tw/us/Arc",
+                       "type":  "identity",
+                       "reason":  "Gem table and identity fields",
+                       "patch":  "1-20",
+                       "confirmed_at":  "2026-07-12T17:42:16Z",
+                       "status":  "reviewed"
+                   },
+                   {
+                       "source":  "https://www.poewiki.net/wiki/Arc",
+                       "type":  "patch_change",
+                       "reason":  "Version history entries",
+                       "patch":  "3.23.0",
+                       "confirmed_at":  "2026-07-12T17:42:16Z",
+                       "status":  "reviewed"
+                   },
+                   {
+                       "source":  "https://www.poewiki.net/wiki/Arc",
+                       "type":  "variant",
+                       "reason":  "Vaal Arc section lists souls/prevention/duration",
+                       "patch":  "1.1.2",
+                       "confirmed_at":  "2026-07-12T17:42:16Z",
+                       "status":  "reviewed"
+                   }
+               ],
+    "gem_links":  [
+                      {
+                          "patch":  "3.23.0",
+                          "source":  "https://www.poewiki.net/wiki/Arc",
+                          "type":  "alternate",
+                          "text":  "Alternate skill effects include Automaton Arc, Celestial Arc, Purple Arc, Radiant Arc"
+                      }
+                  ],
+    "sources":  [
+                    {
+                        "url":  "https://www.poewiki.net/wiki/Arc",
+                        "source_type":  "poewiki",
+                        "type":  "community_consensus",
+                        "confidence":  0.9,
+                        "last_verified_at":  "2026-07-12T17:42:16Z",
+                        "source_url":  "https://www.poewiki.net/wiki/Arc",
+                        "source_date":  "2026-03-13",
+                        "status":  "needs_review",
+                        "patch":  "3.23.0",
+                        "collected_at":  "2026-07-12T17:42:16Z"
+                    },
+                    {
+                        "url":  "https://poedb.tw/us/Arc",
+                        "source_type":  "poedb",
+                        "type":  "community_consensus",
+                        "confidence":  0.9,
+                        "last_verified_at":  "2026-07-12T17:42:16Z",
+                        "source_url":  "https://poedb.tw/us/Arc",
+                        "source_date":  "",
+                        "status":  "needs_review",
+                        "patch":  "3.23.0",
+                        "collected_at":  "2026-07-12T17:42:16Z"
+                    },
+                    {
+                        "url":  "https://www.pathofexile.com",
+                        "source_type":  "official",
+                        "type":  "official_fact",
+                        "confidence":  0.5,
+                        "last_verified_at":  "2026-07-12T17:42:16Z",
+                        "source_url":  "https://www.pathofexile.com",
+                        "source_date":  "",
+                        "status":  "unverified",
+                        "patch":  "unresolved",
+                        "collected_at":  "2026-07-12T17:42:16Z"
+                    }
+                ],
+    "formulas":  [
+
+                 ],
+    "item_synergies":  [
+                           {
+                               "confidence":  0.72,
+                               "source":  "https://www.poewiki.net/wiki/Arc",
+                               "synergy_type":  "helmet_enchantment",
+                               "item_or_mod":  "Arc Damage 1 / Arc Damage Per Chain",
+                               "reason":  "Labyrinth enchantments increase Arc damage or chain",
+                               "historical":  false,
+                               "importance":  "low",
+                               "patch":  "unresolved"
+                           }
+                       ]
+}

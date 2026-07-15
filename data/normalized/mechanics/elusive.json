@@ -1,0 +1,157 @@
+﻿{
+  "id": "elusive",
+  "term": "Elusive",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Patch notes and PoE Wiki",
+  "sections": {
+    "Definition": {
+      "text": "Elusive is a buff state that applies a chance to avoid damage from hits and movement-speed increase at 100% effect.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Purpose": {
+      "text": "Increase movement safety through temporary on-hit risk reduction and mobility.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Core Rules": {
+      "text": "In 3.10, Elusive granted 30% increased movement speed, 15% chance to Dodge attacks, and 15% chance to Dodge spells, replacing earlier values; in 3.16 it now grants 15% chance to avoid Damage from Hits instead of Dodge-related stats.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Internal Rules": {
+      "text": "Elusive applies as a buff effect with current effectiveness; reapplication behavior is patch/skill dependent and can be constrained by source mechanics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Calculation Order": {
+      "text": "1) Source grants Elusive; 2) apply immediate bonuses from current effect level; 3) effect is reduced over time; 4) state is removed when effect reaches 0%.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Elusive"
+    },
+    "Priority Rules": {
+      "text": "Version-specific behavior replaces previous patch behavior when explicit patch-level change exists (3.10 and 3.16 entries).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Preconditions": {
+      "text": "A source with explicit Elusive-granting effect must apply (for example Mistwalker, Withering Step, skills, or other listed mechanics).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Postconditions": {
+      "text": "When Elusive effect is removed, the entity no longer receives the Elusive bonuses from that instance.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Limitations": {
+      "text": "Historical values differ by patch; cannot merge 3.10 dodge-style wording with 3.16 avoid-from-hits semantics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Caps": {
+      "text": "Avoid chance from Elusive is capped by the target's global hit-avoid/evade-cap systems (example cited in 3.10: 75% for Avoid Damage from Hits sources).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Formula": {
+      "text": "Observed model (from PoE Wiki): effective movement-speed and hit-avoid bonuses are proportional to current Elusive effectiveness; effectiveness decays over time after application.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Elusive"
+    },
+    "Keywords": {
+      "text": ["Elusive", "avoid", "Action Speed", "avoidance cap", "patch version"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Aura", "Buff", "Nightblade", "Withering Step", "Mistwalker", "Elusive Effect"],
+      "modifies": ["Movement Speed", "Avoid Damage from Hits"],
+      "requires": ["Elusive source condition"],
+      "prevents": ["using outdated dodge-based Elusive values after 3.16"],
+      "cannot_affect": ["non-hit damage systems"],
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Dependencies": {
+      "text": ["Elusive source mechanic", "effectiveness decay timer"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Conflicts": {
+      "text": "Community and in-game observation have historically diverged from textual wording around decay and reapplication windows; patch-level changes should be prioritized.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Elusive"
+    },
+    "Exceptions": {
+      "text": "Withering Step and other mechanics can replace or reapply Elusive behavior by their explicit rule sets.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Hidden Rules": {
+      "text": "Avoid from Elusive is not identical wording to legacy dodge systems; treat it as the post-3.16 avoid-from-hit effect in patch-specific records.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Developer Notes": {
+      "text": "Model Elusive across two historical branches (dodge branch pre-3.16, avoid-from-hit branch post-3.16) and avoid blending in same expression unless continuity is explicitly declared.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Historical Changes": {
+      "text": "3.10 adjusted Elusive stats (30% MS; 15%/15% dodge) and 3.16 converted Elusive to 15% chance to Avoid Damage from Hits with old dodge wording removed.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310"
+    },
+    "Patch History": {
+      "text": [
+        {"version": "3.10.0", "note": "Elusive now grants 30% increased movement speed, 15% chance to dodge attacks, and 15% chance to dodge spells.", "type": "Official Rule"},
+        {"version": "3.16.0", "note": "Elusive changed to grant 15% chance to Avoid Damage from Hits instead of dodge-related stats.", "type": "Official Rule"}
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "At 100% Elusive effect in 3.16+, incoming hits are avoided with 15% chance from the Elusive effect.",
+        "Pre-3.16 Elusive examples use dodge-style wording and are not equivalent to post-3.16 behavior."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Using post-3.16 Avoid-from-Hits semantics to represent pre-3.16 dodge wording.",
+        "Assuming a fixed-duration buff model instead of observed effectiveness decay behavior in historical sources."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Elusive"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/2784310",
+        "https://www.pathofexile.com/forum/view-thread/3186390",
+        "https://www.poewiki.net/wiki/Elusive"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["buff layer", "effectiveness", "mistwalker", "withering step"],
+    "modifies": ["Movement Speed", "chance to avoid damage from hits"],
+    "requires": ["elusive source condition"],
+    "prevents": ["legacy dodge interpretation in 3.16+ context"],
+    "overrides": ["none"],
+    "inherits": ["Buff"],
+    "creates": ["elusive state"],
+    "destroys": ["elusive state on expiry"],
+    "applies": ["avoidance effect"],
+    "removes": ["legacy dodge wording interpretation"] ,
+    "shares_with": ["nearby allies"],
+    "is_scaled_by": ["Elusive Effect modifiers", "Mistwalker"],
+    "cannot_affect": ["non-hit damage resolution"]
+  },
+  "classification_timeline": [
+    {"type": "Official Rule", "status": "active", "version": "3.16.0"}
+  ],
+  "collected_at": "2026-07-13T12:02:02.000Z"
+}

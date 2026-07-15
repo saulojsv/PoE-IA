@@ -1,0 +1,171 @@
+{
+  "id": "area_of_effect",
+  "term": "Area of Effect",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Area_of_Effect",
+  "sections": {
+    "Definition": {
+      "text": "Area of Effect is a skill keyword used to define geometry and extent for effects that can affect multiple entities in an area.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Purpose": {
+      "text": "Normalize area-scoped damage and non-damage application behavior and interaction with supports and modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Core Rules": {
+      "text": "Only mechanics explicitly using Area of Effect geometry apply area-target checks; geometry and radius values are computed before applying AoE modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Internal Rules": {
+      "text": "Area of Effect is tag-based and can co-exist with other tags, including Projectile and Hit.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Calculation Order": {
+      "text": "1) resolve skill keywords and tags 2) compute area geometry and center 3) collect entities in geometry 4) apply modifier scaling where explicitly allowed.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Priority Rules": {
+      "text": "Specific skill text and explicit mechanics override generic Area of Effect assumptions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Preconditions": {
+      "text": "AoE geometry path is enabled only when source skill/effect declares Area of Effect scope.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Postconditions": {
+      "text": "Only entities within the resolved geometry can receive AoE-targeted effects.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Limitations": {
+      "text": "Area of Effect does not guarantee hit-type behavior; attack, spell, or dot mechanics still apply after targeting.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Caps": {
+      "text": "No intrinsic Area of Effect keyword cap stored at this layer; size modifiers are bounded by skill and support constraints.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Formula": {
+      "text": "No single global formula; apply modifier stack to radius/scale values after base geometry is established.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Keywords": {
+      "text": ["Area of Effect", "AoE", "radius", "geometry", "Concentrated Effect"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Hit", "Projectile"],
+      "modifies": ["affected target selection", "support matching"],
+      "requires": ["area_of_effect_tag", "radius_scaling"],
+      "prevents": ["assumptions of non-area behavior for AoE-tagged mechanics"],
+      "cannot_affect": ["skills without AoE scope"]
+    },
+    "Dependencies": {
+      "text": ["Skill tags", "support modifiers", "targeting engine"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Conflicts": {
+      "text": "Specific geometry modifiers (cone, ring, trail-like mechanics) override generic circular assumptions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Exceptions": {
+      "text": "Some tagged mechanics apply reduced or transformed geometry despite Area of Effect text.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Hidden Rules": {
+      "text": "Area of Effect behavior is an interaction of geometry + tag constraints rather than one static rule.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Developer Notes": {
+      "text": "Store as tag + geometry model; never equate with area damage type or Nearby semantics.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Historical Changes": {
+      "text": "No explicit patch-scoped redefinition of the Area of Effect keyword found in this batch.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Area of Effect remains a tag and geometry scope model with keyword-based interactions.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Fireball explosion radius scaling is applied as an Area of Effect modifier.",
+        "A cone-area skill uses the same keyword but follows cone geometry."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Area of Effect is the same as Explosion.",
+        "Area of Effect guarantees every listed hit is area damage."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Area_of_Effect"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Area_of_Effect",
+        "https://www.pathofexile.com/forum/view-thread/1051668",
+        "https://www.pathofexile.com/forum/view-thread/2249986"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["skill_tag_evaluation", "radius_metrics", "targeting_model"],
+    "modifies": ["area_size", "support_matching"],
+    "requires": ["area_of_effect_tag"],
+    "prevents": ["assuming_area_coverage_without_tag"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": ["area_geometry_state", "target_selection_state"],
+    "destroys": [],
+    "applies": ["increased_area_of_effect", "concentrated_effect"],
+    "removes": [],
+    "shares_with": ["Projectile", "Hit", "Damage"],
+    "is_scaled_by": ["increased_area_of_effect", "reduced_area_of_effect", "concentrated_effect"],
+    "cannot_affect": ["skills without AoE tags", "pure single-hit modifiers without AoE scope"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-12T23:09:48.0148608+01:00",
+  "metadata": {
+    "source_type": "Official Rule",
+    "source_authority": "Path of Exile official terminology source",
+    "source_url": "https://www.poewiki.net/wiki/Area_of_Effect",
+    "source_date": "unverified",
+    "confidence": "high",
+    "status": "active"
+  }
+}

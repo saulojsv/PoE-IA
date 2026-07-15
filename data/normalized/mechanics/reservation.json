@@ -1,0 +1,185 @@
+{
+  "id": "reservation",
+  "term": "Reservation",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official GGG patch notes",
+  "sections": {
+    "Definition": {
+      "text": "Reservation is a skill cost mode that reserves resource for as long as the skill effect is active.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Purpose": {
+      "text": "Prevent free stacking of simultaneously active resource-consuming effects by limiting available unreserved Mana/Life and applying opportunity-cost tradeoffs.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Core Rules": {
+      "text": "Base reservation can be an amount of Mana, Life, or both; many modifiers to Mana reservation now apply to Reservation for either resource. Reservation modifiers can be converted into Reservation Efficiency families (e.g., reduced Reservation replaced by increased Mana Reservation Efficiency).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Internal Rules": {
+      "text": "Reservation values are computed with decimal precision internally; the total reserved amount must be a whole number and never lower than 1. Skills can have both cost and reservation, with both conditions required to activate.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Calculation Order": {
+      "text": "1) evaluate base reservation requirement, 2) apply changed reservation model and modifiers, 3) apply Reservation Efficiency as division of cost, 4) apply minimum/rounding constraints to final reserved amount, 5) enforce available unreserved resource check.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Priority Rules": {
+      "text": "Reservation Efficiency explicitly changes how reduction/efficiency modifiers apply; direct reduced reservation modifiers are replaced by efficiency forms in the relevant patch systems.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Preconditions": {
+      "text": "Character must have enough unreserved resource for the required reservation amount after all modifiers are applied.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Postconditions": {
+      "text": "Reserved amount remains unavailable while the reservation effect is active, and can persist through death only where the patch state indicates.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3533334"
+    },
+    "Limitations": {
+      "text": "Not all effects use reservation; some are explicitly changed to non-reservation skills in specific patch updates.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Caps": {
+      "text": "Cannot reserve less than 1 of the target resource due to whole-number resource constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Formula": {
+      "text": "reservation_after_efficiency = base_reservation / (1 + reservation_efficiency_pct / 100); 100% increased Reservation Efficiency halves cost, and final reserved amount is clamped to whole-resource allocation constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Keywords": {
+      "text": ["Reservation", "Reservation Efficiency", "Reservation Effect", "Reservation Cost", "Reservation Multiplier", "unreserved Mana", "unreserved Life", "Aura", "Herald", "Cost", "resource"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Related Mechanics": {
+      "depends_on": ["cost", "aura", "resource_pool", "resource_type"],
+      "modifies": ["resource_pool", "available_resource", "aura_effect"],
+      "requires": ["available_unreserved_resource", "reservation_modifiers"],
+      "prevents": ["using_skill_with_insufficient_unreserved_resource"],
+      "cannot_affect": ["unavailable_resource_without_reservation_mechanic"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Aura", "Herald", "Resource Pool (Mana/Life)", "Reservation Efficiency", "Cost"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Conflicts": {
+      "text": "Pre-3.16 reduced Reservation behavior is superseded by Reservation Efficiency in that patch.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Exceptions": {
+      "text": "Mine-type skills are explicitly called out as able to have both cost and reservation, both needing fulfillment.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Hidden Rules": {
+      "text": "Decimal reservation percentages are stored with greater internal precision, while total reserved integer rounding can prevent small reductions from taking effect at low totals.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Developer Notes": {
+      "text": "Patch text frames Reservation reworks to address one-dimensional scaling and to make small investment meaningful while limiting extreme stacking.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Historical Changes": {
+      "text": "In 3.14, base reservation values and modifier behavior were broadened to support Mana/Life/dual-resource reservation and precision/rounding refinements; in 3.16, reduced Reservation was replaced by Reservation Efficiency.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.14.0",
+          "note": "Base reservation can be Mana, Life, or both; modifier scope expanded; percentage precision and whole-number reservation constraints were formalized; reservation no longer spends resource on activation.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.16.0",
+          "note": "Reservation Reduction replaced by Reservation Efficiency; efficiency is applied by dividing Reservation Effect cost; 100% increased efficiency halves reservation cost.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.25.0",
+          "note": "Reservation effects such as Heralds and Auras persist through death in at least listed patch behavior for Reservation effects.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Examples": {
+      "text": [
+        "50% base reservation with 100% increased Reservation Efficiency reserves 25% under the 3.16 model.",
+        "A 50% reservation with +1% reduced reservation is represented as 49.5% internally; with 100 resource it still rounds to 50 reserved."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Reservation always consumes current Mana/Life on activation.",
+        "Resource reservation modifiers are always resource-specific even after 3.14 changes.",
+        "Reservation modifiers are purely additive percentage reductions independent of patch-specific efficiency rules."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/3079973",
+        "https://www.pathofexile.com/forum/view-thread/3186390",
+        "https://www.pathofexile.com/forum/view-thread/3533334"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["resource_pool", "unreserved_resource", "cost", "reservation_efficiency"],
+    "modifies": ["mana_reservation", "life_reservation", "skill_activation"],
+    "requires": ["reservation_type", "reservation_effect"],
+    "prevents": ["skill_activation_without_unreserved_resource"],
+    "overrides": ["legacy_reduced_reservation_text"],
+    "inherits": [],
+    "creates": ["reserved_resource_state", "reservation_effect_state"],
+    "destroys": ["reservation_state", "reserved_resource_state"],
+    "applies": ["reservation_efficiency_division", "precision_rounding_rules"],
+    "removes": [],
+    "shares_with": ["aura", "herald", "curse", "banner"],
+    "is_scaled_by": ["mana_reservation_efficiency", "generic_reservation_efficiency", "life_reservation_efficiency", "reservation_multiplier", "increased_reservation_efficiency"],
+    "cannot_affect": ["non_reservation_mechanics_without_support"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.14.0",
+      "source": "https://www.pathofexile.com/forum/view-thread/3079973"
+    },
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.16.0",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    }
+  ],
+  "collected_at": "2026-07-12T23:00:00+01:00"
+}
+
+

@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Source Collector"
+  short_description: "Collect PoE sources safely."
+  default_prompt: "Use $poe-source-collector to collect attributed PoE 1 sources safely."
+
+policy:
+  allow_implicit_invocation: true

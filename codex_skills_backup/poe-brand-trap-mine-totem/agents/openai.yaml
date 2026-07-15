@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Proxies"
+  short_description: "Research brand/trap/mine/totem."
+  default_prompt: "Use $poe-brand-trap-mine-totem to research one proxy skill."
+policy:
+  allow_implicit_invocation: true

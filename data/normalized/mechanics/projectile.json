@@ -1,0 +1,155 @@
+{
+  "id": "projectile",
+  "term": "Projectile",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official GGG forum mechanical terminology + skill tag behavior discussions",
+  "sections": {
+    "Definition": {
+      "text": "Projectile denotes a tagged damage vector that conceptually travels along a path, with non-projectile skills unable to use projectile mechanics such as piercing.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Purpose": {
+      "text": "Route path-travel effects, travel-distance modifiers, and projectile interactions through the projectile tag pipeline.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Core Rules": {
+      "text": "Projectile-specific modifiers apply only when the skill/effect has projectile designation; projectile and area interactions are distinct unless both tags are present.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Internal Rules": {
+      "text": "Path of Exile discussions confirm `projectile` and `projectile attack` are separate tags; `projectile` affects all projectile damage including spells, while `projectile attack damage` is attack-only.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2704665"
+    },
+    "Calculation Order": {
+      "text": "1) determine skill/effect tags 2) apply projectile-only checks (for example piercing/point-blank interactions) 3) apply Hit damage pipeline and source-specific scaling.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Priority Rules": {
+      "text": "If a mechanic is labeled projectile-specific, it does not apply to non-projectile components even when both arise from one skill.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Preconditions": {
+      "text": "Mechanic references a travel action or a projectile keyword explicitly set by skill text, support logic, or tag classification.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Postconditions": {
+      "text": "Tagged projectile components can receive projectile speed or projectile damage scaling and can carry separate damage sub-tags.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/910908"
+    },
+    "Limitations": {
+      "text": "Not all AoE instances are projectiles; some AoE skills still cannot be modified by projectile-only mechanics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Caps": {
+      "text": "No standalone numeric cap on projectile keyword.",
+      "type": "Official Rule",
+      "source": "n/a"
+    },
+    "Formula": {
+      "text": "No single universal formula for Projectile; apply dedicated projectile modifiers in the projectile-metric stack alongside base Hit/DoT pipelines.",
+      "type": "Official Rule",
+      "source": "Path of Exile mechanic tag behavior"
+    },
+    "Keywords": {
+      "text": ["Projectile", "Projectile Damage", "Projectile Attack Damage", "Projectile Speed", "Pierce", "Point Blank", "AoE"],
+      "type": "Official Rule",
+      "source": "Official GGG forum discussions"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Hit", "AoE", "Spell", "Attack"],
+      "modifies": ["projectile damage", "pierce", "projectile path behavior"],
+      "requires": ["skill_tag_evaluation", "source_supports"],
+      "prevents": ["projectile-only scaling on non-projectile components"],
+      "cannot_affect": ["AoE only effects without projectile tag"]
+    },
+    "Dependencies": {
+      "text": ["Damage", "Tag classification", "Hit pipeline", "DoT tagging"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/910908"
+    },
+    "Conflicts": {
+      "text": ["AoE-labeled components mistaken as Projectile when no Projectile tag exists."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Exceptions": {
+      "text": ["Skill output can include both Projectile and AoE tags; components remain separable for interaction checks."],
+      "type": "Observed Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/1051668"
+    },
+    "Hidden Rules": {
+      "text": "Store tags on a per-component basis (for example, explosion portion vs initial projectile hit).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1051668"
+    },
+    "Developer Notes": {
+      "text": "Prefer explicit component tagging (`projectile`, `projectile attack`, `AoE`) in schema and avoid merging by visual expectation.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2704665"
+    },
+    "Historical Changes": {
+      "text": "No cross-version redefinition of the core projectile tag distinction was captured in this pass.",
+      "type": "Historical Behavior",
+      "source": "official forum snapshots in run window"
+    },
+    "Patch History": {
+      "text": [
+        {"version":"current","note":"Projectile tag remains a travel/interaction path distinct from AoE-only components.","type":"Official Rule"}
+      ],
+      "type":"Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Fireball (projectile hit) can also include AoE explosion component.",
+        "Shrapnel Shot cone does not itself count as Projectile and cannot use pierce."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1867626"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Projectile == AoE",
+        "All bow damage is automatically projectile regardless of explicit skill tag."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/294479"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1867626",
+        "https://www.pathofexile.com/forum/view-thread/2704665",
+        "https://www.pathofexile.com/forum/view-thread/910908",
+        "https://www.pathofexile.com/forum/view-thread/294479"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["damage_type","skill_tags"],
+    "modifies": ["damage_source_scaling"],
+    "requires": ["projectile_tag"],
+    "prevents": ["non_projectile_scaling"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["projectile_damage_multipliers","projectile_speed_modifiers"],
+    "removes": [],
+    "shares_with": ["AoE","Hit","Spell","Attack"],
+    "is_scaled_by": ["more_projectile_damage","increased_projectile_damage","faster_projectiles","less_projectile_damage"],
+    "cannot_affect": ["pure_AoE_without_projectile_tag","attack-only_non_projectile_effects"]
+  },
+  "classification_timeline": [
+    {"type":"Official Rule","status":"active","version":"current"}
+  ]
+}

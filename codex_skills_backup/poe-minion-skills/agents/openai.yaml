@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Minion Skills"
+  short_description: "Research minion skill rules."
+  default_prompt: "Use $poe-minion-skills to research one PoE 1 minion skill."
+policy:
+  allow_implicit_invocation: true

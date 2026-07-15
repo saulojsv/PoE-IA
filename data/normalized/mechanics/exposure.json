@@ -1,0 +1,172 @@
+{
+  "id": "exposure",
+  "term": "Exposure",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official patch notes and mechanic patch-history references",
+  "sections": {
+    "Definition": {
+      "text": "Exposure is a resistance-reducing debuff that applies a fixed negative modifier to affected elemental resistance.",
+      "type": "Official Rule",
+      "source": "official patch-note discussions on Elemental Exposure"
+    },
+    "Purpose": {
+      "text": "Reduce enemy elemental resistance before penetration-style effects for subsequent elemental damage interaction.",
+      "type": "Official Rule",
+      "source": "official patch notes"
+    },
+    "Core Rules": {
+      "text": "Exposure is applied as a resistance reduction effect and is constrained by source rules and level constraints in affected patch contexts.",
+      "type": "Official Rule",
+      "source": "path of exile patch notes"
+    },
+    "Internal Rules": {
+      "text": "Certain systems define minimum exposure strength floors and source limitations in specific mastery or patch rule sets.",
+      "type": "Official Rule",
+      "source": "3.21.0 patch source"
+    },
+    "Calculation Order": {
+      "text": "1) source applies exposure debuff 2) resistance reduction is accounted for 3) penetration and other downstream modifiers apply against adjusted resistance state.",
+      "type": "Official Rule",
+      "source": "patch discussion stating exposure reduced resistance before penetration"
+    },
+    "Priority Rules": {
+      "text": "Exposure reduction interacts before other penetration checks; where explicitly stated, Exposure may use minimum floor rules and is also affected by effect reduction on the player.",
+      "type": "Official Rule",
+      "source": "patch notes"
+    },
+    "Preconditions": {
+      "text": "A skill or curse able to inflict Exposure must successfully apply to a qualifying enemy within patch-enforced level or source limits.",
+      "type": "Official Rule",
+      "source": "0.3.0 patch note references"
+    },
+    "Postconditions": {
+      "text": "Affected resistance is reduced, potentially lowering final elemental resistance outcomes for subsequent damage and ailment processing.",
+      "type": "Official Rule",
+      "source": "official patch discussions"
+    },
+    "Limitations": {
+      "text": "Exposure effect size can be reduced by enemy rarity/class settings in specific patches and can be reduced for the player by relevant mastery rules.",
+      "type": "Official Rule",
+      "source": "3.21.0 and 0.3.0 references"
+    },
+    "Caps": {
+      "text": "Patch contexts can define minimum floor values and reduced max-impact multipliers; exact effective caps are not globally uniform in sources used in this batch.",
+      "type": "Historical Behavior",
+      "source": "patch note deltas"
+    },
+    "Formula": {
+      "text": "No single standalone formula in sourced texts. Apply Exposure as a resistance modifier term, then run remaining resistance checks including penetration and damage scaling.",
+      "type": "Official Rule",
+      "source": "patch rule language"
+    },
+    "Keywords": {
+      "text": ["Exposure", "Elemental Exposure", "Maximum Resistance", "Resistance Reduction", "penetration"],
+      "type": "Official Rule",
+      "source": "official patch notes"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Resistance", "Hit", "Damage", "Curse", "Mastery"],
+      "modifies": ["Elemental Resistance", "Damage Taken by enemy"],
+      "requires": ["Infliction source"],
+      "prevents": ["over-reduction via raw penetration alone when resistance floor reached"],
+      "cannot_affect": ["non-elemental resistance pools"],
+      "source": "official patch notes and follow-up references"
+    },
+    "Dependencies": {
+      "text": ["Elemental damage mechanics", "resistance cap values", "source infliction mechanics"],
+      "type": "Official Rule",
+      "source": "official notes"
+    },
+    "Conflicts": {
+      "text": ["Map mod of Exposure history conflicts in effect values across patches", "player-effect reduction and enemy-effect application rules"],
+      "type": "Historical Behavior",
+      "source": "patch history"
+    },
+    "Exceptions": {
+      "text": ["Patch-specific masteries and map modifiers can override base exposure strength behavior."],
+      "type": "Official Rule",
+      "source": "3.21.0 patch notes and map mod notes"
+    },
+    "Hidden Rules": {
+      "text": "Model Exposure with explicit patch/version branch because historical patches changed relative strengths and application constraints.",
+      "type": "Official Rule",
+      "source": "schema constraints from patch history"
+    },
+    "Developer Notes": {
+      "text": "Keep Exposure and penetration as separate rule planes with ordered application metadata to preserve 'before penetration' constraints in evaluator logic.",
+      "type": "Official Rule",
+      "source": "source ordering in patch notes"
+    },
+    "Historical Changes": {
+      "text": "Patch 0.3.0 changed notable properties of Elemental Exposure application and level constraints. Later patch notes introduced floor and effect-reduction variants in explicit contexts.",
+      "type": "Historical Behavior",
+      "source": "official patch notes series"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "0.3.0",
+          "note": "Exposure stated to reduce enemy resistances before penetration and gained level constraints for curse/infliction contexts.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "2.5.0",
+          "note": "\"of Exposure\" map mod values adjusted to lower magnitude in mid/high tier variants.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.21.0",
+          "note": "Mastery context defines floor and 50% reduced effect of Exposure on player-side.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A curse or hit-effect that inflicts Exposure lowers resistance first, then penetration is applied afterward.",
+        "Map mods using of Exposure apply adjusted maximum resistance reductions in patch-specific values."
+      ],
+      "type": "Official Rule",
+      "source": "official patch notes"
+    },
+    "Common Misconceptions": {
+      "text": ["Exposure and penetration are interchangeable effects", "Exposure always stacks linearly with all forms of resistance reduction without order constraints"],
+      "type": "Official Rule",
+      "source": "patch commentary"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/3826682/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/1773975/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/3367346"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["resistance", "Elemental Damage", "hit context"],
+    "modifies": ["enemy_resistance_state", "maximum_resistance"],
+    "requires": ["infliction source"],
+    "prevents": ["simplistic penetration-only reduction"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": ["resistance_debuff_state"],
+    "destroys": [],
+    "applies": ["elemental_damage_multiplier_pipeline"],
+    "removes": [],
+    "shares_with": ["Penetration", "Debuff", "Curse", "Mark"],
+    "is_scaled_by": ["exposure effect modifiers", "mastery modifiers"],
+    "cannot_affect": ["chaos resistance without explicit source rules", "non-resistance damage pools"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-13T22:52:03+01:00",
+  "last_batch_id": "poe-english-mechanics-knowledge-research"
+}

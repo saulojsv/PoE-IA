@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Guard Move Cry"
+  short_description: "Research guard/move/warcry."
+  default_prompt: "Use $poe-guard-movement-warcry to research one guard, movement, or warcry skill."
+policy:
+  allow_implicit_invocation: true

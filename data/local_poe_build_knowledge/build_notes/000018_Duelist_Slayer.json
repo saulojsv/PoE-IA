@@ -1,0 +1,97 @@
+{
+  "id": "000018_Duelist_Slayer",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000018_Duelist_Slayer.xml",
+  "identity": {
+    "class": "Duelist",
+    "ascendancy": "Slayer",
+    "level": "100",
+    "main_skill": "Lifetap",
+    "delivery": "self-cast/self-attack"
+  },
+  "metrics": {
+    "dps": "10410667.670934",
+    "combined_dps": "10502653.218774",
+    "crit_chance": "61.3716",
+    "crit_multiplier": "5.48",
+    "hit_chance": "100",
+    "ehp": "78846.707572697",
+    "life": "5742",
+    "energy_shield": "180",
+    "fire_res": "75",
+    "cold_res": "75",
+    "lightning_res": "75",
+    "chaos_res": "75",
+    "mana_unreserved": "80",
+    "mana_cost": "0"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "life pool",
+      "evasion",
+      "spell suppression",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Hydrosphere",
+      "Bonechill",
+      "Frostblink"
+    ],
+    "auras_utility": [
+      "Grace",
+      "Herald of Ash",
+      "Herald of Ice",
+      "Precision"
+    ],
+    "movement": [
+      "Frostblink",
+      "Whirling Blades"
+    ],
+    "required_or_enabling_uniques": [
+      "The Gull",
+      "The Squire",
+      "Maloney's Mechanism",
+      "The Taming",
+      "Screams of the Desiccated",
+      "The Unseen Hue",
+      "The Unseen Hue",
+      "Ancestral Vision",
+      "Forbidden Flesh",
+      "Forbidden Flame",
+      "Lethal Pride"
+    ],
+    "cluster_jewels": [
+      "Maelstrom Sliver",
+      "Oblivion Sliver",
+      "Honour Ruin"
+    ],
+    "flasks": [
+      "Screams of the Desiccated",
+      "Seething Divine Life Flask of Sealing",
+      "Seething Eternal Life Flask",
+      "Seething Divine Life Flask",
+      "Seething Divine Life Flask of Insulation"
+    ],
+    "passive_node_count": 132
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

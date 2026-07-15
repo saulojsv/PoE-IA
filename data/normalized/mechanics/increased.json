@@ -1,0 +1,161 @@
+{
+  "id": "increased",
+  "term": "Increased",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.pathofexile.com/forum/view-thread/1642545",
+  "sections": {
+    "Definition": {
+      "text": "Increased is an additive modifier token applied to a stat or stat group as a percentage sum.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Purpose": {
+      "text": "Accumulate additive contributions before multiplicative buckets are applied.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Core Rules": {
+      "text": "All Increased terms resolve additively within the same stage; a single value is formed by summing positive and negative percentage contributions in that bucket.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Internal Rules": {
+      "text": "Increased entries are stored in an additive accumulator and applied before More/Less multipliers.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Calculation Order": {
+      "text": "1) base value 2) aggregate Increased/Reduced pool 3) apply More/Less multipliers 4) enforce caps.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Priority Rules": {
+      "text": "Mechanic-specific text can constrain or scope where increased bonuses apply, overriding generic bucket assumptions.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Preconditions": {
+      "text": "A stat must be eligible for additive scaling and expose an Increased-compatible modifier source.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Postconditions": {
+      "text": "The stat receives an additive modifier to its base stage before multiplicative scaling.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Limitations": {
+      "text": "Increased is not equivalent to More/Less and must not be merged into multiplicative factors.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Caps": {
+      "text": "No universal Added or Reduced cap is defined for Increased alone; target systems define hard limits.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Formula": {
+      "text": "final = base * (1 + Σ Increased_delta_i + Σ Reduced_delta_j) * Π More_k * Π (1 - Less_l)",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Keywords": {
+      "text": ["Increased", "Reduced", "More", "Less", "Multiplier"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Related Mechanics": {
+      "depends_on": ["base value", "modifier scope", "Reduced", "More", "Less"],
+      "modifies": ["final statistics", "final damage"],
+      "requires": ["additive bucket eligibility"],
+      "prevents": ["linear interpretation as multiplier"],
+      "cannot_affect": ["quantities without additive + multiplicative decomposition"],
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Dependencies": {
+      "text": ["modifier stack", "additive resolution rules", "scope filters"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Conflicts": {
+      "text": "Reduced and Increased are often mixed in text examples but remain separate symbols for explicit language constructs.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Exceptions": {
+      "text": "Some explicit support-given modifiers apply to a strict subset of hits/skills and are not globally additive.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1963938"
+    },
+    "Hidden Rules": {
+      "text": "Store Increased deltas as additive list elements to preserve patch-level changes to stack behavior.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Developer Notes": {
+      "text": "Do not encode Increased as More with inverted sign; bucket ordering matters for downstream scaling.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Historical Changes": {
+      "text": "No official version break recorded in this pass; additive semantics for Increased remain active in captured scope.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Increased remains additive in the captured mechanic model.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": ["10% Increased and 20% Reduced combine as -10% in additive stage.", "15% Increased and 30% Increased sum to +45% before multiplicative stage."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Common Misconceptions": {
+      "text": ["Increased is multiplicative", "Increased and Reduced are equivalent to More/Less"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1642545",
+        "https://www.pathofexile.com/forum/view-thread/1242841",
+        "https://www.pathofexile.com/forum/view-thread/1963938",
+        "https://www.pathofexile.com/wiki/Modifiers"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    }
+  },
+  "relationships": {
+    "depends_on": ["base_value", "additive_scale"],
+    "modifies": ["final_damage", "final_stat"],
+    "requires": ["scope eligibility"],
+    "prevents": ["additive_to_multiplicative_conversion"],
+    "overrides": ["Reduced in same additive bucket semantics"],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["additive scaling"],
+    "removes": [],
+    "shares_with": ["Reduced", "More", "Less"],
+    "is_scaled_by": ["stat-specific multipliers", "skill context"],
+    "cannot_affect": ["systems without additive buckets"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-13T10:55:45.3940497+01:00"
+}

@@ -1,0 +1,106 @@
+{
+  "id": "000020_Marauder_Chieftain",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000020_Marauder_Chieftain.xml",
+  "identity": {
+    "class": "Marauder",
+    "ascendancy": "Chieftain",
+    "level": "100",
+    "main_skill": "Inspiration",
+    "delivery": "minion"
+  },
+  "metrics": {
+    "dps": "5408725.4375",
+    "combined_dps": "5408725.4375",
+    "crit_chance": "100",
+    "crit_multiplier": "4.13",
+    "hit_chance": "100",
+    "ehp": "705069.08100132",
+    "life": "5154",
+    "energy_shield": "29",
+    "fire_res": "90",
+    "cold_res": "90",
+    "lightning_res": "90",
+    "chaos_res": "75",
+    "mana_unreserved": "115",
+    "mana_cost": "36"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "elemental"
+    ],
+    "defense_layers": [
+      "life pool",
+      "armour",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Blade Vortex",
+      "Increased Critical Damage",
+      "Elemental Focus",
+      "Greater Unleash",
+      "Minion Pact"
+    ],
+    "auras_utility": [
+      "Clarity",
+      "Determination",
+      "Herald of Ash",
+      "Precision",
+      "Tempest Shield",
+      "Vitality"
+    ],
+    "movement": [
+      "Frostblink"
+    ],
+    "required_or_enabling_uniques": [
+      "Foulborn Skin of the Lords",
+      "Mageblood",
+      "Nebulis",
+      "Annihilation's Approach",
+      "Svalinn",
+      "Enmity's Embrace",
+      "Progenesis",
+      "The Light of Meaning",
+      "Thread of Hope",
+      "Watcher's Eye",
+      "Elegant Hubris",
+      "Stormshroud",
+      "Unnatural Instinct",
+      "The Red Nightmare"
+    ],
+    "cluster_jewels": [
+      "Soul Wound",
+      "Spirit Star",
+      "Sol Hope"
+    ],
+    "flasks": [
+      "Mageblood",
+      "Dabbler's Quicksilver Flask of the Cheetah",
+      "Alchemist's Granite Flask of the Owl",
+      "Alchemist's Ruby Flask of the Armadillo",
+      "Abecedarian's Diamond Flask of Incision",
+      "Progenesis",
+      "Watcher's Eye"
+    ],
+    "passive_node_count": 133
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

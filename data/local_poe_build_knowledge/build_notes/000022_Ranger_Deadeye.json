@@ -1,0 +1,109 @@
+{
+  "id": "000022_Ranger_Deadeye",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000022_Ranger_Deadeye.xml",
+  "identity": {
+    "class": "Ranger",
+    "ascendancy": "Deadeye",
+    "level": "100",
+    "main_skill": "Lightning Arrow",
+    "delivery": "self-cast/self-attack"
+  },
+  "metrics": {
+    "dps": "1543159.9791968",
+    "combined_dps": "1919595.8075222",
+    "crit_chance": "38.285676",
+    "crit_multiplier": "5.75",
+    "hit_chance": "67",
+    "ehp": "13385.293587279",
+    "life": "3527",
+    "energy_shield": "1673",
+    "fire_res": "-15",
+    "cold_res": "-13",
+    "lightning_res": "-30",
+    "chaos_res": "63",
+    "mana_unreserved": "85",
+    "mana_cost": "12"
+  },
+  "logic": {
+    "damage_scaling": [
+      "attack",
+      "crit",
+      "dot",
+      "elemental",
+      "lightning"
+    ],
+    "defense_layers": [
+      "life pool",
+      "spell suppression",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Trinity",
+      "Greater Fork",
+      "Elemental Damage with Attacks",
+      "Increased Critical Damage",
+      "Invert the Rules"
+    ],
+    "auras_utility": [
+      "Herald of Ash",
+      "Herald of Ice",
+      "Herald of Thunder"
+    ],
+    "movement": [
+      "Blink Arrow",
+      "Frostblink"
+    ],
+    "required_or_enabling_uniques": [
+      "Nimis",
+      "Headhunter",
+      "Atziri's Disfavour",
+      "Wine of the Prophet",
+      "Cinderswallow Urn",
+      "Dying Sun",
+      "Progenesis",
+      "Forbidden Flame",
+      "Watcher's Eye",
+      "Lethal Pride",
+      "Forbidden Flesh",
+      "Sublime Vision"
+    ],
+    "cluster_jewels": [
+      "Glyph Sliver",
+      "Behemoth Hope",
+      "Behemoth Creed",
+      "Fulgent Creed",
+      "Vivid Cut",
+      "Fulgent Curio"
+    ],
+    "flasks": [
+      "Wine of the Prophet",
+      "Cinderswallow Urn",
+      "Dying Sun",
+      "Alchemist's Quicksilver Flask of Craft",
+      "Progenesis"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": false,
+    "cold_res_cap": false,
+    "lightning_res_cap": false,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": false
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": [
+    "fire_res_cap",
+    "cold_res_cap",
+    "lightning_res_cap",
+    "attack_hit_capped_if_relevant"
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Herald Stance"
+  short_description: "Research heralds and stances."
+  default_prompt: "Use $poe-herald-stance-retaliation to research one herald, stance, or retaliation skill."
+policy:
+  allow_implicit_invocation: true

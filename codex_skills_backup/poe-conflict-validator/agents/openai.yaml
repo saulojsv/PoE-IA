@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Conflict Validator"
+  short_description: "Validate PoE claims and conflicts."
+  default_prompt: "Use $poe-conflict-validator to validate PoE 1 claims and conflicts."
+
+policy:
+  allow_implicit_invocation: true

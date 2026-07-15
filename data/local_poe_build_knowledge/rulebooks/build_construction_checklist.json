@@ -1,0 +1,58 @@
+{
+  "identity": [
+    "role",
+    "main_skill",
+    "class",
+    "ascendancy",
+    "delivery_method",
+    "content_target"
+  ],
+  "minimum_functionality": [
+    "main skill enabled",
+    "legal supports",
+    "compatible weapon/base",
+    "attribute requirements met",
+    "mana/life/ES cost payable",
+    "movement skill",
+    "flask setup"
+  ],
+  "defense_gates": [
+    "elemental resistances at 75% minimum",
+    "chaos resistance plan",
+    "life or ES pool appropriate for content",
+    "recovery layer",
+    "physical hit mitigation",
+    "elemental hit mitigation",
+    "DoT mitigation/recovery",
+    "ailment handling",
+    "bleed/corrupted blood answer",
+    "curse/map mod awareness"
+  ],
+  "damage_gates": [
+    "skill tags identified",
+    "scaling buckets match tags",
+    "crit or non-crit plan",
+    "accuracy/hit chance if attack",
+    "single target plan",
+    "clear plan",
+    "uptime of charges/flasks/curses/exposure",
+    "PoB config audited"
+  ],
+  "item_gates": [
+    "required uniques identified",
+    "rare affixes categorized",
+    "weapon/offhand matches skill",
+    "resist/attribute fillers",
+    "jewel/cluster dependency",
+    "budget and upgrade path"
+  ],
+  "tree_gates": [
+    "connected passive tree",
+    "efficient pathing",
+    "keystones justified",
+    "notables solve bottlenecks",
+    "masteries solve concrete needs",
+    "cluster jewel point cost justified",
+    "jewel sockets have value"
+  ]
+}

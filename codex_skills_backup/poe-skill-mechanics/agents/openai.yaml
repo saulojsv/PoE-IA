@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Mechanics"
+  short_description: "Research skill mechanics."
+  default_prompt: "Use $poe-skill-mechanics to research mechanics and breakpoints for one PoE 1 skill."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Corpses"
+  short_description: "Research spectres/corpses."
+  default_prompt: "Use $poe-spectres-corpses to research corpse or spectre interactions for one skill."
+policy:
+  allow_implicit_invocation: true

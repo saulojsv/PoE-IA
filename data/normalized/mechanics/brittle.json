@@ -1,0 +1,194 @@
+﻿{
+  "id": "brittle",
+  "term": "Brittle",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official PoE patch notes and official forum Q&A",
+  "sections": {
+    "Definition": {
+      "text": "Brittle is an Ailment associated with cold damage that grants hits against afflicted enemies increased critical strike chance, with capped magnitude and duration-based effect.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Purpose": {
+      "text": "Increase critical hit probability against enemies affected by cold-related ailment application while limiting maximum effect and duration by design.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.com/forum/view-thread/2625119"
+    },
+    "Core Rules": {
+      "text": "Cold-hit inflicted Brittle applies an increased critical strike chance against afflicted enemies. Magnitude is lower-capped relative to Shock/Chill; base values changed by patch and duration is patch-governed.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400"
+    },
+    "Internal Rules": {
+      "text": "GGG forum Q&A states the internal stored ailment values are scaled by 100 to preserve precision; user-facing logic can be represented as a 25 base coefficient formula.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Calculation Order": {
+      "text": "1) cold damage from a hit calculates ailment magnitude against ailment threshold 2) apply Brittle formula coefficient 25 * (Damage / AilmentThreshold)^0.4 3) cap by versioned maximum critical chance bonus 4) apply duration at current patch base.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Priority Rules": {
+      "text": "Brittle is an alternate ailment with independent magnitude-cap behavior; modifiers to Critical Strike Chance scale final critical chance but do not replace the ailment magnitude cap model.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310/filter-account-type/staff"
+    },
+    "Preconditions": {
+      "text": "A cold hit must inflict the Brittle ailment; patch-specific minimum/threshold behavior from ailment-threshold mechanics applies.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Postconditions": {
+      "text": "Until Brittle expires, all Hit resolution on afflicted targets must account for the current Brittle critical strike chance bonus when evaluating critical strike chance.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Limitations": {
+      "text": "Alternate-ailment model includes lower magnitude caps than Shock/Chill. Short-duration and edge interactions are patch-specific and can be patched in bug-fix updates.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Caps": {
+      "text": "Current major documented cap is up to +15% critical strike chance (3.10 baseline), with subsequent patch reversions to smaller values in later versions noted in history.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2784310/filter-account-type/staff"
+    },
+    "Formula": {
+      "text": "BrittleMagnitude is approximately 25 * (Damage / AilmentThreshold)^0.4, with internal value stored at 100x for precision; displayed critical strike chance bonus uses the scaled user-facing value and is clamped to versioned cap.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Keywords": {
+      "text": ["Brittle", "Ailment", "Cold", "critical strike chance", "Ailment Threshold", "alternate ailment"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Ailment Threshold", "Cold Damage", "critical strike chance"],
+      "modifies": ["Hit critical strike odds"],
+      "requires": ["cold hit that inflicts ailment"],
+      "prevents": ["unbounded critical bonus from Brittle"],
+      "cannot_affect": ["Poison", "Ignite", "Shock direct damage application"],
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Dependencies": {
+      "text": ["Ailment Threshold system", "Cold damage hit context", "critical strike calculation pipeline"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Conflicts": {
+      "text": "Early alternate-ailment interactions had bug states with Yoke of Suffering and ailment grouping semantics; fixed in 3.9 patch notes.",
+      "type": "Bug",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Exceptions": {
+      "text": "3.21.1 changed ground effect preservation timing by allowing non-Freezing elemental ailments below 300ms to persist.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Hidden Rules": {
+      "text": "For internal precision, internal magnitude is stored scaled by 100; this is not a visible player-facing decimal but affects exact rounding behavior near thresholds.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Developer Notes": {
+      "text": "Brittle was introduced as part of the 3.5.0 alternate ailment expansion (Sap/Scorch/Brittle) and its behavior has since been tuned through patch-specific cap updates.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Historical Changes": {
+      "text": "Introduced in 3.5.0; 3.6.0 clarified bug fix where +critical chance interacted with increased Critical Strike Chance modifiers; 3.9.0 introduced alternate-ailment lower caps; 3.10.0 raised max effect to +15%; 3.19.0 reduced baseline to +6%; 3.21.1 fixed short-duration discard behavior for elemental ailments.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Brittle"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.5.0",
+          "note": "Introduced as a new ailment (alternate ailment set with Sap and Scorch).",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Brittle"
+        },
+        {
+          "version": "3.6.0",
+          "note": "Now grants up to +10% crit chance on hit; bonus now properly interacts with increased critical strike chance modifiers.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Brittle"
+        },
+        {
+          "version": "3.9.0",
+          "note": "Alternate ailments (including Brittle) use lower cap mechanics rather than Shock/Chill defaults.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+        },
+        {
+          "version": "3.10.0",
+          "note": "Brittle maximum increased to up to +15%; base duration set to 4 seconds.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/2784310/filter-account-type/staff"
+        },
+        {
+          "version": "3.19.0",
+          "note": "Default value and cap behavior changed: up to +6% from previous +15%.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Brittle"
+        },
+        {
+          "version": "3.21.1",
+          "note": "Elemental ailments other than Freeze are not discarded if duration is lower than 300ms.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Brittle"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A high cold-damage hit can apply higher Brittle magnitude up to the current patch cap.",
+        "Observed implementation note: internal scaling uses a stored 100x value for fractional precision."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Common Misconceptions": {
+      "text": ["Brittle is not equal to a fixed critical chance increase; magnitude depends on cold hit size versus ailment threshold and is capped.", "Brittle values are not computed with the same 50 coefficient as Shock; formula differs."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3123794"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/3123794",
+        "https://www.pathofexile.com/forum/view-thread/2687400/page/1",
+        "https://www.pathofexile.com/forum/view-thread/2784310/filter-account-type/staff",
+        "https://www.poewiki.net/wiki/Brittle"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Cold Damage", "Ailment Threshold", "critical strike system"],
+    "modifies": ["critical strike chance against afflicted enemies"],
+    "requires": ["Cold hit inflicting Brittle"],
+    "prevents": ["unbounded critical scaling"],
+    "overrides": ["none"],
+    "inherits": ["Ailment"],
+    "creates": ["BrittleState"],
+    "destroys": ["expired Brittle ailment"],
+    "applies": ["temporary critical strike chance bonus"],
+    "removes": ["BrittleState when duration ends"],
+    "shares_with": ["Scorch", "Sap"],
+    "is_scaled_by": ["Ailment threshold modifiers", "increased critical chance modifiers"],
+    "cannot_affect": ["non-crit chance calculations that ignore target ailment state"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.21.1"
+    }
+  ]
+}
+
+

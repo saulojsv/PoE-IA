@@ -1,0 +1,165 @@
+{
+  "id": "leech",
+  "term": "Leech",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official GGG patch notes and GGG development forum posts",
+  "sections": {
+    "Definition": {
+      "text": "Leech creates recovery instances from qualifying damage events and recovers Life, Mana, or Energy Shield over time.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Purpose": {
+      "text": "Convert a share of recently dealt damage into timed recovery and cap recovery rate to avoid unlimited sustain.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Core Rules": {
+      "text": "Leech effects now stack: each hit against multiple targets can grant multiple leech effects, and multiple hits against one target can create multiple instances.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Internal Rules": {
+      "text": "Leech follows per-instance limits plus a global pool limit: a single instance is bounded by its own maximum recovery and recover rate; the character has a maximum total leech recovery rate cap.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Calculation Order": {
+      "text": "1) Hit or other qualifying event creates leech effect instance, 2) apply \"Leech as\" percentage to deal-to-leech amount, 3) apply per-instance cap and per-second rate, 4) apply total leech cap across active instances.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Priority Rules": {
+      "text": "Higher-priority per-mechanic caps (instance and total rate caps) apply before relative modifiers that scale leech gain or leech rate.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Preconditions": {
+      "text": "Leech source and leech pool (Life/Mana/ES) must be available to the damaging effect and be allowed by passives, gem/gear text, and modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Postconditions": {
+      "text": "Recovery is scheduled as timed recovery effects and can continue across multiple instances until per-instance amount or total duration/cap is consumed.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Limitations": {
+      "text": "Base leech values were reduced in the cited patch era and were explicitly rebalanced so that life/mana systems do not inherit legacy pre-change rates.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Caps": {
+      "text": "Base Maximum Life/Mana Leech Rate is 20% of pool per second; base Life/Mana Leech Rate is 2% of pool per second. Existing values were scaled down and modifiers to speed are controlled via changed leech-per-second wording.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Formula": {
+      "text": "leech_rate_per_instance = min(leeched_amount * duration_modifier, base_or_modified_leeched_per_second * instance_duration), capped by total_leech_rate_limit across active instances.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Keywords": {
+      "text": ["Leech", "Life Leech", "Mana Leech", "Energy Shield Leech", "Vaal Pact", "Life Leech Rate", "Maximum Leech Rate", "Life Leeched per Second", "Mana Leeched per Second"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Hit", "Maximum Recovery", "Pool (Life/Mana/ES)", "Vaal Pact"],
+      "modifies": ["recover", "Maximum Recovery", "Total Recovery"],
+      "requires": ["leech_percentage_stat", "Leech Rate modifier"],
+      "prevents": ["continuous_instant_full_recovery_without_rate_cap"],
+      "cannot_affect": ["resources_not_targeted_by_leech_stat"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Damage", "Hit", "Life", "Mana", "Energy Shield", "Leech percentage modifiers", "Leech rate modifiers", "Vaal Pact"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Conflicts": {
+      "text": ["Stacking expectation changed at 2.0-era redesign; old non-stacking behavior is superseded by multiple-effect stacking implementation."],
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Exceptions": {
+      "text": "No generic exception text in current formal source set for base leech; special keystone handling (including Vaal Pact) is documented separately as part of implementation details.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Hidden Rules": {
+      "text": "Modifiers previously named \"Leech rate\" transitioned to \"Life/Mana Leeched per second\", preserving recovery-per-second gain while decoupling instance duration scaling.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Developer Notes": {
+      "text": "Stacking, base-rate balancing, and changed naming were explicitly introduced to reduce single-target exploitation while preserving multi-target efficiency.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Historical Changes": {
+      "text": "Life/Mana Leech was redesigned before 3.0 with stacking leech effects and explicit base leech-rate cap/rate values; later language changes shifted scaling modifiers from duration-altering to duration-preserving recovery-per-second modifiers.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.0.0",
+          "note": "Leech overhaul introduced stacking effects, rate cap, base rate values, and leech modifier relabeling behavior.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "current_legacy",
+          "note": "Leech remains represented in the same implementation framework in available official GGG references for this knowledge pass.",
+          "type": "Observed Behavior"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A player with zero recovery investment gets smaller per-instance output and low total throughput until enough leech percent and rates are added.",
+        "Multiple rapid hits create multiple independent recovery instances with global cap handling."
+      ],
+      "type": "Observed Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    },
+    "Common Misconceptions": {
+      "text": ["Single leech effect only", "Leech rate modifiers only increase amount and not duration"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/1274806/filter-account-type/staff"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["damage", "hit", "life_pool", "mana_pool", "energy_shield_pool"],
+    "modifies": ["recover", "maximum_recovery", "total_recovery"],
+    "requires": ["leech_percentage_stat", "leeched_pool_selection"],
+    "prevents": ["unbounded_recovery_per_second_without_cap"],
+    "overrides": ["legacy_non_stacking_leech_effects"],
+    "inherits": [],
+    "creates": ["leech_instance", "leech_cap_state"],
+    "destroys": ["expired_leech_instance"],
+    "applies": ["leeched_amount_to_recovery_pool", "leech_rate_cap"],
+    "removes": [],
+    "shares_with": ["life_recovery", "mana_recovery", "energy_shield_recovery"],
+    "is_scaled_by": ["increased_life_leeched_as_life", "increased_mana_leeched_as_mana", "increased_energy_shield_leeched_as_energy_shield"],
+    "cannot_affect": ["non_pool_stat_modifiers"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.0.0",
+      "source": "https://www.pathofexile.com/forum/view-thread/1304441/filter-account-type/staff"
+    }
+  ]
+}

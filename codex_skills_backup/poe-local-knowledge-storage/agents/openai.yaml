@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Local Storage"
+  short_description: "Manage local PoE files."
+  default_prompt: "Use $poe-local-knowledge-storage to maintain local PoE knowledge files."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,50 @@
+{
+  "sources": [
+    {
+      "name": "official_forum_builds",
+      "type": "sitemap",
+      "url": "https://www.pathofexile.com/forum",
+      "enabled": false,
+      "note": "Ative manualmente apenas para varreduras controladas; forum amplo demais."
+    },
+    {
+      "name": "official_forum_known_guides",
+      "type": "pages",
+      "enabled": true,
+      "urls": [
+        "https://www.pathofexile.com/forum/view-thread/3275670",
+        "https://www.pathofexile.com/forum/view-thread/3862193",
+        "https://www.pathofexile.com/forum/view-thread/125743",
+        "https://www.pathofexile.com/forum/view-thread/510084",
+        "https://www.pathofexile.com/forum/view-thread/3275018",
+        "https://www.pathofexile.com/forum/view-thread/1850206",
+        "https://www.pathofexile.com/forum/view-thread/69224",
+        "https://www.pathofexile.com/forum/view-thread/3575560",
+        "https://www.pathofexile.com/forum/view-thread/3884075",
+        "https://www.pathofexile.com/forum/view-thread/1840648"
+      ]
+    },
+    {
+      "name": "path_of_building",
+      "type": "pages",
+      "enabled": true,
+      "urls": [
+        "https://github.com/PathOfBuildingCommunity/PathOfBuilding"
+      ]
+    },
+    {
+      "name": "mobalytics_poe_builds",
+      "type": "mobalytics_build_index",
+      "enabled": true,
+      "url": "https://mobalytics.gg/poe/builds",
+      "max_builds": 80
+    },
+    {
+      "name": "maxroll_poe_build_guides",
+      "type": "maxroll_build_index",
+      "enabled": true,
+      "url": "https://maxroll.gg/poe/category/build-guides",
+      "max_builds": 80
+    }
+  ]
+}

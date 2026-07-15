@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Class Asc"
+  short_description: "Research classes/ascendancies."
+  default_prompt: "Use $poe-class-ascendancy-attributes to map classes and ascendancies for one skill."
+policy:
+  allow_implicit_invocation: true

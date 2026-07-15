@@ -1,0 +1,165 @@
+{
+  "id": "sap",
+  "term": "Sap",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official Path of Exile wiki and official forum references",
+  "sections": {
+    "Definition": {
+      "text": "Sap is an Elemental Ailment associated with Lightning that causes affected targets to deal reduced Damage.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Purpose": {
+      "text": "Apply a target-side damage output penalty from Lightning-based Hit interaction.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Core Rules": {
+      "text": "Sap magnitude scales from Lightning Damage of the Hit and is capped at a maximum damage penalty.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Internal Rules": {
+      "text": "Sap is processed as a non-damaging elemental ailment state and does not apply direct damage over time.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3185943"
+    },
+    "Calculation Order": {
+      "text": "1) qualifying Lightning Hit occurs 2) compute Sap magnitude vs Ailment Threshold 3) apply non-damaging ailment modifiers 4) clamp to maximum penalty 5) hold state for 4 seconds.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Priority Rules": {
+      "text": "Sap uses alternate elemental-ailment magnitude behavior with lower caps than legacy non-damaging ailments.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Preconditions": {
+      "text": "A target must receive a Hit that can inflict elemental non-damaging ailments and pass Lightning ailment applicability checks.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3508809"
+    },
+    "Postconditions": {
+      "text": "Target damage output is reduced by Sap magnitude for the duration.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Limitations": {
+      "text": "Elemental ailment immunity/avoidance and effect-cap controls can reduce or block Sap.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3508809"
+    },
+    "Caps": {
+      "text": "Current documented maximum penalty is up to 20% reduced Damage.",
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Formula": {
+      "text": "Publicly collected sources confirm upper bound and scaling basis but do not provide a full canonical closed-form formula in this pass.",
+      "type": "Community Theory",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Keywords": {
+      "text": ["Sap", "Ailment", "Lightning", "reduced Damage", "4 seconds", "alternate ailment"],
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Lightning Hit", "Ailment Threshold", "non-damaging ailment immunity state"],
+      "modifies": ["target outgoing Damage", "overall hit exchange viability"],
+      "requires": ["lightning ailment-capable hit", "target not immune to elemental ailments"],
+      "prevents": ["unbounded target damage output from one source"],
+      "cannot_affect": ["Damage over Time direct damage application"],
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Dependencies": {
+      "text": ["Lightning source Hit", "Ailment threshold system", "Damage multiplier pipeline"],
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Conflicts": {
+      "text": "Sap is distinct from Shock and does not map to Action Speed or Freeze/Chill style movement-state rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Exceptions": {
+      "text": "Forum and community captures show historical display wording variation (2s/4s), with current stable form represented as 4s in collected references.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/2961546"
+    },
+    "Hidden Rules": {
+      "text": "Sap applies to targets already tracking non-damaging elemental ailment channels and is maintained as a separate state per ailment type.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Developer Notes": {
+      "text": "Model Sap as alternate non-damaging Lightning ailment with explicit version tagging and separate effect caps.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Historical Changes": {
+      "text": "Sap belongs to alternate ailment branch introduced in 3.5; later patch notes and community references describe lower caps than traditional Shock/Chill models.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/2687400/page/1"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.5.0",
+          "note": "Sap introduced as alternate ailment for Lightning.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.9.0",
+          "note": "Alternate elemental ailments (including Sap) documented as lower-cap models.",
+          "type": "Official Rule",
+          "source": "https://webcdn.pathofexile.com/forum/view-thread/2687400/page/1"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": ["High Lightning Hit can apply higher Sap up to ~20% reduced outgoing damage at max magnitude."],
+      "type": "Official Rule",
+      "source": "https://www.poedb.tw/us/Sap"
+    },
+    "Common Misconceptions": {
+      "text": ["Sap is not a damage-over-time ailment; it is a non-damaging penalty effect.", "Sap can coexist with other non-damaging elemental ailments in independent states."],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poedb.tw/us/Sap",
+        "https://www.poewiki.net/wiki/Ailment",
+        "https://www.pathofexile.com/forum/view-thread/2687400/page/1",
+        "https://www.pathofexile.com/forum/view-thread/2961546"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Lightning Hit", "Ailment Threshold", "Ailment state pipeline"],
+    "modifies": ["target Damage dealt"],
+    "requires": ["lightning hit that applies ailment", "target not immune to elemental ailments"],
+    "prevents": ["unbounded Damage penalty stacking"],
+    "overrides": ["none"],
+    "inherits": ["Ailment"],
+    "creates": ["sap_state"],
+    "destroys": ["expired Sap state"],
+    "applies": ["up to 20% less Damage"],
+    "removes": ["Sap on duration expiry"],
+    "shares_with": ["Scorch", "Brittle", "Ailment"],
+    "is_scaled_by": ["non-damaging ailment effect", "Ailment threshold modifiers"],
+    "cannot_affect": ["non-ailment-based flat reductions not linked to this state"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.9.0"
+    }
+  ],
+  "collected_at": "2026-07-12T21:19:47+01:00"
+}

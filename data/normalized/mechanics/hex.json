@@ -1,0 +1,164 @@
+{
+  "id": "hex",
+  "term": "Hex",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Curse",
+  "sections": {
+    "Definition": {
+      "text": "Hex is a Curse category applied by Hex Curse skills; Curses are a type of Debuff.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Purpose": {
+      "text": "Apply a curse effect through an Area of Effect-based skill.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Core Rules": {
+      "text": "Hexes are spells that apply the curse in an Area of Effect. The term Hex by itself refers specifically to Hex Curse skills.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Internal Rules": {
+      "text": "Hex curse defaults are replaced by skill-specific values when cast; default and overridden values are per-skill.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Calculation Order": {
+      "text": "1) Resolve skill hit/apply event 2) create curse debuff instance 3) apply curse limit checks 4) apply/removal/replacement rules for curses on the same target.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Priority Rules": {
+      "text": "On the same target, applying a different curse while limit is exceeded expires the oldest curse regardless of curse type or strength.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Preconditions": {
+      "text": "Target is not Immune to Curses; if hexproof applies only Hexproof marker without curseing stats.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Postconditions": {
+      "text": "Target gains a Hex debuff instance from the casting source and participates in the global curse limit and replacement model.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Limitations": {
+      "text": "Hexes cannot be applied to targets immune to Curses; hexproof interaction is distinct from removal rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Caps": {
+      "text": "Curse limit constraints are enforced as part of the Curses system; at default one curse is active per creature.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Formula": {
+      "text": "Curse Effect uses the Curse Effect formula: (sum added) * (1 + increases - reductions) * product(more) * product(less).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Keywords": {
+      "text": ["Hex", "Curse", "Debuff", "Area of Effect", "Curse Effect", "curse limit", "immune to curses"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Curse", "Debuff", "Area of Effect", "Hexproof", "Curse immunity"],
+      "modifies": ["Curse Effect", "target debuff state"],
+      "requires": ["valid curse source", "target not immune"],
+      "prevents": ["Hex application to Immune targets"],
+      "cannot_affect": ["target with Hexproof and no bypass condition"],
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Dependencies": {
+      "text": ["Curse system", "Target classification state", "Cursing skill tag", "Curse Effect modifiers"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Conflicts": {
+      "text": "Hexproof targets can be considered cursed in state but do not gain debuffing stats unless bypass exists.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Exceptions": {
+      "text": "Hexproof is a conditional interaction edge; Hexes still affect cursed-state visibility but not debuffing stat application.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Hidden Rules": {
+      "text": "Linked hexes can be applied in one application chain; this does not change the base Hex category semantics.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Developer Notes": {
+      "text": "Treat Hex as a Curse subtype, not a standalone damage type; keep Area of Effect application and curse-limit behavior explicit.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Historical Changes": {
+      "text": "No explicit Hex-specific historical timeline appears in the current Curse page snapshot; see patch history entries where available.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "Unknown",
+          "note": "Hex category is documented as Curse subtype and remains functionally separate from Mark curses.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Curse"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A Hex applies a cursed state through an Area of Effect.",
+        "Applying another curse can remove or expire the oldest curse on the same creature under curse limit rules."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Hex is not equivalent to Mark.",
+        "Hex interaction with Hexproof is different from complete curse immunity."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Curse",
+        "https://www.poewiki.net/wiki/Mark"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Curse", "Debuff", "Area of Effect"],
+    "modifies": ["target curse state", "Curse Effect"],
+    "requires": ["curse source skill", "target eligibility"],
+    "prevents": ["application to immune targets"],
+    "overrides": ["oldest curse by global limit"],
+    "inherits": ["Curse"],
+    "creates": ["Hex debuff state"],
+    "destroys": ["previous curse when limit expiring"],
+    "applies": ["curse effect"],
+    "removes": ["target old curse instance"],
+    "shares_with": ["Mark", "Curse"],
+    "is_scaled_by": ["Curse Effect modifiers"],
+    "cannot_affect": ["targets immune to curses"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-12T21:30:24+01:00"
+}

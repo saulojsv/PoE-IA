@@ -1,0 +1,165 @@
+{
+  "id": "use",
+  "term": "Use",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Use",
+  "sections": {
+    "Definition": {
+      "text": "Use is a keyword and refers to an in-game action known as skill use.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Purpose": {
+      "text": "Describe a unit of time and action for a skill’s execution flow before effects resolve.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Core Rules": {
+      "text": "Skills can have stored uses and other use-related characteristics. Use generally includes animated cast-time and additional time-counted parts.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Internal Rules": {
+      "text": "When a skill has both cast time and cooldown in its use flow, those phases are part of one use timing path.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Calculation Order": {
+      "text": "Use timing is evaluated as cast-time action plus subsequent timed parts such as cooldown; this total defines use frequency.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Priority Rules": {
+      "text": "Specific per-skill use modifiers (for example stored uses, cooldown prevention, or cooldown bypass rules) override generic use timing assumptions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Preconditions": {
+      "text": "An action must be in a skill-use path that exposes cast time and/or cooldown behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Postconditions": {
+      "text": "The skill’s usable frequency is fixed by resolved use timing and gating terms.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Limitations": {
+      "text": "Use is descriptive of timing flow and does not itself define accuracy, evade, resist, or hit math.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Caps": {
+      "text": "No universal cap is defined for Use; caps are source-specific (e.g. stored uses or cooldown restrictions).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Formula": {
+      "text": "frequency = cast_time + cooldown (where both parts are present and applied to the use action).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Keywords": {
+      "text": [
+        "Use",
+        "skill use",
+        "cast time",
+        "cooldown",
+        "stored uses"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Related Mechanics": {
+      "depends_on": ["cast_time", "cooldown"],
+      "modifies": ["use frequency"],
+      "requires": ["skill use action"],
+      "prevents": ["unbounded immediate repeated use"],
+      "cannot_affect": ["cast-time-independent actions"],
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Dependencies": {
+      "text": ["Cast Time", "Cooldown", "Stored Uses"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Conflicts": {
+      "text": "Use timing is distinct from Attack/Spell categorization and cannot replace those tags.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Exceptions": {
+      "text": "Some skills have no explicit cooldown but still have use-related timing via cast time or other time-counted phases.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Hidden Rules": {
+      "text": "Use is presented as a keyword-level construct that can be attached to skill metadata and not only to player-facing button presses.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Developer Notes": {
+      "text": "Record Use as a timing construct and link it to Cast Time and cooldown in schema relationships.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Historical Changes": {
+      "text": "Source snapshot uses an older revision date; no explicit cross-patch deltas captured here.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Patch History": {
+      "text": [],
+      "type": "Historical Behavior"
+    },
+    "Examples": {
+      "text": [
+        "If skill uses cast time and cooldown, use frequency is cast_time + cooldown.",
+        "A stored-use skill is still a Use-capable skill with special timing constraints."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Use is not the same as Cast.",
+        "Use is not a damage formula term; it is a use-timing construct.",
+        "Zero cooldown does not mean Use is absent."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Use"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Use",
+        "https://www.poewiki.net/index.php?title=Use&oldid=300372"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Cast Time", "Cooldown", "Stored Uses"],
+    "modifies": ["skill frequency", "use scheduling"],
+    "requires": ["skill use context", "skill cooldown data"],
+    "prevents": ["unbounded instant repeated use"],
+    "overrides": [],
+    "inherits": [],
+    "creates": ["timed use window"],
+    "destroys": ["ready-to-use state when cooldown active"],
+    "applies": ["use-time restrictions"],
+    "removes": ["ready state if cooldown present"],
+    "shares_with": ["Cast", "Cooldown", "Trigger", "Stored Uses"],
+    "is_scaled_by": ["cooldown modifiers", "use-related recovery modifiers"],
+    "cannot_affect": ["spells that explicitly bypass use timing"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "unversioned",
+      "source": "https://www.poewiki.net/wiki/Use"
+    }
+  ],
+  "collected_at": "2026-07-13T11:56:12+01:00"
+}

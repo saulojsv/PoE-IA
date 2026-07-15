@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Vaal Skills"
+  short_description: "Research Vaal skill variants."
+  default_prompt: "Use $poe-vaal-skills to research one Vaal skill variant."
+policy:
+  allow_implicit_invocation: true

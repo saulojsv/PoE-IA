@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE RAG Exporter"
+  short_description: "Export PoE data for RAG."
+  default_prompt: "Use $poe-rag-exporter to export PoE 1 data to JSONL, CSV, Markdown, and RAG chunks."
+
+policy:
+  allow_implicit_invocation: true

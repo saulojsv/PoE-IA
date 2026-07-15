@@ -1,0 +1,22 @@
+{
+  "builds": 29,
+  "skills": 14,
+  "folder": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_build_knowledge",
+  "notes": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_build_knowledge\\build_notes",
+  "source_dataset": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset",
+  "automation_skill_rules": "C:\\Users\\saulo\\Documents\\Agente - PoE\\config\\poe_automation_skill_usage_rules.json",
+  "pob_understanding_doc": "C:\\Users\\saulo\\Documents\\Agente - PoE\\docs\\POB_UNDERSTANDING_AND_TRAINING_BASE.md",
+  "fundamental_mechanics_doc": "C:\\Users\\saulo\\Documents\\Agente - PoE\\docs\\POE_FUNDAMENTAL_MECHANICS_BASE.md",
+  "advanced_rules_precedence_doc": "C:\\Users\\saulo\\Documents\\Agente - PoE\\docs\\POE_ADVANCED_RULES_PRECEDENCE_BASE.md",
+  "systems_interactions_doc": "C:\\Users\\saulo\\Documents\\Agente - PoE\\docs\\POE_SYSTEMS_INTERACTIONS_BASE.md",
+  "english_mechanics_knowledge_base": "C:\\Users\\saulo\\Documents\\Agente - PoE\\docs\\POE_ENGLISH_MECHANICS_KNOWLEDGE_BASE.md",
+  "mechanics_index": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\normalized\\mechanics_index.json",
+  "codex_skill_folder": "C:\\Users\\saulo\\.codex\\skills",
+  "skill_by_skill_mode": {
+    "order": "A-Z",
+    "frequency": "5 minutes",
+    "unit": "one PoE 1 skill per run",
+    "json_output": "data/normalized/skills/{normalized_name}.json",
+    "markdown_output": "data/exports/skills/{normalized_name}.md"
+  }
+}

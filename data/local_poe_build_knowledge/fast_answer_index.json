@@ -1,0 +1,2955 @@
+{
+  "builds": 29,
+  "by_skill": {
+    "trinity": [
+      {
+        "id": "000000_Ranger_Daughter_of_Oshabi",
+        "skill": "Trinity",
+        "class": "Ranger",
+        "ascendancy": "Daughter of Oshabi",
+        "delivery": "self-cast/self-attack",
+        "dps": "19314201.966808",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "evasion",
+          "spell suppression",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multistrike",
+          "Inspiration"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      }
+    ],
+    "ballista totem": [
+      {
+        "id": "000001_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2085167.6902011",
+        "crit": "71.5188",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Invert the Rules",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000007_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "19368835.502261",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "ES recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Invert the Rules",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000008_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "18024235.821614",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000015_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2357045.8851477",
+        "crit": "93.27271",
+        "hit": "95",
+        "defenses": [
+          "energy shield",
+          "spell block",
+          "ES recovery"
+        ],
+        "supports": [
+          "Elemental Damage with Attacks",
+          "Volatility",
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": [
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative",
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000025_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2343871.0710752",
+        "crit": "93.356928",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "greater volley": [
+      {
+        "id": "000002_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4136475.8462338",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000003_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "5183879.8297441",
+        "crit": "98.9653",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000010_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4050341.2120368",
+        "crit": "92.967",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000026_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2699256.4442828",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Volatility"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000027_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2081748.291944",
+        "crit": "96.5874",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks"
+        ],
+        "risks": []
+      }
+    ],
+    "kinetic fusillade": [
+      {
+        "id": "000004_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "11828459.191195",
+        "crit": "82.4824",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Volatility",
+          "Ballista Totem",
+          "Less Duration"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000006_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4303940.465792",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000009_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "6912825.2309933",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multiple Projectiles",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000012_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2940101.7447099",
+        "crit": "89.2314",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000014_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3288785.046052",
+        "crit": "99.5605",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000016_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3397126.8120776",
+        "crit": "98.7462",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Greater Volley",
+          "Less Duration"
+        ],
+        "risks": []
+      }
+    ],
+    "less duration": [
+      {
+        "id": "000005_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4424105.2435277",
+        "crit": "87.1335",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Volatility",
+          "Elemental Damage with Attacks",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000011_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2003445.3468133",
+        "crit": "77.868",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Invert the Rules",
+          "Kinetic Fusillade",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "invert the rules": [
+      {
+        "id": "000013_Templar_Hierophant",
+        "skill": "Invert the Rules",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "7200876.5032653",
+        "crit": "80.5432",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      }
+    ],
+    "elemental damage with attacks": [
+      {
+        "id": "000017_Templar_Hierophant",
+        "skill": "Elemental Damage with Attacks",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "1597573.903442",
+        "crit": "65.286",
+        "hit": "93",
+        "defenses": [
+          "life pool",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Greater Volley",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage"
+        ],
+        "risks": [
+          "attack_hit_capped_if_relevant"
+        ]
+      }
+    ],
+    "lifetap": [
+      {
+        "id": "000018_Duelist_Slayer",
+        "skill": "Lifetap",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "10410667.670934",
+        "crit": "61.3716",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Hydrosphere",
+          "Bonechill",
+          "Frostblink"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000023_Marauder_Chieftain",
+        "skill": "Lifetap",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "self-cast/self-attack",
+        "dps": "162866.920785",
+        "crit": "1.2",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Righteous Fire",
+          "Elemental Focus",
+          "Efficacy",
+          "Swift Affliction",
+          "Burning Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "tornado": [
+      {
+        "id": "000019_Ranger_Deadeye",
+        "skill": "Tornado",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "8760690.6474604",
+        "crit": "79.5088",
+        "hit": "98",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Manaforged Arrows",
+          "Storm Rain",
+          "Power Charge On Critical",
+          "Sniper's Mark",
+          "Frenzy"
+        ],
+        "risks": []
+      }
+    ],
+    "inspiration": [
+      {
+        "id": "000020_Marauder_Chieftain",
+        "skill": "Inspiration",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "minion",
+        "dps": "5408725.4375",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Blade Vortex",
+          "Increased Critical Damage",
+          "Elemental Focus",
+          "Greater Unleash",
+          "Minion Pact"
+        ],
+        "risks": []
+      }
+    ],
+    "fortify": [
+      {
+        "id": "000021_Duelist_Slayer",
+        "skill": "Fortify",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "19792470.851046",
+        "crit": "35.165",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Pulverise",
+          "Infused Channelling",
+          "Cyclone of Tumult",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "lightning arrow": [
+      {
+        "id": "000022_Ranger_Deadeye",
+        "skill": "Lightning Arrow",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "1543159.9791968",
+        "crit": "38.285676",
+        "hit": "67",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Greater Fork",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "attack_hit_capped_if_relevant"
+        ]
+      }
+    ],
+    "greater fork": [
+      {
+        "id": "000024_Witch_Necromancer",
+        "skill": "Greater Fork",
+        "class": "Witch",
+        "ascendancy": "Necromancer",
+        "delivery": "self-cast/self-attack",
+        "dps": "2340701.7065041",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Returning Projectiles",
+          "Increased Critical Damage",
+          "Kinetic Blast of Clustering",
+          "Damage on Full Life",
+          "Summon Sacred Wisps"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      }
+    ],
+    "enlighten": [
+      {
+        "id": "000028_Duelist_Paladin",
+        "skill": "Enlighten",
+        "class": "Duelist",
+        "ascendancy": "Paladin",
+        "delivery": "self-cast/self-attack",
+        "dps": "680.61545927424",
+        "crit": "25.8816",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Enduring Cry",
+          "Grace",
+          "Determination"
+        ],
+        "risks": []
+      }
+    ]
+  },
+  "by_class": {
+    "ranger": [
+      {
+        "id": "000000_Ranger_Daughter_of_Oshabi",
+        "skill": "Trinity",
+        "class": "Ranger",
+        "ascendancy": "Daughter of Oshabi",
+        "delivery": "self-cast/self-attack",
+        "dps": "19314201.966808",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "evasion",
+          "spell suppression",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multistrike",
+          "Inspiration"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000019_Ranger_Deadeye",
+        "skill": "Tornado",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "8760690.6474604",
+        "crit": "79.5088",
+        "hit": "98",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Manaforged Arrows",
+          "Storm Rain",
+          "Power Charge On Critical",
+          "Sniper's Mark",
+          "Frenzy"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000022_Ranger_Deadeye",
+        "skill": "Lightning Arrow",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "1543159.9791968",
+        "crit": "38.285676",
+        "hit": "67",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Greater Fork",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "attack_hit_capped_if_relevant"
+        ]
+      }
+    ],
+    "templar": [
+      {
+        "id": "000001_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2085167.6902011",
+        "crit": "71.5188",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Invert the Rules",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000002_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4136475.8462338",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000003_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "5183879.8297441",
+        "crit": "98.9653",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000004_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "11828459.191195",
+        "crit": "82.4824",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Volatility",
+          "Ballista Totem",
+          "Less Duration"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000005_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4424105.2435277",
+        "crit": "87.1335",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Volatility",
+          "Elemental Damage with Attacks",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000006_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4303940.465792",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000007_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "19368835.502261",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "ES recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Invert the Rules",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000008_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "18024235.821614",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000009_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "6912825.2309933",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multiple Projectiles",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000010_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4050341.2120368",
+        "crit": "92.967",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000011_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2003445.3468133",
+        "crit": "77.868",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Invert the Rules",
+          "Kinetic Fusillade",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000012_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2940101.7447099",
+        "crit": "89.2314",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000013_Templar_Hierophant",
+        "skill": "Invert the Rules",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "7200876.5032653",
+        "crit": "80.5432",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000014_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3288785.046052",
+        "crit": "99.5605",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000015_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2357045.8851477",
+        "crit": "93.27271",
+        "hit": "95",
+        "defenses": [
+          "energy shield",
+          "spell block",
+          "ES recovery"
+        ],
+        "supports": [
+          "Elemental Damage with Attacks",
+          "Volatility",
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": [
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative",
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000016_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3397126.8120776",
+        "crit": "98.7462",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Greater Volley",
+          "Less Duration"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000017_Templar_Hierophant",
+        "skill": "Elemental Damage with Attacks",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "1597573.903442",
+        "crit": "65.286",
+        "hit": "93",
+        "defenses": [
+          "life pool",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Greater Volley",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage"
+        ],
+        "risks": [
+          "attack_hit_capped_if_relevant"
+        ]
+      },
+      {
+        "id": "000025_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2343871.0710752",
+        "crit": "93.356928",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000026_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2699256.4442828",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Volatility"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000027_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2081748.291944",
+        "crit": "96.5874",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks"
+        ],
+        "risks": []
+      }
+    ],
+    "duelist": [
+      {
+        "id": "000018_Duelist_Slayer",
+        "skill": "Lifetap",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "10410667.670934",
+        "crit": "61.3716",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Hydrosphere",
+          "Bonechill",
+          "Frostblink"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000021_Duelist_Slayer",
+        "skill": "Fortify",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "19792470.851046",
+        "crit": "35.165",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Pulverise",
+          "Infused Channelling",
+          "Cyclone of Tumult",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000028_Duelist_Paladin",
+        "skill": "Enlighten",
+        "class": "Duelist",
+        "ascendancy": "Paladin",
+        "delivery": "self-cast/self-attack",
+        "dps": "680.61545927424",
+        "crit": "25.8816",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Enduring Cry",
+          "Grace",
+          "Determination"
+        ],
+        "risks": []
+      }
+    ],
+    "marauder": [
+      {
+        "id": "000020_Marauder_Chieftain",
+        "skill": "Inspiration",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "minion",
+        "dps": "5408725.4375",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Blade Vortex",
+          "Increased Critical Damage",
+          "Elemental Focus",
+          "Greater Unleash",
+          "Minion Pact"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000023_Marauder_Chieftain",
+        "skill": "Lifetap",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "self-cast/self-attack",
+        "dps": "162866.920785",
+        "crit": "1.2",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Righteous Fire",
+          "Elemental Focus",
+          "Efficacy",
+          "Swift Affliction",
+          "Burning Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "witch": [
+      {
+        "id": "000024_Witch_Necromancer",
+        "skill": "Greater Fork",
+        "class": "Witch",
+        "ascendancy": "Necromancer",
+        "delivery": "self-cast/self-attack",
+        "dps": "2340701.7065041",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Returning Projectiles",
+          "Increased Critical Damage",
+          "Kinetic Blast of Clustering",
+          "Damage on Full Life",
+          "Summon Sacred Wisps"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      }
+    ]
+  },
+  "by_ascendancy": {
+    "daughter of oshabi": [
+      {
+        "id": "000000_Ranger_Daughter_of_Oshabi",
+        "skill": "Trinity",
+        "class": "Ranger",
+        "ascendancy": "Daughter of Oshabi",
+        "delivery": "self-cast/self-attack",
+        "dps": "19314201.966808",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "evasion",
+          "spell suppression",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multistrike",
+          "Inspiration"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      }
+    ],
+    "hierophant": [
+      {
+        "id": "000001_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2085167.6902011",
+        "crit": "71.5188",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Invert the Rules",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000002_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4136475.8462338",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000003_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "5183879.8297441",
+        "crit": "98.9653",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000004_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "11828459.191195",
+        "crit": "82.4824",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Volatility",
+          "Ballista Totem",
+          "Less Duration"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000005_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4424105.2435277",
+        "crit": "87.1335",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Volatility",
+          "Elemental Damage with Attacks",
+          "Kinetic Fusillade",
+          "Ballista Totem"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000006_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4303940.465792",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Less Duration",
+          "Ballista Totem",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000007_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "19368835.502261",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "ES recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Invert the Rules",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000008_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "18024235.821614",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Greater Volley",
+          "Increased Critical Damage",
+          "Concentrated Effect",
+          "Kinetic Fusillade"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative"
+        ]
+      },
+      {
+        "id": "000009_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "6912825.2309933",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "ES recovery"
+        ],
+        "supports": [
+          "Greater Multiple Projectiles",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000010_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "4050341.2120368",
+        "crit": "92.967",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Invert the Rules",
+          "Less Duration",
+          "Increased Critical Damage",
+          "Kinetic Fusillade"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000011_Templar_Hierophant",
+        "skill": "Less Duration",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2003445.3468133",
+        "crit": "77.868",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Invert the Rules",
+          "Kinetic Fusillade",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000012_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2940101.7447099",
+        "crit": "89.2314",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "energy shield",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks",
+          "Greater Volley"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000013_Templar_Hierophant",
+        "skill": "Invert the Rules",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "7200876.5032653",
+        "crit": "80.5432",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Greater Volley",
+          "Kinetic Fusillade",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Ballista Totem"
+        ],
+        "risks": [
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000014_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3288785.046052",
+        "crit": "99.5605",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Ballista Totem",
+          "Greater Volley",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000015_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2357045.8851477",
+        "crit": "93.27271",
+        "hit": "95",
+        "defenses": [
+          "energy shield",
+          "spell block",
+          "ES recovery"
+        ],
+        "supports": [
+          "Elemental Damage with Attacks",
+          "Volatility",
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Greater Volley"
+        ],
+        "risks": [
+          "cold_res_cap",
+          "lightning_res_cap",
+          "chaos_res_non_negative",
+          "mana_usable"
+        ]
+      },
+      {
+        "id": "000016_Templar_Hierophant",
+        "skill": "Kinetic Fusillade",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "3397126.8120776",
+        "crit": "98.7462",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Invert the Rules",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Greater Volley",
+          "Less Duration"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000017_Templar_Hierophant",
+        "skill": "Elemental Damage with Attacks",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "1597573.903442",
+        "crit": "65.286",
+        "hit": "93",
+        "defenses": [
+          "life pool",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Greater Volley",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage"
+        ],
+        "risks": [
+          "attack_hit_capped_if_relevant"
+        ]
+      },
+      {
+        "id": "000025_Templar_Hierophant",
+        "skill": "Ballista Totem",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2343871.0710752",
+        "crit": "93.356928",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Elemental Damage with Attacks",
+          "Greater Volley",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000026_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2699256.4442828",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Less Duration",
+          "Volatility"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000027_Templar_Hierophant",
+        "skill": "Greater Volley",
+        "class": "Templar",
+        "ascendancy": "Hierophant",
+        "delivery": "totem/ballista",
+        "dps": "2081748.291944",
+        "crit": "96.5874",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Kinetic Fusillade",
+          "Less Duration",
+          "Ballista Totem",
+          "Increased Critical Damage",
+          "Elemental Damage with Attacks"
+        ],
+        "risks": []
+      }
+    ],
+    "slayer": [
+      {
+        "id": "000018_Duelist_Slayer",
+        "skill": "Lifetap",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "10410667.670934",
+        "crit": "61.3716",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Hydrosphere",
+          "Bonechill",
+          "Frostblink"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000021_Duelist_Slayer",
+        "skill": "Fortify",
+        "class": "Duelist",
+        "ascendancy": "Slayer",
+        "delivery": "self-cast/self-attack",
+        "dps": "19792470.851046",
+        "crit": "35.165",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Pulverise",
+          "Infused Channelling",
+          "Cyclone of Tumult",
+          "Increased Critical Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "deadeye": [
+      {
+        "id": "000019_Ranger_Deadeye",
+        "skill": "Tornado",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "8760690.6474604",
+        "crit": "79.5088",
+        "hit": "98",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Manaforged Arrows",
+          "Storm Rain",
+          "Power Charge On Critical",
+          "Sniper's Mark",
+          "Frenzy"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000022_Ranger_Deadeye",
+        "skill": "Lightning Arrow",
+        "class": "Ranger",
+        "ascendancy": "Deadeye",
+        "delivery": "self-cast/self-attack",
+        "dps": "1543159.9791968",
+        "crit": "38.285676",
+        "hit": "67",
+        "defenses": [
+          "life pool",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Trinity",
+          "Greater Fork",
+          "Elemental Damage with Attacks",
+          "Increased Critical Damage",
+          "Invert the Rules"
+        ],
+        "risks": [
+          "fire_res_cap",
+          "cold_res_cap",
+          "lightning_res_cap",
+          "attack_hit_capped_if_relevant"
+        ]
+      }
+    ],
+    "chieftain": [
+      {
+        "id": "000020_Marauder_Chieftain",
+        "skill": "Inspiration",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "minion",
+        "dps": "5408725.4375",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "armour",
+          "block",
+          "spell block",
+          "life recovery"
+        ],
+        "supports": [
+          "Blade Vortex",
+          "Increased Critical Damage",
+          "Elemental Focus",
+          "Greater Unleash",
+          "Minion Pact"
+        ],
+        "risks": []
+      },
+      {
+        "id": "000023_Marauder_Chieftain",
+        "skill": "Lifetap",
+        "class": "Marauder",
+        "ascendancy": "Chieftain",
+        "delivery": "self-cast/self-attack",
+        "dps": "162866.920785",
+        "crit": "1.2",
+        "hit": "100",
+        "defenses": [
+          "life pool",
+          "block",
+          "life recovery"
+        ],
+        "supports": [
+          "Righteous Fire",
+          "Elemental Focus",
+          "Efficacy",
+          "Swift Affliction",
+          "Burning Damage"
+        ],
+        "risks": []
+      }
+    ],
+    "necromancer": [
+      {
+        "id": "000024_Witch_Necromancer",
+        "skill": "Greater Fork",
+        "class": "Witch",
+        "ascendancy": "Necromancer",
+        "delivery": "self-cast/self-attack",
+        "dps": "2340701.7065041",
+        "crit": "100",
+        "hit": "100",
+        "defenses": [
+          "energy shield",
+          "block",
+          "spell block",
+          "life recovery",
+          "ES recovery"
+        ],
+        "supports": [
+          "Returning Projectiles",
+          "Increased Critical Damage",
+          "Kinetic Blast of Clustering",
+          "Damage on Full Life",
+          "Summon Sacred Wisps"
+        ],
+        "risks": [
+          "chaos_res_non_negative"
+        ]
+      }
+    ],
+    "paladin": [
+      {
+        "id": "000028_Duelist_Paladin",
+        "skill": "Enlighten",
+        "class": "Duelist",
+        "ascendancy": "Paladin",
+        "delivery": "self-cast/self-attack",
+        "dps": "680.61545927424",
+        "crit": "25.8816",
+        "hit": "96",
+        "defenses": [
+          "life pool",
+          "armour",
+          "evasion",
+          "spell suppression",
+          "life recovery"
+        ],
+        "supports": [
+          "Enduring Cry",
+          "Grace",
+          "Determination"
+        ],
+        "risks": []
+      }
+    ]
+  },
+  "summaries": {
+    "000000_Ranger_Daughter_of_Oshabi": {
+      "id": "000000_Ranger_Daughter_of_Oshabi",
+      "skill": "Trinity",
+      "class": "Ranger",
+      "ascendancy": "Daughter of Oshabi",
+      "delivery": "self-cast/self-attack",
+      "dps": "19314201.966808",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "energy shield",
+        "evasion",
+        "spell suppression",
+        "block",
+        "spell block",
+        "life recovery",
+        "ES recovery"
+      ],
+      "supports": [
+        "Greater Multistrike",
+        "Inspiration"
+      ],
+      "risks": [
+        "chaos_res_non_negative"
+      ]
+    },
+    "000001_Templar_Hierophant": {
+      "id": "000001_Templar_Hierophant",
+      "skill": "Ballista Totem",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2085167.6902011",
+      "crit": "71.5188",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "energy shield",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Invert the Rules",
+        "Less Duration",
+        "Greater Volley"
+      ],
+      "risks": []
+    },
+    "000002_Templar_Hierophant": {
+      "id": "000002_Templar_Hierophant",
+      "skill": "Greater Volley",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "4136475.8462338",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "energy shield",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Invert the Rules",
+        "Less Duration",
+        "Increased Critical Damage",
+        "Kinetic Fusillade",
+        "Ballista Totem"
+      ],
+      "risks": []
+    },
+    "000003_Templar_Hierophant": {
+      "id": "000003_Templar_Hierophant",
+      "skill": "Greater Volley",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "5183879.8297441",
+      "crit": "98.9653",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Increased Critical Damage",
+        "Invert the Rules",
+        "Less Duration",
+        "Ballista Totem"
+      ],
+      "risks": []
+    },
+    "000004_Templar_Hierophant": {
+      "id": "000004_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "11828459.191195",
+      "crit": "82.4824",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Greater Volley",
+        "Increased Critical Damage",
+        "Volatility",
+        "Ballista Totem",
+        "Less Duration"
+      ],
+      "risks": [
+        "mana_usable"
+      ]
+    },
+    "000005_Templar_Hierophant": {
+      "id": "000005_Templar_Hierophant",
+      "skill": "Less Duration",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "4424105.2435277",
+      "crit": "87.1335",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Greater Volley",
+        "Volatility",
+        "Elemental Damage with Attacks",
+        "Kinetic Fusillade",
+        "Ballista Totem"
+      ],
+      "risks": []
+    },
+    "000006_Templar_Hierophant": {
+      "id": "000006_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "4303940.465792",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Invert the Rules",
+        "Less Duration",
+        "Ballista Totem",
+        "Greater Volley",
+        "Increased Critical Damage"
+      ],
+      "risks": []
+    },
+    "000007_Templar_Hierophant": {
+      "id": "000007_Templar_Hierophant",
+      "skill": "Ballista Totem",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "19368835.502261",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "energy shield",
+        "ES recovery"
+      ],
+      "supports": [
+        "Less Duration",
+        "Greater Volley",
+        "Invert the Rules",
+        "Concentrated Effect",
+        "Kinetic Fusillade"
+      ],
+      "risks": [
+        "chaos_res_non_negative"
+      ]
+    },
+    "000008_Templar_Hierophant": {
+      "id": "000008_Templar_Hierophant",
+      "skill": "Ballista Totem",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "18024235.821614",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life recovery"
+      ],
+      "supports": [
+        "Less Duration",
+        "Greater Volley",
+        "Increased Critical Damage",
+        "Concentrated Effect",
+        "Kinetic Fusillade"
+      ],
+      "risks": [
+        "fire_res_cap",
+        "cold_res_cap",
+        "lightning_res_cap",
+        "chaos_res_non_negative"
+      ]
+    },
+    "000009_Templar_Hierophant": {
+      "id": "000009_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "6912825.2309933",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "ES recovery"
+      ],
+      "supports": [
+        "Greater Multiple Projectiles",
+        "Less Duration",
+        "Ballista Totem",
+        "Increased Critical Damage",
+        "Invert the Rules"
+      ],
+      "risks": []
+    },
+    "000010_Templar_Hierophant": {
+      "id": "000010_Templar_Hierophant",
+      "skill": "Greater Volley",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "4050341.2120368",
+      "crit": "92.967",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Ballista Totem",
+        "Invert the Rules",
+        "Less Duration",
+        "Increased Critical Damage",
+        "Kinetic Fusillade"
+      ],
+      "risks": []
+    },
+    "000011_Templar_Hierophant": {
+      "id": "000011_Templar_Hierophant",
+      "skill": "Less Duration",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2003445.3468133",
+      "crit": "77.868",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "energy shield",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Ballista Totem",
+        "Greater Volley",
+        "Invert the Rules",
+        "Kinetic Fusillade",
+        "Increased Critical Damage"
+      ],
+      "risks": []
+    },
+    "000012_Templar_Hierophant": {
+      "id": "000012_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2940101.7447099",
+      "crit": "89.2314",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "energy shield",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Less Duration",
+        "Ballista Totem",
+        "Increased Critical Damage",
+        "Elemental Damage with Attacks",
+        "Greater Volley"
+      ],
+      "risks": []
+    },
+    "000013_Templar_Hierophant": {
+      "id": "000013_Templar_Hierophant",
+      "skill": "Invert the Rules",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "7200876.5032653",
+      "crit": "80.5432",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Greater Volley",
+        "Kinetic Fusillade",
+        "Increased Critical Damage",
+        "Less Duration",
+        "Ballista Totem"
+      ],
+      "risks": [
+        "mana_usable"
+      ]
+    },
+    "000014_Templar_Hierophant": {
+      "id": "000014_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "3288785.046052",
+      "crit": "99.5605",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Ballista Totem",
+        "Greater Volley",
+        "Less Duration",
+        "Elemental Damage with Attacks",
+        "Increased Critical Damage"
+      ],
+      "risks": []
+    },
+    "000015_Templar_Hierophant": {
+      "id": "000015_Templar_Hierophant",
+      "skill": "Ballista Totem",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2357045.8851477",
+      "crit": "93.27271",
+      "hit": "95",
+      "defenses": [
+        "energy shield",
+        "spell block",
+        "ES recovery"
+      ],
+      "supports": [
+        "Elemental Damage with Attacks",
+        "Volatility",
+        "Kinetic Fusillade",
+        "Less Duration",
+        "Greater Volley"
+      ],
+      "risks": [
+        "cold_res_cap",
+        "lightning_res_cap",
+        "chaos_res_non_negative",
+        "mana_usable"
+      ]
+    },
+    "000016_Templar_Hierophant": {
+      "id": "000016_Templar_Hierophant",
+      "skill": "Kinetic Fusillade",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "3397126.8120776",
+      "crit": "98.7462",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Invert the Rules",
+        "Ballista Totem",
+        "Increased Critical Damage",
+        "Greater Volley",
+        "Less Duration"
+      ],
+      "risks": []
+    },
+    "000017_Templar_Hierophant": {
+      "id": "000017_Templar_Hierophant",
+      "skill": "Elemental Damage with Attacks",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "1597573.903442",
+      "crit": "65.286",
+      "hit": "93",
+      "defenses": [
+        "life pool",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Greater Volley",
+        "Less Duration",
+        "Ballista Totem",
+        "Increased Critical Damage"
+      ],
+      "risks": [
+        "attack_hit_capped_if_relevant"
+      ]
+    },
+    "000018_Duelist_Slayer": {
+      "id": "000018_Duelist_Slayer",
+      "skill": "Lifetap",
+      "class": "Duelist",
+      "ascendancy": "Slayer",
+      "delivery": "self-cast/self-attack",
+      "dps": "10410667.670934",
+      "crit": "61.3716",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "evasion",
+        "spell suppression",
+        "life recovery"
+      ],
+      "supports": [
+        "Hydrosphere",
+        "Bonechill",
+        "Frostblink"
+      ],
+      "risks": []
+    },
+    "000019_Ranger_Deadeye": {
+      "id": "000019_Ranger_Deadeye",
+      "skill": "Tornado",
+      "class": "Ranger",
+      "ascendancy": "Deadeye",
+      "delivery": "self-cast/self-attack",
+      "dps": "8760690.6474604",
+      "crit": "79.5088",
+      "hit": "98",
+      "defenses": [
+        "life pool",
+        "spell suppression",
+        "life recovery"
+      ],
+      "supports": [
+        "Manaforged Arrows",
+        "Storm Rain",
+        "Power Charge On Critical",
+        "Sniper's Mark",
+        "Frenzy"
+      ],
+      "risks": []
+    },
+    "000020_Marauder_Chieftain": {
+      "id": "000020_Marauder_Chieftain",
+      "skill": "Inspiration",
+      "class": "Marauder",
+      "ascendancy": "Chieftain",
+      "delivery": "minion",
+      "dps": "5408725.4375",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Blade Vortex",
+        "Increased Critical Damage",
+        "Elemental Focus",
+        "Greater Unleash",
+        "Minion Pact"
+      ],
+      "risks": []
+    },
+    "000021_Duelist_Slayer": {
+      "id": "000021_Duelist_Slayer",
+      "skill": "Fortify",
+      "class": "Duelist",
+      "ascendancy": "Slayer",
+      "delivery": "self-cast/self-attack",
+      "dps": "19792470.851046",
+      "crit": "35.165",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "life recovery"
+      ],
+      "supports": [
+        "Trinity",
+        "Pulverise",
+        "Infused Channelling",
+        "Cyclone of Tumult",
+        "Increased Critical Damage"
+      ],
+      "risks": []
+    },
+    "000022_Ranger_Deadeye": {
+      "id": "000022_Ranger_Deadeye",
+      "skill": "Lightning Arrow",
+      "class": "Ranger",
+      "ascendancy": "Deadeye",
+      "delivery": "self-cast/self-attack",
+      "dps": "1543159.9791968",
+      "crit": "38.285676",
+      "hit": "67",
+      "defenses": [
+        "life pool",
+        "spell suppression",
+        "life recovery"
+      ],
+      "supports": [
+        "Trinity",
+        "Greater Fork",
+        "Elemental Damage with Attacks",
+        "Increased Critical Damage",
+        "Invert the Rules"
+      ],
+      "risks": [
+        "fire_res_cap",
+        "cold_res_cap",
+        "lightning_res_cap",
+        "attack_hit_capped_if_relevant"
+      ]
+    },
+    "000023_Marauder_Chieftain": {
+      "id": "000023_Marauder_Chieftain",
+      "skill": "Lifetap",
+      "class": "Marauder",
+      "ascendancy": "Chieftain",
+      "delivery": "self-cast/self-attack",
+      "dps": "162866.920785",
+      "crit": "1.2",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "block",
+        "life recovery"
+      ],
+      "supports": [
+        "Righteous Fire",
+        "Elemental Focus",
+        "Efficacy",
+        "Swift Affliction",
+        "Burning Damage"
+      ],
+      "risks": []
+    },
+    "000024_Witch_Necromancer": {
+      "id": "000024_Witch_Necromancer",
+      "skill": "Greater Fork",
+      "class": "Witch",
+      "ascendancy": "Necromancer",
+      "delivery": "self-cast/self-attack",
+      "dps": "2340701.7065041",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "energy shield",
+        "block",
+        "spell block",
+        "life recovery",
+        "ES recovery"
+      ],
+      "supports": [
+        "Returning Projectiles",
+        "Increased Critical Damage",
+        "Kinetic Blast of Clustering",
+        "Damage on Full Life",
+        "Summon Sacred Wisps"
+      ],
+      "risks": [
+        "chaos_res_non_negative"
+      ]
+    },
+    "000025_Templar_Hierophant": {
+      "id": "000025_Templar_Hierophant",
+      "skill": "Ballista Totem",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2343871.0710752",
+      "crit": "93.356928",
+      "hit": "96",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Less Duration",
+        "Elemental Damage with Attacks",
+        "Greater Volley",
+        "Increased Critical Damage"
+      ],
+      "risks": []
+    },
+    "000026_Templar_Hierophant": {
+      "id": "000026_Templar_Hierophant",
+      "skill": "Greater Volley",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2699256.4442828",
+      "crit": "100",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "armour",
+        "block",
+        "spell block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Ballista Totem",
+        "Increased Critical Damage",
+        "Less Duration",
+        "Volatility"
+      ],
+      "risks": []
+    },
+    "000027_Templar_Hierophant": {
+      "id": "000027_Templar_Hierophant",
+      "skill": "Greater Volley",
+      "class": "Templar",
+      "ascendancy": "Hierophant",
+      "delivery": "totem/ballista",
+      "dps": "2081748.291944",
+      "crit": "96.5874",
+      "hit": "100",
+      "defenses": [
+        "life pool",
+        "block",
+        "life recovery"
+      ],
+      "supports": [
+        "Kinetic Fusillade",
+        "Less Duration",
+        "Ballista Totem",
+        "Increased Critical Damage",
+        "Elemental Damage with Attacks"
+      ],
+      "risks": []
+    },
+    "000028_Duelist_Paladin": {
+      "id": "000028_Duelist_Paladin",
+      "skill": "Enlighten",
+      "class": "Duelist",
+      "ascendancy": "Paladin",
+      "delivery": "self-cast/self-attack",
+      "dps": "680.61545927424",
+      "crit": "25.8816",
+      "hit": "96",
+      "defenses": [
+        "life pool",
+        "armour",
+        "evasion",
+        "spell suppression",
+        "life recovery"
+      ],
+      "supports": [
+        "Enduring Cry",
+        "Grace",
+        "Determination"
+      ],
+      "risks": []
+    }
+  }
+}

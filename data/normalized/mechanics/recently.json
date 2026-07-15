@@ -1,0 +1,221 @@
+﻿{
+    "id":  "recently",
+    "term":  "Recently",
+    "status":  "research_pass",
+    "classification":  "Official Rule",
+    "source":  "https://www.poewiki.net/wiki/Recently",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "Recently is a capitalized keyword that means the past four seconds.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Recently"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Provide a standardized short time-window condition across skills, passives, and items.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Keyword"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "A condition with Recently is true when the tracked event occurred within 4 seconds.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Recently"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Recently is keyword-grade logic, not natural-language interpretation of \u0027recently\u0027.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Keyword"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "Check event timestamp against current time and compare against 4s threshold before applying Recently-bound modifiers.",
+                                               "type":  "Official Rule",
+                                               "source":  "https://www.poewiki.net/wiki/Recently"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "Keyword capitalization is required in modifier text to trigger the strict 4-second definition.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Keyword"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "Action or state event timestamp must be available for the subject being checked.",
+                                           "type":  "Official Rule",
+                                           "source":  "https://www.poewiki.net/wiki/Recently"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "The effect or branch guarded by Recently is enabled only if the event is within 4 seconds.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Recently"
+                                        },
+                     "Limitations":  {
+                                         "text":  "Window is fixed at 4 seconds for the keyword definition.",
+                                         "type":  "Official Rule",
+                                         "source":  "https://www.poewiki.net/wiki/Recently"
+                                     },
+                     "Caps":  {
+                                  "text":  "No numeric cap beyond the fixed 4-second window.",
+                                  "type":  "Official Rule",
+                                  "source":  "https://www.poewiki.net/wiki/Recently"
+                              },
+                     "Formula":  {
+                                     "text":  "Condition = now - event_time \u003c= 4s",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Recently"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Recently",
+                                                   "Keyword",
+                                                   "time window"
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Keyword"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Keyword"
+                                                              ],
+                                               "modifies":  [
+                                                                "conditional checks"
+                                                            ],
+                                               "requires":  [
+                                                                "timestamped events"
+                                                            ],
+                                               "prevents":  [
+                                                                "natural-language recently interpretation"
+                                                            ],
+                                               "cannot_affect":  [
+                                                                     "non-time mechanics"
+                                                                 ],
+                                               "source":  "https://www.poewiki.net/wiki/Recently"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "time tracking",
+                                                       "event state"
+                                                   ],
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Recently"
+                                      },
+                     "Conflicts":  {
+                                       "text":  [
+                                                    "Assuming a different duration than 4 seconds."
+                                                ],
+                                       "type":  "Official Rule",
+                                       "source":  "https://www.poewiki.net/wiki/Recently"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Lowercase recently in text should not be treated as mechanical keyword semantics.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Keyword"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "Capitalize consistently for mechanical interpretation in parser pipelines.",
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Keyword"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "Store as a fixed boolean condition (4s) and do not parameterize duration unless source explicitly provides a different term.",
+                                             "type":  "Official Rule",
+                                             "source":  "https://www.poewiki.net/wiki/Recently"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "Added in patch 2.2.0 as a keyword.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Recently"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+                                                        {
+                                                            "version":  "2.2.0",
+                                                            "note":  "Added as a keyword",
+                                                            "type":  "Official Rule"
+                                                        },
+                                                        {
+                                                            "version":  "current",
+                                                            "note":  "Window definition remains 4 seconds",
+                                                            "type":  "Official Rule"
+                                                        }
+                                                    ],
+                                           "type":  "Official Rule"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "If a hit landed 3.2 seconds ago, Recently is true.",
+                                                   "If a hit landed 4.1 seconds ago, Recently is false."
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Recently"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Recently means 1 second",
+                                                                "Recently is open-ended by patch difficulty"
+                                                            ],
+                                                   "type":  "Official Rule",
+                                                   "source":  "https://www.poewiki.net/wiki/Recently"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/wiki/Recently",
+                                                           "https://www.poewiki.net/wiki/Keyword"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "Keyword"
+                                         ],
+                          "modifies":  [
+                                           "conditional gating"
+                                       ],
+                          "requires":  [
+                                           "event timestamp"
+                                       ],
+                          "prevents":  [
+                                           "unbounded time interpretation"
+                                       ],
+                          "overrides":  [
+                                            "natural-language recently"
+                                        ],
+                          "inherits":  [
+
+                                       ],
+                          "creates":  [
+
+                                      ],
+                          "destroys":  [
+
+                                       ],
+                          "applies":  [
+                                          "timed effects"
+                                      ],
+                          "removes":  [
+
+                                      ],
+                          "shares_with":  [
+                                              "Keyword"
+                                          ],
+                          "is_scaled_by":  [
+
+                                           ],
+                          "cannot_affect":  [
+                                                "non-time states"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Official Rule",
+                                        "status":  "active",
+                                        "version":  "2.2.0"
+                                    }
+                                ],
+    "metadata":  {
+                     "source_type":  "Official Rule",
+                     "confidence":  "high",
+                     "source_authority":  "Path of Exile official terminology source",
+                     "status":  "active",
+                     "source_date":  "unverified",
+                     "source_url":  "https://www.poewiki.net/wiki/Recently"
+                 },
+    "collected_at":  "2026-07-13T00:20:07+01:00"
+}

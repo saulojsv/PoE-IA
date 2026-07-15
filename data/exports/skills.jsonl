@@ -1,0 +1,368 @@
+﻿{
+    "id":  "skill:added_cold_damage",
+    "name":  "Added Cold Damage",
+    "normalized_name":  "added_cold_damage",
+    "az_order":  0,
+    "category":  "support",
+    "variant_type":  "support",
+    "base_skill_id":  null,
+    "aliases":  [
+                    "Added Cold Damage Support",
+                    "Added Cold Damage Support Gem"
+                ],
+    "introduced_in_patch":  null,
+    "removed_in_patch":  null,
+    "legacy":  false,
+    "current":  false,
+    "patch":  "",
+    "league":  "",
+    "collected_at":  "2026-07-12T17:33:33Z",
+    "last_verified_at":  "2026-07-12T17:33:33Z",
+    "confidence":  0.45,
+    "status":  "unverified",
+    "classification":  [
+                           "support"
+                       ],
+    "tags":  [
+
+             ],
+    "requirements":  {
+
+                     },
+    "levels":  [
+
+               ],
+    "quality_effects":  [
+
+                        ],
+    "mechanics":  [
+
+                  ],
+    "formulas":  [
+
+                 ],
+    "limits_breakpoints":  [
+
+                           ],
+    "support_relationships":  [
+
+                              ],
+    "gem_links":  [
+
+                  ],
+    "item_synergies":  [
+
+                       ],
+    "passives_ascendancies":  [
+
+                              ],
+    "builds":  [
+
+               ],
+    "guides":  [
+
+               ],
+    "market_usage":  [
+
+                     ],
+    "patch_changes":  [
+
+                      ],
+    "sources":  [
+                    {
+                        "url":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                        "source_type":  "poewiki",
+                        "type":  "official_fact",
+                        "confidence":  0.45,
+                        "status":  "unverified",
+                        "source_date":  "",
+                        "source_url":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                        "patch":  "",
+                        "collected_at":  "2026-07-12T17:33:33Z"
+                    }
+                ],
+    "claims":  [
+                   {
+                       "patch":  "",
+                       "source":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                       "confirmed_at":  "2026-07-12T17:33:33Z",
+                       "type":  "identity",
+                       "reason":  "Não foi possível confirmar em fonte confiável.",
+                       "status":  "unverified"
+                   }
+               ],
+    "conflicts":  [
+
+                  ],
+    "validation":  [
+                       {
+                           "result":  "ok",
+                           "http_status":  200,
+                           "source":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                           "check":  "source_fetch"
+                       }
+                   ]
+}
+{"id":"skill:arctic_armour","name":"Arctic Armour","normalized_name":"arctic_armour","category":"active_skill_gem","variant_type":"base","status":"needs_review","patch":"3.19.1","league":"","collected_at":"2026-07-12T17:48:14Z","source":"https://www.poewiki.net/wiki/Arctic_Armour"}
+{
+  "id": "skill:animate_guardian",
+  "name": "Animate Guardian",
+  "normalized_name": "animate_guardian",
+  "az_order": 5,
+  "category": "active_skill_gem",
+  "variant_type": "base",
+  "base_skill_id": null,
+  "aliases": [],
+  "introduced_in_patch": "1.0.0",
+  "removed_in_patch": null,
+  "legacy": false,
+  "current": true,
+  "patch": "3.28.0j",
+  "league": "Mirage",
+  "collected_at": "2026-07-12T17:49:22Z",
+  "last_verified_at": "",
+  "confidence": 0.72,
+  "status": "needs_review",
+  "classification": [
+    "minion_gem",
+    "active_skill_gem",
+    "summon"
+  ],
+  "tags": [
+    "spell",
+    "minion",
+    "createsMinion",
+    "totemable",
+    "triggerable"
+  ],
+  "requirements": {
+    "level": {
+      "min": 28,
+      "max": 70
+    },
+    "str": {
+      "min": 42,
+      "max": 98
+    },
+    "int": {
+      "min": 29,
+      "max": 68
+    },
+    "mana": {
+      "cost_range": "11-20"
+    },
+    "gem_level": {
+      "min": 1,
+      "max": 20
+    }
+  },
+  "levels": [
+    {
+      "level": 1,
+      "mana_cost": 11,
+      "minion_attack_phys": "32-47",
+      "minion_life_more": "0%",
+      "minion_damage_more": "0%"
+    },
+    {
+      "level": 20,
+      "mana_cost": 20,
+      "max_equip_level": 100,
+      "max_animated_weapons": 14,
+      "minion_attack_phys": "126-184",
+      "minion_life_more": "0-38%",
+      "minion_damage_more": "0-38%"
+    }
+  ],
+  "quality_effects": [
+    {
+      "range": "1-20%",
+      "effect": "Up to +2 max animated weapons.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian"
+    }
+  ],
+  "mechanics": [
+    {
+      "type": "summon",
+      "statement": "Animates a melee weapon or armour item as an allied guardian minion.",
+      "source": "https://poedb.tw/us/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    },
+    {
+      "type": "duration",
+      "statement": "Base duration is 40 seconds.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    },
+    {
+      "type": "restriction",
+      "statement": "Ranged weapons cannot be animated; only melee weapons and armour can be used.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    },
+    {
+      "type": "persistence",
+      "statement": "Guardian uses character-bound equipment and does not share equipment across characters.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    },
+    {
+      "type": "resummon_area",
+      "statement": "Guardian cannot be resummoned in the same area where it died unless in hideout.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    },
+    {
+      "type": "item_interaction",
+      "statement": "Animated item is consumed and not recoverable; can only animate identified ground items without socketed gems.",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "patch": "3.28.0j",
+      "confidence": 0.9
+    }
+  ],
+  "formulas": [],
+  "limits_breakpoints": [
+    {
+      "item": "max_animated_weapons",
+      "value_range": "5-14 by level/quality",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian"
+    }
+  ],
+  "support_relationships": [
+    {
+      "support_id": "support:inspiration",
+      "skill_id": "skill:animate_guardian",
+      "effect_summary": "Listed as supported by POEDB source; no explicit effectiveness details captured.",
+      "conditions": "No trigger/charge interaction noted in the fetched source.",
+      "patch": "3.28.0j",
+      "sources": [
+        "https://poedb.tw/us/Animate_Guardian"
+      ],
+      "confidence": 0.72,
+      "validation_status": "current"
+    }
+  ],
+  "gem_links": [
+    {
+      "setup_type": "unverified",
+      "links": [],
+      "source": "unverified",
+      "status": "needs_review"
+    }
+  ],
+  "item_synergies": [
+    {
+      "item_or_mod": "animated items (weapon, helmet, body armour, gloves, boots, shield)",
+      "synergy_type": "transferred_stats",
+      "reason": "Equipped item stats apply to guardian, including corrupted implicits and enchantments.",
+      "importance": "high",
+      "patch": "3.28.0j",
+      "source": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "confidence": 0.9,
+      "is_historical": false
+    }
+  ],
+  "passives_ascendancies": [],
+  "builds": [],
+  "guides": [],
+  "market_usage": [],
+  "patch_changes": [
+    {
+      "patch": "3.26.0",
+      "notes": "Animated guardians now retain items on death; cannot be resummoned in same area unless hideout.",
+      "source": "https://poedb.tw/us/Animate_Guardian"
+    },
+    {
+      "patch": "3.23.0",
+      "notes": "Helmet enchantment interaction note and wording clarifications for minion movement speed from gem-affecting stats.",
+      "source": "https://poedb.tw/us/Animate_Guardian"
+    },
+    {
+      "patch": "3.28.0",
+      "notes": "Patch entry in POEDB applies to Animate Guardian of Smiting (variant), not base Animate Guardian.",
+      "source": "https://poedb.tw/us/Animate_Guardian"
+    }
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.poewiki.net/wiki/Animate_Guardian",
+      "source_type": "poewiki",
+      "source_date": "",
+      "collected_at": "2026-07-12T17:49:22Z",
+      "last_verified_at": "",
+      "patch": "3.28.0j",
+      "confidence": 0.9,
+      "classification": "official_fact"
+    },
+    {
+      "source_url": "https://poedb.tw/us/Animate_Guardian",
+      "source_type": "poedb",
+      "source_url_alias": "https://poewiki.net/wiki/Animate_Guardian",
+      "source_date": "",
+      "collected_at": "2026-07-12T17:49:22Z",
+      "last_verified_at": "",
+      "patch": "3.28.0j",
+      "confidence": 0.9,
+      "classification": "community_consensus"
+    }
+  ],
+  "claims": [
+    {
+      "id": "ag_basic_function",
+      "status": "verified",
+      "patch": "3.28.0j",
+      "text": "Animate Guardian summons an allied minion from a melee weapon or armour item and supports minion scaling from equipped items."
+    },
+    {
+      "id": "ag_item_loss",
+      "status": "verified",
+      "patch": "3.28.0j",
+      "text": "Animated items are consumed and cannot be recovered.",
+      "note": "From PoE Wiki and PoEDB pages."
+    }
+  ],
+  "conflicts": [
+    {
+      "status": "conflicted",
+      "type": "source_drift",
+      "field": "mana_cost",
+      "poewiki": "4-16 at line 53",
+      "poedb": "11-20 at lines 188-193",
+      "resolution": "needs_source_validation",
+      "patch": "3.28.0j"
+    }
+  ],
+  "validation": [
+    {
+      "status": "needs_review",
+      "checks": [
+        {
+          "name": "source_present",
+          "result": "pass"
+        },
+        {
+          "name": "patch_present",
+          "result": "pass"
+        },
+        {
+          "name": "conflict_scan",
+          "result": "pass_with_conflict"
+        },
+        {
+          "name": "poe_ninja_builds_xml",
+          "result": "missing_source"
+        }
+      ],
+      "validated_at": "2026-07-12T17:49:35Z",
+      "notes": "No valid Poe.ninja/PoB character export located during this run."
+    }
+  ],
+  "xml_status": "needs_source"
+}
+
+{"id":"skill:animate_guardian","entity_type":"active_skill_gem","name":"Animate Guardian","patch":"3.28.0j","league":"Mirage","status":"needs_review","source_url":"https://www.poewiki.net/wiki/Animate_Guardian","source_type":"poewiki","source_date":"","collected_at":"2026-07-12T17:49:22Z","last_verified_at":"","classification":"community","confidence":0.72,"xml_status":"needs_source"}

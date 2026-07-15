@@ -1,0 +1,95 @@
+{
+  "id": "000028_Duelist_Paladin",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000028_Duelist_Paladin.xml",
+  "identity": {
+    "class": "Duelist",
+    "ascendancy": "Paladin",
+    "level": "100",
+    "main_skill": "Enlighten",
+    "delivery": "self-cast/self-attack"
+  },
+  "metrics": {
+    "dps": "680.61545927424",
+    "combined_dps": "680.61545927424",
+    "crit_chance": "25.8816",
+    "crit_multiplier": "1.5",
+    "hit_chance": "96",
+    "ehp": "66652.545335513",
+    "life": "4892",
+    "energy_shield": "388",
+    "fire_res": "89",
+    "cold_res": "86",
+    "lightning_res": "89",
+    "chaos_res": "47",
+    "mana_unreserved": "212",
+    "mana_cost": "10"
+  },
+  "logic": {
+    "damage_scaling": [
+      "non-crit/low-crit"
+    ],
+    "defense_layers": [
+      "life pool",
+      "armour",
+      "evasion",
+      "spell suppression",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Enduring Cry",
+      "Grace",
+      "Determination"
+    ],
+    "auras_utility": [
+      "Clarity",
+      "Determination",
+      "Grace",
+      "Precision",
+      "Vitality",
+      "Wrath"
+    ],
+    "movement": [
+      "Frostblink",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Foulborn Greed's Embrace",
+      "Chitus' Apex",
+      "The Supreme Truth",
+      "March of the Legion",
+      "The Jinxed Juju",
+      "The Hand of Phrecia",
+      "Bisco's Leash",
+      "Foulborn Matua Tupuna"
+    ],
+    "cluster_jewels": [
+      "Bramble Hope",
+      "Potent Small Cluster Jewel of the Pupil"
+    ],
+    "flasks": [
+      "Dabbler's Sapphire Flask of the Armadillo",
+      "Abecedarian's Quartz Flask",
+      "Abecedarian's Granite Flask of the Impala",
+      "Superior Divine Life Flask",
+      "Abecedarian's Jade Flask"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

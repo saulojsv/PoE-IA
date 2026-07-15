@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Skill Research"
+  short_description: "Research one PoE skill per run."
+  default_prompt: "Use $poe-skill-researcher to research one PoE 1 skill and save JSON/Markdown."
+
+policy:
+  allow_implicit_invocation: true

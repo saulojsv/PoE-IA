@@ -1,0 +1,163 @@
+{
+  "id": "melee",
+  "term": "Melee",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Melee_skill",
+  "sections": {
+    "Definition": {
+      "text": "Melee skills are attack skills used with melee weapons or the unarmed state and have the Melee gem tag.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Purpose": {
+      "text": "Identify skills that are delivered in melee range and that follow the Melee keyword path.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Core Rules": {
+      "text": "All melee skills so far are Attack skills; Melee subsets include Strike and Slam. Some melee skills are not Strike/Slam but still carry Melee (for example Blade Flurry or Cyclone).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Internal Rules": {
+      "text": "Melee is a skill keyword applied to skill data and skill tags; it gates which support/interaction rules that explicitly mention melee may apply.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Calculation Order": {
+      "text": "Keyword tagging is resolved during skill selection and scaling. If a support requires Melee, the support eligibility check is applied before final attack-hit resolution.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Priority Rules": {
+      "text": "Melee-specific support restrictions take precedence over generic ranges when both are evaluated for one skill slot.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Preconditions": {
+      "text": "The action must be a skill with the Melee skill tag and must be an Attack for the primary relationship.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Postconditions": {
+      "text": "The skill remains classified under Melee and can receive Melee-scope mechanics, limitations, and supports.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Limitations": {
+      "text": "A Melee skill can still be in other skill-tag categories (for example AoE/Movement/Channelling), and those systems must still be processed according to their own rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Caps": {
+      "text": "No Melee-level percentage cap is defined on the Melee keyword alone.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Formula": {
+      "text": "No standalone Melee formula; Melee is a keyword tag, not an arithmetic operator.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Keywords": {
+      "text": [
+        "Melee",
+        "Attack",
+        "Strike",
+        "Slam",
+        "Melee skill",
+        "melee weapon",
+        "unarmed"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Related Mechanics": {
+      "depends_on": ["attack", "melee_weapon", "unarmed"],
+      "modifies": ["support eligibility"],
+      "requires": ["attack tag", "skill data tag validation"],
+      "prevents": [],
+      "cannot_affect": ["spell delivery rules without explicit Melee interaction"],
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Dependencies": {
+      "text": ["Attack", "Melee Weapon", "Unarmed", "Gem tags", "Weapon restrictions"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Conflicts": {
+      "text": "Ranged skill assumptions do not apply when a skill is explicitly Melee.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Exceptions": {
+      "text": "Some skills with Melee tag are not Strike or Slam, so classification is tag-based, not subset-based only.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Hidden Rules": {
+      "text": "Melee is a mechanic label that may be inherited by gems and modified by weapon restrictions and support tables.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Developer Notes": {
+      "text": "Store Melee as a source-of-eligibility term. Keep Melee distinct from Attack and from nearby/area mechanics.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Historical Changes": {
+      "text": "No patch-level deltas were provided for this pass in this source snapshot.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Patch History": {
+      "text": [],
+      "type": "Historical Behavior"
+    },
+    "Examples": {
+      "text": [
+        "Blade Flurry is tagged Melee while not being Strike or Slam.",
+        "All melee skills so far are Attack skills."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Melee is not equivalent to any Attack with an AoE area visual only.",
+        "Melee is not identical to using a bow or other projectile-only delivery."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    },
+    "Official Sources": {
+      "text": ["https://www.poewiki.net/wiki/Melee_skill"],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["attack", "melee_weapon", "unarmed"],
+    "modifies": ["support gating", "interaction filtering"],
+    "requires": ["melee skill tag", "attack flow"],
+    "prevents": ["ranged-only interaction assumptions"],
+    "overrides": [],
+    "inherits": ["attack"],
+    "creates": ["melee classification"],
+    "destroys": [],
+    "applies": ["melee tag checks"],
+    "removes": [],
+    "shares_with": ["attack", "weapon", "strike", "slam"],
+    "is_scaled_by": ["skill-specific melee modifiers"],
+    "cannot_affect": ["non-attack skills without explicit exceptions"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "unversioned",
+      "source": "https://www.poewiki.net/wiki/Melee_skill"
+    }
+  ],
+  "collected_at": "2026-07-13T11:56:12+01:00"
+}

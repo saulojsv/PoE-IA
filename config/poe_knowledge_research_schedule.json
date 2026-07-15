@@ -1,0 +1,12 @@
+{
+  "automation_id": "poe-knowledge-research-automation",
+  "schedules": {
+    "official_scan": "RRULE:FREQ=HOURLY;INTERVAL=4",
+    "skill_catalog_daily": "RRULE:FREQ=DAILY;BYHOUR=3;BYMINUTE=0",
+    "skill_scan_daily": "RRULE:FREQ=DAILY;BYHOUR=4;BYMINUTE=0",
+    "guides_and_builds": "RRULE:FREQ=WEEKLY;BYDAY=MO,TH;BYHOUR=6;BYMINUTE=0",
+    "market_refresh": "RRULE:FREQ=HOURLY;INTERVAL=6",
+    "weekly_validation": "RRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=0",
+    "monthly_snapshot": "RRULE:FREQ=MONTHLY;BYMONTHDAY=1;BYHOUR=1;BYMINUTE=0"
+  }
+}

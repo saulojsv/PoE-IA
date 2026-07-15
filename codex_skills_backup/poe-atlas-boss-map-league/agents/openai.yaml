@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Atlas Boss"
+  short_description: "Research atlas/boss/map fit."
+  default_prompt: "Use $poe-atlas-boss-map-league to research content fit for one skill or build."
+policy:
+  allow_implicit_invocation: true

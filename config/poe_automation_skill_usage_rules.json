@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "purpose": "Rules for the scheduled PoE 1 A-Z skill research agent.",
+  "execution": {
+    "frequency": "5 minutes",
+    "unit_of_work": "exactly_one_skill",
+    "order": "canonical_skill_name_A_to_Z",
+    "state_file": "data/normalized/skill_research_cursor.json",
+    "catalog_file": "data/normalized/skill_catalog_az.json",
+    "never_process_multiple_skills_per_run": true
+  },
+  "required_skill_flow": [
+    "poe-patch-monitor",
+    "poe-local-knowledge-storage",
+    "poe-az-skill-catalog",
+    "poe-skill-researcher",
+    "poe-source-collector",
+    "category_specific_skills",
+    "poe-data-normalizer",
+    "poe-conflict-validator",
+    "poe-rag-exporter",
+    "poe-automation-reporter"
+  ],
+  "category_specific_skills": {
+    "active": ["poe-active-skill-gems", "poe-skill-mechanics", "poe-gem-links-compatibility"],
+    "support": ["poe-support-gems", "poe-gem-links-compatibility"],
+    "vaal": ["poe-vaal-skills", "poe-skill-mechanics"],
+    "transfigured": ["poe-transfigured-gems", "poe-skill-mechanics"],
+    "minion": ["poe-minion-skills", "poe-spectres-corpses"],
+    "trigger": ["poe-trigger-skills"],
+    "reservation_or_aura": ["poe-reservation-aura-skills"],
+    "guard_movement_warcry": ["poe-guard-movement-warcry"],
+    "brand_trap_mine_totem": ["poe-brand-trap-mine-totem"],
+    "curse_or_mark": ["poe-curse-mark-skills"],
+    "herald_stance_retaliation": ["poe-herald-stance-retaliation"],
+    "channeling": ["poe-channeling-skills"],
+    "items": ["poe-items-uniques-modifiers", "poe-jewels-clusters-tattoos", "poe-flasks-crafting-currency"],
+    "tree": ["poe-class-ascendancy-attributes", "poe-passive-tree-masteries"],
+    "builds": ["poe-build-leveling-endgame", "poe-hardcore-ssf-ruthless", "poe-atlas-boss-map-league"],
+    "community": ["poe-guides-videos-pob", "poe-market-meta-trends"]
+  },
+  "output_files": {
+    "skill_json": "data/normalized/skills/{normalized_name}.json",
+    "skill_markdown": "data/exports/skills/{normalized_name}.md",
+    "poe_ninja_skill_xml": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}.xml",
+    "poe_ninja_skill_xml_meta": "data/poe_ninja/poe_ninja_dataset/xml/{normalized_name}.meta.json",
+    "jsonl": "data/exports/skills.jsonl",
+    "csv": [
+      "data/exports/skills.csv",
+      "data/exports/skill_supports.csv",
+      "data/exports/skill_items.csv",
+      "data/exports/skill_builds.csv",
+      "data/exports/sources.csv"
+    ]
+  },
+  "absolute_rules": [
+    "Never invent PoE data.",
+    "Never mix patches in one claim or RAG chunk.",
+    "Never mark a fact current without patch, source, date, and confidence.",
+    "Never infer support compatibility from tags alone.",
+    "Never treat creator opinion or market observation as official fact.",
+    "Never overwrite old patch data without snapshot."
+  ],
+  "claim_schema": {
+    "value": null,
+    "patch": null,
+    "league": null,
+    "source_url": null,
+    "source_type": null,
+    "source_date": null,
+    "collected_at": null,
+    "last_verified_at": null,
+    "classification": null,
+    "confidence": 0.0,
+    "status": "unverified"
+  }
+}

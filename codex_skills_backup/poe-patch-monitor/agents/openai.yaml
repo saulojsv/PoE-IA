@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Patch Monitor"
+  short_description: "Track PoE patches and diffs."
+  default_prompt: "Use $poe-patch-monitor to detect PoE 1 patch changes and affected skills."
+
+policy:
+  allow_implicit_invocation: true

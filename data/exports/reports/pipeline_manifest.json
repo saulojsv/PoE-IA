@@ -1,0 +1,13 @@
+﻿{
+  "patch_detector": {
+    "primary": "https://www.pathofexile.com/forum/view-forum/patch-notes",
+    "fallback": "https://poedb.tw/news",
+    "status": "operational"
+  },
+  "league_detector": {
+    "source": "https://api.pathofexile.com/leagues?type=main&compact=1",
+    "primary_league": "Mirage",
+    "status": "operational"
+  },
+  "created_at": "2026-07-12T17:29:45Z"
+}

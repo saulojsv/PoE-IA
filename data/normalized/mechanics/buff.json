@@ -1,0 +1,184 @@
+{
+  "id": "buff",
+  "term": "Buff",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Buff",
+  "sections": {
+    "Definition": {
+      "text": "Buff is an Effect that modifies statistics and is identified by a green icon border.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Purpose": {
+      "text": "Represent attached positive effects and include non-damaging side effects such as degeneration when defined by the buff source.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Core Rules": {
+      "text": "A Buff adds modifiers to the attached creature; Buff itself cannot deliver hits or actions. Debuffs are the detriment-side effect class.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Internal Rules": {
+      "text": "Charges and flask effects are not Buff effects; Buff duration is affected by Buff duration and, where applicable, Skill Effect Duration.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Calculation Order": {
+      "text": "1) effect instance attached 2) modifier aggregation by copy/strongest stacking rules 3) duration tracking 4) periodic expiry and replacement handling.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Priority Rules": {
+      "text": "Multiple copies of the same buff do not stack; only the strongest buff is active unless explicitly marked as a stacking buff or exception.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Preconditions": {
+      "text": "Valid source effect and valid target attachment state are required; icon visibility is a UI trait, not a behavioral requirement.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Postconditions": {
+      "text": "Target receives active buff/debuff modifiers and expiration behavior according to copy and duration rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Limitations": {
+      "text": "Buffs on enemies are generally not exposed on player UI; some effect types are exception-handled for visibility and timing.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Caps": {
+      "text": "Copy caps apply through strongest-rule semantics; exceptions (e.g., Withered stacks) may define explicit stack limits.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Formula": {
+      "text": "No single universal formula for all Buffs; each Buff defines its own modifier terms and aggregation is rule-driven by copy strength or stack exception.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Keywords": {
+      "text": ["Buff", "Effect", "statistics", "copy", "strongest buff", "stacking", "icon border", "duration"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Effect", "Modifier", "Duration", "Aura", "Debuff"],
+      "modifies": ["entity statistics", "damage handling", "visual representation"],
+      "requires": ["valid attach source", "valid target"],
+      "prevents": ["automatic inversion of buff sign"],
+      "cannot_affect": ["charge or flask mechanics classified outside Buff"],
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Dependencies": {
+      "text": ["effect attachment model", "buff duration modifiers", "debuff system"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Conflicts": {
+      "text": "Buff effect modifier scaling and curse/debuff aura application have changed across patches and can conflict with legacy semantics.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Exceptions": {
+      "text": "Stacking buffs are exceptions to strongest-only rule; some systems explicitly allow multiple instances up to limits.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Hidden Rules": {
+      "text": "Aura-derived and support-driven Buff applications may use modifier pipelines not obvious from icon-only inspection.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Developer Notes": {
+      "text": "Treat Buff as a general effect class with explicit Debuff separation and exception-based stacking behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Historical Changes": {
+      "text": "Patch history indicates targeted fixes to aura/buff transition, inversion bugs, and aura effect scope for enemy auras.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.28.0e",
+          "note": "Some buff effects now transition with the player through combat areas.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Buff"
+        },
+        {
+          "version": "3.16.2b",
+          "note": "Most buff effect modifiers can no longer invert the effect of buffs.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Buff"
+        },
+        {
+          "version": "3.10.1",
+          "note": "Increased Effect of Auras on You modifiers no longer apply to enemy debuff auras.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Buff"
+        },
+        {
+          "version": "0.5.10",
+          "note": "Historical UI/display-level buff presentation change.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Buff"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Wrath applies a lightning damage buff effect through an aura.",
+        "Multiple same-name buffs do not stack unless explicitly exceptional."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "A red-border effect is not necessarily a Buff but usually a Debuff.",
+        "All positive effects are not guaranteed to be Buffs when represented by icons or names."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Buff"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Buff",
+        "https://www.poewiki.net/wiki/Keyword",
+        "https://www.poewiki.net/wiki/Modifier",
+        "https://www.pathofexile.com/forum/view-thread/2627116"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Effect", "Statistics", "Modifier"],
+    "modifies": ["character stats", "effect modifiers", "enemy and ally states"],
+    "requires": ["valid source", "valid target"],
+    "prevents": ["inversion by most buff effect modifiers"],
+    "overrides": ["non-exception duplicate buff copies"],
+    "inherits": ["Effect"],
+    "creates": ["buff instance", "debuff instance"],
+    "destroys": ["expired buff/debuff instances"],
+    "applies": ["stat changes"],
+    "removes": ["stack-cleared buff copies"],
+    "shares_with": ["Debuff", "Aura", "Hex", "Curse"],
+    "is_scaled_by": ["Buff duration", "increased duration modifiers", "skill effect duration when applicable"],
+    "cannot_affect": ["flask and charge systems classified outside buff effect model"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.28.0e"
+    }
+  ],
+  "collected_at": "2026-07-12T21:34:55.1847737+01:00"
+}

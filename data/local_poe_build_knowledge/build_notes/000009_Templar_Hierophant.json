@@ -1,0 +1,93 @@
+{
+  "id": "000009_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000009_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Kinetic Fusillade",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "6912825.2309933",
+    "combined_dps": "6926826.4998329",
+    "crit_chance": "100",
+    "crit_multiplier": "5.99",
+    "hit_chance": "100",
+    "ehp": "15116.788457001",
+    "life": "3761",
+    "energy_shield": "887",
+    "fire_res": "75",
+    "cold_res": "75",
+    "lightning_res": "75",
+    "chaos_res": "44",
+    "mana_unreserved": "244",
+    "mana_cost": "45"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot",
+      "projectile"
+    ],
+    "defense_layers": [
+      "life pool",
+      "ES recovery"
+    ],
+    "main_supports": [
+      "Greater Multiple Projectiles",
+      "Less Duration",
+      "Ballista Totem",
+      "Increased Critical Damage",
+      "Invert the Rules"
+    ],
+    "auras_utility": [
+      "Precision",
+      "Purity of Elements",
+      "Vitality"
+    ],
+    "movement": [
+      "Lightning Warp"
+    ],
+    "required_or_enabling_uniques": [
+      "Eclipse Solaris",
+      "Doedre's Tenure",
+      "Timeclasp",
+      "Mageblood",
+      "Wreath of Phrecia",
+      "Foulborn Hinekora's Sight",
+      "Replica Covenant",
+      "Eclipse Solaris",
+      "Forbidden Flame",
+      "Forbidden Flesh",
+      "Rain of Splinters"
+    ],
+    "cluster_jewels": [],
+    "flasks": [
+      "Mageblood",
+      "Alchemist's Amethyst Flask of the Cheetah",
+      "Abecedarian's Granite Flask of Tenaciousness",
+      "Dabbler's Silver Flask of the Walrus",
+      "Dabbler's Quicksilver Flask of the Kaleidoscope",
+      "Catalysed Divine Life Flask"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

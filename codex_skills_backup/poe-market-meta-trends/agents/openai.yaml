@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Market Meta"
+  short_description: "Research market/meta trends."
+  default_prompt: "Use $poe-market-meta-trends to collect market and usage trends."
+policy:
+  allow_implicit_invocation: true

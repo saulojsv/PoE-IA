@@ -1,0 +1,165 @@
+{
+  "id": "scorch",
+  "term": "Scorch",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official Path of Exile wiki and official forum references",
+  "sections": {
+    "Definition": {
+      "text": "Scorch is an Elemental Ailment associated with Fire that lowers affected targets' Elemental Resistances.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Purpose": {
+      "text": "Provide a fire-hit based mitigation pressure channel by reducing target Elemental Resistance values after elemental hit application.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Core Rules": {
+      "text": "Scorch magnitude scales from Fire Damage of a Hit, is capped, and applies reduced resistance for a fixed duration.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2961546"
+    },
+    "Internal Rules": {
+      "text": "Scorch uses the non-damaging elemental ailment pathway and is handled as a separate state from Ignite.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3185943"
+    },
+    "Calculation Order": {
+      "text": "1) Hit resolves fire damage 2) compute Scorch magnitude versus ailment threshold 3) apply non-damaging ailment effect scaling 4) clamp to maximum 30% reduction 5) apply remaining duration.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Priority Rules": {
+      "text": "Specific Scorch effect applies under the same elemental ailment resistance-reduction channel; resistance-reduction reductions on the same target follow normal effect stacking semantics.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Preconditions": {
+      "text": "A qualifying Fire Hit must occur and the target must be eligible for elemental non-damaging ailments.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3185943"
+    },
+    "Postconditions": {
+      "text": "Target gains a Scorch ailment with reduced Elemental Resistance at Hit resolution until duration expiry.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Limitations": {
+      "text": "Non-damaging ailment avoidance and minimum/maximum effect protections may block or cap Scorch.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3508809"
+    },
+    "Caps": {
+      "text": "Documented current upper cap is up to 30% Elemental Resistance reduction.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Formula": {
+      "text": "Public source provides max-cap statement and scaling model description; exact published numeric formula is not fully specified in this record from collected official references.",
+      "type": "Community Theory",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Keywords": {
+      "text": ["Scorch", "Ailment", "Fire", "elemental resistance", "4 seconds", "non-damaging ailment"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Elemental Ailment", "Ailment Threshold", "Fire Hit"],
+      "modifies": ["Elemental Resistance", "damage taken from Elemental hits"],
+      "requires": ["Fire damage hit", "non-damaging ailment applicability"],
+      "prevents": ["unbounded resistance reduction from Scorch"],
+      "cannot_affect": ["non-affected resistances"],
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Dependencies": {
+      "text": ["Fire damage hit source", "Ailment Threshold", "Elemental Resistance calculator", "non-damaging ailment immunity state"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Conflicts": {
+      "text": "Scorch is distinct from Ignite and does not itself apply burning damage-over-time.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3185943"
+    },
+    "Exceptions": {
+      "text": "Earlier pre-3.9 wording in community references mentions lower pre-patch duration values; present record uses the current 4-second form from PoE Wiki.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Hidden Rules": {
+      "text": "Affected resistance reduction is treated as resistance-type modifier rather than Hit damage modifier.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Developer Notes": {
+      "text": "Treat Scorch as a non-damaging alternate ailment in this schema with explicit versioned caps and thresholds.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Historical Changes": {
+      "text": "Scorch was introduced as part of alternate ailment expansion in 3.5 and later maintained as a lower-cap alternate elemental ailment branch.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.5.0",
+          "note": "Scorch introduced as alternate elemental ailment.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.9.0",
+          "note": "Alternate ailments including Scorch documented with lower-cap behavior versus classic non-damaging elemental ailments.",
+          "type": "Official Rule",
+          "source": "https://webcdn.pathofexile.com/forum/view-thread/2687400/page/1"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": ["A high Fire Hit can apply strong Scorch up to the resistance reduction cap for 4 seconds."],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Common Misconceptions": {
+      "text": ["Scorch is not Ignite; it does not add burn damage over time.", "Scorch reduction is a resistance effect, not Hit damage modification."],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Scorch"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Scorch",
+        "https://www.pathofexile.com/forum/view-thread/2961546",
+        "https://www.pathofexile.com/forum/view-thread/3185943",
+        "https://webcdn.pathofexile.com/forum/view-thread/2687400/page/1"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Fire Hit", "Ailment Threshold", "Elemental Resistance system"],
+    "modifies": ["Elemental Resistance", "fire and general Elemental damage taken"],
+    "requires": ["target not ailment-immune", "fire hit event"],
+    "prevents": ["unbounded fire resistance reduction"],
+    "overrides": ["none"],
+    "inherits": ["Ailment"],
+    "creates": ["scorch_state"],
+    "destroys": ["expired Scorch state"],
+    "applies": ["up to 30% elemental resistance reduction"],
+    "removes": ["Scorch state when duration ends"],
+    "shares_with": ["Brittle", "Sap", "Ailment"],
+    "is_scaled_by": ["non-damaging ailment effect", "Ailment threshold modifiers"],
+    "cannot_affect": ["purely physical damage channels without Elemental effect path"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.9.0"
+    }
+  ],
+  "collected_at": "2026-07-13T11:20:46+01:00"
+}

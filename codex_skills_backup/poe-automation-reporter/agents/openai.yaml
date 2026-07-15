@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Automation Reporter"
+  short_description: "Report PoE automation runs."
+  default_prompt: "Use $poe-automation-reporter to report a PoE 1 automation run and update cursor state."
+
+policy:
+  allow_implicit_invocation: true

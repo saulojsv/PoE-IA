@@ -1,0 +1,153 @@
+{
+  "id": "cannot_evade",
+  "term": "Cannot Evade",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Accuracy",
+  "sections": {
+    "Definition": {
+      "text": "Cannot Evade is a state where all attacks against the subject hit regardless of accuracy or evasion checks.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Purpose": {
+      "text": "Guarantee hit landing for incoming attacks by bypassing normal accuracy/evasion resolution.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Core Rules": {
+      "text": "The effect inverts the usual evasion gate so that the subject always receives hits from attacks.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Internal Rules": {
+      "text": "Cannot Evade is processed as an override in hit resolution and applies across attack-hit paths that would otherwise use attacker Accuracy vs target Evasion.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Calculation Order": {
+      "text": "1) evaluate normal hit computation inputs 2) if Cannot Evade is active on target, force hit outcome to true before post-hit checks.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Priority Rules": {
+      "text": "Cannot Evade has the same override class as explicit hit-force modifiers that raise chance to hit to 100%.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Preconditions": {
+      "text": "Subject must be under a Cannot Evade effect and the action must be an attack targetable by hit/evasion logic.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Postconditions": {
+      "text": "The target is treated as hit for the current attack resolution regardless of normal accuracy variance.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Limitations": {
+      "text": "This mechanic statement applies to attacks only, as defined in the cited source context.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Caps": {
+      "text": "Hit chance is effectively forced to 100% by override; normal 0.05 lower cap is bypassed for impacted attacks.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Formula": {
+      "text": "Chance to hit is set to 100% for covered attack interactions when Cannot Evade applies.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Keywords": {
+      "text": ["Cannot Evade", "hit", "attack", "accuracy", "evasion", "override"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Accuracy", "Evasion"],
+      "modifies": ["chance to hit", "attack hit outcome"],
+      "prevents": ["evasion-based miss"],
+      "requires": ["active Cannot Evade source"],
+      "cannot_affect": ["spell hit"],
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Dependencies": {
+      "text": ["Hit resolution pipeline", "Accuracy and Evasion checks"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Conflicts": {
+      "text": "Cannot Evade has inverse semantic intent to modifiers that force attacks to hit from the attacker side; both occupy the same override class and are condition-specific.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Exceptions": {
+      "text": "Source excerpt explicitly differentiates between Cannot Evade and effects that force hits from attacker traits.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Hidden Rules": {
+      "text": "Cannot Evade is represented as an effect-state rather than a base damage formula and is generally checked during hit eligibility resolution.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Developer Notes": {
+      "text": "Store this term as stateful hit-resolution override; do not mix with general movement or avoidability systems.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Historical Changes": {
+      "text": "Source page presents equivalent examples but does not expose explicit per-patch delta in this pass.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Patch History": {
+      "text": [],
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Examples": {
+      "text": [
+        "Unwavering Stance is cited as an example source where all attacks against the subject cannot be evaded.",
+        "This causes attacks to connect even when normal hit chance would otherwise miss."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Cannot Evade is not the same as guaranteed critical strike; it affects hit resolution only.",
+        "Cannot Evade is not the same scope as modifiers that force attacker-side Always Hit."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Accuracy"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Accuracy",
+        "https://www.pathofexile.com/forum/view-thread/2668769/page/2"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Accuracy", "Evasion", "Hit"],
+    "modifies": ["attack hit outcome"],
+    "requires": ["active cannot evade status", "attack target evaluation"],
+    "prevents": ["evasion check failure"],
+    "overrides": ["normal evasion-based miss result"],
+    "applies": ["always-hit branch in hit resolution"],
+    "is_scaled_by": ["evasion sources while active (scope not scaled)"],
+    "cannot_affect": ["spell hits"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "unversioned"
+    }
+  ],
+  "collected_at": "2026-07-12T22:05:09.0925737+01:00"
+}

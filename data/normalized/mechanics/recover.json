@@ -1,0 +1,159 @@
+{
+  "id": "recover",
+  "term": "Recover",
+  "status": "research_pass",
+  "classification": "Observed Behavior",
+  "source": "https://www.poewiki.net/wiki/Recovery",
+  "sections": {
+    "Definition": {
+      "text": "Recover is resource restoration (life, mana, or energy shield) applied as a gain effect.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Purpose": {
+      "text": "Restore a depleted resource value rather than increase it permanently.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Core Rules": {
+      "text": "Recover is one member of Recovery forms, alongside regeneration, leech, recoup, and flask effects.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Internal Rules": {
+      "text": "Recovery is pooled by resource; broad recovery-rate modifiers apply to pooled totals and can stack with more specific per-source rates.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Calculation Order": {
+      "text": "After a recovery source triggers, value is added through recovery pool calculations before final per-resource caps are enforced.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Priority Rules": {
+      "text": "Specific recovery source caps and restrictions on pools override generic pool-wide recovery rate modifiers.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Preconditions": {
+      "text": "A gain event on a resource and a valid recipient resource pool.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Postconditions": {
+      "text": "Resource value increases by the recovery amount and may be bounded by current cap or pool-level limits.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Limitations": {
+      "text": "Recovery behavior depends on explicit wording (e.g., on hit, on kill, rate-limited recoup).",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Caps": {
+      "text": "The opposite of recovery is loss; recovery is commonly limited by pool caps and source-specific rate caps.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Formula": {
+      "text": "resource_after = min(pool_cap, resource_before + recovered_amount) unless the specific source defines different restrictions.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Keywords": {
+      "text": ["Recovery", "Recover", "Leech", "Regeneration", "Recoup", "Flasks"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Life", "Mana", "Energy Shield", "Recovery"],
+      "modifies": ["current resource values"],
+      "requires": ["trigger condition"],
+      "prevents": ["resource overfill without source restrictions"],
+      "cannot_affect": ["maximum resource growth"],
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Dependencies": {
+      "text": ["Resource cap data", "rate modifiers", "recovery source condition"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Conflicts": {
+      "text": ["Specific source wording can disable general recovery behavior while active (e.g., cannot gain Life during effect)"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Exceptions": {
+      "text": ["Life/ES leech interaction and source-specific historical changes are not merged in this pass."],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Hidden Rules": {
+      "text": "Some effects use wording \"Recover\" but are implemented as other specific mechanics (for example, recoup over time).",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Developer Notes": {
+      "text": "Record Recover as generic category with mandatory source-specific exception branch for precise behavior.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Historical Changes": {
+      "text": "No explicit Recover patch timeline captured in this pass.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Current pooled-recovery interpretation with source-specific caps and rates."
+        }
+      ],
+      "type": "Observed Behavior"
+    },
+    "Examples": {
+      "text": [
+        "Recover 1% Life on Kill restores life immediately once per enemy kill event.",
+        "Gain on hit or recoup examples are separate subclasses under the same Recovery umbrella."
+      ],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Gain_on_kill"
+    },
+    "Common Misconceptions": {
+      "text": ["Recover equals Regenerate", "All recovery is timed"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Recovery"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Recovery",
+        "https://www.poewiki.net/wiki/Gain_on_kill",
+        "https://www.poewiki.net/wiki/Recoup"
+      ],
+      "type": "Observed Behavior"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Life", "Mana", "Energy Shield"],
+    "modifies": ["current resource"],
+    "requires": ["valid source trigger"],
+    "prevents": ["permanent over-cap"],
+    "overrides": [],
+    "inherits": [],
+    "creates": ["resource increase event"],
+    "destroys": ["temporary deficit"],
+    "applies": ["resource restoration"],
+    "removes": [],
+    "shares_with": ["Leech", "Regeneration", "Recoup", "Flasks"],
+    "is_scaled_by": ["recovery rate effects"],
+    "cannot_affect": ["maximum base resource level"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Observed Behavior",
+      "status": "active",
+      "version": "current"
+    }
+  ]
+}

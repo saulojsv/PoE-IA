@@ -1,0 +1,92 @@
+{
+  "id": "000017_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000017_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Elemental Damage with Attacks",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "1597573.903442",
+    "combined_dps": "1600546.9822525",
+    "crit_chance": "65.286",
+    "crit_multiplier": "4.63",
+    "hit_chance": "93",
+    "ehp": "56170.698720123",
+    "life": "4047",
+    "energy_shield": "873",
+    "fire_res": "75",
+    "cold_res": "75",
+    "lightning_res": "79",
+    "chaos_res": "75",
+    "mana_unreserved": "158",
+    "mana_cost": "23"
+  },
+  "logic": {
+    "damage_scaling": [
+      "attack",
+      "crit",
+      "dot",
+      "elemental"
+    ],
+    "defense_layers": [
+      "life pool",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Kinetic Fusillade",
+      "Greater Volley",
+      "Less Duration",
+      "Ballista Totem",
+      "Increased Critical Damage"
+    ],
+    "auras_utility": [
+      "Anger",
+      "Precision",
+      "Tempest Shield",
+      "Wrath"
+    ],
+    "movement": [
+      "Frostblink",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Doedre's Tenure",
+      "Warped Timepiece",
+      "Rumi's Concoction",
+      "Watcher's Eye"
+    ],
+    "cluster_jewels": [],
+    "flasks": [
+      "Effusive Divine Life Flask of Allaying",
+      "Rumi's Concoction",
+      "Wide Quicksilver Flask of the Deer",
+      "Doled Silver Flask of the Plover",
+      "Endless Amethyst Flask of the Pangolin"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": false
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": [
+    "attack_hit_capped_if_relevant"
+  ]
+}

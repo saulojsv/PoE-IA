@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE Data Normalizer"
+  short_description: "Normalize PoE skill records."
+  default_prompt: "Use $poe-data-normalizer to normalize collected PoE 1 skill data."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Channeling"
+  short_description: "Research channeling skills."
+  default_prompt: "Use $poe-channeling-skills to research one channeling skill."
+policy:
+  allow_implicit_invocation: true

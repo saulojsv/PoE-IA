@@ -1,0 +1,7 @@
+interface:
+  display_name: "PoE A-Z Catalog"
+  short_description: "Maintain PoE skill catalog A-Z."
+  default_prompt: "Use $poe-az-skill-catalog to update the PoE 1 A-Z skill catalog."
+
+policy:
+  allow_implicit_invocation: true

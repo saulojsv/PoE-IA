@@ -1,0 +1,164 @@
+{
+  "id": "more",
+  "term": "More",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.pathofexile.com/forum/view-thread/1642545",
+  "sections": {
+    "Definition": {
+      "text": "More is a multiplicative modifier token used to scale effects, including damage, by multiplication rather than by arithmetic addition.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Purpose": {
+      "text": "Apply multiplicative scaling so modifier effects compose with additive sources in a separate bucket.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Core Rules": {
+      "text": "Increased/Reduced terms are additive, while More/Less terms multiply with each other and with the additive result.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Internal Rules": {
+      "text": "Each qualifying More entry is represented as a dedicated factor and applied to the already resolved base+additive total.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Calculation Order": {
+      "text": "1) Base value calculation 2) additive (Increased/Reduced) resolution 3) More/Less factor application 4) post-rule caps and rounding/precision constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Priority Rules": {
+      "text": "Mechanic-specific text overrides the generic More bucket when scope is narrowed to a component, phase, or target.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Preconditions": {
+      "text": "A stat or sub-stat must be marked to accept More/Less scaling and a valid source mechanic must attach the modifier.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Postconditions": {
+      "text": "Affected quantity is multiplied by all More/Less factors in scope rather than merged into an additive pool.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Limitations": {
+      "text": "More cannot be treated as Increased with sign inversion; only systems that explicitly define linear behavior can do so.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Caps": {
+      "text": "No universal More token cap; final values remain bounded by recipient stat systems.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Formula": {
+      "text": "final = base_after_additive * Π(1 + each_more_i) * Π(1 - each_less_j)",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Keywords": {
+      "text": ["More", "Less", "Increased", "Reduced", "Multiplier"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Less", "Increased", "Reduced", "Damage", "Modifier stack"],
+      "modifies": ["final damage", "final statistics"],
+      "requires": ["valid modifier scope"],
+      "prevents": ["linear treatment as Increased negative"],
+      "cannot_affect": ["statistics not using multiplier buckets"],
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Dependencies": {
+      "text": ["modifier tag system", "additive stage", "scope-specific application"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Conflicts": {
+      "text": "Confusing More with Increased leads to incorrect total scaling; explicit mechanic scope always overrides generic combination assumptions.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Exceptions": {
+      "text": "Some skills or support-given effects gate More to a subcomponent and do not apply globally.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1963938"
+    },
+    "Hidden Rules": {
+      "text": "Model More and Less as separate bucket objects in storage to preserve future patch-level behavior changes.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Developer Notes": {
+      "text": "Do not normalize More into additive percent; preserve multiplicative order and factor boundaries.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Historical Changes": {
+      "text": "No explicit mechanic definition reset was captured in this pass; behavior remains tracked as additive + multiplicative bucket model.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Token remains a multiplicative modifier family; no official source in this pass indicates core semantics reversal.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Two instances 20% More and 30% More produce 1.2 * 1.3 = 1.56 multiplier.",
+        "More modifiers do not apply as +50%; they scale by factor."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Common Misconceptions": {
+      "text": ["More equals Increased", "More can be merged linearly with other More values"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1642545",
+        "https://www.pathofexile.com/forum/view-thread/1242841",
+        "https://www.pathofexile.com/forum/view-thread/1963938",
+        "https://www.pathofexile.com/forum"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    }
+  },
+  "relationships": {
+    "depends_on": ["base_damage", "additive_scale", "modifier_scope"],
+    "modifies": ["final_damage", "final_stat"],
+    "requires": ["scope eligibility"],
+    "prevents": ["additive_only_treatment"],
+    "overrides": [],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["multiplicative scaling"],
+    "removes": [],
+    "shares_with": ["Less", "Increased", "Reduced"],
+    "is_scaled_by": ["skill specific multipliers", "stat sources"],
+    "cannot_affect": ["systems without More/Less buckets"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-13T10:10:45.0605715+01:00"
+}

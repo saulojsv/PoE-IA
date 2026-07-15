@@ -1,0 +1,20 @@
+﻿# poe-hourly-skill-refresh
+
+Source: `C:\Users\saulo\.codex\automations\poe-hourly-skill-refresh\automation.toml`
+
+```toml
+version = 1
+id = "poe-hourly-skill-refresh"
+kind = "cron"
+name = "PoE hourly skill refresh"
+prompt = "Use este protocolo: Use sempre o modelo mais barato disponível no ambiente de execução. Se o mais barato disponível for Codex-Spark, aplique raciocínio baixo. Quando houver exigência de custo mínimo, mantenha raciocínio baixo. Use as skills locais PoE Build Analyst, PoE Combinatorial Dataset Trainer, PoE Dashboard Model Integrator, PoE Passive Tree Planner, PoE PoB Equipment Optimizer, PoE PoB XML Golden Exporter, PoE Jewel Cluster Specialist e Skill Creator se disponível. A cada hora, execute: powershell -ExecutionPolicy Bypass -File scripts\\refresh-codex-poe-skills.ps1 primeiro. Em seguida releia somente quando houver mudança concreta: README.md, docs/**/*.md, scripts, backend, frontend, knowledge, data/item-rules, data/item-catalog, data/passive-tree/index, current audits e skill feed files. Antes de editar qualquer artefato de dados, sempre entenda e valide o formato de destino (schema, ordem de chaves/campos, tipos, constraints e limites aceitos) para não quebrar o parser do consumidor final (PoB ou runtime). Use os arquivos listados abaixo **somente** como referência de formatação estrutural e aceitação no PoB XML, não como regra funcional de game design ou meta: Goratha_XD_IGNITE.xml, Crit Blade Vortex Minion Pact.xml, Penance Brand Ignite.xml, Penance Brand of Dissipation.xml, Energy Blade.xml, KF_TOTEMS_NO_CUCK_THO.xml, Energy Blade Various Skills.xml, GCF Mines End.xml, Shock Nova Final Update.xml. Mantenha máxima conformidade estrutural com esses exemplos antes de preencher/ajustar XML para preservar aceitação no PoB. Em seguida inspecione C:\\Users\\saulo\\.codex\\skills\\poe-functional-additions-candidates.md e C:\\Users\\saulo\\.codex\\skills\\poe-new-skill-candidates.md. Se necessário, atualize referências/SKILL.md apenas para melhorias pequenas e alto valor, valide com quick_validate.py. Se surgir área recorrente e estável fora do escopo existente, crie nova skill em C:\\Users\\saulo\\.codex\\skills usando Skill Creator. Busque fontes apenas por categoria concreta e mudanças suspeitas, nesta ordem: Path of Building Community source/data, official GGG developer/static/trade data, RePoE, poe.ninja, community notes. Não promova claims da web para verdade estrutural sem virar dado local versionado, teste, blocker documentado ou referência de skill validada. Trate sempre como hard gates: importabilidade PoB XML/golden-template, legalidade de árvore, legalidade de itens, compatibilidade de gemas de suporte e realismo de config PoB. Rode node scripts\\build-item-catalog-index.js, node scripts\\audit-pob-data.js, e go test ./... do backend quando dados/código mudarem ou houver necessidade de consistência. Gere também uma listagem de regras e pontos críticos para: skill tree (incluindo ascendancy), gems, items, e fases do pipeline (coleta -> validação -> integração -> auditoria -> export). Para cada domínio, registre: fonte principal válida, critérios de aceitação, regressão esperada, formato esperado do arquivo e evidência local (arquivo/artefato). Se houver lacunas, classifique com risco e priorize correção mínima. Se arquivos do projeto mudarem, faça commit e push para origin/main com mensagem concisa. Se mudarem apenas arquivos em C:\\Users\\saulo\\.codex\\skills, valide skills afetadas e sumarize atualizações no relatório. Registre a execução crítica e curta em C:\\Users\\saulo\\Documents\\Codex\\automations\\poe-hourly-skill-refresh\\memory.md no formato: mudanças-aplicadas, validações, risco/impacto, pendencias, proximo-step, formatos-validados. Priorize ações mínimas e custo baixo; se não houver ganho justificável, não aplique e registre como nao aplicada."
+status = "ACTIVE"
+rrule = "FREQ=HOURLY;INTERVAL=1"
+model = "gpt-5.3-codex-spark"
+reasoning_effort = "low"
+execution_environment = "local"
+cwds = ["C:\\Users\\saulo\\Desktop\\IA - Projetos\\IA - PoE 1"]
+created_at = 1782307735275
+updated_at = 1782638370191
+
+```

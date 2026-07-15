@@ -1,0 +1,162 @@
+{
+  "id": "attack",
+  "term": "Attack",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Attack",
+  "sections": {
+    "Definition": {
+      "text": "Attack is a skill class that routes weapon-based damage through attack delivery mechanics.",
+      "type": "Official Rule",
+      "source": "official community-facing mechanic clarifications"
+    },
+    "Purpose": {
+      "text": "Route actions through weapon-based hit/deal and accuracy-dependent pipelines.",
+      "type": "Official Rule",
+      "source": "official mechanics semantics"
+    },
+    "Core Rules": {
+      "text": "A skill uses Attack class when it is classified as attack-based and weapon-based; this is not equivalent to Melee.",
+      "type": "Official Rule",
+      "source": "Path of Exile gameplay discussion and Mark_GGG references"
+    },
+    "Internal Rules": {
+      "text": "Attack modifiers apply on the attack pipeline and can coexist with non-attack sub-components only when explicitly defined by the skill text.",
+      "type": "Official Rule",
+      "source": "mechanics thread examples"
+    },
+    "Calculation Order": {
+      "text": "1) attack validation 2) accuracy/evasion checks 3) hit checks 4) damage and secondary effects, then attack-class modifiers.",
+      "type": "Official Rule",
+      "source": "community-accessible official defensive/hit flow thread (official forum)"
+    },
+    "Priority Rules": {
+      "text": "Specific skill components can route partial damage to non-attack subpaths (e.g., attack explosions as spell damage).",
+      "type": "Official Rule",
+      "source": "Mark_GGG clarification"
+    },
+    "Preconditions": {
+      "text": "Action must consume skill state that is weapon-based rather than purely cast-based.",
+      "type": "Official Rule",
+      "source": "official damage source clarifications"
+    },
+    "Postconditions": {
+      "text": "Attack-only scaling and passives can apply; attack-specific defensive checks (accuracy, evasion interactions) are eligible if referenced by mechanics.",
+      "type": "Official Rule",
+      "source": "mechanics Q&A references"
+    },
+    "Limitations": {
+      "text": "Not all weapon interactions are Attack for unarmed or shield-based edge-cases, and not all attack-tagged output is guaranteed weapon base.",
+      "type": "Official Rule",
+      "source": "mechanic distinctions"
+    },
+    "Caps": {
+      "text": "No global cap for Attack keyword itself.",
+      "type": "Official Rule",
+      "source": "n/a"
+    },
+    "Formula": {
+      "text": "No standalone formula for Attack keyword; attack-related modifiers are applied in their pipeline.",
+      "type": "Official Rule",
+      "source": "n/a"
+    },
+    "Keywords": {
+      "text": ["Attack", "Attack Damage", "Weapon Damage", "Melee", "Projectile", "Spell", "Accuracy"],
+      "type": "Official Rule",
+      "source": "official terminology"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Hit"],
+      "modifies": ["Attack Damage", "Physical Damage", "attack_ailments"],
+      "requires": ["weapon_or_attack_skill_path"],
+      "prevents": ["treating_spell_as_attack_without_weapon_path"],
+      "cannot_affect": ["mods explicitly excluding attack damage"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Hit", "Weapon Damage", "Accuracy", "Attack Speed"],
+      "type": "Official Rule",
+      "source": "official and community-anchored mechanics"
+    },
+    "Conflicts": {
+      "text": ["Attack mistaken for Spell", "Weapon Damage assumptions on unsupported skills"],
+      "type": "Official Rule",
+      "source": "critical distinctions"
+    },
+    "Exceptions": {
+      "text": ["Some explicit skills are attacks but include secondary components treated as Spell damage."],
+      "type": "Official Rule",
+      "source": "Mark_GGG quote on explosive/ infernal blow"
+    },
+    "Hidden Rules": {
+      "text": "Keep Attack and Weapon Damage separate: Weapon Damage may not cover all non-spell cases; use explicit skill text to resolve.",
+      "type": "Official Rule",
+      "source": "observational mechanics normalization"
+    },
+    "Developer Notes": {
+      "text": "Prefer explicit skill component tagging in normalized model rather than deriving all outputs from the base class.",
+      "type": "Official Rule",
+      "source": "schema requirements"
+    },
+    "Historical Changes": {
+      "text": "No explicit patch-scoped redefinition for Attack class found in this batch.",
+      "type": "Historical Behavior",
+      "source": "long-term forum clarifications"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Attack remains a non-spell weapon-derived skill class unless explicitly overridden by component text.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Glacial Hammer is an attack and is not affected by spell damage increases unless the damage portion is spell-tagged.",
+        "A bow attack skill that uses the bow base is an attack and can still gain spell interactions from special non-weapon components if defined."
+      ],
+      "type": "Official Rule",
+      "source": "official mechanic examples"
+    },
+    "Common Misconceptions": {
+      "text": ["Attack == Melee", "Spell and Attack can be treated as interchangeable"],
+      "type": "Official Rule",
+      "source": "critical distinctions"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/11707/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/83174",
+        "https://webcdn.pathofexile.com/forum/view-thread/3877218"
+      ],
+      "type": "Official Rule",
+      "source": "Official GGG forum"
+    }
+  },
+  "relationships": {
+    "depends_on": ["weapon"],
+    "modifies": ["attack_damage", "critical_strike_rolls", "accuracy_checks"],
+    "requires": ["attack_classification", "hit_state"],
+    "prevents": ["spell_class_default_for_weapon_damage"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["attack_speed_modifiers", "attack_modifiers"],
+    "removes": [],
+    "shares_with": ["Hit", "Spell", "Ailment"],
+    "is_scaled_by": ["increased_attack_damage", "more_attack_damage", "less_attack_damage"],
+    "cannot_affect": ["spell-only modifiers", "spell_damage_only_modifiers"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-12T22:39:48.5468922+01:00"
+}

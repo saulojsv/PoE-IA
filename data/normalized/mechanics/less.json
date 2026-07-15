@@ -1,0 +1,164 @@
+{
+  "id": "less",
+  "term": "Less",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.pathofexile.com/forum/view-thread/1642545",
+  "sections": {
+    "Definition": {
+      "text": "Less is a multiplicative reduction token that scales effects by a downward factor and is distinct from Reduced.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Purpose": {
+      "text": "Model multiplicative reduction while preserving separate treatment from additive Reduced terms.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Core Rules": {
+      "text": "Increased/Reduced are additive; Less is applied as part of multiplicative scaling together with More.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Internal Rules": {
+      "text": "Each Less source yields a reduction factor that multiplies with additive output and other multiplier buckets where applicable.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Calculation Order": {
+      "text": "1) base + additive resolution 2) apply multiplicative modifiers (More/Less) 3) apply caps and edge-case behavior of recipient system.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Priority Rules": {
+      "text": "Mechanic-specific scope or minimum/maximum conditions override generic Less interpretation.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Preconditions": {
+      "text": "The target quantity must be flagged as accepting Less-type scaling and have a valid source mechanic.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Postconditions": {
+      "text": "Resulting value is reduced by multiplication with factor(s) below 1.00 unless mechanic text dictates constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Limitations": {
+      "text": "Less is not additive negative reduced and must not be merged as -increased in storage.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Caps": {
+      "text": "No universal Less token cap; recipient system rules define bounds.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Formula": {
+      "text": "final = base_after_additive * Π(1 - each_less_i) * Π(1 + each_more_i)",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Keywords": {
+      "text": ["Less", "More", "Increased", "Reduced", "Multiplier"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Related Mechanics": {
+      "depends_on": ["More", "Increased", "Reduced", "Damage", "Modifier stack"],
+      "modifies": ["final damage", "final statistics"],
+      "requires": ["valid scaling scope"],
+      "prevents": ["incorrect additive collapse"],
+      "cannot_affect": ["systems without multiplier bucket"],
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Dependencies": {
+      "text": ["modifier bucket framework", "additive resolution stage", "scope checks"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1242841"
+    },
+    "Conflicts": {
+      "text": "Confusion between Less and Reduced in modeling and stack resolution is the primary conflict type.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Exceptions": {
+      "text": "Specific skills or system text can reduce the effective minimum/maximum behavior of the Less token.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1963938"
+    },
+    "Hidden Rules": {
+      "text": "Keep Less in a separate multiplier bucket when normalizing data, with explicit compatibility checks for scope.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Developer Notes": {
+      "text": "Do not encode Less as a negative Increased; persist as multiplicative reduction factors.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Historical Changes": {
+      "text": "No core semantic redefinition captured in this pass.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Less remains multiplicative and separate from Reduced in the captured model.",
+          "type": "Official Rule",
+          "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "20% Less and 30% Less produce 0.8 * 0.7 = 0.56 multiplier.",
+        "Less does not equal -20% Increased."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Common Misconceptions": {
+      "text": ["Less is same as Reduced", "Multiple Less values should sum"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/1642545",
+        "https://www.pathofexile.com/forum/view-thread/1242841",
+        "https://www.pathofexile.com/forum/view-thread/1963938",
+        "https://www.pathofexile.com/forum/view-thread/3300117"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/1642545"
+    }
+  },
+  "relationships": {
+    "depends_on": ["base_damage", "additive_scale", "modifier_scope"],
+    "modifies": ["final_damage", "final_stat"],
+    "requires": ["scope eligibility"],
+    "prevents": ["linear_misaggregation"],
+    "overrides": [],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["multiplicative reduction"],
+    "removes": [],
+    "shares_with": ["More", "Increased", "Reduced"],
+    "is_scaled_by": ["mechanic-specific multipliers", "stat scopes"],
+    "cannot_affect": ["additive-only systems"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-13T10:10:45.0605715+01:00"
+}

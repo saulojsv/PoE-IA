@@ -1,0 +1,214 @@
+{
+    "id":  "evasion",
+    "term":  "Evasion",
+    "status":  "research_pass",
+    "classification":  "Official Rule",
+    "source":  "https://www.poewiki.net/wiki/Evasion",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "Evasion is a defensive property that can cause an incoming attack hit check to fail.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Evasion"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Provide probabilistic mitigation for attacks by reducing successful hit probability.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Evasion"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "Evasion is resolved against Accuracy in attack hit checks; spells do not use this gate.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Evasion"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Evasion is a target property and applies when attack hit resolution is running; it can be bypassed by Cannot Evade, cannot be interpreted as damage reduction, and does not guarantee fixed mitigation.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Evasion"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "1) attacker hit source is formed 2) if attack type, perform Accuracy vs Evasion resolution 3) apply min/max bounds and override rules 4) decide hit or miss.",
+                                               "type":  "Official Rule",
+                                               "source":  "https://www.poewiki.net/wiki/Evasion"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "Override effects (for example Cannot Evade) supersede normal miss chance from Evasion checks.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Evasion"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "Incoming event must be an attack-based hit check; attack speed and attack source traits are evaluated separately.",
+                                           "type":  "Official Rule",
+                                           "source":  "https://www.poewiki.net/wiki/Evasion"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "If hit is missed through Evasion, no hit payload is applied and related Hit/Post-Hit mechanics do not run.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Evasion"
+                                        },
+                     "Limitations":  {
+                                         "text":  "Minimum 5% hit chance floor and non-attack scopes mean Evasion cannot affect every combat layer equally.",
+                                         "type":  "Official Rule",
+                                         "source":  "https://www.poewiki.net/wiki/Evasion"
+                                     },
+                     "Caps":  {
+                                  "text":  "A lower-hit bound and upper-hit bound exist through general hit logic; exact bounds are defined by source hit framework and may be overridden by hit-force effects.",
+                                  "type":  "Official Rule",
+                                  "source":  "https://www.poewiki.net/wiki/Evasion"
+                              },
+                     "Formula":  {
+                                     "text":  "No single canonical standalone Evasion formula is stored in this pass; source-specific formula for each hit mode is loaded from patch data.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Evasion"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Evasion",
+                                                   "attack",
+                                                   "cannot evade",
+                                                   "chance to evade",
+                                                   "hit check",
+                                                   "accuracy"
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Evasion"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Accuracy",
+                                                                  "Hit",
+                                                                  "Attack",
+                                                                  "Cannot Evade"
+                                                              ],
+                                               "modifies":  [
+                                                                "attack miss chance",
+                                                                "evasion checks"
+                                                            ],
+                                               "requires":  [
+                                                                "attack hit validation path"
+                                                            ],
+                                               "prevents":  [
+                                                                "automatic hit on attacks"
+                                                            ],
+                                               "source":  "https://www.poewiki.net/wiki/Evasion"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "Accuracy framework",
+                                                       "attack hit framework",
+                                                       "evasion-value modifiers"
+                                                   ],
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Evasion"
+                                      },
+                     "Conflicts":  {
+                                       "text":  "Cannot Evade and similar hit-force states resolve in conflict handling and win over standard Evasion checks.",
+                                       "type":  "Official Rule",
+                                       "source":  "https://www.poewiki.net/wiki/Evasion"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Area attack checks for AoE can still rely on target hit rules as part of their own attack resolution path.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Evasion"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "Evasion is mostly target-agnostic in source docs and must be interpreted through attack-type specific hit paths.",
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Evasion"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "Keep Evasion as a separate hit gate state from Dodge/Block/Spell mechanics to avoid cross-system conflation.",
+                                             "type":  "Official Rule",
+                                             "source":  "https://www.poewiki.net/wiki/Evasion"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "Evasion tuning and UI presentation updates occur in balance patches; no merged timeline entered in this pass.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Evasion"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+
+                                                    ],
+                                           "type":  "Official Rule"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "An attack can miss even with high Accuracy when Evasion is high and no override is active.",
+                                                   "A 100% hit-force source bypasses this gate."
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Evasion"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Evasion is not the same as block.",
+                                                                "Evasion is not equivalent to guaranteed miss because of lower bound/cap behavior."
+                                                            ],
+                                                   "type":  "Official Rule",
+                                                   "source":  "https://www.poewiki.net/wiki/Evasion"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/wiki/Evasion",
+                                                           "https://www.poewiki.net/wiki/Accuracy"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "Attack",
+                                             "Accuracy",
+                                             "Cannot Evade"
+                                         ],
+                          "modifies":  [
+                                           "hit chance",
+                                           "attack-hit outcome"
+                                       ],
+                          "requires":  [
+                                           "attack resolution"
+                                       ],
+                          "prevents":  [
+                                           "guaranteed attack hit by default"
+                                       ],
+                          "overrides":  [
+                                            "normal hit gate via Cannot Evade"
+                                        ],
+                          "inherits":  [
+
+                                       ],
+                          "creates":  [
+                                          "evasion check state"
+                                      ],
+                          "destroys":  [
+                                           "hit payload when miss"
+                                       ],
+                          "applies":  [
+                                          "evasion gate"
+                                      ],
+                          "removes":  [
+                                          "successful attack payload if evaded"
+                                      ],
+                          "shares_with":  [
+                                              "Cannot Evade",
+                                              "Accuracy",
+                                              "Hit"
+                                          ],
+                          "is_scaled_by":  [
+                                               "increased evasion",
+                                               "reduced evasion"
+                                           ],
+                          "cannot_affect":  [
+                                                "spells",
+                                                "non-attack hit systems"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Official Rule",
+                                        "status":  "active",
+                                        "version":  "unversioned"
+                                    }
+                                ],
+    "collected_at":  "2026-07-13T00:25:03+01:00"
+}

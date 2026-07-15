@@ -1,0 +1,230 @@
+﻿{
+    "id":  "skill:arctic_armour",
+    "name":  "Arctic Armour",
+    "normalized_name":  "arctic_armour",
+    "az_order":  3,
+    "category":  "active_skill_gem",
+    "variant_type":  "base",
+    "base_skill_id":  null,
+    "aliases":  [
+
+                ],
+    "introduced_in_patch":  null,
+    "removed_in_patch":  null,
+    "legacy":  false,
+    "current":  false,
+    "patch":  "3.28.0j",
+    "league":  "Mirage",
+    "collected_at":  "2026-07-12T17:47:57Z",
+    "last_verified_at":  "2026-07-12T17:47:57Z",
+    "confidence":  0.9,
+    "status":  "needs_review",
+    "classification":  [
+                           "defensive",
+                           "aura"
+                       ],
+    "tags":  [
+                 "Spell",
+                 "Duration",
+                 "Cold",
+                 "Aura"
+             ],
+    "requirements":  {
+                         "dexterity":  "26-98",
+                         "level":  "16-70",
+                         "intelligence":  "18-68"
+                     },
+    "levels":  [
+                   {
+                       "requires_level":  16,
+                       "base_duration":  2.5,
+                       "level":  1,
+                       "less_physical":  "11%",
+                       "less_fire":  "11%"
+                   },
+                   {
+                       "requires_level":  46,
+                       "base_duration":  3.4,
+                       "level":  10,
+                       "less_physical":  "16%",
+                       "less_fire":  "15%"
+                   },
+                   {
+                       "requires_level":  70,
+                       "base_duration":  4.4,
+                       "level":  20,
+                       "less_physical":  "21%",
+                       "less_fire":  "20%"
+                   }
+               ],
+    "quality_effects":  [
+                            {
+                                "stat":  "Increased Skill Effect Duration",
+                                "range":  "1-20%"
+                            }
+                        ],
+    "mechanics":  [
+                      {
+                          "description":  "Conjures an icy barrier that chills enemies when they hit you and drops chilled ground while moving.",
+                          "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                          "source_date":  "2026-07-12T08:10:30Z",
+                          "patch":  "3.28.0j",
+                          "source_type":  "official_fact",
+                          "status":  "verified"
+                      },
+                      {
+                          "description":  "While stationary, you take less fire and physical damage and become immune to freeze.",
+                          "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                          "source_date":  "2026-07-12T08:10:30Z",
+                          "patch":  "3.28.0j",
+                          "source_type":  "official_fact",
+                          "status":  "verified"
+                      },
+                      {
+                          "description":  "The physical/fire reduction applies to hit damage, not damage-over-time.",
+                          "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                          "source_date":  "2026-07-12T08:10:30Z",
+                          "patch":  "3.28.0j",
+                          "source_type":  "official_fact",
+                          "status":  "verified"
+                      }
+                  ],
+    "formulas":  [
+
+                 ],
+    "limits_breakpoints":  [
+                               {
+                                   "source_type":  "official_fact",
+                                   "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                                   "value":  "25% Mana",
+                                   "type":  "mana reservation",
+                                   "notes":  "Affected by all mana-reservation-efficiency modifiers"
+                               }
+                           ],
+    "support_relationships":  [
+                                  {
+                                      "skill_id":  "skill:arctic_armour",
+                                      "validation_status":  "official_fact",
+                                      "patch":  "3.28.0j",
+                                      "sources":  [
+                                                      "https://www.poewiki.net/wiki/Arctic_Armour"
+                                                  ],
+                                      "effect_summary":  "Arrogance Support can support non-blessing reservation skills and grants additional aura effect; also enables reserve life variant",
+                                      "support_id":  "support:arrogance",
+                                      "confidence":  0.82,
+                                      "status":  "conditional",
+                                      "conditions":  "Observed on source page support block"
+                                  }
+                              ],
+    "gem_links":  [
+
+                  ],
+    "item_synergies":  [
+                           {
+                               "confidence":  0.72,
+                               "source_date":  "2026-07-12T08:10:30Z",
+                               "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                               "item_or_mod":  "The Snowblind Grace",
+                               "reason":  "Unique modifies Arctic Armour reservation and buff effect",
+                               "historical":  false,
+                               "importance":  "high",
+                               "patch":  "3.28.0j"
+                           }
+                       ],
+    "passives_ascendancies":  [
+
+                              ],
+    "builds":  [
+
+               ],
+    "guides":  [
+
+               ],
+    "market_usage":  [
+
+                     ],
+    "patch_changes":  [
+                          {
+                              "confidence":  0.9,
+                              "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                              "source_class":  "version_history",
+                              "change":  "Arctic Armour introduced",
+                              "source_date":  "2013",
+                              "patch":  "0.10.4",
+                              "status":  "historical"
+                          },
+                          {
+                              "confidence":  0.9,
+                              "source":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                              "source_class":  "wiki_note",
+                              "change":  "Helmet enchantments affecting Arctic Armour no longer obtainable from Labyrinth after this patch",
+                              "source_date":  "2026-07-12T08:10:30Z",
+                              "patch":  "3.23.0",
+                              "status":  "historical"
+                          }
+                      ],
+    "sources":  [
+                    {
+                        "source_date":  "2026-07-12T08:10:30Z",
+                        "confidence":  0.9,
+                        "source_type":  "official_fact",
+                        "source_url":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                        "collected_at":  "2026-07-12T17:47:57Z",
+                        "league":  "Mirage",
+                        "patch":  "3.28.0j"
+                    },
+                    {
+                        "source_date":  "2026-07-12T08:10:30Z",
+                        "confidence":  0.9,
+                        "source_type":  "game_data",
+                        "source_url":  "https://poedb.tw/us/Arctic_Armour",
+                        "collected_at":  "2026-07-12T17:47:57Z",
+                        "league":  "Mirage",
+                        "patch":  "3.28.0j"
+                    }
+                ],
+    "claims":  [
+                   {
+                       "confidence":  0.9,
+                       "claim_id":  "aa.stationary",
+                       "source_date":  "2026-07-12T08:10:30Z",
+                       "source_url":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                       "source_type":  "official_fact",
+                       "text":  "Less physical and fire damage taken from hits while stationary",
+                       "status":  "current"
+                   },
+                   {
+                       "confidence":  0.9,
+                       "claim_id":  "aa.freeze_immunity",
+                       "source_date":  "2026-07-12T08:10:30Z",
+                       "source_url":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                       "source_type":  "official_fact",
+                       "text":  "Grants immunity to freeze while active",
+                       "status":  "current"
+                   },
+                   {
+                       "confidence":  0.9,
+                       "claim_id":  "aa.ruthless",
+                       "source_date":  "2026-07-12T08:10:30Z",
+                       "source_url":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                       "source_type":  "official_fact",
+                       "text":  "Cannot be obtained from quests or uncarved gemstone trade in Ruthless mode",
+                       "status":  "current"
+                   }
+               ],
+    "conflicts":  [
+
+                  ],
+    "validation":  [
+                       {
+                           "rule":  "current_or_legacy_has_patch",
+                           "details":  "source date present",
+                           "status":  "pass"
+                       },
+                       {
+                           "rule":  "source_url_nonempty",
+                           "details":  "https://www.poewiki.net/wiki/Arctic_Armour",
+                           "status":  "pass"
+                       }
+                   ]
+}

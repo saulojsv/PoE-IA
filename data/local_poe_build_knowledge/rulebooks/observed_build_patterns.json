@@ -1,0 +1,937 @@
+{
+  "Trinity": {
+    "count": 1,
+    "classes": [
+      [
+        "Ranger",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Daughter of Oshabi",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Greater Multistrike",
+        1
+      ],
+      [
+        "Inspiration",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "energy shield",
+        1
+      ],
+      [
+        "evasion",
+        1
+      ],
+      [
+        "spell suppression",
+        1
+      ],
+      [
+        "block",
+        1
+      ],
+      [
+        "spell block",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ],
+      [
+        "ES recovery",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "chaos_res_non_negative",
+        1
+      ]
+    ]
+  },
+  "Ballista Totem": {
+    "count": 5,
+    "classes": [
+      [
+        "Templar",
+        5
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        5
+      ]
+    ],
+    "supports": [
+      [
+        "Kinetic Fusillade",
+        5
+      ],
+      [
+        "Less Duration",
+        5
+      ],
+      [
+        "Greater Volley",
+        5
+      ],
+      [
+        "Invert the Rules",
+        2
+      ],
+      [
+        "Concentrated Effect",
+        2
+      ],
+      [
+        "Increased Critical Damage",
+        2
+      ],
+      [
+        "Elemental Damage with Attacks",
+        2
+      ],
+      [
+        "Volatility",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "energy shield",
+        3
+      ],
+      [
+        "spell block",
+        3
+      ],
+      [
+        "life recovery",
+        3
+      ],
+      [
+        "life pool",
+        2
+      ],
+      [
+        "armour",
+        2
+      ],
+      [
+        "block",
+        2
+      ],
+      [
+        "ES recovery",
+        2
+      ]
+    ],
+    "risks": [
+      [
+        "chaos_res_non_negative",
+        3
+      ],
+      [
+        "cold_res_cap",
+        2
+      ],
+      [
+        "lightning_res_cap",
+        2
+      ],
+      [
+        "fire_res_cap",
+        1
+      ],
+      [
+        "mana_usable",
+        1
+      ]
+    ]
+  },
+  "Greater Volley": {
+    "count": 5,
+    "classes": [
+      [
+        "Templar",
+        5
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        5
+      ]
+    ],
+    "supports": [
+      [
+        "Less Duration",
+        5
+      ],
+      [
+        "Increased Critical Damage",
+        5
+      ],
+      [
+        "Kinetic Fusillade",
+        5
+      ],
+      [
+        "Ballista Totem",
+        5
+      ],
+      [
+        "Invert the Rules",
+        3
+      ],
+      [
+        "Volatility",
+        1
+      ],
+      [
+        "Elemental Damage with Attacks",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        5
+      ],
+      [
+        "block",
+        5
+      ],
+      [
+        "life recovery",
+        5
+      ],
+      [
+        "armour",
+        4
+      ],
+      [
+        "spell block",
+        4
+      ],
+      [
+        "energy shield",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Kinetic Fusillade": {
+    "count": 6,
+    "classes": [
+      [
+        "Templar",
+        6
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        6
+      ]
+    ],
+    "supports": [
+      [
+        "Increased Critical Damage",
+        6
+      ],
+      [
+        "Ballista Totem",
+        6
+      ],
+      [
+        "Less Duration",
+        6
+      ],
+      [
+        "Greater Volley",
+        5
+      ],
+      [
+        "Invert the Rules",
+        3
+      ],
+      [
+        "Elemental Damage with Attacks",
+        2
+      ],
+      [
+        "Volatility",
+        1
+      ],
+      [
+        "Greater Multiple Projectiles",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        6
+      ],
+      [
+        "armour",
+        5
+      ],
+      [
+        "block",
+        5
+      ],
+      [
+        "spell block",
+        5
+      ],
+      [
+        "life recovery",
+        5
+      ],
+      [
+        "ES recovery",
+        1
+      ],
+      [
+        "energy shield",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "mana_usable",
+        1
+      ]
+    ]
+  },
+  "Less Duration": {
+    "count": 2,
+    "classes": [
+      [
+        "Templar",
+        2
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        2
+      ]
+    ],
+    "supports": [
+      [
+        "Greater Volley",
+        2
+      ],
+      [
+        "Kinetic Fusillade",
+        2
+      ],
+      [
+        "Ballista Totem",
+        2
+      ],
+      [
+        "Volatility",
+        1
+      ],
+      [
+        "Elemental Damage with Attacks",
+        1
+      ],
+      [
+        "Invert the Rules",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        2
+      ],
+      [
+        "armour",
+        2
+      ],
+      [
+        "block",
+        2
+      ],
+      [
+        "spell block",
+        2
+      ],
+      [
+        "life recovery",
+        2
+      ],
+      [
+        "energy shield",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Invert the Rules": {
+    "count": 1,
+    "classes": [
+      [
+        "Templar",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Greater Volley",
+        1
+      ],
+      [
+        "Kinetic Fusillade",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ],
+      [
+        "Less Duration",
+        1
+      ],
+      [
+        "Ballista Totem",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "spell block",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "mana_usable",
+        1
+      ]
+    ]
+  },
+  "Elemental Damage with Attacks": {
+    "count": 1,
+    "classes": [
+      [
+        "Templar",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Hierophant",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Kinetic Fusillade",
+        1
+      ],
+      [
+        "Greater Volley",
+        1
+      ],
+      [
+        "Less Duration",
+        1
+      ],
+      [
+        "Ballista Totem",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "block",
+        1
+      ],
+      [
+        "spell block",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "attack_hit_capped_if_relevant",
+        1
+      ]
+    ]
+  },
+  "Lifetap": {
+    "count": 2,
+    "classes": [
+      [
+        "Duelist",
+        1
+      ],
+      [
+        "Marauder",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Slayer",
+        1
+      ],
+      [
+        "Chieftain",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Hydrosphere",
+        1
+      ],
+      [
+        "Bonechill",
+        1
+      ],
+      [
+        "Frostblink",
+        1
+      ],
+      [
+        "Righteous Fire",
+        1
+      ],
+      [
+        "Elemental Focus",
+        1
+      ],
+      [
+        "Efficacy",
+        1
+      ],
+      [
+        "Swift Affliction",
+        1
+      ],
+      [
+        "Burning Damage",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        2
+      ],
+      [
+        "life recovery",
+        2
+      ],
+      [
+        "evasion",
+        1
+      ],
+      [
+        "spell suppression",
+        1
+      ],
+      [
+        "block",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Tornado": {
+    "count": 1,
+    "classes": [
+      [
+        "Ranger",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Deadeye",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Manaforged Arrows",
+        1
+      ],
+      [
+        "Storm Rain",
+        1
+      ],
+      [
+        "Power Charge On Critical",
+        1
+      ],
+      [
+        "Sniper's Mark",
+        1
+      ],
+      [
+        "Frenzy",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "spell suppression",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Inspiration": {
+    "count": 1,
+    "classes": [
+      [
+        "Marauder",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Chieftain",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Blade Vortex",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ],
+      [
+        "Elemental Focus",
+        1
+      ],
+      [
+        "Greater Unleash",
+        1
+      ],
+      [
+        "Minion Pact",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "armour",
+        1
+      ],
+      [
+        "block",
+        1
+      ],
+      [
+        "spell block",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Fortify": {
+    "count": 1,
+    "classes": [
+      [
+        "Duelist",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Slayer",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Trinity",
+        1
+      ],
+      [
+        "Pulverise",
+        1
+      ],
+      [
+        "Infused Channelling",
+        1
+      ],
+      [
+        "Cyclone of Tumult",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": []
+  },
+  "Lightning Arrow": {
+    "count": 1,
+    "classes": [
+      [
+        "Ranger",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Deadeye",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Trinity",
+        1
+      ],
+      [
+        "Greater Fork",
+        1
+      ],
+      [
+        "Elemental Damage with Attacks",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ],
+      [
+        "Invert the Rules",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "spell suppression",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "fire_res_cap",
+        1
+      ],
+      [
+        "cold_res_cap",
+        1
+      ],
+      [
+        "lightning_res_cap",
+        1
+      ],
+      [
+        "attack_hit_capped_if_relevant",
+        1
+      ]
+    ]
+  },
+  "Greater Fork": {
+    "count": 1,
+    "classes": [
+      [
+        "Witch",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Necromancer",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Returning Projectiles",
+        1
+      ],
+      [
+        "Increased Critical Damage",
+        1
+      ],
+      [
+        "Kinetic Blast of Clustering",
+        1
+      ],
+      [
+        "Damage on Full Life",
+        1
+      ],
+      [
+        "Summon Sacred Wisps",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "energy shield",
+        1
+      ],
+      [
+        "block",
+        1
+      ],
+      [
+        "spell block",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ],
+      [
+        "ES recovery",
+        1
+      ]
+    ],
+    "risks": [
+      [
+        "chaos_res_non_negative",
+        1
+      ]
+    ]
+  },
+  "Enlighten": {
+    "count": 1,
+    "classes": [
+      [
+        "Duelist",
+        1
+      ]
+    ],
+    "ascendancies": [
+      [
+        "Paladin",
+        1
+      ]
+    ],
+    "supports": [
+      [
+        "Enduring Cry",
+        1
+      ],
+      [
+        "Grace",
+        1
+      ],
+      [
+        "Determination",
+        1
+      ]
+    ],
+    "defenses": [
+      [
+        "life pool",
+        1
+      ],
+      [
+        "armour",
+        1
+      ],
+      [
+        "evasion",
+        1
+      ],
+      [
+        "spell suppression",
+        1
+      ],
+      [
+        "life recovery",
+        1
+      ]
+    ],
+    "risks": []
+  }
+}

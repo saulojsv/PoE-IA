@@ -1,0 +1,98 @@
+{
+  "id": "000005_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000005_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Less Duration",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "4424105.2435277",
+    "combined_dps": "4424105.2435277",
+    "crit_chance": "87.1335",
+    "crit_multiplier": "5.31",
+    "hit_chance": "100",
+    "ehp": "488805.36599925",
+    "life": "4159",
+    "energy_shield": "1277",
+    "fire_res": "76",
+    "cold_res": "76",
+    "lightning_res": "80",
+    "chaos_res": "75",
+    "mana_unreserved": "98",
+    "mana_cost": "30"
+  },
+  "logic": {
+    "damage_scaling": [
+      "attack",
+      "crit",
+      "elemental"
+    ],
+    "defense_layers": [
+      "life pool",
+      "armour",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Greater Volley",
+      "Volatility",
+      "Elemental Damage with Attacks",
+      "Kinetic Fusillade",
+      "Ballista Totem"
+    ],
+    "auras_utility": [
+      "Determination",
+      "Precision",
+      "Tempest Shield",
+      "Wrath"
+    ],
+    "movement": [
+      "Flame Dash",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Kalandra's Touch",
+      "Svalinn",
+      "Mageblood",
+      "Warped Timepiece",
+      "Rain of Splinters",
+      "Foulborn The Red Nightmare",
+      "Rational Doctrine",
+      "Impossible Escape",
+      "Lethal Pride"
+    ],
+    "cluster_jewels": [
+      "Pandemonium Glimmer"
+    ],
+    "flasks": [
+      "Mageblood",
+      "Abecedarian's Quicksilver Flask of the Armadillo",
+      "Dabbler's Granite Flask of Incision",
+      "Alchemist's Silver Flask of the Cheetah",
+      "Abecedarian's Quartz Flask of Craft",
+      "Effervescent Eternal Life Flask of Allaying"
+    ],
+    "passive_node_count": 134
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

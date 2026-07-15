@@ -1,0 +1,165 @@
+{
+  "id": "fortify",
+  "term": "Fortify",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official Path of Exile patch notes and official patch-note updates",
+  "sections": {
+    "Definition": {
+      "text": "Fortify is represented as Fortification stacks that grant 1% less damage taken from hits per stack.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Purpose": {
+      "text": "Provide hit mitigation through short-duration stacking damage-reduction buff state.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Core Rules": {
+      "text": "Fortification gained by melee hit is stack-based, scales from damage relative to enemy ailment threshold, and stacks from melee hits and different sources; stacks are capped at a maximum amount.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Internal Rules": {
+      "text": "Fortification sources are validated per source and source conversion states can change how Fortify is granted (e.g., max stacks and bonus terms).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Calculation Order": {
+      "text": "1) qualifying melee hit applies Fortification 2) convert hit damage vs enemy ailment threshold into stack gain 3) clamp to one gain event per 0.1 seconds 4) apply or refresh 5s base duration 5) clamp stacks to maximum.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Priority Rules": {
+      "text": "Fortification stack and duration behavior from the patch applies before any source-specific modifier that grants maximum stacks or converts Fortify effect into flat maximum Fortification.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Preconditions": {
+      "text": "A source that grants Fortify must be melee hit-based and the target interaction must generate ailment-threshold-based gain.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Postconditions": {
+      "text": "Each Fortification stack grants 1% less damage taken from hits and expires with Fortification duration limits.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Limitations": {
+      "text": "Fortification cannot be gained more often than once per 0.1 seconds per stack event; bonus mechanics can increase per-hit stacks but still obey gain-frequency constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Caps": {
+      "text": "Default cap is 20 Fortification stacks; sources may modify maximum Fortification values via separate modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Formula": {
+      "text": "Damage reduction from Fortify = FortificationStacks * 1% less Damage taken from hits; stack count is clamped by stack cap and updated by per-hit gain formulas.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Keywords": {
+      "text": ["Fortify", "Fortification", "stack", "less damage taken", "hits"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Ailment", "Melee", "max stack mechanics"],
+      "modifies": ["Damage taken from hits", "survivability"],
+      "requires": ["melee hit", "Fortify source"],
+      "prevents": ["unbounded Fortification gain from single-hit spam"],
+      "cannot_affect": ["Damage over Time"],
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Dependencies": {
+      "text": ["Melee hit sources", "Fortify-granting modifiers", "enemy ailment threshold context", "stack duration and maximum stack systems"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Conflicts": {
+      "text": ["Source-specific conversions that replace increased fortify effect with maximum Fortification modifiers", "timing changes across patch revisions"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Exceptions": {
+      "text": ["Recent patch revisions converted some Fortify effect sources into maximum Fortification, changing effective stacking behavior but preserving stack-based hit mitigation semantics."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Hidden Rules": {
+      "text": "Fortification from one melee source and different sources can stack, but all gains obey global source timing and cap constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Developer Notes": {
+      "text": "Treat Fortify as a stack-bearing buff state with patch-versioned maximum and conversion rules to avoid collapsing older and newer semantics.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Historical Changes": {
+      "text": "The 3.16.0 change converted Fortify into Fortification stacks based on ailment-threshold damage and retained default 20-stack baseline with 5s duration.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.16.0",
+          "note": "Sources of Fortify grant Fortification stacks from melee-hit ailment-threshold percentage; 1% less damage taken per stack; duration 5 seconds; max 20 stacks; 0.1s gain interval.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.16.0b",
+          "note": "Fortify Support no longer granted increased Fortify Duration as base duration became broadly increased.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A high-damage melee hit can generate multiple Fortification stacks on a single target hit.",
+        "A rare monster hit generates a larger Fortification bonus under the 3.16.0 stack model."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Common Misconceptions": {
+      "text": ["Fortify is not a flat 20% once-hit buff in this model; it is stack-based with duration and gain cadence."],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/3186390",
+        "https://www.pathofexile.com/forum/view-thread/3186390/page/48",
+        "https://www.pathofexile.com/forum/view-thread/1314686"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Fortification", "Melee Hit", "enemy ailment threshold"],
+    "modifies": ["hit_damage_taken", "defense_state"],
+    "requires": ["Fortify source", "melee interaction"],
+    "prevents": ["unbounded Fortify accumulation"],
+    "overrides": ["none"],
+    "inherits": ["mitigation"],
+    "creates": ["Fortification stacks", "max stack modifiers"],
+    "destroys": ["Fortification when duration ends"],
+    "applies": ["1% less damage taken per stack"],
+    "removes": ["expired stack state"],
+    "shares_with": ["Support Gems", "Ascendancy passives", "Passives", "Aura"],
+    "is_scaled_by": ["ailment threshold gain bonus", "maximum Fortification modifiers"],
+    "cannot_affect": ["Damage over Time taken", "non-hit damage channels"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.16.0"
+    }
+  ]
+}

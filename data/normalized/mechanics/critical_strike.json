@@ -1,0 +1,156 @@
+{
+  "id": "critical_strike",
+  "term": "Critical Strike",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Critical_strike",
+  "sections": {
+    "Definition": {
+      "text": "Critical Strike is a hit classification that can apply an increased damage multiplier and optional status effects, producing a stronger result than a normal hit when triggered.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Purpose": {
+      "text": "Increase expected damage output for qualifying hits via the weapon/spell critical strike framework.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Core Rules": {
+      "text": "A hit can be critical only when the attack or spell hit succeeds; critical chance is then resolved by the hit event context and chance sources for that source.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Internal Rules": {
+      "text": "Critical Strike modifiers apply in addition to base hit rules and do not alter Hit itself; they alter critical outcome and resulting damage behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Calculation Order": {
+      "text": "1) hit is resolved 2) if hit is successful, roll critical chance 3) if critical succeeds, apply critical damage multiplier and critical-hit side effects.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Priority Rules": {
+      "text": "Increases to critical chance stack through standard increase/reduction and multiplicative modifiers; explicit overriding effects in the critical system follow the specific rule order above generic modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Preconditions": {
+      "text": "A source must have a successful hit opportunity; criticals do not occur from non-hit events.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Postconditions": {
+      "text": "On success, damage and related effects are evaluated using critical multipliers and any critical-specific conditional interactions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Limitations": {
+      "text": "Critical chance is clamped by the engine model used for the source type; sources immune to critical behavior do not generate critical outcomes.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Caps": {
+      "text": "Critical chance is bounded by engine-defined minimum/maximum values for the source context; exact values are maintained per-source in patch data.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Formula": {
+      "text": "No single universal Critical Strike formula is valid for all sources; each source uses its own base critical chance, then applies chance modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Keywords": {
+      "text": ["Critical Strike", "critical chance", "critical damage", "critical multiplier"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Hit", "Accuracy", "Attack", "Spell", "Damage"],
+      "modifies": ["Hit outcome", "damage output"],
+      "requires": ["successful hit event"],
+      "prevents": ["non-rolling critical outcome"],
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Dependencies": {
+      "text": ["Hit", "attack/spell event data", "critical chance modifiers", "critical strike multiplier modifiers"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Conflicts": {
+      "text": "Source-specific mechanics that replace hit classification can block or bypass the critical branch for their own resolution.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Exceptions": {
+      "text": "Critical interactions that grant guaranteed critical behavior are evaluated in the same branch after hit validation and are not guaranteed from chance modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Hidden Rules": {
+      "text": "Critical Strike uses distinct data fields per skill type and can be affected by conversion or conversion-like support rules in explicit support wording.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Developer Notes": {
+      "text": "Store Critical Strike separately from Hit and Damage so downstream systems can trace miss, critical, and multiplier stages independently.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Historical Changes": {
+      "text": "Global critical behavior tuning appears across multiple balance patches; per-patch details must be kept in linked patch history entries when extracted from official notes.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Patch History": {
+      "text": [],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "An attack with critical chance and multiplier applies normal hit effects first, then upgrades to critical when the critical roll succeeds."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Critical Strike chance is not the same as chance-to-hit.",
+        "Critical Strike is not always guaranteed by the presence of Critical Strike Chance on a source."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Critical_strike"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Critical_strike",
+        "https://www.pathofexile.com/forum/view-thread/2630071"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Hit", "Attack", "Spell", "Damage"],
+    "modifies": ["damage", "critical modifiers"],
+    "requires": ["successful hit event", "critical roll context"],
+    "prevents": ["guaranteed critical without explicit override"],
+    "overrides": ["non-critical branch within the same hit event"],
+    "inherits": [],
+    "creates": ["critical hit state", "critical hit event flags"],
+    "destroys": ["pending non-critical-only branch outcomes"],
+    "applies": ["critical chance", "critical multiplier"],
+    "removes": ["normal crit-uncertain outcome when rolled critical"],
+    "shares_with": ["Accuracy", "Damage", "Hit", "More", "Less"],
+    "is_scaled_by": ["increased critical chance", "critical strike multiplier modifiers", "critical hit chance supports"],
+    "cannot_affect": ["non-hit events"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "unversioned"
+    }
+  ],
+  "collected_at": "2026-07-12T23:05:00+01:00"
+}
+

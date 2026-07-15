@@ -1,0 +1,282 @@
+{
+  "id": "skill:arctic_armour",
+  "name": "Arctic Armour",
+  "normalized_name": "arctic_armour",
+  "az_order": 3,
+  "category": "active_skill_gem",
+  "variant_type": "base",
+  "base_skill_id": null,
+  "aliases": [],
+  "introduced_in_patch": null,
+  "removed_in_patch": null,
+  "legacy": false,
+  "current": false,
+  "league": "",
+  "patch": "3.19.1",
+  "collected_at": "2026-07-12T17:48:14Z",
+  "last_verified_at": "2026-07-12T17:48:14Z",
+  "confidence": 0.72,
+  "status": "needs_review",
+  "classification": [
+    "active_skill",
+    "spell",
+    "defensive",
+    "duration",
+    "cold"
+  ],
+  "tags": [
+    "spell",
+    "duration",
+    "cold",
+    "buff",
+    "reservation"
+  ],
+  "requirements": {
+    "level": "16-70",
+    "dexterity": "26-98",
+    "intelligence": "18-68",
+    "mana": "25% (reservation)"
+  },
+  "levels": [
+    {
+      "patch": "unresolved",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "type": "base",
+      "notes": "Level 1-20 with dex/int requirements and base duration table captured from page."
+    }
+  ],
+  "quality_effects": [
+    {
+      "type": "quality",
+      "effect": "Increased Skill Effect Duration by 1-20% at 20% quality",
+      "patch": "3.12.0",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour"
+    }
+  ],
+  "mechanics": [
+    {
+      "type": "identity",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "text": "Conjures icy barrier, chills enemies on hit, drops chilled ground while moving, grants less Fire and Physical Damage while stationary."
+    },
+    {
+      "type": "mechanics",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "text": "Stationary defensive effects are applied to hits; DoT (e.g., burning) is not affected by the reduced damage taken modifier."
+    },
+    {
+      "type": "mechanics",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "text": "Buff grants 11-21% less Physical Damage and 11-20% less Fire Damage while stationary (1-20 range)."
+    },
+    {
+      "type": "mech_variant",
+      "patch": "3.12.0",
+      "source": "https://www.poewiki.net/wiki/Vaal_Arctic_Armour",
+      "text": "Vaal Arctic Armour: 50 souls per use, 1 stored use, 24s Soul Gain Prevention, base duration 5.00s at level 1-20."
+    }
+  ],
+  "formulas": [],
+  "limits_breakpoints": [
+    {
+      "type": "duration",
+      "metric": "base_duration",
+      "value": "2.50-4.40s (level 1-20)",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour"
+    },
+    {
+      "type": "cooldown",
+      "metric": "cooldown_time",
+      "value": "1.00 sec",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour"
+    }
+  ],
+  "support_relationships": [
+    {
+      "support_id": "support:arrogance",
+      "compatibility": "conditional",
+      "effect_summary": "Allows Arctic Armour to reserve Life via reservation modifiers.",
+      "conditions": "Supports any non-blessing skill with reservation.",
+      "patch": "3.19.1",
+      "source": "https://poedb.tw/us/Arctic_Armour",
+      "confidence": 0.82,
+      "validation_status": "needs_review"
+    },
+    {
+      "support_id": "support:reduced_mana_cost",
+      "compatibility": "compatible",
+      "effect_summary": "Reduces mana cost (page-classified as support-by-list entry).",
+      "conditions": "Listed in 'Supported By' for Arctic Armour.",
+      "patch": "3.19.1",
+      "source": "https://poedb.tw/us/Arctic_Armour",
+      "confidence": 0.72,
+      "validation_status": "unverified"
+    }
+  ],
+  "gem_links": [
+    {
+      "type": "defensive",
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "text": "Core defensive setup often paired with curse/defense supports in stationary mapping and boss windows."
+    }
+  ],
+  "item_synergies": [
+    {
+      "item_or_mod": "The Snowblind Grace - 50% increased Arctic Armour buff effect",
+      "synergy_type": "helmet_unique",
+      "reason": "Increases buff effect for Arctic Armour.",
+      "importance": "high",
+      "historical": false,
+      "patch": "unresolved",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "confidence": 0.9
+    },
+    {
+      "item_or_mod": "The Perfect Form (legacy) + Arrogance-style reservation interactions",
+      "synergy_type": "helmet_unique",
+      "reason": "Legacy/legacy-era helmet interactions can alter reservation behavior and related defenses.",
+      "importance": "medium",
+      "historical": true,
+      "patch": "3.23.0",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "confidence": 0.72
+    }
+  ],
+  "passives_ascendancies": [],
+  "builds": [],
+  "guides": [],
+  "market_usage": [],
+  "patch_changes": [
+    {
+      "patch": "3.19.1",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "title": "Ground effect audio made quieter; patch-note context only."
+    },
+    {
+      "patch": "3.19.0",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "title": "Physical/Fire reduction while stationary increased to 11-21% / 11-20% at levels 1-20."
+    },
+    {
+      "patch": "3.15.0d",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "title": "Granted immunity to Freeze."
+    },
+    {
+      "patch": "3.12.0",
+           "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "title": "Alternate quality added."
+    },
+    {
+      "patch": "3.4.0",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "title": "Made instant by default and castable while moving; instant skills now have cooldown <=1.00s."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "source_type": "poewiki",
+      "type": "community_consensus",
+      "confidence": 0.9,
+      "last_verified_at": "2026-07-12T17:48:14Z",
+      "source_url": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "source_date": "",
+      "status": "needs_review",
+      "patch": "3.19.1",
+      "collected_at": "2026-07-12T17:48:14Z"
+    },
+    {
+      "url": "https://www.poewiki.net/wiki/Vaal_Arctic_Armour",
+      "source_type": "poewiki",
+      "type": "community_consensus",
+      "confidence": 0.9,
+      "last_verified_at": "2026-07-12T17:48:14Z",
+      "source_url": "https://www.poewiki.net/wiki/Vaal_Arctic_Armour",
+      "source_date": "",
+      "status": "needs_review",
+      "patch": "unresolved",
+      "collected_at": "2026-07-12T17:48:14Z"
+    },
+    {
+      "url": "https://poedb.tw/us/Arctic_Armour",
+      "source_type": "poedb",
+      "type": "community_consensus",
+      "confidence": 0.9,
+      "last_verified_at": "2026-07-12T17:48:14Z",
+      "source_url": "https://poedb.tw/us/Arctic_Armour",
+      "source_date": "",
+      "status": "needs_review",
+      "patch": "unresolved",
+      "collected_at": "2026-07-12T17:48:14Z"
+    }
+  ],
+  "claims": [
+    {
+      "type": "identity",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "patch": "3.19.1",
+      "status": "reviewed",
+      "reason": "Core base mechanics, requirements, and cooldown captured from line-level page content.",
+      "confirmed_at": "2026-07-12T17:48:14Z"
+    },
+    {
+      "type": "variant",
+      "source": "https://www.poewiki.net/wiki/Vaal_Arctic_Armour",
+      "patch": "unresolved",
+      "status": "reviewed",
+      "reason": "Vaal page provides souls, stored uses, prevention and movement-lock behavior.",
+      "confirmed_at": "2026-07-12T17:48:14Z"
+    },
+    {
+      "type": "patch_change",
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "patch": "3.19.0",
+      "status": "reviewed",
+      "reason": "Version history explicitly listed.",
+      "confirmed_at": "2026-07-12T17:48:14Z"
+    }
+  ],
+  "conflicts": [
+    {
+      "summary": "Current official patch status not verified; current flag intentionally kept false.",
+      "reason": "No official API/forum patch-current cross-check in this run.",
+      "status": "conflicted",
+      "resolution": null,
+      "patch": "unresolved",
+      "source": "poedb.tw/us/Arctic_Armour + poewiki + poedb support list"
+    }
+  ],
+  "validation": [
+    {
+      "source": "https://www.poewiki.net/wiki/Arctic_Armour",
+      "result": "ok",
+      "check": "source_fetch",
+      "http_status": 200
+    },
+    {
+      "source": "https://www.poewiki.net/wiki/Vaal_Arctic_Armour",
+      "result": "ok",
+      "check": "source_fetch",
+      "http_status": 200
+    },
+    {
+      "source": "https://poedb.tw/us/Arctic_Armour",
+      "result": "ok",
+      "check": "source_fetch",
+      "http_status": 200
+    },
+    {
+      "source": "combined",
+      "result": "warning",
+      "check": "current_status",
+      "details": "Current/likely_current patch not confirmed from official source feed in this cycle."
+    }
+  ]
+}

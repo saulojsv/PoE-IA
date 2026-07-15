@@ -1,0 +1,159 @@
+{
+  "id": "aura",
+  "term": "Aura",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Aura_Effect",
+  "sections": {
+    "Definition": {
+      "text": "Aura is a skill or buff that applies effects on nearby allies and/or enemies within the aura area of effect.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Purpose": {
+      "text": "Attach persistent effect delivery to nearby entities while the source remains active and resource-reservation is satisfied.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Core Rules": {
+      "text": "Aura is a subset of buff/debuff and inherits that attachment model. It can be positive or negative and can be temporary or permanent.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Internal Rules": {
+      "text": "Aura effects can only refresh affected targets every 250ms. Aura effect values shown in tooltips are base values and do not include all increases.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Calculation Order": {
+      "text": "1) determine valid aura source 2) reserve required resource 3) create aura instance 4) apply aura state to valid targets in radius every 250ms 5) track lifetime and remove on expiry/loss conditions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Priority Rules": {
+      "text": "Friendly auras grant radius-based beneficiary state from the source. Curse-related aura behavior and non-curse aura effect scaling can be separated by source modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Preconditions": {
+      "text": "Auras require a valid aura source and resource reservation state; Blasphemy and similar delivery methods require the same source constraints.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Postconditions": {
+      "text": "Targets within aura radius receive the aura effects while the aura instance remains valid.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Limitations": {
+      "text": "Aura radius and target visibility rules are constrained by the aura area of effect and source restrictions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Caps": {
+      "text": "No single universal aura cap is encoded in this term alone; cap behavior depends on source, socketing, reservation, and curse/other framework interactions.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Formula": {
+      "text": "No single canonical formula applies to all auras; each aura source has its own base values then applies resource and effect scaling.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Keywords": {
+      "text": ["Aura", "Aura Effect", "Effect on you", "Non-Curse Auras", "area of effect", "radius", "reservation"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Buff", "Debuff", "Reservation", "Aura Effect", "Effect"],
+      "modifies": ["character/effect stats", "enemy/ally modifiers", "immunities"],
+      "requires": ["valid source", "reservation"],
+      "prevents": ["invalid radius application"],
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Dependencies": {
+      "text": ["buff/debuff model", "reservation modifiers", "aura radius rules", "target radius sampling"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Conflicts": {
+      "text": "Aura behavior conflicts can occur with reserve-efficiency changes and map/monster modifiers that alter normal application rules.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/2627116"
+    },
+    "Exceptions": {
+      "text": "Auras can be supported by aura-specific supports and may convert mana reservation into skill cost through explicit support effects.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Hidden Rules": {
+      "text": "Support gems can alter what is reserved (mana vs life) without changing base aura effect math unless explicitly stated.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Developer Notes": {
+      "text": "Treat Aura as a buff/debuff subtype with update-frequency and source-constraint behavior as first-class mechanics, not only a tooltip category.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Historical Changes": {
+      "text": "Aura has been modified through aura-quantity and reservation-focused balance updates over multiple patches; specific entries are maintained in patch note sources when available.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Patch History": {
+      "text": "No versioned aura-rule sequence was included in the source snapshot used for this pass; patch-level details are deferred to linked official patch sources.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Examples": {
+      "text": [
+        "Grace applies an aura to you and nearby allies.",
+        "Blasphemy converts supported curses into aura-delivered curse effects."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Aura is not the same as Curse limit state alone.",
+        "Aura tooltips do not always show final amplified values."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Aura_Effect"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Aura_Effect",
+        "https://www.poewiki.net/wiki/Reservation",
+        "https://www.pathofexile.com/forum/view-thread/3185299/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/3186390/page/1"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Aura Effect", "Buff", "Debuff", "Reservation", "Nearby", "Area of Effect"],
+    "modifies": ["ally stats", "enemy stats", "resistance caps", "movement modifiers", "damage modifiers"],
+    "requires": ["valid source", "valid reservation", "radius"],
+    "prevents": ["instant arbitrary target jumps while out of radius"],
+    "overrides": ["previous weaker duplicate aura instances when source rules replace them"],
+    "inherits": ["Buff", "Debuff"],
+    "creates": ["aura instance", "aura link state"],
+    "destroys": ["expired aura instances", "lost-source aura instances"],
+    "applies": ["radius effects", "aura effect modifiers"],
+    "removes": ["old aura states when source no longer valid"],
+    "shares_with": ["Hex", "Mark", "Curse", "Auras"],
+    "is_scaled_by": ["Aura Effect", "Aura reservation efficiency", "Effect modifiers"],
+    "cannot_affect": ["entities outside aura radius"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "unknown"
+    }
+  ],
+  "collected_at": "2026-07-12T22:09:46.4378513+01:00"
+}

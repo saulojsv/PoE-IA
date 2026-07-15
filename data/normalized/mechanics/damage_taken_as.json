@@ -1,0 +1,172 @@
+{
+  "id": "damage_taken_as",
+  "term": "Damage Taken As",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Damage_taken_as",
+  "sections": {
+    "Definition": {
+      "text": "Damage Taken As redirects part of incoming Damage to a different damage type before final mitigation on the receiving side.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Purpose": {
+      "text": "Normalize defensive type remapping from incoming damage allocation to final defenses.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Core Rules": {
+      "text": "The mechanic is damage type shift, not full conversion semantics; shifted amount is processed as destination type for mitigation.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Internal Rules": {
+      "text": "Shift is resolved in a single pass for each incoming event.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Calculation Order": {
+      "text": "1) build incoming damage by source type 2) apply Damage Taken As shares 3) apply final-type mitigation.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Priority Rules": {
+      "text": "Mechanics with explicit destination-type restrictions override generic shift behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Preconditions": {
+      "text": "Incoming damage event exists and a Damage Taken As source is active.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Postconditions": {
+      "text": "Damage shares are split across destination types and mitigated through destination defenses.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Limitations": {
+      "text": "Shifted damage is not repeatedly remapped in the same resolution layer.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Caps": {
+      "text": "No explicit global cap is defined for the core mechanic.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Formula": {
+      "text": "For each destination type B: shifted_B = Σ(source_A * share_A_to_B), evaluated in single-pass allocation.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Keywords": {
+      "text": ["Damage Taken As", "damage shift", "physical damage", "elemental", "mitigation"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Damage type", "Resistance", "Mitigation"],
+      "modifies": ["incoming damage type allocation"],
+      "requires": ["damage type values"],
+      "prevents": ["double mitigation from source and destination"],
+      "cannot_affect": ["already finalized damage buckets"]
+    },
+    "Dependencies": {
+      "text": ["Damage values by type", "modifiers", "resistance context"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Conflicts": {
+      "text": "Damage conversion mechanics differ by deleting source type prior to mitigation.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Exceptions": {
+      "text": "If text explicitly limits to hits, damage over time does not receive the shift.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Hidden Rules": {
+      "text": "This mechanic feeds destination resistances and mitigation with shifted amounts in same event pass.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Developer Notes": {
+      "text": "Store as per-event share matrix to prevent stacked recursive interpretation bugs.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Historical Changes": {
+      "text": "No patch-level redefinition captured in this pass.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Damage Taken As remains single-pass shift before final-type mitigation.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "100 Physical with 40% Damage Taken As Fire creates 40 Fire and 60 Physical allocation.",
+        "Fire-to-Lightning and Lightning-to-Physical modifiers in same layer are resolved with single-pass ordering."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Damage Taken As is equal to Damage Conversion.",
+        "Shifted damage is mitigated as both source and destination types."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Damage_taken_as"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Damage_taken_as",
+        "https://www.poewiki.net/wiki/Damage_conversion"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Damage", "Resistance", "Mitigation"],
+    "modifies": ["incoming damage mix"],
+    "requires": ["incoming damage by source type"],
+    "prevents": ["double mitigation"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": ["damage_type_shift_state"],
+    "destroys": [],
+    "applies": ["final damage-type defense"],
+    "removes": [],
+    "shares_with": ["Damage conversion"],
+    "is_scaled_by": ["Resistance", "Mitigation"],
+    "cannot_affect": ["conversion removal semantics"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-12T23:09:48.0148608+01:00",
+  "metadata": {
+    "source_type": "Official Rule",
+    "source_authority": "Path of Exile official terminology source",
+    "source_url": "https://www.poewiki.net/wiki/Damage_taken_as",
+    "source_date": "unverified",
+    "confidence": "high",
+    "status": "active"
+  }
+}
+
+

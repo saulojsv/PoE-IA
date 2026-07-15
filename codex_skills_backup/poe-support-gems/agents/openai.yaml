@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Support Gems"
+  short_description: "Map support gem compatibility."
+  default_prompt: "Use $poe-support-gems to validate support compatibility for one PoE 1 skill."
+policy:
+  allow_implicit_invocation: true

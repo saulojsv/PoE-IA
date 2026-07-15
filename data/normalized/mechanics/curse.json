@@ -1,0 +1,171 @@
+{
+  "id": "curse",
+  "term": "Curse",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Curse",
+  "sections": {
+    "Definition": {
+      "text": "Curse is a category of Debuff split into Hexes and Marks.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Purpose": {
+      "text": "Apply negative modifiers to enemies (or allies in specific cases) through skill-driven debuffing.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Core Rules": {
+      "text": "Each curse has default values; applying by skill replaces those defaults. Curses from the player are removed when the cursing source is lost (death, area leave, losing the skill).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Internal Rules": {
+      "text": "Hexes can apply on multiple targets; Marks are single-target curse state with no duration and replacement behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Calculation Order": {
+      "text": "1) curse skill resolves 2) curse limit check for that source context 3) remove oldest curse if required 4) apply new curse state 5) start curse-specific duration/state handling.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Priority Rules": {
+      "text": "By default one curse can be active on a creature; additional curses depend on curse limit and are constrained by Blasphemy/curse priority rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Preconditions": {
+      "text": "A valid curse source and applicable target are required; targets with Hexproof or curse immunity are unaffected by matching source logic.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Postconditions": {
+      "text": "Target enters cursed state according to curse type constraints and remains until expiration, loss of source, or replacement.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Limitations": {
+      "text": "Curse limit can be zero, in which case curse application does not apply a curse state. Monsters and maps may enforce Hexproof/Immunity.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Caps": {
+      "text": "Default curse slot is one per target; additional slots come from mechanics that increase curse limit.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Formula": {
+      "text": "No single universal curse formula is shared across all curse types; each curse applies its own debuff rule set and scaling by Curse Effect sources.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Keywords": {
+      "text": ["Curse", "Hex", "Mark", "Curse limit", "Hexproof", "curse immunity", "Debuff"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Debuff", "Hex", "Mark", "Cannot Evade"],
+      "modifies": ["target attack/cast behavior", "target resistances", "target stats"],
+      "requires": ["valid curse source", "target eligibility", "curse limit check"],
+      "prevents": ["new curse when limit is 0"],
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Dependencies": {
+      "text": ["Debuff attachment pipeline", "curse limit sources", "Hexproof/curse immunity modifiers", "Hex and Mark subtype rules"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Conflicts": {
+      "text": "Blasphemy curse auras and self-cast curse skills can conflict for application priority.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Exceptions": {
+      "text": "Map curses do not count against player curse limit and cannot be permanently removed by normal dispel pathways.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Hidden Rules": {
+      "text": "Some curse text can appear in non-skill forms (for example monster auras and map mods) that do not use the same duration/removal path as skill casts.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Developer Notes": {
+      "text": "Do not conflate curse category with damage-dealer mechanics; curse resolution includes independent removal, priority, and slot constraints.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2627116"
+    },
+    "Historical Changes": {
+      "text": "Curse system behavior around removal and source loss was reworked with 3.12-era changes in totems/monster curse immunity handling.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Curse_immunity"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.12.4",
+          "note": "Curse immunity removals and totem-cursing bug fixes were introduced, and some additional monster curse immunity entries were removed.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Curse_immunity"
+        },
+        {
+          "version": "3.12.0",
+          "note": "Some totems could now be cursed and additional totem curse handling fixes were documented.",
+          "type": "Official Rule",
+          "source": "https://www.poewiki.net/wiki/Curse_immunity"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Applying a second curse can expire the oldest curse on the same target when limit is reached.",
+        "A Mark from one source replaces the previous Mark from that source family."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Curse is not equivalent to Debuff in all cases.",
+        "Map curses and skill-cast curses do not always use identical remove/limit behavior."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Curse"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Curse",
+        "https://www.poewiki.net/wiki/Curse_immunity",
+        "https://www.poewiki.net/wiki/Mark",
+        "https://www.poewiki.net/wiki/Hex"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Debuff", "Hex", "Mark", "Aura"],
+    "modifies": ["enemy stats", "enemy skill interactions", "curse-limited states"],
+    "requires": ["curse source", "target eligibility", "curse limit"],
+    "prevents": ["infinite curse stacking without additional slots"],
+    "overrides": ["oldest curse on target when limit is full"],
+    "inherits": ["Debuff"],
+    "creates": ["cursed state", "aura-delivered curse state"],
+    "destroys": ["expired curse instances", "replaced curses"],
+    "applies": ["curse modifiers", "curse category state"],
+    "removes": ["curses on source loss/death/area/skill loss"],
+    "shares_with": ["Hex", "Mark", "Aura", "Ailment"],
+    "is_scaled_by": ["Curse Effect", "Aura effect", "support modifiers"],
+    "cannot_affect": ["Hexproof entities", "curse-immune entities"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.12.0"
+    }
+  ],
+  "collected_at": "2026-07-12T22:09:46.4378513+01:00"
+}

@@ -1,0 +1,233 @@
+{
+    "id":  "cast",
+    "term":  "Cast",
+    "status":  "research_pass",
+    "classification":  "Official Rule",
+    "source":  "https://www.poewiki.net/wiki/Spell",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "Cast is the timed action that performs spell delivery after cast start and cast completion.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Spell"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Define non-attack spell delivery through cast timing and spell delivery tags.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Spell"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "Cast actions are delivery actions for spells and are distinct from attack-based delivery actions such as weapon attacks.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Spell"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Cast Speed modifies Cast Time through derived casts-per-second conversion used by skill timing.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "1) cast action starts, 2) cast time runs and modified time is computed from cast speed, 3) skill effect starts, 4) hit/DoT/event effects queue and resolve.",
+                                               "type":  "Official Rule",
+                                               "source":  "https://www.poewiki.net/wiki/Cast_time"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "Specific cast-time exceptions can override base timing or spell-cast interaction assumptions.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Cast_time"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "The acting entity must use a skill path that is tagged as Spell and is eligible for casting.",
+                                           "type":  "Official Rule",
+                                           "source":  "https://www.poewiki.net/wiki/Spell"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "Cast delivery is completed and the spell effect enters normal hit/effect resolution.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Spell"
+                                        },
+                     "Limitations":  {
+                                         "text":  "Cast Speed only applies where timing is derived from cast action, not where instant or non-cast pathways are explicitly defined.",
+                                         "type":  "Official Rule",
+                                         "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                     },
+                     "Caps":  {
+                                  "text":  "No universal cast speed cap listed at mechanic level; cap behavior is local to source modifiers and systems.",
+                                  "type":  "Official Rule",
+                                  "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                              },
+                     "Formula":  {
+                                     "text":  "Cast Speed = 1 / Cast Time. If cast speed is modified by +50%, effective casts per second increase by the same modifier factor.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Cast",
+                                                   "Cast Speed",
+                                                   "Cast Time",
+                                                   "Spell",
+                                                   "Instant"
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Spell",
+                                                                  "Cast Time",
+                                                                  "Cast Speed"
+                                                              ],
+                                               "modifies":  [
+                                                                "spell delivery speed",
+                                                                "action cadence",
+                                                                "cast timing"
+                                                            ],
+                                               "requires":  [
+                                                                "Spell tag",
+                                                                "valid cast path"
+                                                            ],
+                                               "cannot_affect":  [
+                                                                     "ability components explicitly outside cast flow"
+                                                                 ],
+                                               "source":  "https://www.poewiki.net/wiki/Spell"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "Spell tagging",
+                                                       "Cast Speed stat",
+                                                       "skill cast timer state"
+                                                   ],
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                      },
+                     "Conflicts":  {
+                                       "text":  "Attack-tagged components do not use cast action unless explicitly cast-based by source text.",
+                                       "type":  "Official Rule",
+                                       "source":  "https://www.poewiki.net/wiki/Spell"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Some triggered paths can launch multiple spells in one action while preserving cast timing rules per trigger logic.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Spell"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "Cast timing is often represented through several term variants (cast time, cast speed, cast speed modifier) in mechanics text.",
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Cast_speed"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "In storage, keep Cast as a spell-delivery action and normalize Use/Trigger branches by explicit source tags.",
+                                             "type":  "Official Rule",
+                                             "source":  "https://www.poewiki.net/wiki/Spell"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "No explicit historical rewrite for Cast label is present in this pass; only historical patch updates captured for dependent systems.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Spell"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+                                                        {
+                                                            "version":  "current",
+                                                            "note":  "Cast remains the spell delivery action distinction used with trigger/instant exceptions.",
+                                                            "type":  "Official Rule",
+                                                            "source":  "https://www.poewiki.net/wiki/Spell"
+                                                        }
+                                                    ],
+                                           "type":  "Official Rule"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "A bow spell cast uses Cast Speed and Cast Time for action timing.",
+                                                   "A triggered curse cast follows trigger scheduling before resolving its spell effect."
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Spell"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Use is not Cast.",
+                                                                "A non-cast action cannot be treated as Cast when Spell delivery state is absent."
+                                                            ],
+                                                   "type":  "Official Rule",
+                                                   "source":  "https://www.poewiki.net/wiki/Spell"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/wiki/Spell",
+                                                           "https://www.poewiki.net/wiki/Cast_speed",
+                                                           "https://www.poewiki.net/wiki/Cast_time"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "Spell"
+                                         ],
+                          "modifies":  [
+                                           "cast timing",
+                                           "cast throughput",
+                                           "spell cadence"
+                                       ],
+                          "requires":  [
+                                           "spell source",
+                                           "cast action request"
+                                       ],
+                          "prevents":  [
+                                           "spell execution as pure attack action"
+                                       ],
+                          "overrides":  [
+                                            "older local timing rules when patched"
+                                        ],
+                          "inherits":  [
+
+                                       ],
+                          "creates":  [
+                                          "cast action",
+                                          "cast sequence"
+                                      ],
+                          "destroys":  [
+                                           "pending cast when interrupted"
+                                       ],
+                          "applies":  [
+                                          "Cast Speed scaling",
+                                          "Cast Time reduction"
+                                      ],
+                          "removes":  [
+                                          "cast queue entries after completion"
+                                      ],
+                          "shares_with":  [
+                                              "Trigger",
+                                              "Spell",
+                                              "Cast Time",
+                                              "Cast Speed"
+                                          ],
+                          "is_scaled_by":  [
+                                               "Cast Speed",
+                                               "Increased Cast Speed",
+                                               "More/ Less Cast Speed"
+                                           ],
+                          "cannot_affect":  [
+                                                "targets in immunity to spell effects"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Official Rule",
+                                        "status":  "active",
+                                        "version":  "current"
+                                    }
+                                ],
+    "collected_at":  "2026-07-13T11:10:53.482+01:00",
+    "metadata":  {
+                     "confidence":  "high",
+                     "source_date":  "unverified",
+                     "source_type":  "Official Rule",
+                     "source_authority":  "Path of Exile official terminology source",
+                     "status":  "active",
+                     "source_url":  "https://www.poewiki.net/wiki/Spell"
+                 }
+}
+
+

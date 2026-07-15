@@ -1,0 +1,173 @@
+{
+  "id": "suppression",
+  "term": "Suppression",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official patch notes and Path of Exile Wikis",
+  "sections": {
+    "Definition": {
+      "text": "Suppression is a mitigation type associated with dexterity that gives a chance to lower damage from spell hits and spell-inflicted ailments.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Purpose": {
+      "text": "Reduce burst severity from spell damage and related elemental ailment secondary damage by preventing a fixed portion of damage on a successful suppression roll.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Core Rules": {
+      "text": "By default, Suppression can be obtained only from explicit sources such as passive skills, evasion gear, and keystones; characters have no base chance. It has a per-spell-hit chance and stacks up to 100%, with 40% base suppression damage prevention per successful suppress event unless modified.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Internal Rules": {
+      "text": "Suppression rolls are checked for each spell hit independently; successful suppression applies only to that spell hit and any secondary damage tied to it.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Calculation Order": {
+      "text": "Mitigation is applied after resistances and damage reduction, then before stun and block.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Priority Rules": {
+      "text": "Specific suppression modifiers (for example Prevent #% of Suppressed Spell Damage) modify the default 40% prevented amount; if both apply, specific modifiers take precedence over generic suppression behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Preconditions": {
+      "text": "Source action must be a spell Hit; source effect may be in form of passive skill, item modifier, keystone, or explicit stat granting chance to suppress spell damage.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Postconditions": {
+      "text": "When suppression succeeds, suppressed spell damage is reduced for that hit and secondary spell-driven ailment DPS follows the same multiplier.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Limitations": {
+      "text": "Suppression is independent of evasion mechanics and does not grant full immunity; it is a chance-based gate tied to each hit event.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Caps": {
+      "text": "Chance values can be stacked to 100%.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Formula": {
+      "text": "per_hit_suppressed_damage = spell_hit_damage * (base_suppressed_amount or modified_suppressed_amount); base_suppressed_amount = 40%; effective_suppressed_amount may be increased via explicit Prevent modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Keywords": {
+      "text": ["Suppression", "Chance to suppress spell damage", "Suppress", "Prevent #% of Suppressed Spell Damage", "evasion", "dexterity", "mitigation"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Related Mechanics": {
+      "depends_on": ["hit", "spell", "ailment", "chance_to_avoid_elemental_ailments", "chance_to_suppress_spell_damage"],
+      "modifies": ["stun", "block"],
+      "requires": ["chance_roll", "source_that_allows_suppression"],
+      "prevents": ["full_spell_hit_damage_application_on_suppressed_hit"],
+      "cannot_affect": ["non_spell_sources_without_chance_to_suppress"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Hit", "Spell", "Ailment", "Passive Skills", "Evasion", "Dexterity", "Resistances", "Damage Reduction"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Conflicts": {
+      "text": "Suppression is not the same as dodge/evasion; base character chance is zero unless sourced.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Exceptions": {
+      "text": "Secondary spell damage is mitigated by suppression with same multiplier profile.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Hidden Rules": {
+      "text": "Patch updates rebalanced which item sources grant chance to suppress and conversion from dodge wording to suppression wording.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/3194638"
+    },
+    "Developer Notes": {
+      "text": "Legacy dodge-to-suppression transitions for specific sources occurred in patch 3.16.0b (e.g., Blurred Form change).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3194638"
+    },
+    "Historical Changes": {
+      "text": "Source availability and numerical values for Suppression were changed in 3.16.0 and 3.16.0b, including movement of multiple item sources from dodge language toward suppression language.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.16.0",
+          "note": "Scourge patch family expanded sources granting chance to suppress spell damage across passives/items and converted multiple dodge-stat sources to suppression-oriented forms.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.16.0b (Royale)",
+          "note": "Blurred Form explicitly changed to +20% chance to suppress spell damage.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "A 25% chance to suppress with no extra Prevent value blocks 40% of damage on 25% of spell hits.",
+        "A modifier increasing prevented suppressed damage raises the effective mitigation for each successful suppressed hit."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Suppression is not guaranteed until capped by stacking to 100%",
+        "Suppression chance and suppressed damage percentage are separate: chance to suppress is separate from prevented-amount multipliers",
+        "Suppression is a spell-only mitigation type"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Spell_suppression"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Spell_suppression",
+        "https://www.pathofexile.com/forum/view-thread/3186390",
+        "https://www.pathofexile.com/forum/view-thread/3194638"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["chance_to_suppress_spell_damage", "spell_hit", "hit"],
+    "modifies": ["spell_damage", "ailment_damage_dps"],
+    "requires": ["spell_source", "suppression_roll"],
+    "prevents": ["full_damage_application"],
+    "overrides": ["generic_dodge_spell_hit_interactions_from_legacy_source"],
+    "inherits": [],
+    "creates": ["suppressed_hit_state"],
+    "destroys": [],
+    "applies": ["suppressed_spell_damage_reduction", "post_resistance_mitigation_adjustment"],
+    "removes": [],
+    "shares_with": ["resistance", "damage_reduction", "avoid_elemental_ailments"],
+    "is_scaled_by": ["suppression_sources", "prevent_modifiers"],
+    "cannot_affect": ["non_spell_hits"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.16.0",
+      "source": "https://www.pathofexile.com/forum/view-thread/3186390"
+    }
+  ],
+  "collected_at": "2026-07-13T11:20:46+01:00"
+}
+
+

@@ -1,0 +1,160 @@
+{
+  "id": "gain_as_extra",
+  "term": "Gain as Extra",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Damage_conversion",
+  "sections": {
+    "Definition": {
+      "text": "Gain as Extra is a damage modifier that adds a percentage of a source damage type as another damage type while keeping the original source damage.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Purpose": {
+      "text": "Increase damage coverage by producing additional damage in a target type without removing the original type.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Core Rules": {
+      "text": "Converted-to and Gain as Extra are distinct forms; conversion removes source share, Gain as Extra preserves source share and adds extra.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Internal Rules": {
+      "text": "Within a source damage type, Gain as Extra is resolved before Converted To for that source type.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Calculation Order": {
+      "text": "Conversion order uses the source-type sequence Physical -> Lightning -> Cold -> Fire -> Chaos; Gain as Extra is evaluated in that loop before Converted To in each source bucket.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Priority Rules": {
+      "text": "Specific source wording such as source type scope and radius/amount limits overrides generic assumptions.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Preconditions": {
+      "text": "A hit damage event with one or more damage components and at least one Gain as Extra modifier.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Postconditions": {
+      "text": "Source damage remains part of outgoing damage and extra damage is added as the destination type.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Limitations": {
+      "text": "DoT behavior is distinguished by modifiers that say 'from hits' when applicable.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Caps": {
+      "text": "No standalone cap for Gain as Extra is stated in this source.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Formula": {
+      "text": "For source A and destination B: extra_AB = base_A * g_AB; out_A retains base_A; out_B receives +extra_AB before source A conversion stage proceeds.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Keywords": {
+      "text": ["Damage conversion", "Gain as Extra", "Converted to", "source damage"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage Conversion", "Damage"],
+      "modifies": ["source-to-target damage expansion"],
+      "requires": ["source damage components"],
+      "prevents": ["source removal by this modifier"],
+      "cannot_affect": ["already removed conversion output in same bucket before evaluation"],
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Dependencies": {
+      "text": ["Conversion order", "modifier source and destination types", "hit damage buckets"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Conflicts": {
+      "text": ["Confusion with Converted To when both appear on same or linked modifiers"],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Exceptions": {
+      "text": ["PoE1 and PoE2 terminology behavior may differ in unrelated patch lines; this entry is for current PoE1 wording as captured in source context."],
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Hidden Rules": {
+      "text": "Looping through source order allows gain effects to be applied before conversion steps in that bucket.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Developer Notes": {
+      "text": "Keep Gain as Extra and Converted To as separate nodes in schema; do not collapse into one rule.",
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Historical Changes": {
+      "text": "No explicit historical patch list for this term in this pass.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Current captured semantics preserve source damage and add destination extra in source order."
+        }
+      ],
+      "type": "Observed Behavior"
+    },
+    "Examples": {
+      "text": [
+        "Gain 20% of Physical Damage as Extra Fire Damage preserves the original physical portion and adds 20% of physical as fire.",
+        "If Physical is also converted elsewhere, source-step order still applies Gain as Extra before the conversion step for Physical."
+      ],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Treating Gain as Extra as converted damage (it is additive).",
+        "Applying source modifiers to damage after source is removed (order differs)."
+      ],
+      "type": "Observed Behavior",
+      "source": "https://www.poewiki.net/wiki/Damage_conversion"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Damage_conversion",
+        "https://www.poewiki.net/wiki/Modifier:PhysicalAddedAsLightningUnique~~1"
+      ],
+      "type": "Observed Behavior"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Damage", "Damage conversion"],
+    "modifies": ["damage distribution", "final outgoing damage"],
+    "requires": ["source damage type", "modifier amount"],
+    "prevents": ["source damage deletion by this node"],
+    "overrides": [],
+    "inherits": [],
+    "creates": ["additional damage component"],
+    "destroys": [],
+    "applies": ["damage expansion"],
+    "removes": [],
+    "shares_with": ["Damage Conversion"],
+    "is_scaled_by": ["damage scaling"],
+    "cannot_affect": ["already finalized converted share in same step"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Observed Behavior",
+      "status": "active",
+      "version": "current"
+    }
+  ],\r\n  "collected_at": "2026-07-12T22:54:49.9438562+01:00",\r\n  "metadata": {\r\n    "source_type": "Observed Behavior",\r\n    "source_authority": "PoE Wiki (official terminology reference path)",\r\n    "source_url": "https://www.poewiki.net/wiki/Damage_conversion",\r\n    "source_date": "unknown",\r\n    "confidence": "high"\r\n  }\r\n}\r\n

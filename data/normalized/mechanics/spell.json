@@ -1,0 +1,161 @@
+{
+  "id": "spell",
+  "term": "Spell",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official GGG mechanic statements and official forum Q&A",
+  "sections": {
+    "Definition": {
+      "text": "Spell is a skill class distinct from Attack; it defines spell-classified skill delivery and spell-tagged effect scaling.",
+      "type": "Official Rule",
+      "source": "pathofexile.com forum post Mark_GGG on mechanics thread (Nov 2011)"
+    },
+    "Purpose": {
+      "text": "Route skill effects, scaling, and modifiers through spell-specific mechanics and validation paths.",
+      "type": "Official Rule",
+      "source": "Official GGG terminology in mechanic responses"
+    },
+    "Core Rules": {
+      "text": "A skill follows Spell mechanics when it is Spell-tagged; Spell skills are not attacks unless an effect explicitly defines attack-based sub-components.",
+      "type": "Official Rule",
+      "source": "Official GGG forum statements"
+    },
+    "Internal Rules": {
+      "text": "Spell modifiers are evaluated through the Spell pipeline and are orthogonal to base damage type; physical, elemental, and other damage types do not redefine Spell classification.",
+      "type": "Official Rule",
+      "source": "pathofexile.com forum Mechanics thread and Mark_GGG quote"
+    },
+    "Calculation Order": {
+      "text": "1) spell invocation 2) hit/defer checks if applicable 3) damage-type processing 4) spell-specific modifiers and secondary effects.",
+      "type": "Official Rule",
+      "source": "mechanic classification language in official and community-anchored documentation"
+    },
+    "Priority Rules": {
+      "text": "Specific exceptions (e.g., skill component that does not use weapon damage) override generic class assumptions.",
+      "type": "Official Rule",
+      "source": "Mark_GGG response on explosive/ infernal blow special cases"
+    },
+    "Preconditions": {
+      "text": "Skill must be a spell-class action and follow spell validation conditions for targeted application and hit checks.",
+      "type": "Official Rule",
+      "source": "Official GGG mechanics language"
+    },
+    "Postconditions": {
+      "text": "Spell Damage modifiers can apply even when base damage type is physical or another non-spell-type group.",
+      "type": "Official Rule",
+      "source": "detonate dead example in Mechanics thread"
+    },
+    "Limitations": {
+      "text": "Being Spell does not imply specific damage type or targeting geometry.",
+      "type": "Official Rule",
+      "source": "official distinction rules"
+    },
+    "Caps": {
+      "text": "No generic cap for Spell class as a keyword in this source set.",
+      "type": "Official Rule",
+      "source": "n/a"
+    },
+    "Formula": {
+      "text": "No standalone mathematical formula for the Spell keyword itself; modifiers are consumed by stat stack pipeline.",
+      "type": "Official Rule",
+      "source": "n/a"
+    },
+    "Keywords": {
+      "text": ["Spell", "Spell Damage", "Cast", "Hit", "More", "Less"],
+      "type": "Official Rule",
+      "source": "official glossary"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Damage", "Hit"],
+      "modifies": ["Spell Damage"],
+      "requires": ["skill_class_path"],
+      "prevents": ["attack_class_assumption_for_non_weapon_spells"],
+      "cannot_affect": ["spells explicitly excluded by skill text"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Damage", "Hit", "Skill Tags", "Gem Tags"],
+      "type": "Official Rule",
+      "source": "official terminology"
+    },
+    "Conflicts": {
+      "text": ["Spell vs Attack conflation", "Spell tag assumed on mixed damage"],
+      "type": "Official Rule",
+      "source": "critical distinctions and official clarification"
+    },
+    "Exceptions": {
+      "text": ["Attack skills may include components whose components are spell damage (e.g., explosion components on specific attacks)."],
+      "type": "Official Rule",
+      "source": "Mark_GGG quote in Mechanics thread"
+    },
+    "Hidden Rules": {
+      "text": "Store Spell class as orthogonal to damage-type tags in schema; do not infer physical/cold/fire/etc from spell-ness.",
+      "type": "Official Rule",
+      "source": "observed official wording model"
+    },
+    "Developer Notes": {
+      "text": "When a mechanic applies to both attack and spell, use explicit dual wording like 'with spells and attacks' or global scope.",
+      "type": "Official Rule",
+      "source": "official phrasing examples"
+    },
+    "Historical Changes": {
+      "text": "No explicit version-scoped Spell-redefinition passage found in this batch.",
+      "type": "Historical Behavior",
+      "source": "multi-year archived forum mechanics clarification"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "current",
+          "note": "Spell remains defined by skill class and non-weapon application path.",
+          "type": "Official Rule"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Detonate Dead is a spell that deals physical damage; it is affected by spell damage modifiers, not elemental-only modifiers.",
+        "Explosive/Infernal Blow can include spell-damage explosion components while the base skill is an attack."
+      ],
+      "type": "Official Rule",
+      "source": "Mark_GGG clarifications"
+    },
+    "Common Misconceptions": {
+      "text": ["Spell == Attack", "All spell effects are affected by attack checks"],
+      "type": "Official Rule",
+      "source": "critical distinctions"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/11707/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/1261925"
+      ],
+      "type": "Official Rule",
+      "source": "Official GGG forum"
+    }
+  },
+  "relationships": {
+    "depends_on": ["damage_type"],
+    "modifies": ["spell_damage", "effect_classification"],
+    "requires": ["spell_tag", "skill_classification"],
+    "prevents": ["default_attack_scale_on_spell"],
+    "overrides": ["none"],
+    "inherits": [],
+    "creates": [],
+    "destroys": [],
+    "applies": ["spell_damage_scalars"],
+    "removes": [],
+    "shares_with": ["Hit", "Damage"],
+    "is_scaled_by": ["increased_spell_damage", "more_spell_damage", "less_spell_damage"],
+    "cannot_affect": ["weapon_derived_flat_damage_that_is_not_spell_scaled"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "current"
+    }
+  ],
+  "collected_at": "2026-07-12T21:54:48+01:00"
+}

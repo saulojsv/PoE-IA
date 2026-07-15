@@ -1,0 +1,105 @@
+﻿{
+    "id":  "skill:added_cold_damage",
+    "name":  "Added Cold Damage",
+    "normalized_name":  "added_cold_damage",
+    "az_order":  0,
+    "category":  "support",
+    "variant_type":  "support",
+    "base_skill_id":  null,
+    "aliases":  [
+                    "Added Cold Damage Support",
+                    "Added Cold Damage Support Gem"
+                ],
+    "introduced_in_patch":  null,
+    "removed_in_patch":  null,
+    "legacy":  false,
+    "current":  false,
+    "patch":  "",
+    "league":  "",
+    "collected_at":  "2026-07-12T17:33:33Z",
+    "last_verified_at":  "2026-07-12T17:33:33Z",
+    "confidence":  0.45,
+    "status":  "unverified",
+    "classification":  [
+                           "support"
+                       ],
+    "tags":  [
+
+             ],
+    "requirements":  {
+
+                     },
+    "levels":  [
+
+               ],
+    "quality_effects":  [
+
+                        ],
+    "mechanics":  [
+
+                  ],
+    "formulas":  [
+
+                 ],
+    "limits_breakpoints":  [
+
+                           ],
+    "support_relationships":  [
+
+                              ],
+    "gem_links":  [
+
+                  ],
+    "item_synergies":  [
+
+                       ],
+    "passives_ascendancies":  [
+
+                              ],
+    "builds":  [
+
+               ],
+    "guides":  [
+
+               ],
+    "market_usage":  [
+
+                     ],
+    "patch_changes":  [
+
+                      ],
+    "sources":  [
+                    {
+                        "url":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                        "source_type":  "poewiki",
+                        "type":  "official_fact",
+                        "confidence":  0.45,
+                        "status":  "unverified",
+                        "source_date":  "",
+                        "source_url":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                        "patch":  "",
+                        "collected_at":  "2026-07-12T17:33:33Z"
+                    }
+                ],
+    "claims":  [
+                   {
+                       "patch":  "",
+                       "source":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                       "confirmed_at":  "2026-07-12T17:33:33Z",
+                       "type":  "identity",
+                       "reason":  "Não foi possível confirmar em fonte confiável.",
+                       "status":  "unverified"
+                   }
+               ],
+    "conflicts":  [
+
+                  ],
+    "validation":  [
+                       {
+                           "result":  "ok",
+                           "http_status":  200,
+                           "source":  "https://www.poewiki.net/wiki/Added_Cold_Damage",
+                           "check":  "source_fetch"
+                       }
+                   ]
+}

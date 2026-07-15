@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Gem Links"
+  short_description: "Research gem link setups."
+  default_prompt: "Use $poe-gem-links-compatibility to research links and support setup for one skill."
+policy:
+  allow_implicit_invocation: true

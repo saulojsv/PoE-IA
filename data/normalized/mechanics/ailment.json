@@ -1,0 +1,190 @@
+{
+  "id": "ailment",
+  "term": "Ailment",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "https://www.poewiki.net/wiki/Ailment",
+  "sections": {
+    "Definition": {
+      "text": "Ailment is a subset of Debuff associated with one or more damage types, normally applied by hits.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Purpose": {
+      "text": "Represent damage-linked adverse states with variable magnitude or duration based on hit damage.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Core Rules": {
+      "text": "Ailments are a type of Debuff and may be non-damaging or damaging; they are usually triggered by on-hit effects and can include elemental and non-elemental variants.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Internal Rules": {
+      "text": "Ailment duration is not affected by Skill Effect Duration unless explicitly stated; non-damaging ailments are fixed base duration except Freeze scaling with ailment threshold.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Calculation Order": {
+      "text": "1) hit resolves 2) chance to inflict checked for hit damage-type associations 3) magnitude/duration computed from hit damage and thresholds 4) existing same-type ailment stacking/removal resolution.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Priority Rules": {
+      "text": "No limit on different ailments per target; multiple same ailment instances can exist, but for non-damaging ailments strongest effects apply by default unless explicitly stacking.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Preconditions": {
+      "text": "A target must receive damage that can inflict an ailment and meet the relevant hit damage-type association rules.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Postconditions": {
+      "text": "A target gains an ailment state with computed effect magnitude and remaining duration.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Limitations": {
+      "text": "Some non-elemental or map-defined sources can change associations and immunity effects; these are explicit by source effects.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Caps": {
+      "text": "Minimum/maximum effect or duration caps exist per ailment type; values can be clamped and discard below-minimum applications.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Formula": {
+      "text": "Non-damaging ailment magnitude is based on hit damage divided by ailment threshold, then clamped between minimum and maximum; damaging ailments use flat+added base damage of the hit modified by damage over time modifiers, not final hit resistance multipliers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Keywords": {
+      "text": ["Ailment", "Debuff", "damage type", "on-hit", "ailment threshold", "non-damaging", "damaging"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Debuff", "Hit", "Damage", "Debuff Effect", "Ailment threshold"],
+      "modifies": ["action speed", "damage taken", "critical strike chance", "chaos resistance", "damage dealt"],
+      "requires": ["valid hit", "damage type association", "source chance/modifiers"],
+      "prevents": ["application of disallowed ailment at zero magnitude"],
+      "cannot_affect": ["targets with explicit immunity/avoidance constraints"],
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Dependencies": {
+      "text": ["Debuff attachment model", "Damage application by Hit", "Ailment threshold data", "Damage over time modifiers"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Conflicts": {
+      "text": "Ailment and Debuff semantics overlap; not all Debuffs are Ailments and not all interactions are interchangeable.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Exceptions": {
+      "text": "Poison stacks and persists with a stack model with no explicit stack cap; elemental ailments may still be overridden by strongest-effect logic across instances.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Hidden Rules": {
+      "text": "Some explicit modifier texts map to ailment behavior indirectly (for example elemental ailment modifiers tied to other effect systems).",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Developer Notes": {
+      "text": "Keep Ailment as a Debuff subclass; avoid treating all negative effects as Ailment for version-sensitive behavior.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Historical Changes": {
+      "text": "The wiki lists historical renaming and balancing milestones that materially affect terminology, threshold behavior, and display/interaction behavior across versions.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "3.28.0f",
+          "note": "Fixed several monsters using additive ailment effect and duration instead of multiplicative behavior.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Ailment"
+        },
+        {
+          "version": "3.20.0",
+          "note": "Immunity/avoidance display wording for ailments changed in character sheet UI representation.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Ailment"
+        },
+        {
+          "version": "3.16.0",
+          "note": "Ailment threshold values for high-life bosses were rebalanced.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Ailment"
+        },
+        {
+          "version": "3.5.0",
+          "note": "Scorched, Brittle, and Sapped were added as new elemental ailments.",
+          "type": "Historical Behavior",
+          "source": "https://www.poewiki.net/wiki/Ailment"
+        }
+      ],
+      "type": "Historical Behavior"
+    },
+    "Examples": {
+      "text": [
+        "A fire Hit can apply Ignite, and cold Hit can apply Chill.",
+        "Physical+Chaos Hit can apply multiple Ailments when supported by relevant mechanics."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Ailment is not equivalent to Debuff in all cases.",
+        "Non-damaging ailments are mostly not affected by Skill Effect Duration unless explicitly stated."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Ailment"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Ailment",
+        "https://www.poewiki.net/wiki/Poison",
+        "https://www.pathofexile.com/forum/view-thread/2627116"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["Debuff", "Hit", "Damage"],
+    "modifies": ["target action speed", "target damage received", "target resistances", "target damage dealt"],
+    "requires": ["valid damaging hit", "damage-type association", "application source"],
+    "prevents": ["under-threshold ailment application"],
+    "overrides": ["weaker same-type ailment effect on target"],
+    "inherits": ["Debuff"],
+    "creates": ["ailment instance"],
+    "destroys": ["expired or superseded ailment entries"],
+    "applies": ["non-damaging ailment effect"],
+    "removes": ["expired ailment state"],
+    "shares_with": ["Debuff", "Hex", "Brittle", "Scorch", "Sap", "Withered"],
+    "is_scaled_by": ["Ailment Effect", "Elemental Ailment Effect", "Damage modifiers by type"],
+    "cannot_affect": ["targets with explicit immunity to target ailment"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.28.0f"
+    }
+  ],
+  "collected_at": "2026-07-12T22:29:59.8599068+01:00",
+  "metadata": {
+    "source_type": "Official Rule",
+    "source_authority": "Path of Exile official terminology source path via PoE Wiki mirror",
+    "source_url": "https://www.poewiki.net/wiki/Ailment",
+    "source_date": "unverified",
+    "confidence": "high"
+  }
+}

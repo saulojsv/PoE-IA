@@ -1,0 +1,220 @@
+﻿{
+    "id":  "nearby",
+    "term":  "Nearby",
+    "status":  "research_pass",
+    "classification":  "Observed Behavior",
+    "source":  "https://www.poewiki.net/wiki/Distance",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "Nearby is not a keyword; it denotes an effect applying in a circular area around a source object or entity.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Distance"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Used to express area targeting scope without committing to a fixed, universally visible radius value.",
+                                     "type":  "Observed Behavior",
+                                     "source":  "https://www.poewiki.net/wiki/Distance"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "Nearby applies as an area relation to the source of the effect and may be used by skills, passives, and modifiers.",
+                                        "type":  "Observed Behavior",
+                                        "source":  "https://www.poewiki.net/wiki/Distance"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Actual radius is defined per source text/value and is not guaranteed to be the same between all Nearby usages.",
+                                            "type":  "Observed Behavior",
+                                            "source":  "https://www.poewiki.net/wiki/Distance"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "Area collection occurs during the effect-resolution step, after source selection and before effect application.",
+                                               "type":  "Observed Behavior",
+                                               "source":  "poe.wiki"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "Specific radius values on the source entry override any generic Nearby interpretation.",
+                                            "type":  "Observed Behavior",
+                                            "source":  "https://www.poewiki.net/wiki/Distance"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "Requires an effect that is textually scoped as nearby and a valid source entity for circular check.",
+                                           "type":  "Observed Behavior",
+                                           "source":  "https://www.poewiki.net/wiki/Distance"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "Only entities in the resolved nearby area are eligible for the effect.",
+                                            "type":  "Observed Behavior",
+                                            "source":  "https://www.poewiki.net/wiki/Distance"
+                                        },
+                     "Limitations":  {
+                                         "text":  "Nearby is not the same as a fixed keyword constant; UI does not always expose radius values.",
+                                         "type":  "Observed Behavior",
+                                         "source":  "https://www.poewiki.net/wiki/Distance"
+                                     },
+                     "Caps":  {
+                                  "text":  "No global nearby cap is defined by the term itself.",
+                                  "type":  "Observed Behavior",
+                                  "source":  "https://www.poewiki.net/wiki/Distance"
+                              },
+                     "Formula":  {
+                                     "text":  "No standalone formula for Nearby; radius is resolved per source definition.",
+                                     "type":  "Observed Behavior",
+                                     "source":  "https://www.poewiki.net/wiki/Distance"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Nearby",
+                                                   "Distance",
+                                                   "Area of Effect"
+                                               ],
+                                      "type":  "Observed Behavior",
+                                      "source":  "https://www.poewiki.net/wiki/Distance"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Distance",
+                                                                  "Area of Effect"
+                                                              ],
+                                               "modifies":  [
+                                                                "entity selection scope"
+                                                            ],
+                                               "requires":  [
+                                                                "source radius value"
+                                                            ],
+                                               "prevents":  [
+                                                                "single fixed numeric interpretation"
+                                                            ],
+                                               "cannot_affect":  [
+                                                                     "explicit in-range constants"
+                                                                 ],
+                                               "source":  "https://www.poewiki.net/wiki/Distance"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "source definition data",
+                                                       "entity positions"
+                                                   ],
+                                          "type":  "Observed Behavior",
+                                          "source":  "https://www.poewiki.net/wiki/Distance"
+                                      },
+                     "Conflicts":  {
+                                       "text":  [
+                                                    "Nearby vs keywords that are fixed constants such as Recently."
+                                                ],
+                                       "type":  "Observed Behavior",
+                                       "source":  "https://www.poewiki.net/wiki/Distance"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Searches for nearby entities do not include non-blocking objects or untargetable/invulnerable bosses in scripted phases.",
+                                        "type":  "Observed Behavior",
+                                        "source":  "https://www.poewiki.net/wiki/Distance"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "Nearby is explicitly documented as not a keyword in official-style terminology text and may not receive uniform radius patches.",
+                                          "type":  "Observed Behavior",
+                                          "source":  "https://www.poewiki.net/wiki/Distance"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "Record per-skill/per-source radius values; avoid converting Nearby into a universal radius constant.",
+                                             "type":  "Observed Behavior",
+                                             "source":  "https://www.poewiki.net/wiki/Distance"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "No discrete patch event recorded for Nearby as a global keyword in this pass.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Distance"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+                                                        {
+                                                            "version":  "current",
+                                                            "note":  "Nearby remains source-defined area wording, not a global fixed keyword.",
+                                                            "type":  "Observed Behavior"
+                                                        }
+                                                    ],
+                                           "type":  "Observed Behavior"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "A modifier can read \u0027Enemies in your nearby area are affected\u0027 without fixed radius text.",
+                                                   "A nearby effect on one skill can be 3.0m while another nearby effect is screen-scale."
+                                               ],
+                                      "type":  "Observed Behavior",
+                                      "source":  "https://www.poewiki.net/wiki/Distance"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Treating Nearby as a fixed keyword with single global radius.",
+                                                                "Assuming Nearby is equivalent to Area of Effect radius always."
+                                                            ],
+                                                   "type":  "Observed Behavior",
+                                                   "source":  "https://www.poewiki.net/wiki/Distance"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/index.php?title=Nearby\u0026oldid=1390441",
+                                                           "https://www.poewiki.net/wiki/Distance",
+                                                           "https://www.poewiki.net/wiki/Keyword"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "distance",
+                                             "area_selection"
+                                         ],
+                          "modifies":  [
+                                           "scope"
+                                       ],
+                          "requires":  [
+                                           "source_entity",
+                                           "source_area_definition"
+                                       ],
+                          "prevents":  [
+                                           "global_radius_assumption"
+                                       ],
+                          "overrides":  [
+                                            "none"
+                                        ],
+                          "inherits":  [
+
+                                       ],
+                          "creates":  [
+
+                                      ],
+                          "destroys":  [
+
+                                       ],
+                          "applies":  [
+                                          "entity_area_selection"
+                                      ],
+                          "removes":  [
+
+                                      ],
+                          "shares_with":  [
+                                              "Area of Effect"
+                                          ],
+                          "is_scaled_by":  [
+
+                                           ],
+                          "cannot_affect":  [
+                                                "effects outside resolved nearby scope"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Observed Behavior",
+                                        "status":  "active",
+                                        "version":  "current"
+                                    }
+                                ],
+    "metadata":  {
+                     "source_type":  "Observed Behavior",
+                     "confidence":  "high",
+                     "source_authority":  "Path of Exile official terminology source",
+                     "status":  "active",
+                     "source_date":  "unverified",
+                     "source_url":  "https://www.poewiki.net/wiki/Distance"
+                 },
+    "collected_at":  "2026-07-13T00:20:07+01:00"
+}

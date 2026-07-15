@@ -1,0 +1,158 @@
+﻿{
+  "id": "tailwind",
+  "term": "Tailwind",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "Official Path of Exile patch notes and official gather nodes",
+  "sections": {
+    "Definition": {
+      "text": "Tailwind is an aura-type buff that grants a speed modifier and scales with recent skill usage through Gathering Winds.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Purpose": {
+      "text": "Increase movement, cast, attack, and Throw/skill use rates for the wearer and nearby allies.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Core Rules": {
+      "text": "Gathering Winds grants the Tailwind aura to you and nearby Allies. In 3.2, Tailwind granted 1000 Evasion, 10% increased Action Speed, and 10% increased Effect of Tailwind per skill used recently, up to 100%.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Internal Rules": {
+      "text": "Tailwind effect is tied to the active source that grants it (for Deadeye this is Gathering Winds) and is further modified by Gale Force terms from the same notable.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Calculation Order": {
+      "text": "1) Source grants Tailwind aura state; 2) base action-speed bonus applies; 3) Effect of Tailwind is multiplied by recent skill-use scaling (per-stack term); 4) final action-speed result is used by downstream action-time systems.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Priority Rules": {
+      "text": "Patch-level replacement of the per-stack term in Gathering Winds (3.25: 10% from 15%) applies before computing final Tailwind action-speed effect; earlier patch values do not remain active when superseded.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Preconditions": {
+      "text": "Tailwind requires a valid source that applies Tailwind to the entity (for Deadeye, Gathering Winds).",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Postconditions": {
+      "text": "Entity and nearby allies receive Tailwind action-speed scaling for the active buff period and gain the listed nearby bonus context from the source.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Limitations": {
+      "text": "Tailwind is a buff context effect; it is not a direct Hit modifier and does not replace base action-speed modifiers from other systems.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Caps": {
+      "text": "In 3.2 wording, increased effect scaling is capped at 100%.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Formula": {
+      "text": "Let n be recent-use stacks used by Gathering Winds and c be the per-stack bonus term. In 3.2, Base ActionSpeed = 10% and effect scale is c=10% per stack. 3.25 changed c to 10% from 15%. Final ActionSpeed = 10% * (1 + min(1, n * c_effect)), with n capped by the source definition.
+",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Keywords": {
+      "text": ["Tailwind", "Aura", "Gathering Winds", "Action Speed", "Gale Force", "nearby Allies"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Related Mechanics": {
+      "depends_on": ["Aura", "Action Speed", "Gathering Winds", "Gale Force"],
+      "modifies": ["Movement Speed", "Cast Speed", "Attack Speed", "Throwing skills", "Skill time resolution"],
+      "requires": ["Gathering Winds source"],
+      "prevents": ["Using outdated patch constants after a patch-time replacement of per-stack term"],
+      "cannot_affect": ["non-action speed-only modifiers"],
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Dependencies": {
+      "text": ["Gathering Winds notable / source", "Tailwind source state", "action-speed resolution layer"],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Conflicts": {
+      "text": "Stacking Tailwind instances from the same source is replaced by strongest/most-recent behavior rather than additive independent aura reapplication.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Exceptions": {
+      "text": "A patch-level bug fix may alter Tailwind source precedence for sources that share mechanics; this must be recorded as separate patch entries.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Hidden Rules": {
+      "text": "Different patch contexts can use distinct scaling definitions; model Tailwind strictly per patch timeline to avoid mixing historical values.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Developer Notes": {
+      "text": "Treat Tailwind as an action-speed aura with explicit per-patch scaling terms; avoid combining 3.2 and 3.25 formulas unless continuity is explicitly stated.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Historical Changes": {
+      "text": "3.2 introduced Tailwind via Gathering Winds. 3.25 replaced the per-Gale Force term from 15% to 10%.",
+      "type": "Historical Behavior",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Patch History": {
+      "text": [
+        {"version": "3.2.0", "note": "Added Gathering Winds with Tailwind aura; 10% increased action speed and 10% increased effect of Tailwind per skill used recently up to 100%.", "type": "Official Rule"},
+        {"version": "3.25.0", "note": "Gathering Winds now provides 10% increased Effect of Tailwind per Gale Force (previously 15%).", "type": "Official Rule"}
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "In 3.2 form, Tailwind with 10 recent recent-skill units reaches the documented cap.",
+        "In 3.25+ form, per-unit effect uses the new 10% term for Gale Force scaling.",
+        "Nearby Allies receiving Tailwind inherit the aura context from source rules."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/2093500"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Treating Tailwind as a fixed-value status not affected by patch-level per-stack terms.",
+        "Assuming the 3.2 and 3.25 formulas are interchangeable without timeline checks."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3531661"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.pathofexile.com/forum/view-thread/2093500",
+        "https://www.pathofexile.com/forum/view-thread/3531661"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["action_speed", "Gathering Winds", "aura", "Gale Force"],
+    "modifies": ["action speed pipeline", "nearby ally speed context"],
+    "requires": ["tailwind_source", "skill_recent_usage"],
+    "prevents": ["stack-mixing across patch timelines"],
+    "overrides": ["none"],
+    "inherits": ["Buff", "Aura"],
+    "creates": ["tailwind state"],
+    "destroys": ["expired Tailwind state"],
+    "applies": ["increased action speed"],
+    "removes": ["expired Tailwind"],
+    "shares_with": ["nearby allies"],
+    "is_scaled_by": ["recent skill usage", "Gale Force", "gathering winds modifiers"],
+    "cannot_affect": ["pure Hit calculation outside action-time" ]
+  },
+  "classification_timeline": [
+    {"type": "Official Rule", "status": "active", "version": "3.25.0"}
+  ],
+  "collected_at": "2026-07-13T12:02:02.000Z"
+}

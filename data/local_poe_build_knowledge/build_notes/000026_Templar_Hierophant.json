@@ -1,0 +1,96 @@
+{
+  "id": "000026_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000026_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Greater Volley",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "2699256.4442828",
+    "combined_dps": "2702747.1664749",
+    "crit_chance": "100",
+    "crit_multiplier": "4.37",
+    "hit_chance": "100",
+    "ehp": "45602.098644044",
+    "life": "3581",
+    "energy_shield": "2460",
+    "fire_res": "75",
+    "cold_res": "80",
+    "lightning_res": "79",
+    "chaos_res": "73",
+    "mana_unreserved": "124",
+    "mana_cost": "27"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "life pool",
+      "armour",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Kinetic Fusillade",
+      "Ballista Totem",
+      "Increased Critical Damage",
+      "Less Duration",
+      "Volatility"
+    ],
+    "auras_utility": [
+      "Determination",
+      "Precision",
+      "Tempest Shield",
+      "Wrath"
+    ],
+    "movement": [
+      "Frostblink",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Mageblood",
+      "Aegis Aurora",
+      "Warped Timepiece",
+      "Rain of Splinters",
+      "Forbidden Flesh",
+      "The Light of Meaning",
+      "Forbidden Flame"
+    ],
+    "cluster_jewels": [
+      "Cataclysm Cut",
+      "Phoenix Creed"
+    ],
+    "flasks": [
+      "Mageblood",
+      "Abecedarian's Quicksilver Flask of Craft",
+      "Dabbler's Quartz Flask of the Kakapo",
+      "Dabbler's Diamond Flask of Incision",
+      "Seething Divine Life Flask of Sealing",
+      "Abecedarian's Granite Flask of the Armadillo"
+    ],
+    "passive_node_count": 133
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

@@ -1,0 +1,97 @@
+{
+  "id": "000011_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000011_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Less Duration",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "2003445.3468133",
+    "combined_dps": "2007744.5408201",
+    "crit_chance": "77.868",
+    "crit_multiplier": "4.63",
+    "hit_chance": "100",
+    "ehp": "51285.007338827",
+    "life": "4198",
+    "energy_shield": "3351",
+    "fire_res": "75",
+    "cold_res": "80",
+    "lightning_res": "75",
+    "chaos_res": "75",
+    "mana_unreserved": "228",
+    "mana_cost": "26"
+  },
+  "logic": {
+    "damage_scaling": [
+      "crit",
+      "dot"
+    ],
+    "defense_layers": [
+      "life pool",
+      "energy shield",
+      "armour",
+      "block",
+      "spell block",
+      "life recovery"
+    ],
+    "main_supports": [
+      "Ballista Totem",
+      "Greater Volley",
+      "Invert the Rules",
+      "Kinetic Fusillade",
+      "Increased Critical Damage"
+    ],
+    "auras_utility": [
+      "Anger",
+      "Determination",
+      "Precision",
+      "Tempest Shield"
+    ],
+    "movement": [
+      "Flame Dash",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Realmshaper",
+      "Yoke of Suffering",
+      "Aegis Aurora",
+      "Wine of the Prophet",
+      "Watcher's Eye",
+      "Rain of Splinters",
+      "Lethal Pride",
+      "The Light of Meaning"
+    ],
+    "cluster_jewels": [
+      "Apocalypse Wound",
+      "Phoenix Hope"
+    ],
+    "flasks": [
+      "Chemist's Quicksilver Flask of the Cheetah",
+      "Wine of the Prophet",
+      "Brewer's Granite Flask of the Armadillo",
+      "Brewer's Eternal Life Flask of Alleviation",
+      "Experimenter's Diamond Flask of the Armadillo"
+    ],
+    "passive_node_count": 135
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": true,
+    "lightning_res_cap": true,
+    "chaos_res_non_negative": true,
+    "has_recovery": true,
+    "mana_usable": true,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": []
+}

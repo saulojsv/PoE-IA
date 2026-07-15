@@ -1,0 +1,114 @@
+{
+  "id": "skill:lightning_conduit_of_the_heavens",
+  "entity_type": "transfigured_skill_gem",
+  "name": "Lightning Conduit of the Heavens",
+  "normalized_name": "lightning_conduit_of_the_heavens",
+  "az_order": 173,
+  "category": "transfigured_skill_gem",
+  "variant_type": "transfigured",
+  "base_skill_id": null,
+  "patch": "3.28.0j",
+  "league": "Mirage",
+  "source_url": "https://www.poewiki.net/wiki/Lightning_Conduit_of_the_Heavens",
+  "source_type": "poewiki",
+  "source_date": "2026-07-13T10:29:02Z",
+  "collected_at": "2026-07-14T01:05:28Z",
+  "last_verified_at": "",
+  "classification": "community",
+  "confidence": 0.48,
+  "status": "likely_current",
+  "data": {
+    "identity": {
+      "name": "Lightning Conduit of the Heavens"
+    },
+    "raw_excerpt": " Lightning Conduit of the Heavens | PoE Wiki document.documentElement.className=\"client-js\";RLCONF={\"wgBreakFrames\":false,\"wgSeparatorTransformTable\":[\"\",\"\"],\"wgDigitTransformTable\":[\"\",\"\"],\"wgDefaultDateFormat\":\"dmy\",\"wgMonthNames\":[\"\",\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"],\"wgRequestId\":\"5a9eff6a1cef84601152dd29\",\"wgCSPNonce\":\"eSNlZ6hecReC97cy7FDr\",\"wgCanonicalNamespace\":\"\",\"wgCanonicalSpecialPageName\":false,\"wgNamespaceNu",
+    "tags": [],
+    "requirements": {},
+    "gems": {},
+    "supports": [],
+    "incompatibilities": [],
+    "sources": [
+      "https://www.poewiki.net/wiki/Lightning_Conduit_of_the_Heavens",
+      "https://www.poewiki.net/wiki/List_of_transfigured_skill_gems"
+    ],
+    "research_focus": {
+      "name": "items_mods_jewels_flasks",
+      "fields": [
+        "item_synergies",
+        "jewels",
+        "cluster_jewels",
+        "flasks",
+        "modifiers"
+      ],
+      "queries": [
+        "unique items",
+        "mods",
+        "cluster jewel",
+        "flasks",
+        "crafting"
+      ]
+    },
+    "levels": [],
+    "quality_effects": [],
+    "support_relationships": [],
+    "gem_links": [],
+    "item_synergies": [],
+    "passives_ascendancies": [],
+    "builds": [],
+    "guides": [],
+    "market_usage": [],
+    "patch_changes": []
+  },
+  "conflicts": [],
+  "validation_errors": [],
+  "xml_status": "needs_source",
+  "research_cycle": 3,
+  "research_focus": {
+    "name": "items_mods_jewels_flasks",
+    "fields": [
+      "item_synergies",
+      "jewels",
+      "cluster_jewels",
+      "flasks",
+      "modifiers"
+    ],
+    "queries": [
+      "unique items",
+      "mods",
+      "cluster jewel",
+      "flasks",
+      "crafting"
+    ]
+  },
+  "missing_fields": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ],
+  "all_missing_fields": [
+    "tags",
+    "requirements",
+    "levels",
+    "quality_effects",
+    "mechanics",
+    "formulas",
+    "limits_breakpoints",
+    "support_relationships",
+    "gem_links",
+    "item_synergies",
+    "passives_ascendancies",
+    "builds",
+    "guides",
+    "market_usage",
+    "patch_changes"
+  ],
+  "next_research_priority": [
+    "item_synergies",
+    "jewels",
+    "cluster_jewels",
+    "flasks",
+    "modifiers"
+  ]
+}

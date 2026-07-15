@@ -1,0 +1,100 @@
+{
+  "id": "000015_Templar_Hierophant",
+  "xml": "C:\\Users\\saulo\\Documents\\Agente - PoE\\data\\local_poe_learning_dataset\\xml\\000015_Templar_Hierophant.xml",
+  "identity": {
+    "class": "Templar",
+    "ascendancy": "Hierophant",
+    "level": "100",
+    "main_skill": "Ballista Totem",
+    "delivery": "totem/ballista"
+  },
+  "metrics": {
+    "dps": "2357045.8851477",
+    "combined_dps": "2357045.8851477",
+    "crit_chance": "93.27271",
+    "crit_multiplier": "4.67",
+    "hit_chance": "95",
+    "ehp": "49497.680391935",
+    "life": "1",
+    "energy_shield": "5481",
+    "fire_res": "81",
+    "cold_res": "42",
+    "lightning_res": "63",
+    "chaos_res": "-52",
+    "mana_unreserved": "20",
+    "mana_cost": "24"
+  },
+  "logic": {
+    "damage_scaling": [
+      "attack",
+      "crit",
+      "elemental"
+    ],
+    "defense_layers": [
+      "energy shield",
+      "spell block",
+      "ES recovery"
+    ],
+    "main_supports": [
+      "Elemental Damage with Attacks",
+      "Volatility",
+      "Kinetic Fusillade",
+      "Less Duration",
+      "Greater Volley"
+    ],
+    "auras_utility": [
+      "Clarity",
+      "Determination",
+      "Precision",
+      "Tempest Shield",
+      "Wrath"
+    ],
+    "movement": [
+      "Frostblink",
+      "Shield Charge"
+    ],
+    "required_or_enabling_uniques": [
+      "Timeclasp",
+      "Doedre's Tenure",
+      "Warped Timepiece",
+      "Wine of the Prophet",
+      "Dying Sun",
+      "The Light of Meaning",
+      "Energy From Within",
+      "Rain of Splinters",
+      "Watcher's Eye"
+    ],
+    "cluster_jewels": [],
+    "flasks": [
+      "Fate Girdle",
+      "Wine of the Prophet",
+      "Investigator's Diamond Flask of the Tortoise",
+      "Dying Sun",
+      "Experimenter's Granite Flask of the Ibex",
+      "Constant Quicksilver Flask of Incision"
+    ],
+    "passive_node_count": 133
+  },
+  "functionality_gates": {
+    "fire_res_cap": true,
+    "cold_res_cap": false,
+    "lightning_res_cap": false,
+    "chaos_res_non_negative": false,
+    "has_recovery": true,
+    "mana_usable": false,
+    "movement_skill": true,
+    "attack_hit_capped_if_relevant": true
+  },
+  "learning_summary": {
+    "why_class": "Ascendencia deve justificar mecanica principal, defesa, recurso ou pathing eficiente.",
+    "why_skill": "Skill define tags e buckets de scaling; supports e itens precisam conversar com essas tags.",
+    "why_items": "Itens sao classificados como habilitadores, dano, defesa, recurso, atributos/resistencias ou flasks.",
+    "why_tree": "Nodos/masteries/clusters devem resolver gargalos de dano, defesa, recurso, atributos, ailment, recovery ou pathing."
+  },
+  "risks": [
+    "cold_res_cap",
+    "lightning_res_cap",
+    "chaos_res_non_negative",
+    "mana_usable"
+  ]
+}

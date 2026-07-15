@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Items Mods"
+  short_description: "Research item synergies."
+  default_prompt: "Use $poe-items-uniques-modifiers to research item and modifier synergies for one skill."
+policy:
+  allow_implicit_invocation: true

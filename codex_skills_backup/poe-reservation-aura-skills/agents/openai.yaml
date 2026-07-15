@@ -1,0 +1,6 @@
+interface:
+  display_name: "PoE Reservation"
+  short_description: "Research auras and reservation."
+  default_prompt: "Use $poe-reservation-aura-skills to research one reservation or aura skill."
+policy:
+  allow_implicit_invocation: true

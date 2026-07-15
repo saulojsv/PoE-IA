@@ -1,0 +1,187 @@
+{
+  "id": "trigger",
+  "term": "Trigger",
+  "status": "research_pass",
+  "classification": "Official Rule",
+  "source": "PoE Wiki with official patch references and official forum links",
+  "sections": {
+    "Definition": {
+      "text": "Trigger is a skill tag for mechanics that cause supported/owned skills to cast automatically when their trigger condition is met.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Purpose": {
+      "text": "Attach automatic-cast behavior to another skill source without a direct cast action for the triggered skill.",
+      "type": "Official Rule",
+      "source": "https://www.pathofexile.com/forum/view-thread/3292308/page/1"
+    },
+    "Core Rules": {
+      "text": "Triggers are event-driven: support gems or item modifiers evaluate conditions such as critical hit, kill, or on-hit and attempt to cast target skills automatically.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Internal Rules": {
+      "text": "Trigger events can require a cooldown check and are constrained by trigger-specific cooldown groups and direct cast restrictions depending on source and patch state.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Calculation Order": {
+      "text": "1) condition met on source skill event, 2) evaluate trigger availability/cooldown/state, 3) enqueue triggered skill execution according to trigger ordering, 4) apply cast costs and reservation modifiers.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Priority Rules": {
+      "text": "For patched behavior where multiple trigger mechanics interact, a single trigger group shares cooldown between gem versions of the same triggered action.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Preconditions": {
+      "text": "A valid triggering source, a compatible triggered skill, and supported condition must exist; unsupported origins (totem/trap/mine/Vaal/channelling/reservation where disallowed) cannot trigger.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Postconditions": {
+      "text": "Triggered skill is cast under trigger item/gem restrictions; some rules may forbid direct player cast of the same triggered skill in same state.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Limitations": {
+      "text": "A trigger source may be limited to one skill per trigger event and cooldown-group restrictions apply in current and later patch states.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Caps": {
+      "text": "Cooldown limits and one-skill-per-event limit cap burst density regardless of number of eligible trigger sources.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Formula": {
+      "text": "No standalone numeric scalar; operational rule is event-to-trigger and cooldown/ordering gating per trigger event.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Keywords": {
+      "text": ["Trigger", "Triggered Skill", "Cast on Critical Strike", "Cast on Melee Kill", "Supported Spell", "Trigger Cooldown", "Trigger Event", "Cooldown Group", "Can Trigger"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Related Mechanics": {
+      "depends_on": ["cooldown", "support_gems", "critical_hit", "on_kill", "cast"],
+      "modifies": ["cast_scheduling", "damage_flow", "reservation_costs"],
+      "requires": ["compatible_trigger_source", "trigger_condition"],
+      "prevents": ["direct_cast_of_triggered_skill_when_restricted"],
+      "cannot_affect": ["vaal_skills", "channelling_skills", "reservationed_skills_when_forbidden"],
+      "source": "Official Rule"
+    },
+    "Dependencies": {
+      "text": ["Support Gem Tags", "cooldowns", "Condition Evaluation", "Skill Reservation", "Hit Event", "Kill Event"],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Conflicts": {
+      "text": "Trigger systems are separate from Cast; Trigger uses automatic condition-based casting rules, not direct player activation.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Exceptions": {
+      "text": "Certain minion trigger items and historical cases may keep exception behavior even when general trigger restrictions are applied.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Hidden Rules": {
+      "text": "Version transitions include explicit compatibility and disallowance decisions that are not always obvious from one-line tooltip summaries.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Developer Notes": {
+      "text": "Patch 3.21.0 aligned item-trigger and gem-trigger cooldown grouping for the same action to prevent duplicate firing.",
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Historical Changes": {
+      "text": "Introduction at patch 1.0.0; single-trigger-gem restriction in 1.2.2; item/gem costs and trigger cooldown behavior changes through 2.4.0, 3.15.0, and 3.21.0.",
+      "type": "Historical Behavior",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Patch History": {
+      "text": [
+        {
+          "version": "1.0.0",
+          "note": "Added Trigger gems for automatic casting on conditions.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "1.2.2",
+          "note": "Restricted skills to work with only one trigger gem at a time.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.15.0",
+          "note": "Trigger skill gems now have mana costs; item trigger modifiers gained standardized reservation behavior unless otherwise specified.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "3.21.0",
+          "note": "Any Trigger Skills from skill gems now share cooldown groups with corresponding gem versions.",
+          "type": "Official Rule"
+        },
+        {
+          "version": "2.4.0",
+          "note": "Cast on Critical Strike and Cast on Melee Kill explicitly documented to trigger one skill per trigger event with per-triggered-skill cooldown.",
+          "type": "Historical Behavior"
+        }
+      ],
+      "type": "Official Rule"
+    },
+    "Examples": {
+      "text": [
+        "Cast on Crit Support creates an automatic cast path from attack critical event to linked spell.",
+        "CoC-like trigger event with cooldown can prevent immediate re-trigger of same action until group cooldown resolves."
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Common Misconceptions": {
+      "text": [
+        "Trigger is not equal to Cast",
+        "Trigger is not guaranteed for every qualifying hit unless cooldown and conditions are met",
+        "Can does not imply Trigger unless explicit condition and valid trigger source exist"
+      ],
+      "type": "Official Rule",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    },
+    "Official Sources": {
+      "text": [
+        "https://www.poewiki.net/wiki/Trigger",
+        "https://www.pathofexile.com/forum/view-thread/3186382",
+        "https://www.pathofexile.com/forum/view-thread/3306922/filter-account-type/staff",
+        "https://www.pathofexile.com/forum/view-thread/3475519/page/1#p25327375"
+      ],
+      "type": "Official Rule"
+    }
+  },
+  "relationships": {
+    "depends_on": ["attack", "hit", "kill", "critical_strike", "support_gem", "cooldown"],
+    "modifies": ["cast_sequence", "skill_execution", "targeting_rules"],
+    "requires": ["valid_trigger_condition", "supported_skill", "no_forbidden_origin"],
+    "prevents": ["multiple_trigger_gems_on_same_action_at_once"],
+    "overrides": ["legacy_unrestricted_triggering"],
+    "inherits": [],
+    "creates": ["triggered_skill_activation"],
+    "destroys": ["queued_direct_cast_of_restricted_skill"],
+    "applies": ["cooldown_grouping", "event_priority_order"],
+    "removes": [],
+    "shares_with": ["trigger_gems", "trigger_items", "cast_on_hit_effects"],
+    "is_scaled_by": ["cooldown_recovery", "quality", "reservation_multipliers"],
+    "cannot_affect": ["totems", "traps", "mines", "vaal_skills", "channelling_skills_when_forbidden"]
+  },
+  "classification_timeline": [
+    {
+      "type": "Official Rule",
+      "status": "active",
+      "version": "3.21.0",
+      "source": "https://www.poewiki.net/wiki/Trigger"
+    }
+  ],
+  "collected_at": "2026-07-12T20:35:00+01:00"
+}

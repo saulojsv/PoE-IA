@@ -1,0 +1,38 @@
+﻿{
+  "architecture": {
+    "version": "1.0.0",
+    "components": [
+      "scripts/poe_knowledge_research_automation.py",
+      "config/poe_knowledge_research_schema.json",
+      "config/poe_knowledge_research_schedule.json",
+      "config/poe_knowledge_sources.json",
+      "data/normalized/skills",
+      "data/exports/skills",
+      "data/exports/skills.jsonl",
+      "data/exports/skills.csv",
+      "data/exports/sources.csv",
+      "data/exports/reports",
+      "data/exports/rag/skills.jsonl"
+    ]
+  },
+  "run_intent": "pilot_10_skills",
+  "pilot_skills": [
+    "Fireball",
+    "Cyclone",
+    "Arc",
+    "Summon Skeleton",
+    "Arctic Armour",
+    "Vaal Haste",
+    "Storm Brand",
+    "Rolling Magma",
+    "Ancestral Warchief",
+    "Added Cold Damage"
+  ],
+  "quality_checks": [
+    "patch_detected",
+    "league_detected",
+    "source_fetch",
+    "record_count",
+    "artifact_generation"
+  ]
+}

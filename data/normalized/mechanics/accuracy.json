@@ -1,0 +1,204 @@
+{
+    "id":  "accuracy",
+    "term":  "Accuracy",
+    "status":  "research_pass",
+    "classification":  "Official Rule",
+    "source":  "https://www.poewiki.net/wiki/Accuracy",
+    "sections":  {
+                     "Definition":  {
+                                        "text":  "Accuracy is a property of attack hits used with target evasion to calculate an attack\u0027s chance to hit.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                    },
+                     "Purpose":  {
+                                     "text":  "Determine hit success for attacks and gate secondary critical-strike checks for non-spell attacks.",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                 },
+                     "Core Rules":  {
+                                        "text":  "Attack hit chance is based on attacker Accuracy and defender Evasion using the PoE formula, then clamped to a minimum 5% and maximum 100%. Spells do not use Accuracy because they cannot be evaded.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                    },
+                     "Internal Rules":  {
+                                            "text":  "Accuracy also runs a second check for critical-strike resolution after hit resolution for attack criticals; failed check converts a would-be critical to a regular hit.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                        },
+                     "Calculation Order":  {
+                                               "text":  "1) compute uncapped chance to hit from Accuracy versus Evasion 2) clamp to [0.05,1] chance range 3) apply modifiers that force hit behavior (Always Hit/Cannot Evade) 4) resolve hit outcome 5) if a non-spell hit is eligible for critical strike, perform secondary accuracy check.",
+                                               "type":  "Official Rule",
+                                               "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                           },
+                     "Priority Rules":  {
+                                            "text":  "Effects that set hit chance to 100% for attacker/defender interactions override normal Accuracy vs Evasion checks.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                        },
+                     "Preconditions":  {
+                                           "text":  "Only attack hits are evaluated; spell hits are excluded because spells do not benefit from Accuracy.",
+                                           "type":  "Official Rule",
+                                           "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                       },
+                     "Postconditions":  {
+                                            "text":  "The engine resolves hit/miss, then applies hit-based consequences such as critical strike qualification and related modifiers.",
+                                            "type":  "Official Rule",
+                                            "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                        },
+                     "Limitations":  {
+                                         "text":  "A minimum 5% miss chance remains unless overridden by cannot-be-evaded effects; chance does not exceed 100% for normal calculations.",
+                                         "type":  "Official Rule",
+                                         "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                     },
+                     "Caps":  {
+                                  "text":  "Minimum hit chance is 5%; maximum is 100%.",
+                                  "type":  "Official Rule",
+                                  "source":  "https://www.poewiki.net/wiki/Accuracy"
+                              },
+                     "Formula":  {
+                                     "text":  "Uncapped chance to hit = 1.25*Accuracy/(Accuracy+(Evasion/5)^0.9) . Chance to hit = min(max(Uncapped,0.05),1).",
+                                     "type":  "Official Rule",
+                                     "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                 },
+                     "Keywords":  {
+                                      "text":  [
+                                                   "Accuracy",
+                                                   "attack hits",
+                                                   "evasion",
+                                                   "chance to hit",
+                                                   "critical strike"
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                  },
+                     "Related Mechanics":  {
+                                               "depends_on":  [
+                                                                  "Hit",
+                                                                  "Evasion",
+                                                                  "Critical Strike"
+                                                              ],
+                                               "modifies":  [
+                                                                "attack chance to hit",
+                                                                "critical strike outcome eligibility"
+                                                            ],
+                                               "requires":  [
+                                                                "valid attack target",
+                                                                "attack interaction context"
+                                                            ],
+                                               "prevents":  [
+                                                                "spell evasion"
+                                                            ],
+                                               "cannot_affect":  [
+                                                                     "spell hit mechanics"
+                                                                 ],
+                                               "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                           },
+                     "Dependencies":  {
+                                          "text":  [
+                                                       "Attack",
+                                                       "Evasion",
+                                                       "Critical Strike"
+                                                   ],
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                      },
+                     "Conflicts":  {
+                                       "text":  "Critical strike chance from spells bypasses this Accuracy-based secondary check.",
+                                       "type":  "Official Rule",
+                                       "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                   },
+                     "Exceptions":  {
+                                        "text":  "Area-of-effect attack hits still use Accuracy and may be evaded even if target is visibly inside the area.",
+                                        "type":  "Official Rule",
+                                        "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                    },
+                     "Hidden Rules":  {
+                                          "text":  "Conditional accuracy modifiers on a skill do not apply to generic skill references not tied to hit-specific context.",
+                                          "type":  "Official Rule",
+                                          "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                      },
+                     "Developer Notes":  {
+                                             "text":  "Use separate states for attack hit validation and damage formula; avoid inferring Accuracy from spell hit behavior.",
+                                             "type":  "Official Rule",
+                                             "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                         },
+                     "Historical Changes":  {
+                                                "text":  "Source page includes version-history section but no direct version deltas were extracted during this pass.",
+                                                "type":  "Historical Behavior",
+                                                "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                            },
+                     "Patch History":  {
+                                           "text":  [
+
+                                                    ],
+                                           "type":  "Historical Behavior",
+                                           "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                       },
+                     "Examples":  {
+                                      "text":  [
+                                                   "A source with 10% increased chance to hit converts to higher Accuracy checks and higher final hit chance within the clamped range.",
+                                                   "Attack hits can still miss via evasion when hit chance is below 100%."
+                                               ],
+                                      "type":  "Official Rule",
+                                      "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                  },
+                     "Common Misconceptions":  {
+                                                   "text":  [
+                                                                "Accuracy is not a hit-by-hit guarantee; it is checked against evasion and bounded by minimum/maximum values.",
+                                                                "Critical strike chance alone does not guarantee critical hit; attack accuracy second-check can downgrade it."
+                                                            ],
+                                                   "type":  "Official Rule",
+                                                   "source":  "https://www.poewiki.net/wiki/Accuracy"
+                                               },
+                     "Official Sources":  {
+                                              "text":  [
+                                                           "https://www.poewiki.net/wiki/Accuracy"
+                                                       ],
+                                              "type":  "Official Rule"
+                                          }
+                 },
+    "relationships":  {
+                          "depends_on":  [
+                                             "Attack",
+                                             "Evasion",
+                                             "Critical Strike"
+                                         ],
+                          "modifies":  [
+                                           "attack hit outcome",
+                                           "crit-hit outcome"
+                                       ],
+                          "requires":  [
+                                           "attack hit event",
+                                           "target evasion state"
+                                       ],
+                          "prevents":  [
+                                           "miss from sub-threshold critical-only outcomes"
+                                       ],
+                          "creates":  [
+                                          "attack hit result"
+                                      ],
+                          "destroys":  [
+                                           "invalid attack critical candidates"
+                                       ],
+                          "applies":  [
+                                          "hit chance clamp"
+                                      ],
+                          "is_scaled_by":  [
+                                               "increased accuracy",
+                                               "reduced accuracy",
+                                               "increased evasion",
+                                               "reduced evasion"
+                                           ],
+                          "cannot_affect":  [
+                                                "spell attack bypass cases"
+                                            ]
+                      },
+    "classification_timeline":  [
+                                    {
+                                        "type":  "Official Rule",
+                                        "status":  "active",
+                                        "version":  "unversioned"
+                                    }
+                                ],
+    "collected_at":  "2026-07-13T00:25:03+01:00"
+}
