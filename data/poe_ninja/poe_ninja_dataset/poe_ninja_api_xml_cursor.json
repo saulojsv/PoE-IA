@@ -3,24 +3,28 @@
   "last_batch": [
     "Siege Ballista"
   ],
-  "next_az_order": 247,
-  "next_skill": "Siege Ballista",
+  "next_az_order": 248,
+  "next_skill": "Siege Ballista of Splintering",
   "league": "mirage",
   "version": "1746-20260715-01167",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T19:39:28Z",
+  "updated_at": "2026-07-15T19:44:09Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Siege Ballista",
       "normalized_name": "siege_ballista",
-      "generated": [
-        "doe_2466_stackingforglory"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": []
+      "skipped_same_class": [
+        {
+          "account": "Doe-2466",
+          "character": "StackingForGlory",
+          "class": "Hierophant"
+        }
+      ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
