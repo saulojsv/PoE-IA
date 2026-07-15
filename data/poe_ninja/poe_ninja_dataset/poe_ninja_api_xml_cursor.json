@@ -1,30 +1,26 @@
 {
-  "cycle": 89,
+  "cycle": 90,
   "last_batch": [
-    "Shrapnel Ballista of Steel"
+    "Siege Ballista"
   ],
   "next_az_order": 247,
   "next_skill": "Siege Ballista",
   "league": "mirage",
   "version": "1746-20260715-01167",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T19:34:01Z",
+  "updated_at": "2026-07-15T19:39:28Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Shrapnel Ballista of Steel",
-      "normalized_name": "shrapnel_ballista_of_steel",
-      "generated": [],
+      "status": "partial",
+      "skill": "Siege Ballista",
+      "normalized_name": "siege_ballista",
+      "generated": [
+        "doe_2466_stackingforglory"
+      ],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": [
-        {
-          "account": "storageer-7050",
-          "character": "ArtilleryBarista",
-          "class": "Deadeye"
-        }
-      ]
+      "skipped_same_class": []
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }
