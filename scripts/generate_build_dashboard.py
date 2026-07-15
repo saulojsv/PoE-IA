@@ -14,6 +14,7 @@ DASH = ROOT / "dashboard"
 OVERRIDES = ROOT / "data" / "items" / "item_category_overrides.json"
 BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
 ITEM_BASE_MODS = ROOT / "data" / "items" / "item_base_mods.json"
+IGNORED_SKILL_DIRS = {"xml", "extraction_samples", "root"}
 
 
 def load_overrides():
@@ -216,6 +217,8 @@ def parse_xml(path):
         nodes = re.findall(r"\d+", nodes_attr)
 
     skill_slug = path.parent.name if path.parent != XML_ROOT else "root"
+    if skill_slug.lower() in IGNORED_SKILL_DIRS:
+        return {"file": str(path), "ignored": skill_slug}
     return {
         "file": str(path.relative_to(ROOT)),
         "skill_slug": skill_slug,
@@ -253,7 +256,7 @@ def main():
     DASH.mkdir(exist_ok=True)
     xml_files = list(XML_ROOT.rglob("*.xml")) if XML_ROOT.exists() else []
     builds = [parse_xml(p) for p in xml_files]
-    builds = [b for b in builds if "error" not in b]
+    builds = [b for b in builds if "error" not in b and "ignored" not in b]
 
     by_skill = defaultdict(list)
     gem_counts = Counter()
