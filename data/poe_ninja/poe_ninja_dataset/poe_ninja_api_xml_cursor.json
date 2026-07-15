@@ -1,29 +1,39 @@
 {
   "cycle": 76,
   "last_batch": [
-    "Pestilent Strike"
+    "Poacher's Mark"
   ],
-  "next_az_order": 203,
-  "next_skill": "Poacher's Mark",
+  "next_az_order": 204,
+  "next_skill": "Poisonous Concoction",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:23:56Z",
+  "updated_at": "2026-07-15T14:29:20Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Pestilent Strike",
-      "normalized_name": "pestilent_strike",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
+      "status": "complete",
+      "skill": "Poacher's Mark",
+      "normalized_name": "poachers_mark",
+      "generated": [
+        "baizenx_2069_baizennowae",
+        "alexflyuk_5847_lightdevka",
+        "the_vladlen_2028_older_brother"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
       "skipped_same_class": [
         {
-          "account": "Naimerz2-4319",
-          "character": "Naim_MRG",
-          "class": "Champion"
+          "account": "nares1-6989",
+          "character": "Mirage_NareS",
+          "class": "Slayer"
+        },
+        {
+          "account": "blackcaker-0644",
+          "character": "zhirniiparen",
+          "class": "Slayer"
         }
-      ]
+      ],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"
