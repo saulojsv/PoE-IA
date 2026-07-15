@@ -1,52 +1,35 @@
 {
   "cycle": 72,
   "last_batch": [
-    "Mirror Arrow of Prismatic Clones"
+    "Molten Shell"
   ],
-  "next_az_order": 191,
-  "next_skill": "Mirror Arrow of Prismatic Clones",
+  "next_az_order": 193,
+  "next_skill": "Molten Strike",
   "league": "mirage",
   "version": "1132-20260715-12035",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T13:04:06Z",
+  "updated_at": "2026-07-15T13:14:19Z",
   "results": [
     {
-      "status": "partial",
-      "skill": "Mirror Arrow of Prismatic Clones",
-      "normalized_name": "mirror_arrow_of_prismatic_clones",
+      "status": "complete",
+      "skill": "Molten Shell",
+      "normalized_name": "molten_shell",
       "generated": [
-        "vsmages_1198_bama_mfaexemplar"
+        "freavate_5770_freavate_kb",
+        "euryal_3384_odiummachines",
+        "pocolox_2508_mirage_lootenjoyer"
       ],
-      "xml_count": 1,
-      "unique_class_count": 1,
+      "xml_count": 3,
+      "unique_class_count": 3,
       "skipped_same_class": [
         {
-          "account": "bluestorm322-5118",
-          "character": "MirageMinionAgain",
-          "class": "Necromancer"
-        },
-        {
-          "account": "Xhye-5974",
-          "character": "unluko",
-          "class": "Necromancer"
-        },
-        {
-          "account": "jadger11-4574",
-          "character": "AliBama",
-          "class": "Necromancer"
-        },
-        {
-          "account": "NeonBlades-2330",
-          "character": "NeonMirageNecro",
-          "class": "Necromancer"
-        },
-        {
-          "account": "koetiae-3481",
-          "character": "Koegoagane",
-          "class": "Necromancer"
+          "account": "Booomr-3025",
+          "character": "bwenr",
+          "class": "Pathfinder"
         }
-      ]
+      ],
+      "next_action": "advance"
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
