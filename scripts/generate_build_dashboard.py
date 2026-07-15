@@ -45,13 +45,29 @@ def parse_item(text):
     elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
         base = lines[1]
     item_level = 0
+    implicit_lines = []
     for line in lines:
         if line.startswith("Item Level:"):
             try:
                 item_level = int(line.split(":", 1)[1].strip())
             except ValueError:
                 pass
-    return {"name": name, "base": base or name, "rarity": rarity, "item_level": item_level, "slot": item_slot(name, base or name)}
+    for idx, line in enumerate(lines):
+        if line.startswith("Implicits:"):
+            try:
+                count = int(line.split(":", 1)[1].strip())
+            except ValueError:
+                count = 0
+            implicit_lines = [x for x in lines[idx + 1:idx + 1 + count] if not x.startswith("{crafted}")]
+            break
+    return {
+        "name": name,
+        "base": base or name,
+        "rarity": rarity,
+        "item_level": item_level,
+        "slot": item_slot(name, base or name),
+        "implicits": implicit_lines[:4],
+    }
 
 
 def item_slot(name, base):
