@@ -1,23 +1,39 @@
 {
   "cycle": 75,
   "last_batch": [
-    "Penance Brand of Conduction"
+    "Penance Brand of Dissipation"
   ],
-  "next_az_order": 201,
-  "next_skill": "Penance Brand of Dissipation",
+  "next_az_order": 202,
+  "next_skill": "Pestilent Strike",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:09:07Z",
+  "updated_at": "2026-07-15T14:14:19Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Penance Brand of Conduction",
-      "normalized_name": "penance_brand_of_conduction",
-      "generated": [],
-      "xml_count": 0,
-      "unique_class_count": 0,
-      "skipped_same_class": []
+      "status": "complete",
+      "skill": "Penance Brand of Dissipation",
+      "normalized_name": "penance_brand_of_dissipation",
+      "generated": [
+        "xzkn446_5888_monnn",
+        "gdm12322_5451_yethello_mirage",
+        "visionpepela_5207_beton_racsipie"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
+      "skipped_same_class": [
+        {
+          "account": "Bankykkz-4819",
+          "character": "BKMR",
+          "class": "Inquisitor"
+        },
+        {
+          "account": "infinityblue55-5530",
+          "character": "lyciasfriend",
+          "class": "Inquisitor"
+        }
+      ],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"
