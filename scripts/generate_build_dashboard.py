@@ -80,6 +80,8 @@ def parse_item(text):
 
 def item_slot(name, base):
     text = f"{name} {base}".lower()
+    if "jewel" in text:
+        return "jewel"
     two_hand = ("two hand" in text or "bow" in text or "staff" in text or "warstaff" in text or
                 "maul" in text or "greatsword" in text or "long bow" in text)
     if any(x in text for x in ["body armour", "plate", "robe", "regalia", "garb", "vestment", "jacket", "armour"]):
@@ -100,8 +102,6 @@ def item_slot(name, base):
         return "offhand"
     if any(x in text for x in ["sword", "axe", "mace", "wand", "dagger", "claw", "staff", "bow", "sceptre", "rod"]):
         return "twohand" if two_hand else "weapon"
-    if "jewel" in text:
-        return "jewel"
     return "other"
 
 
