@@ -3,24 +3,28 @@
   "last_batch": [
     "Siege Ballista of Splintering"
   ],
-  "next_az_order": 248,
-  "next_skill": "Siege Ballista of Splintering",
+  "next_az_order": 249,
+  "next_skill": "Siphoning Trap",
   "league": "mirage",
   "version": "1746-20260715-01167",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T19:49:04Z",
+  "updated_at": "2026-07-15T19:53:54Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Siege Ballista of Splintering",
       "normalized_name": "siege_ballista_of_splintering",
-      "generated": [
-        "topford_0615_topford_sb"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": []
+      "skipped_same_class": [
+        {
+          "account": "TopFord-0615",
+          "character": "TopFord_SB",
+          "class": "Hierophant"
+        }
+      ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }

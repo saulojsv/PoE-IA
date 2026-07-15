@@ -18,6 +18,10 @@ const skill = poe.skills[0];
 const build = skill.build_rows[0];
 const slotMap = poe.autoMapItems(build.item_details);
 const offhandPool = poe.itemPoolForSlot(skill, "offhand", slotMap.weapon);
+const editedItem = poe.applyManualMods(slotMap.weapon, {
+  explicits: ["25% increased Attack Speed", "+80 to maximum Life"],
+});
+const impact = poe.estimateModImpact([...editedItem.implicits, ...editedItem.explicits]);
 ```
 
 Regras principais:
@@ -37,3 +41,7 @@ Funções principais:
 - `scoreBuild(build, weights)`
 - `deltaMetrics(baseBuild, nextBuild)`
 - `slotForItem(item)`
+- `applyManualMods(item, { implicits, explicits })`
+- `estimateModImpact(modLines)`
+
+Observação: `estimateModImpact` é uma estimativa local rápida para UI. O cálculo final exato deve continuar sendo validado pelo Path of Building.

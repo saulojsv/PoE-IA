@@ -116,6 +116,48 @@ export function deltaMetrics(baseBuild, nextBuild) {
   }));
 }
 
+export function estimateModImpact(lines = []) {
+  const impact = {
+    combined_dps: 0,
+    ehp: 0,
+    life: 0,
+    energy_shield: 0,
+    block: 0,
+    suppression: 0,
+    fire_resist: 0,
+    cold_resist: 0,
+    lightning_resist: 0,
+    chaos_resist: 0,
+    attack_speed: 0,
+    crit_multi: 0,
+  };
+  for (const line of lines) {
+    const value = Number(String(line).match(/([+-]?\d+(?:\.\d+)?)/)?.[1] || 0);
+    const lower = String(line).toLowerCase();
+    if (lower.includes("maximum life")) impact.life += value;
+    if (lower.includes("energy shield")) impact.energy_shield += value;
+    if (lower.includes("fire") && lower.includes("resistance")) impact.fire_resist += value;
+    else if (lower.includes("cold") && lower.includes("resistance")) impact.cold_resist += value;
+    else if (lower.includes("lightning") && lower.includes("resistance")) impact.lightning_resist += value;
+    else if (lower.includes("chaos") && lower.includes("resistance")) impact.chaos_resist += value;
+    if (lower.includes("block")) impact.block += value;
+    if (lower.includes("suppress")) impact.suppression += value;
+    if (lower.includes("attack speed")) impact.attack_speed += value;
+    if (lower.includes("critical") || lower.includes("crit")) impact.crit_multi += value;
+    if (lower.includes("damage") || lower.includes("spell") || lower.includes("attack")) impact.combined_dps += Math.max(0, value) * 1000;
+  }
+  impact.ehp = impact.life * 2 + impact.energy_shield * 1.5 + impact.block * 500 + impact.suppression * 400;
+  return impact;
+}
+
+export function applyManualMods(item, { implicits, explicits } = {}) {
+  return {
+    ...item,
+    implicits: [...(implicits ?? item?.implicits ?? [])],
+    explicits: [...(explicits ?? item?.explicits ?? [])],
+  };
+}
+
 export function validateBuildSlots(build, baseMods = {}) {
   const map = autoMapItems(build?.item_details || [], baseMods);
   const errors = [];
@@ -140,6 +182,8 @@ export function createPoE1DashboardApi({ data, sprites = {}, baseMods = {}, weig
     itemPoolForSlot: (skill, slot, weapon) => itemPoolForSlot(skill, slot, weapon, baseMods),
     scoreBuild: (build, customWeights) => scoreBuild(build, customWeights || weights),
     deltaMetrics,
+    estimateModImpact,
+    applyManualMods,
     validateBuildSlots: (build) => validateBuildSlots(build, baseMods),
   };
 }
