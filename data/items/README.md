@@ -19,6 +19,7 @@ Some items intentionally share sprites:
 - `modifier_sources.json`: inventory of local Path of Building modifier databases.
 - `item_type_mods.json`: normalized catalog of modifiers associated to PoB item types by `weightKey/weightVal`.
 - `item_base_mods.json`: base-level catalog. Each real PoB base stores slot, base type, requirements, tags, implicit and eligible mods by minimum item level.
+- `amulet_anointments.json`: amulet/blight unique anointment recipes, oils and modifier lines from PoE Wiki.
 - Current source: `external/PathOfBuildingTesst/src/Data/Mod*.lua`.
 
 `item_type_mods.json` includes:
