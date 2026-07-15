@@ -79,8 +79,12 @@ def parse_item(text):
 
 
 def item_slot(name, base):
-    text = f"{name} {base}".lower()
-    if "jewel" in text:
+    base_text = (base or "").lower()
+    name_text = (name or "").lower()
+    text = f"{name_text} {base_text}"
+    # Prefer the base type. Unique names can contain misleading substrings
+    # such as "Brotherhood", which must not be read as "hood".
+    if "jewel" in base_text or "jewel" in name_text:
         return "jewel"
     two_hand = ("two hand" in text or "bow" in text or "staff" in text or "warstaff" in text or
                 "maul" in text or "greatsword" in text or "long bow" in text)
@@ -92,11 +96,13 @@ def item_slot(name, base):
         return "boots"
     if "belt" in text or "sash" in text:
         return "belt"
-    if "ring" in text:
+    if "ring" in base_text:
         return "ring"
-    if "amulet" in text or "talisman" in text:
+    known_amulets = ["badge of the brotherhood", "replica badge of the brotherhood"]
+    if ("amulet" in base_text or "talisman" in base_text or "amulet" in name_text or
+            "talisman" in name_text or any(x in name_text for x in known_amulets)):
         return "amulet"
-    if any(x in text for x in ["helmet", "helm", "mask", "crown", "pelt", "hood", "circlet"]):
+    if any(x in base_text for x in ["helmet", "helm", "mask", "crown", "pelt", "circlet", "bascinet"]):
         return "helmet"
     if "shield" in text or "quiver" in text:
         return "offhand"
