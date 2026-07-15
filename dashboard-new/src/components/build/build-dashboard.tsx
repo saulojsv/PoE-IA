@@ -1,0 +1,12 @@
+import { useState } from 'react'
+import type { BuildStage, EquipmentItem } from '../../types/build'
+import { equipment } from '../../data/mock-build'
+import { BuildHeader } from './build-header'
+import { BuildStageSelector } from './build-stage-selector'
+import { BuildKpiStrip } from './build-kpi-strip'
+import { EquipmentBoard } from '../equipment/equipment-board'
+import { BuildHealth } from './build-health'
+import { MainSkillSetup } from '../skills/main-skill-setup'
+import { DamageBreakdown } from './damage-breakdown'
+import { ItemInspector } from '../equipment/item-inspector'
+export function BuildDashboard(){const [stage,setStage]=useState<BuildStage>('league-start');const [item,setItem]=useState<EquipmentItem>(equipment.find(x=>x.id==='blunderbore')!);return <div className="dashboard"><BuildHeader/><BuildStageSelector selected={stage} onSelect={setStage}/><BuildKpiStrip stage={stage}/><div className="dashboard-grid"><EquipmentBoard selected={item.id} onSelect={setItem}/><div className="middle-stack"><BuildHealth/><MainSkillSetup/><DamageBreakdown/></div><ItemInspector item={item} onSelect={setItem}/></div></div>}
