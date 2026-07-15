@@ -16,6 +16,7 @@ OUT = ROOT / "assets" / "poe_item_sprites"
 MANIFEST = OUT / "manifest.json"
 FAILURES = OUT / "failures.json"
 DASH_INDEX = ROOT / "dashboard" / "item_sprite_index.json"
+BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
 BASE = "https://www.poewiki.net"
 API = BASE + "/w/api.php"
 UA = "PoE-Agent-Dashboard/1.0"
@@ -29,6 +30,24 @@ def safe_name(name):
 
 def clean_line(line):
     return re.sub(r"<[^>]+>", "", line).strip()
+
+
+def load_base_names():
+    names = set()
+    if BASES_DIR.exists():
+        for path in BASES_DIR.glob("*.lua"):
+            names.update(re.findall(r'itemBases\["([^"]+)"\]', path.read_text(encoding="utf-8", errors="ignore")))
+    return names
+
+
+BASE_NAMES = load_base_names()
+
+
+def first_base_line(lines, start=2):
+    for line in lines[start:14]:
+        if line in BASE_NAMES:
+            return line
+    return ""
 
 
 def extract_items():
@@ -48,19 +67,15 @@ def extract_items():
             rarity = lines[0].replace("Rarity:", "").strip() if lines[0].startswith("Rarity:") else ""
             name = lines[1] if rarity and len(lines) > 1 else lines[0]
             base = ""
-            for line in lines[2:10]:
-                if line.startswith(("--------", "Item Level:", "Quality:", "Sockets:", "LevelReq:", "Implicits:", "{")):
-                    continue
-                if not re.search(r"\d|%|Adds |to |increased|reduced|Requires", line):
-                    base = line
-                    break
+            base = first_base_line(lines, 2)
             flask_match = re.search(r"((?:Divine|Eternal|Quicksilver|Silver|Topaz|Ruby|Sapphire|Granite|Jade|Quartz|Amethyst|Bismuth|Basalt|Stibnite|Sulphur|Diamond|Gold|Aquamarine|Corundum|Iron|Life|Mana|Hybrid)[A-Za-z ]* Flask)", name)
             if flask_match:
                 base = flask_match.group(1)
             if not base:
                 base = name
             counts[name] += 1
-            for candidate in (name, base):
+            ordered = (base, name) if rarity in {"Rare", "Magic"} else (name, base)
+            for candidate in ordered:
                 if candidate and candidate not in candidates[name]:
                     candidates[name].append(candidate)
     return [(name, candidates[name]) for name, _ in counts.most_common()]
@@ -146,7 +161,7 @@ def main():
     rate_limited = 0
 
     for item_name, candidates in items:
-        if item_name in manifest and (OUT / manifest[item_name]["file"]).exists():
+        if any(c in manifest and (OUT / manifest[c]["file"]).exists() for c in candidates):
             continue
         done += 1
         matched_name = next((candidate for candidate in candidates if candidate in wiki), None)
@@ -167,6 +182,16 @@ def main():
                 "base_item": wiki[matched_name].get("base_item"),
                 "url": result,
             }
+            manifest.setdefault(matched_name, {
+                "file": file_name,
+                "item_name": matched_name,
+                "sprite_name": icon_name,
+                "matched_name": matched_name,
+                "shared_from": matched_name if matched_name != item_name else None,
+                "class": wiki[matched_name].get("class"),
+                "base_item": wiki[matched_name].get("base_item"),
+                "url": result,
+            })
             failures.pop(item_name, None)
             rate_limited = 0
         else:

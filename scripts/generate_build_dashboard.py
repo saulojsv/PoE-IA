@@ -12,12 +12,24 @@ XML_ROOT = ROOT / "data" / "poe_ninja" / "poe_ninja_dataset" / "xml"
 EXPORTS = ROOT / "data" / "exports"
 DASH = ROOT / "dashboard"
 OVERRIDES = ROOT / "data" / "items" / "item_category_overrides.json"
+BASES_DIR = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data" / "Bases"
 
 
 def load_overrides():
     if not OVERRIDES.exists():
         return {}
     return json.loads(OVERRIDES.read_text(encoding="utf-8"))
+
+
+def load_base_names():
+    names = set()
+    if BASES_DIR.exists():
+        for path in BASES_DIR.glob("*.lua"):
+            names.update(re.findall(r'itemBases\["([^"]+)"\]', path.read_text(encoding="utf-8", errors="ignore")))
+    return names
+
+
+BASE_NAMES = load_base_names()
 
 
 def slug_to_name(slug):
@@ -50,13 +62,20 @@ def first_item_name(text):
     return lines[0] if lines else "Unknown item"
 
 
+def first_base_line(lines, start=2):
+    for line in lines[start:14]:
+        if line in BASE_NAMES:
+            return line
+    return ""
+
+
 def parse_item(text):
     lines = [x.strip() for x in text.splitlines() if x.strip()]
     rarity = lines[0].replace("Rarity:", "").strip().title() if lines and lines[0].startswith("Rarity:") else ""
     name = first_item_name(text)
     base = ""
     if rarity in {"Rare", "Magic"} and len(lines) > 2:
-        base = lines[2]
+        base = first_base_line(lines, 2)
     elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
         base = lines[1]
     item_level = 0

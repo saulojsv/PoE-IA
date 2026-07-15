@@ -22,7 +22,7 @@ def build_sprite_aliases():
     index = {}
 
     for item, meta in manifest.items():
-        if not isinstance(meta, dict) or not meta.get("file"):
+        if not isinstance(meta, dict) or not meta.get("file") or not (SPRITES / meta["file"]).exists():
             continue
         rel = "../assets/poe_item_sprites/" + meta["file"]
         keys = {

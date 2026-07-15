@@ -1,45 +1,52 @@
 {
-  "cycle": 74,
+  "cycle": 75,
   "last_batch": [
-    "Orb of Storms"
+    "Penance Brand"
   ],
-  "next_az_order": 198,
-  "next_skill": "Orb of Storms of Squalls",
+  "next_az_order": 199,
+  "next_skill": "Penance Brand",
   "league": "mirage",
-  "version": "1132-20260715-12035",
+  "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T13:49:24Z",
+  "updated_at": "2026-07-15T13:59:06Z",
   "results": [
     {
-      "status": "complete",
-      "skill": "Orb of Storms",
-      "normalized_name": "orb_of_storms",
+      "status": "partial",
+      "skill": "Penance Brand",
+      "normalized_name": "penance_brand",
       "generated": [
-        "shortman422_5950_horobinotenshi",
-        "tsubuann_1482_tsubumiragehh",
-        "dylansm_2549_xathenaten"
+        "clandestinebear_7592_sussmokeybear"
       ],
-      "xml_count": 3,
-      "unique_class_count": 3,
+      "xml_count": 1,
+      "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "LamaG-3861",
-          "character": "BadStreamerBuildVB",
-          "class": "Occultist"
+          "account": "KzLych-0448",
+          "character": "Kzeee_BLAST",
+          "class": "Elementalist"
         },
         {
-          "account": "The_Belkster-6668",
-          "character": "Das_Belkster",
-          "class": "Occultist"
+          "account": "rainoce-7865",
+          "character": "rain_deadbuild",
+          "class": "Elementalist"
         },
         {
-          "account": "AmazingAlucard-6171",
-          "character": "Znowusparki",
-          "class": "Inquisitor"
+          "account": "INVOCAT1ON-4190",
+          "character": "OneGoodLeagueExist",
+          "class": "Elementalist"
+        },
+        {
+          "account": "Tootsloots-1829",
+          "character": "Tuttifruttip",
+          "class": "Elementalist"
+        },
+        {
+          "account": "FauxDeLua-5007",
+          "character": "SerpentBrand",
+          "class": "Elementalist"
         }
-      ],
-      "next_action": "advance"
+      ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }
