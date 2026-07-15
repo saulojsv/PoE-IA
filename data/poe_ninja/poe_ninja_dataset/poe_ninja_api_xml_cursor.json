@@ -1,29 +1,28 @@
 {
-  "cycle": 86,
+  "cycle": 87,
   "last_batch": [
-    "Shattering Steel of Ammunition"
+    "Shock Nova of Procession"
   ],
-  "next_az_order": 237,
-  "next_skill": "Shield Charge",
+  "next_az_order": 243,
+  "next_skill": "Shockwave Totem",
   "league": "mirage",
   "version": "1746-20260715-01167",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T18:28:46Z",
+  "updated_at": "2026-07-15T19:04:18Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Shattering Steel of Ammunition",
-      "normalized_name": "shattering_steel_of_ammunition",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
-      "skipped_same_class": [
-        {
-          "account": "Das_H2O-6891",
-          "character": "WaterMirageWisps",
-          "class": "Reliquarian"
-        }
-      ]
+      "status": "complete",
+      "skill": "Shock Nova of Procession",
+      "normalized_name": "shock_nova_of_procession",
+      "generated": [
+        "pladins_4222_manmanmonman",
+        "hroosch_2523_sagittariusaura",
+        "salcee_4502_tjsugachubunc"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
+      "skipped_same_class": [],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"
