@@ -3,23 +3,26 @@
   "last_batch": [
     "Penance Brand"
   ],
-  "next_az_order": 199,
-  "next_skill": "Penance Brand",
+  "next_az_order": 200,
+  "next_skill": "Penance Brand of Conduction",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T13:59:06Z",
+  "updated_at": "2026-07-15T14:03:59Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Penance Brand",
       "normalized_name": "penance_brand",
-      "generated": [
-        "clandestinebear_7592_sussmokeybear"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
+        {
+          "account": "ClandestineBear-7592",
+          "character": "SusSmokeyBear",
+          "class": "Elementalist"
+        },
         {
           "account": "KzLych-0448",
           "character": "Kzeee_BLAST",
@@ -48,5 +51,5 @@
       ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
