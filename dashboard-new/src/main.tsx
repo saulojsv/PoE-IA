@@ -5,4 +5,5 @@ import App from './app/App'
 import './index.css'
 import './sprites.css'
 import './equipment-layout.css'
+import './polish.css'
 createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>)
