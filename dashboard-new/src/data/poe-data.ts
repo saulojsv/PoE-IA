@@ -18,9 +18,9 @@ const bowUniques = /\b(widowhail|voltaxic rift|windripper|lioneye's glare|death'
 
 export async function loadDashboardData() {
   const [data, sprites, baseMods] = await Promise.all([
-    fetch('/dashboard/build_dashboard_data.json').then(r => r.json()),
-    fetch('/dashboard/item_sprite_index.json').then(r => r.json()),
-    fetch('/dashboard/item_base_mod_summary.json').then(r => r.json()).catch(() => ({ bases: {} })),
+    fetch('/data/dashboard/build_dashboard_data.json').then(r => r.json()),
+    fetch('/data/dashboard/item_sprite_index.json').then(r => r.json()),
+    fetch('/data/dashboard/item_base_mod_summary.json').then(r => r.json()).catch(() => ({ bases: {} })),
   ])
   return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods }
 }

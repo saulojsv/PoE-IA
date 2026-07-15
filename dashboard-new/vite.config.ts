@@ -7,7 +7,10 @@ export default defineConfig({
     host: '127.0.0.1',
     port: 5173,
     proxy: {
-      '/dashboard': 'http://127.0.0.1:8765',
+      '/data': {
+        target: 'http://127.0.0.1:8765',
+        rewrite: path => path.replace(/^\/data/, ''),
+      },
       '/assets': 'http://127.0.0.1:8765',
     },
   },
