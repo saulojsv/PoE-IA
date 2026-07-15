@@ -3,24 +3,28 @@
   "last_batch": [
     "Molten Strike"
   ],
-  "next_az_order": 193,
-  "next_skill": "Molten Strike",
+  "next_az_order": 194,
+  "next_skill": "Molten Strike of the Zenith",
   "league": "mirage",
   "version": "1132-20260715-12035",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T13:19:04Z",
+  "updated_at": "2026-07-15T13:23:51Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Molten Strike",
       "normalized_name": "molten_strike",
-      "generated": [
-        "seven_paths_of_pain_7931_hakos_baelz_ch"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": []
+      "skipped_same_class": [
+        {
+          "account": "Seven_Paths_of_Pain-7931",
+          "character": "Hakos_Baelz_Ch",
+          "class": "Warden"
+        }
+      ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
