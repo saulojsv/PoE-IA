@@ -1,34 +1,29 @@
 {
-  "cycle": 68,
+  "cycle": 69,
   "last_batch": [
-    "Lightning Strike of Arcing"
+    "Lightning Tendrils"
   ],
-  "next_az_order": 179,
-  "next_skill": "Lightning Tendrils",
+  "next_az_order": 180,
+  "next_skill": "Lightning Tendrils of Eccentricity",
   "league": "mirage",
   "version": "1132-20260715-12035",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T11:44:17Z",
+  "updated_at": "2026-07-15T11:53:54Z",
   "results": [
     {
-      "status": "complete",
-      "skill": "Lightning Strike of Arcing",
-      "normalized_name": "lightning_strike_of_arcing",
-      "generated": [
-        "kifalin_4350_enjoying_konfetkaodin",
-        "bigdaddysammy_2486_armour_messiah",
-        "uro_0518_feetoverjuggs"
-      ],
-      "xml_count": 3,
-      "unique_class_count": 3,
+      "status": "pending",
+      "skill": "Lightning Tendrils",
+      "normalized_name": "lightning_tendrils",
+      "generated": [],
+      "xml_count": 1,
+      "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "NyarWasTaken-7619",
-          "character": "average_keepers_hater",
-          "class": "Ascendant"
+          "account": "Aszriel-3433",
+          "character": "Templarszriel",
+          "class": "Inquisitor"
         }
-      ],
-      "next_action": "advance"
+      ]
     }
   ],
   "status": "advanced"

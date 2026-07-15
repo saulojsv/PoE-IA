@@ -35,6 +35,52 @@ def first_item_name(text):
     return lines[0] if lines else "Unknown item"
 
 
+def parse_item(text):
+    lines = [x.strip() for x in text.splitlines() if x.strip()]
+    rarity = lines[0].replace("Rarity:", "").strip().title() if lines and lines[0].startswith("Rarity:") else ""
+    name = first_item_name(text)
+    base = ""
+    if rarity in {"Rare", "Magic"} and len(lines) > 2:
+        base = lines[2]
+    elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
+        base = lines[1]
+    item_level = 0
+    for line in lines:
+        if line.startswith("Item Level:"):
+            try:
+                item_level = int(line.split(":", 1)[1].strip())
+            except ValueError:
+                pass
+    return {"name": name, "base": base or name, "rarity": rarity, "item_level": item_level, "slot": item_slot(name, base or name)}
+
+
+def item_slot(name, base):
+    text = f"{name} {base}".lower()
+    two_hand = ("two hand" in text or "bow" in text or "staff" in text or "warstaff" in text or
+                "maul" in text or "greatsword" in text or "long bow" in text)
+    if any(x in text for x in ["body armour", "plate", "robe", "regalia", "garb", "vestment", "jacket", "armour"]):
+        return "body"
+    if any(x in text for x in ["gloves", "gauntlets", "mitts"]):
+        return "gloves"
+    if any(x in text for x in ["boots", "greaves", "slippers"]):
+        return "boots"
+    if "belt" in text or "sash" in text:
+        return "belt"
+    if "ring" in text:
+        return "ring"
+    if "amulet" in text or "talisman" in text:
+        return "amulet"
+    if any(x in text for x in ["helmet", "helm", "mask", "crown", "pelt", "hood", "circlet"]):
+        return "helmet"
+    if "shield" in text or "quiver" in text:
+        return "offhand"
+    if any(x in text for x in ["sword", "axe", "mace", "wand", "dagger", "claw", "staff", "bow", "sceptre", "rod"]):
+        return "twohand" if two_hand else "weapon"
+    if "jewel" in text:
+        return "jewel"
+    return "other"
+
+
 def parse_xml(path):
     try:
         root = ET.parse(path).getroot()
@@ -60,9 +106,12 @@ def parse_xml(path):
             gems.append(name)
 
     items = []
+    item_details = []
     for item in root.findall(".//Item"):
         if item.text:
-            items.append(first_item_name(item.text))
+            detail = parse_item(item.text)
+            items.append(detail["name"])
+            item_details.append(detail)
 
     spec = root.find(".//Spec")
     nodes = []
@@ -99,6 +148,7 @@ def parse_xml(path):
         "points_used": len(nodes),
         "gems": sorted(set(gems)),
         "items": sorted(set(items)),
+        "item_details": item_details,
         "nodes": nodes,
     }
 
