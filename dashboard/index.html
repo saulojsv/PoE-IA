@@ -55,9 +55,9 @@ function renderTable(){let r=rows();el("title").textContent=view=="generator"?"S
 function firstSlot(b){let m=autoMap(b.item_details||[]);return slots.find(s=>m[s[0]]&&!m[s[0]].locked)?.[0]||"body"}
 function pick(i){selected=data.skills[i];selectedBuild=selected.build_rows[0];activeSlot=firstSlot(selectedBuild);slotChoices={};render()}
 function pickBuild(i){selectedBuild=selected.build_rows[i];activeSlot=firstSlot(selectedBuild);slotChoices={};renderDetail()}
-function keyFor(it){return it.slot=="jewel"?"jewel":it.slot=="ring"?"ring":it.slot=="twohand"?"weapon":it.slot}
+function keyFor(it){let t=((it.base||"")+" "+(it.name||"")).toLowerCase();if(t.includes("flask"))return "flask";return it.slot=="jewel"?"jewel":it.slot=="ring"?"ring":it.slot=="twohand"?"weapon":it.slot}
 function autoMap(items){let m={},rings=[];for(let it of items||[]){if(it.slot=="ring")rings.push(it);else if(it.slot=="twohand"){m.weapon=it;m.offhand={name:"Ocupado por arma two-handed",base:"Slot bloqueado",locked:true}}else if(!m[it.slot])m[it.slot]=it}if(rings[0])m.ring1=rings[0];if(rings[1])m.ring2=rings[1];return m}
-function pool(slot){let out=[];for(let b of selected.build_rows||[])for(let it of b.item_details||[]){let k=keyFor(it);if(slot=="jewel"&&k=="jewel"||((slot=="ring1"||slot=="ring2")&&k=="ring")||k==slot)out.push(it)}let seen=new Set();return out.filter(it=>{let k=it.name+"|"+it.base;if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>a.name.localeCompare(b.name))}
+function pool(slot){let out=[];for(let b of selected.build_rows||[])for(let it of b.item_details||[]){let k=keyFor(it);if(k!="flask"&&(slot=="jewel"&&k=="jewel"||((slot=="ring1"||slot=="ring2")&&k=="ring")||k==slot))out.push(it)}let seen=new Set();return out.filter(it=>{let k=it.name+"|"+it.base;if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>a.name.localeCompare(b.name))}
 function currentMap(){let m=autoMap(selectedBuild.item_details||[]);for(let k in slotChoices){let it=pool(k).find(x=>x.name+"|"+x.base==slotChoices[k]);if(it)m[k]=it}if(m.weapon&&m.weapon.slot=="twohand")m.offhand={name:"Ocupado por arma two-handed",base:"Slot bloqueado",locked:true};return m}
 function choose(slot,it){slotChoices[slot]=it.name+"|"+it.base;activeSlot=slot;renderDetail()}
 function setSlot(k){activeSlot=k;renderDetail()}
@@ -81,6 +81,7 @@ function render(){if(!data)return;renderStats();renderTable();renderDetail();ren
 </script>
 </body>
 </html>
+
 
 
 

@@ -113,6 +113,8 @@ def item_slot(name, base):
     base_text = (base or "").lower()
     name_text = (name or "").lower()
     text = f"{name_text} {base_text}"
+    if "flask" in text:
+        return "flask"
     # Prefer the base type. Unique names can contain misleading substrings
     # such as "Brotherhood", which must not be read as "hood".
     if "jewel" in base_text or "jewel" in name_text:
