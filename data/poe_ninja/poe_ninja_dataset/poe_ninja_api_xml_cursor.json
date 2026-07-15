@@ -1,39 +1,28 @@
 {
   "cycle": 77,
   "last_batch": [
-    "Poisonous Concoction of Bouncing"
+    "Power Siphon"
   ],
-  "next_az_order": 206,
-  "next_skill": "Power Siphon",
+  "next_az_order": 207,
+  "next_skill": "Power Siphon of the Archmage",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:43:56Z",
+  "updated_at": "2026-07-15T14:49:18Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Poisonous Concoction of Bouncing",
-      "normalized_name": "poisonous_concoction_of_bouncing",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
-      "skipped_same_class": [
-        {
-          "account": "MrKinGG-1250",
-          "character": "Ckoyba",
-          "class": "Pathfinder"
-        },
-        {
-          "account": "LARISO_EROTICO_NE_DOROGO-0643",
-          "character": "Mirage_BOROV",
-          "class": "Pathfinder"
-        },
-        {
-          "account": "TheRisenOne-2322",
-          "character": "RizenMirage",
-          "class": "Pathfinder"
-        }
-      ]
+      "status": "complete",
+      "skill": "Power Siphon",
+      "normalized_name": "power_siphon",
+      "generated": [
+        "nunoka_2678_mrgmr",
+        "crisp_2138_little_stink",
+        "apple2062_5053_weeaaas"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
+      "skipped_same_class": [],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"
