@@ -3,24 +3,28 @@
   "last_batch": [
     "Pestilent Strike"
   ],
-  "next_az_order": 202,
-  "next_skill": "Pestilent Strike",
+  "next_az_order": 203,
+  "next_skill": "Poacher's Mark",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:19:08Z",
+  "updated_at": "2026-07-15T14:23:56Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Pestilent Strike",
       "normalized_name": "pestilent_strike",
-      "generated": [
-        "naimerz2_4319_naim_mrg"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": []
+      "skipped_same_class": [
+        {
+          "account": "Naimerz2-4319",
+          "character": "Naim_MRG",
+          "class": "Champion"
+        }
+      ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
