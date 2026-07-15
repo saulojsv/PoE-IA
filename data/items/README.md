@@ -17,9 +17,10 @@ Some items intentionally share sprites:
 ## Modifiers
 
 - `modifier_sources.json`: inventory of local Path of Building modifier databases.
+- `item_type_mods.json`: normalized catalog of modifiers associated to PoB item types by `weightKey/weightVal`.
 - Current source: `external/PathOfBuildingTesst/src/Data/Mod*.lua`.
 
-These are source manifests, not a fully normalized mod table yet. The next normalization layer should parse each Lua mod record into:
+`item_type_mods.json` includes:
 
 - source category: explicit, implicit, crafted, eldritch, veiled, flask, jewel, cluster, abyss, corrupted, synthesis, scourge;
 - item class/base restrictions;
