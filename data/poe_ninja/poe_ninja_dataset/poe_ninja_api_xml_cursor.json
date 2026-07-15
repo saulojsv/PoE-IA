@@ -1,29 +1,44 @@
 {
   "cycle": 70,
   "last_batch": [
-    "Lightning Tendrils of Eccentricity"
+    "Lightning Tendrils of Escalation"
   ],
-  "next_az_order": 181,
-  "next_skill": "Lightning Tendrils of Escalation",
+  "next_az_order": 182,
+  "next_skill": "Lightning Trap",
   "league": "mirage",
   "version": "1132-20260715-12035",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T12:03:55Z",
+  "updated_at": "2026-07-15T12:09:24Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Lightning Tendrils of Eccentricity",
-      "normalized_name": "lightning_tendrils_of_eccentricity",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
+      "status": "complete",
+      "skill": "Lightning Tendrils of Escalation",
+      "normalized_name": "lightning_tendrils_of_escalation",
+      "generated": [
+        "xperrty_4116_xperrtymirageele",
+        "secksonlegs_6060_divineirebabydigit",
+        "niallain_6261_stormrider_lain"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
       "skipped_same_class": [
         {
-          "account": "__xXManBearPigXx__-1102",
-          "character": "AWWWOOOO",
+          "account": "xevven-5490",
+          "character": "MirageShapez",
+          "class": "Elementalist"
+        },
+        {
+          "account": "Evilmind80-4397",
+          "character": "EvilminddXNova",
+          "class": "Elementalist"
+        },
+        {
+          "account": "caonam98-5329",
+          "character": "DeadMeatWitch",
           "class": "Elementalist"
         }
-      ]
+      ],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"
