@@ -17,12 +17,13 @@ const ignored = new Set(['xml', 'extraction samples', 'root'])
 const bowUniques = /\b(widowhail|voltaxic rift|windripper|lioneye's glare|death's opus|chin sol|darkscorn|doomfletch)\b/i
 
 export async function loadDashboardData() {
-  const [data, sprites, baseMods] = await Promise.all([
+  const [data, sprites, baseMods, tierMods] = await Promise.all([
     fetch('/data/dashboard/build_dashboard_data.json').then(r => r.json()),
     fetch('/data/dashboard/item_sprite_index.json').then(r => r.json()),
     fetch('/data/dashboard/item_base_mod_summary.json').then(r => r.json()).catch(() => ({ bases: {} })),
+    fetch('/data/dashboard/item_mod_tiers.json').then(r => r.json()).catch(() => null),
   ])
-  return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods }
+  return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: tierMods || baseMods }
 }
 
 export function validSkills(data: BuildData) {

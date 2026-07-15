@@ -14,6 +14,18 @@ const stages: { id: BuildStage; label: string; description: string }[] = [
 ]
 
 const slotOrder: SlotKey[] = ['weapon', 'helmet', 'offhand', 'amulet', 'body', 'ring1', 'ring2', 'gloves', 'belt', 'boots']
+const slotClass: Record<SlotKey, string> = {
+  weapon: 'weapon',
+  helmet: 'helmet',
+  offhand: 'offhand',
+  amulet: 'amulet',
+  body: 'body',
+  ring1: 'ring-1',
+  ring2: 'ring-2',
+  gloves: 'gloves',
+  belt: 'belt',
+  boots: 'boots',
+}
 
 function fmt(n: number) {
   return Math.round(Number(n) || 0).toLocaleString('pt-PT')
@@ -73,7 +85,7 @@ function Kpis({ build }: { build: BuildRow }) {
   </div>
 }
 
-function EquipmentBoard({ map, sprites, selectedId, onSelect, pools, onSwap }: { map: Partial<Record<SlotKey, EquipmentItem>>; sprites: Record<string, string>; selectedId?: string; onSelect: (item: EquipmentItem) => void; pools: Partial<Record<SlotKey, ItemDetail[]>>; onSwap: (slot: SlotKey, item: ItemDetail) => void }) {
+function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, onSwap, baseMods }: { map: Partial<Record<SlotKey, EquipmentItem>>; rawItems: ItemDetail[]; sprites: Record<string, string>; selectedId?: string; onSelect: (item: EquipmentItem) => void; pools: Partial<Record<SlotKey, ItemDetail[]>>; onSwap: (slot: SlotKey, item: ItemDetail) => void; baseMods: any }) {
   return <section className="panel equipment">
     <div className="panel-title"><span><Sparkles /> Equipment Set</span><small>PoE 1 layout</small></div>
     <div className="equipment-board">
@@ -81,11 +93,11 @@ function EquipmentBoard({ map, sprites, selectedId, onSelect, pools, onSwap }: {
         {slotOrder.map(slot => {
           const item = map[slot]
           const sprite = item?.raw ? spriteFor(item.raw, sprites) : ''
-          return <button key={slot} className={'item-slot ' + slot + (selectedId === item?.id ? ' selected' : '') + (item?.locked ? ' locked' : '')} onClick={() => item && !item.locked && onSelect(item)}>
+          return <button key={slot} className={'item-slot ' + slotClass[slot] + (selectedId === item?.id ? ' selected' : '') + (item?.locked ? ' locked' : '')} onClick={() => item && !item.locked && onSelect(item)}>
             <i>{sprite ? <img src={sprite} alt="" /> : item?.locked ? '×' : '+'}</i>
             <span>{SLOT_LABELS[slot]}</span>
             <b>{item?.name || 'Empty'}</b>
-            {item && !item.locked && <ItemHoverCard item={{ ...item, sprite }} placement={slot === 'weapon' ? 'right' : slot === 'offhand' ? 'left' : 'bottom'} />}
+            {item && !item.locked && <ItemHoverCard item={{ ...item, sprite }} placement={slot === 'weapon' ? 'right' : slot === 'offhand' ? 'left' : 'bottom'} baseMods={baseMods} />}
             <select value="" onClick={e => e.stopPropagation()} onChange={e => { const next = pools[slot]?.[Number(e.target.value)]; if (next) onSwap(slot, next) }}>
               <option value="">Trocar</option>
               {(pools[slot] || []).slice(0, 80).map((candidate, i) => <option key={`${candidate.name}-${candidate.base}-${i}`} value={i}>{candidate.name} · {candidate.base}</option>)}
@@ -93,7 +105,8 @@ function EquipmentBoard({ map, sprites, selectedId, onSelect, pools, onSwap }: {
           </button>
         })}
       </div>
-      <Flasks items={Object.values(map).map(x => x?.raw).filter(Boolean) as ItemDetail[]} sprites={sprites} />
+      <Flasks items={rawItems} sprites={sprites} />
+      <Jewels items={rawItems} sprites={sprites} />
     </div>
   </section>
 }
@@ -101,6 +114,12 @@ function EquipmentBoard({ map, sprites, selectedId, onSelect, pools, onSwap }: {
 function Flasks({ items, sprites }: { items: ItemDetail[]; sprites: Record<string, string> }) {
   const flasks = items.filter(item => `${item.name} ${item.base}`.toLowerCase().includes('flask')).slice(0, 5)
   return <div className="flasks"><small>FLASKS</small>{Array.from({ length: 5 }).map((_, i) => <button key={i}><i className="flask">{flasks[i] && <img src={spriteFor(flasks[i], sprites)} alt="" />}</i><span>{flasks[i]?.name || 'Empty'}</span></button>)}</div>
+}
+
+function Jewels({ items, sprites }: { items: ItemDetail[]; sprites: Record<string, string> }) {
+  const jewels = items.filter(item => `${item.name} ${item.base} ${item.slot || ''}`.toLowerCase().includes('jewel')).slice(0, 6)
+  if (!jewels.length) return null
+  return <div className="jewels"><small>JEWELS</small>{jewels.map((jewel, i) => <span key={`${jewel.name}-${jewel.base}-${i}`}><img src={spriteFor(jewel, sprites)} alt="" />{jewel.name}</span>)}</div>
 }
 
 function BuildRanking({ skill, onSelect }: { skill: SkillGroup; onSelect: (build: BuildRow) => void }) {
@@ -161,16 +180,16 @@ function PassiveTree({ build, skill }: { build: BuildRow; skill: SkillGroup }) {
   const cx = 420, cy = 330
   const points = nodes.map((node, i) => {
     const ring = 82 + (i % 5) * 46
-    const angle = (i / Math.max(nodes.length, 1)) * Math.PI * 2 * 3.2
+    const angle = (i / Math.max(nodes.length, 1)) * Math.PI * 2
     const mastery = i % 17 === 0
     const notable = notableSet.has(node) || i % 11 === 0
     return { node, x: cx + Math.cos(angle) * ring, y: cy + Math.sin(angle) * ring, mastery, notable }
   })
   return <section className="panel tree-panel">
-    <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} nodes · notables/masteries inferredidos do XML</small></div>
+    <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs · graph validation pending</small></div>
+    <div className="tree-warning">Preview estrutural: links, notables e masteries só serão marcados após carregar o grafo versionado da GGG/PoB. Nenhum link é inferido por proximidade.</div>
     <svg viewBox="0 0 840 660" role="img">
       <defs><radialGradient id="nodeGlow"><stop offset="0" stopColor="#e8c762" /><stop offset="1" stopColor="#7d5c22" /></radialGradient></defs>
-      {points.slice(1).map((p, i) => <line key={'l' + p.node} x1={points[i].x} y1={points[i].y} x2={p.x} y2={p.y} />)}
       {points.map(p => <g key={p.node} className={p.mastery ? 'mastery-node' : p.notable ? 'notable-node' : 'small-node'}>
         <circle cx={p.x} cy={p.y} r={p.mastery ? 12 : p.notable ? 9 : 5} />
         {(p.mastery || p.notable) && <text x={p.x} y={p.y - 15}>{p.mastery ? 'M' : 'N'}</text>}
@@ -223,9 +242,9 @@ export function BuildDashboard() {
       <StageSelector selected={stage} onSelect={setStage} />
       <Kpis build={build} />
       {stage === 'items' && <div className="dashboard-grid">
-        <EquipmentBoard map={equipment} sprites={bundle.sprites} selectedId={activeItem?.id} onSelect={setSelectedItem} pools={pools} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)) }} />
+        <EquipmentBoard map={equipment} rawItems={build.item_details} sprites={bundle.sprites} selectedId={activeItem?.id} onSelect={setSelectedItem} pools={pools} baseMods={bundle.baseMods} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)) }} />
         <div className="middle-stack"><BuildRanking skill={skill} onSelect={next => { setSelectedBuild(next); setOverrides({}) }} /><DefensePanel build={build} /><DamagePanel build={build} /></div>
-        {activeItem && <ItemInspector item={{ ...activeItem, sprite: activeItem.raw ? spriteFor(activeItem.raw, bundle.sprites) : activeItem.sprite }} onSelect={setSelectedItem} />}
+        {activeItem && <ItemInspector item={{ ...activeItem, sprite: activeItem.raw ? spriteFor(activeItem.raw, bundle.sprites) : activeItem.sprite }} onSelect={setSelectedItem} baseMods={bundle.baseMods} />}
       </div>}
       {stage === 'defense' && <DefensePanel build={build} />}
       {stage === 'damage' && <DamagePanel build={build} />}

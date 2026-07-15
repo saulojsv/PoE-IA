@@ -24,7 +24,7 @@ if not exist "node_modules\" (
   )
 )
 
-start "PoE Dashboard Server" cmd /c "npm run dev"
-timeout /t 2 /nobreak >nul
-start "" "http://localhost:5173/"
+start "PoE Dashboard Server" cmd /c "npm.cmd run dev -- --host 127.0.0.1 --port 5173"
+timeout /t 4 /nobreak >nul
+start "" "http://127.0.0.1:5173/dashboard"
 endlocal
