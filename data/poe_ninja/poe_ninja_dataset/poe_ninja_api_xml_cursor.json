@@ -1,27 +1,38 @@
 {
   "cycle": 82,
   "last_batch": [
-    "Reave"
+    "Reave of Refraction"
   ],
-  "next_az_order": 226,
-  "next_skill": "Reave of Refraction",
+  "next_az_order": 227,
+  "next_skill": "Rejuvenation Totem",
   "league": "mirage",
   "version": "1541-20260715-15298",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T17:14:08Z",
+  "updated_at": "2026-07-15T17:19:18Z",
   "results": [
     {
       "status": "complete",
-      "skill": "Reave",
-      "normalized_name": "reave",
+      "skill": "Reave of Refraction",
+      "normalized_name": "reave_of_refraction",
       "generated": [
-        "shade_02_7818_shadekul",
-        "razorbl8_2486_carry_razor",
-        "brunomolas_4706_saborbuild"
+        "topchillxd_5262_topchill_fivegoys",
+        "cowert_0083_cowert_mirage",
+        "lulunice99_0622_sixseven_orangejuice"
       ],
       "xml_count": 3,
       "unique_class_count": 3,
-      "skipped_same_class": [],
+      "skipped_same_class": [
+        {
+          "account": "Shnuffle-7461",
+          "character": "de_mirage_bob",
+          "class": "Juggernaut"
+        },
+        {
+          "account": "justin76_-6339",
+          "character": "ButtersMirageOne",
+          "class": "Juggernaut"
+        }
+      ],
       "next_action": "advance"
     }
   ],
