@@ -1,29 +1,39 @@
 {
-  "cycle": 91,
+  "cycle": 92,
   "last_batch": [
-    "Siege Ballista of Splintering"
+    "Siphoning Trap of Pain"
   ],
-  "next_az_order": 249,
-  "next_skill": "Siphoning Trap",
+  "next_az_order": 251,
+  "next_skill": "Skills",
   "league": "mirage",
-  "version": "1746-20260715-01167",
+  "version": "1950-20260715-21951",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T19:53:54Z",
+  "updated_at": "2026-07-15T20:09:24Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Siege Ballista of Splintering",
-      "normalized_name": "siege_ballista_of_splintering",
-      "generated": [],
-      "xml_count": 1,
-      "unique_class_count": 1,
+      "status": "complete",
+      "skill": "Siphoning Trap of Pain",
+      "normalized_name": "siphoning_trap_of_pain",
+      "generated": [
+        "vesya_0953_vesya_zonecontrol",
+        "warrioravi_4246_avi_frostsiphon",
+        "laricishere_6236_laricmine"
+      ],
+      "xml_count": 3,
+      "unique_class_count": 3,
       "skipped_same_class": [
         {
-          "account": "TopFord-0615",
-          "character": "TopFord_SB",
-          "class": "Hierophant"
+          "account": "VitaMuse-1688",
+          "character": "VitaMirageWitch",
+          "class": "Occultist"
+        },
+        {
+          "account": "JaggelZ-2646",
+          "character": "FreezyBoiiiGamo",
+          "class": "Saboteur"
         }
-      ]
+      ],
+      "next_action": "advance"
     }
   ],
   "status": "advanced"

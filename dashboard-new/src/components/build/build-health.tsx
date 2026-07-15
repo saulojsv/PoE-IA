@@ -1,2 +1,0 @@
-import { Check, ShieldCheck } from 'lucide-react'
-export function BuildHealth(){return <section className="panel health"><div className="panel-title"><span><ShieldCheck/> Build Health</span><b>86 <small>/ 100</small></b></div><div className="health-meter"><i/></div><div className="health-list"><p><Check/> Spell suppression capped <b>100%</b></p><p><Check/> Elemental resistances <b>75%</b></p><p className="warn"><span>!</span> Chaos resistance <b>34%</b></p></div></section>}

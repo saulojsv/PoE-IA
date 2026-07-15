@@ -1,4 +1,26 @@
-import { ArrowUpRight, BadgeCheck, ChevronRight, Shield, X } from 'lucide-react'
+import { ArrowUpRight, BadgeCheck, X } from 'lucide-react'
 import type { EquipmentItem } from '../../types/build'
-import { alternatives } from '../../data/mock-build'
-export function ItemInspector({item,onSelect}:{item:EquipmentItem;onSelect:(x:EquipmentItem)=>void}){return <div className="inspector"><section className="panel item-detail"><div className="panel-title"><span>Selected Item</span><button><X/></button></div><div className="item-head"><i>{item.sprite?<img src={item.sprite} alt=""/>:item.name[0]}</i><div><small className="unique-text">{item.rarity.toUpperCase()} {item.corrupted&&'· CORRUPTED'}</small><h2>{item.name}</h2><p>{item.baseType}</p></div></div><div className="item-meta"><span>Quality <b>+{item.quality??0}%</b></span><span>Armour <b>{item.armour?.toLocaleString()??'—'}</b></span></div><div className="item-stats">{item.stats.map(s=><p key={s}>{s}</p>)}</div>{item.flavorText&&<blockquote>“{item.flavorText}”</blockquote>}<footer><BadgeCheck/> Dataset fixture · Mirage snapshot</footer></section><section className="panel impact"><div className="panel-title"><span>Build Impact</span></div><div>{[['DPS',item.impact?.dps,'blue'],['EHP',item.impact?.ehp,'gold'],['Life',item.impact?.life,'red']].map(([n,v,c])=><p key={String(n)}><span>{n}</span><b className={String(c)}>+{v??0}%</b></p>)}</div><button className="text-button">Open in Build Lab <ArrowUpRight/></button></section><section className="panel alternatives"><div className="panel-title"><span>Alternative Items</span><button>See all</button></div>{alternatives.map(x=><button className="alternative" onClick={()=>onSelect(x)} key={x.id}><i>{x.sprite?<img src={x.sprite} alt=""/>:x.name[4]}</i><div><b>{x.name}</b><small>{x.baseType}</small></div><span>+{x.impact?.ehp}% EHP <ChevronRight/></span></button>)}</section></div>}
+
+export function ItemInspector({ item }: { item: EquipmentItem; onSelect: (x: EquipmentItem) => void }) {
+  return <div className="inspector">
+    <section className="panel item-detail">
+      <div className="panel-title"><span>Selected Item</span><button><X /></button></div>
+      <div className="item-head">
+        <i>{item.sprite ? <img src={item.sprite} alt="" /> : item.name[0]}</i>
+        <div><small className="unique-text">{item.rarity.toUpperCase()}</small><h2>{item.name}</h2><p>{item.baseType}</p></div>
+      </div>
+      <div className="item-meta"><span>Item level <b>{item.itemLevel ?? '-'}</b></span><span>Slot <b>{item.slot}</b></span></div>
+      <div className="item-stats">
+        {(item.implicits || []).map(stat => <p className="implicit-line" key={stat}>{stat}</p>)}
+        {(item.explicits || []).length > 0 && <hr />}
+        {(item.explicits || []).map(stat => <p key={stat}>{stat}</p>)}
+      </div>
+      <footer><BadgeCheck /> PoE 1 XML · sprite/base real</footer>
+    </section>
+    <section className="panel impact">
+      <div className="panel-title"><span>Manual Lab</span></div>
+      <div><p><span>Mods</span><b className="gold">{item.stats.length}</b></p><p><span>Rarity</span><b>{item.rarity}</b></p><p><span>Base</span><b>{item.baseType}</b></p></div>
+      <button className="text-button">Use API for mod simulation <ArrowUpRight /></button>
+    </section>
+  </div>
+}

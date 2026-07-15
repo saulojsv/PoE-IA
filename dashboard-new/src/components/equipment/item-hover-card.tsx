@@ -1,4 +1,4 @@
-import type { EquipmentItem } from '../../types/build'
+﻿import type { EquipmentItem } from '../../types/build'
 
 export function ItemHoverCard({ item, placement }: { item: EquipmentItem; placement: 'left' | 'right' | 'bottom' }) {
   return <aside className={'item-hover-card '+placement} role="tooltip">
@@ -13,7 +13,8 @@ export function ItemHoverCard({ item, placement }: { item: EquipmentItem; placem
       {item.properties?.map(property => <p key={property.label}>{property.label} <b>{property.value}</b></p>)}
     </div>
     {(item.requiredLevel || item.requiredStrength) && <p className="hover-requirements">Requires: {item.requiredLevel && <b>Level {item.requiredLevel}</b>}{item.requiredLevel && item.requiredStrength && ', '}{item.requiredStrength && <b>{item.requiredStrength} Str</b>}</p>}
-    <div className="hover-card-stats">{item.stats.map(stat => <p key={stat}>• <span>{stat}</span></p>)}</div>
-    <footer>Source: poe.ninja fixture</footer>
+    <div className="hover-card-stats">{item.stats.map(stat => <p key={stat}>â€¢ <span>{stat}</span></p>)}</div>
+    <footer>Source: PoE 1 XML / poe.ninja</footer>
   </aside>
 }
+
