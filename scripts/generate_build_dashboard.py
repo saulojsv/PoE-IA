@@ -11,6 +11,13 @@ ROOT = Path(__file__).resolve().parents[1]
 XML_ROOT = ROOT / "data" / "poe_ninja" / "poe_ninja_dataset" / "xml"
 EXPORTS = ROOT / "data" / "exports"
 DASH = ROOT / "dashboard"
+OVERRIDES = ROOT / "data" / "items" / "item_category_overrides.json"
+
+
+def load_overrides():
+    if not OVERRIDES.exists():
+        return {}
+    return json.loads(OVERRIDES.read_text(encoding="utf-8"))
 
 
 def slug_to_name(slug):
@@ -79,6 +86,11 @@ def parse_item(text):
 
 
 def item_slot(name, base):
+    overrides = load_overrides()
+    if name in overrides:
+        return overrides[name]
+    if base in overrides:
+        return overrides[base]
     base_text = (base or "").lower()
     name_text = (name or "").lower()
     text = f"{name_text} {base_text}"
