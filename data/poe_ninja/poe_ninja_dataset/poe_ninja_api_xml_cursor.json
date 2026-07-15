@@ -1,40 +1,42 @@
 {
-  "cycle": 82,
+  "cycle": 83,
   "last_batch": [
-    "Reave of Refraction"
+    "Righteous Fire"
   ],
-  "next_az_order": 227,
-  "next_skill": "Rejuvenation Totem",
+  "next_az_order": 228,
+  "next_skill": "Righteous Fire",
   "league": "mirage",
   "version": "1541-20260715-15298",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T17:19:18Z",
+  "updated_at": "2026-07-15T17:29:00Z",
   "results": [
     {
-      "status": "complete",
-      "skill": "Reave of Refraction",
-      "normalized_name": "reave_of_refraction",
+      "status": "partial",
+      "skill": "Righteous Fire",
+      "normalized_name": "righteous_fire",
       "generated": [
-        "topchillxd_5262_topchill_fivegoys",
-        "cowert_0083_cowert_mirage",
-        "lulunice99_0622_sixseven_orangejuice"
+        "shaironn_4081_meowshiro"
       ],
-      "xml_count": 3,
-      "unique_class_count": 3,
+      "xml_count": 1,
+      "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "Shnuffle-7461",
-          "character": "de_mirage_bob",
-          "class": "Juggernaut"
+          "account": "Geayukari31-5450",
+          "character": "GeayuMirage",
+          "class": "Chieftain"
         },
         {
-          "account": "justin76_-6339",
-          "character": "ButtersMirageOne",
-          "class": "Juggernaut"
+          "account": "BoTz_-5169",
+          "character": "BoTzMirage",
+          "class": "Chieftain"
+        },
+        {
+          "account": "Chicken-3209",
+          "character": "julybyday",
+          "class": "Chieftain"
         }
-      ],
-      "next_action": "advance"
+      ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }
