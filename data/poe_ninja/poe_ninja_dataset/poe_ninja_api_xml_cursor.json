@@ -1,30 +1,52 @@
 {
-  "cycle": 73,
+  "cycle": 74,
   "last_batch": [
-    "Molten Strike"
+    "Molten Strike of the Zenith"
   ],
   "next_az_order": 194,
   "next_skill": "Molten Strike of the Zenith",
   "league": "mirage",
   "version": "1132-20260715-12035",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T13:23:51Z",
+  "updated_at": "2026-07-15T13:29:06Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Molten Strike",
-      "normalized_name": "molten_strike",
-      "generated": [],
+      "status": "partial",
+      "skill": "Molten Strike of the Zenith",
+      "normalized_name": "molten_strike_of_the_zenith",
+      "generated": [
+        "mugglypoe_3993_mugglyzen"
+      ],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "Seven_Paths_of_Pain-7931",
-          "character": "Hakos_Baelz_Ch",
-          "class": "Warden"
+          "account": "wiwa110-3997",
+          "character": "bonenuel",
+          "class": "Juggernaut"
+        },
+        {
+          "account": "pscrout-4289",
+          "character": "FurnaceMinecart",
+          "class": "Juggernaut"
+        },
+        {
+          "account": "SindWirLustig-2583",
+          "character": "AulNightLong",
+          "class": "Juggernaut"
+        },
+        {
+          "account": "snegov061-6043",
+          "character": "Sneg_Mirage",
+          "class": "Juggernaut"
+        },
+        {
+          "account": "Verra-1031",
+          "character": "MarauderOfTheMirage",
+          "class": "Juggernaut"
         }
       ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }
