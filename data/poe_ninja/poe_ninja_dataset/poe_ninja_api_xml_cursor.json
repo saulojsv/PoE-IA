@@ -3,23 +3,26 @@
   "last_batch": [
     "Poisonous Concoction of Bouncing"
   ],
-  "next_az_order": 205,
-  "next_skill": "Poisonous Concoction of Bouncing",
+  "next_az_order": 206,
+  "next_skill": "Power Siphon",
   "league": "mirage",
   "version": "1336-20260715-40520",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T14:39:14Z",
+  "updated_at": "2026-07-15T14:43:56Z",
   "results": [
     {
-      "status": "partial",
+      "status": "pending",
       "skill": "Poisonous Concoction of Bouncing",
       "normalized_name": "poisonous_concoction_of_bouncing",
-      "generated": [
-        "mrkingg_1250_ckoyba"
-      ],
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
+        {
+          "account": "MrKinGG-1250",
+          "character": "Ckoyba",
+          "class": "Pathfinder"
+        },
         {
           "account": "LARISO_EROTICO_NE_DOROGO-0643",
           "character": "Mirage_BOROV",
@@ -33,5 +36,5 @@
       ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
