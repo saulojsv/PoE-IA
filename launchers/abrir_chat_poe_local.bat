@@ -1,3 +1,11 @@
 @echo off
-cd /d "C:\Users\saulo\Documents\Agente - PoE"
-"C:\Users\saulo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts\chat_poe_local.py
+setlocal
+cd /d "%~dp0.."
+call :runpy scripts\chat_poe_local.py
+exit /b %errorlevel%
+
+:runpy
+py -3 %* 2>nul
+if not errorlevel 9009 exit /b %errorlevel%
+python %*
+exit /b %errorlevel%

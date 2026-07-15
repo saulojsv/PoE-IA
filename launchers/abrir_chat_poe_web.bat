@@ -1,4 +1,12 @@
 @echo off
-cd /d "C:\Users\saulo\Documents\Agente - PoE"
+setlocal
+cd /d "%~dp0.."
 start "" http://localhost:7860
-"C:\Users\saulo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" scripts\poe_local_chat_web.py
+call :runpy scripts\poe_local_chat_web.py
+exit /b %errorlevel%
+
+:runpy
+py -3 %* 2>nul
+if not errorlevel 9009 exit /b %errorlevel%
+python %*
+exit /b %errorlevel%
