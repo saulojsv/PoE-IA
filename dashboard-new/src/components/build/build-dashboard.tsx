@@ -266,11 +266,11 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const candidates = bases.filter(([name, base]) => {
         const baseSlot = String(base.slot || '').toLowerCase()
         const normalized = category === 'ring' ? 'ring' : category
-        return baseSlot === normalized && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade|implicit modifiers cannot be changed|has elder, shaper|left ring slot|right ring slot|can be anointed/i.test(`${name} ${base.base_type || ''} ${base.implicit || ''}`)
+        return baseSlot === normalized && !base.special && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade|implicit modifiers cannot be changed|has elder, shaper|left ring slot|right ring slot|can be anointed/i.test(`${name} ${base.base_type || ''} ${base.implicit || ''}`)
       })
       const shuffledCandidates = [...candidates].sort(() => Math.random() - .5)
       let selected: [string, any] | undefined
-      for (const candidate of shuffledCandidates.slice(0, 16)) {
+      for (const candidate of shuffledCandidates) {
         const probe: ItemDetail = { name: `Smart ${candidate[0]}`, base: candidate[0], rarity: category === 'flask' ? 'Magic' : 'Rare', item_level: Math.max(Number(candidate[1].required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: [], explicits: [] }
         const viable = modOptionsForItem(probe, baseMods).filter(mod => (tierForStat(probe, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= probe.item_level && tierForStat(probe, mod.line, baseMods).tier !== null)))
         const probeLimits = affixLimits(probe, baseMods)
@@ -321,7 +321,13 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     setHistory(count); localStorage.setItem('poe-smart-combination-count', String(count)); setSeed(Date.now()); setFailures(failed); setResult(next)
   }
   const rows = Object.entries(result) as [SmartSlot, ItemDetail][]
-  const tierLabel = (item: ItemDetail, line: string) => formatTier(tierForStat(item, line, baseMods))
+  const tierLabel = (item: ItemDetail, line: string) => {
+    const index = item.explicits.indexOf(line)
+    const meta = index >= 0 ? item.affix_meta?.[index] : undefined
+    if (meta?.tierModel === 'tierless') return 'Sem tier'
+    if (meta?.tier != null) return `T${meta.tier}`
+    return formatTier(tierForStat(item, line, baseMods))
+  }
   return <section className="panel smart-generator">
     <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
     <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
