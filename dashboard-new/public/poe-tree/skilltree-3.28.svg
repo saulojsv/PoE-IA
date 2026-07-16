@@ -5913,28 +5913,28 @@ tooltip.appendChild(rect);
 
 const title = document.createElementNS(NS, 'text');
 title.setAttribute('fill', '#f2d267');
-title.setAttribute('font-size', '165');
+title.setAttribute('font-size', '190');
 title.setAttribute('font-weight', '700');
 title.setAttribute('font-family', 'Georgia, serif');
 tooltip.appendChild(title);
 
 const kind = document.createElementNS(NS, 'text');
 kind.setAttribute('fill', '#9db0c7');
-kind.setAttribute('font-size', '95');
+kind.setAttribute('font-size', '115');
 kind.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(kind);
 
 const stats = document.createElementNS(NS, 'text');
 stats.setAttribute('fill', '#8bb7ff');
-stats.setAttribute('font-size', '110');
+stats.setAttribute('font-size', '135');
 stats.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(stats);
 root.appendChild(tooltip);
 
-const PAD_X = 110;
-const PAD_TOP = 110;
-const LINE_HEIGHT = 135;
-const MAX_CHARS = 72;
+const PAD_X = 95;
+const PAD_TOP = 105;
+const LINE_HEIGHT = 155;
+const MAX_CHARS = 62;
 
 function clearStats() {
     while (stats.firstChild) {
@@ -6023,14 +6023,14 @@ function move(event) {
     title.setAttribute('x', PAD_X);
     title.setAttribute('y', PAD_TOP);
     kind.setAttribute('x', PAD_X);
-    kind.setAttribute('y', PAD_TOP + 135);
+    kind.setAttribute('y', PAD_TOP + 155);
     stats.setAttribute('x', PAD_X);
-    stats.setAttribute('y', PAD_TOP + 310);
+    stats.setAttribute('y', PAD_TOP + 345);
     rect.setAttribute('x', '0');
     rect.setAttribute('y', '0');
     const box = tooltip.getBBox();
-    rect.setAttribute('width', Math.max(1100, box.width + PAD_X));
-    rect.setAttribute('height', Math.max(480, box.height + 95));
+    rect.setAttribute('width', Math.min(3300, Math.max(900, box.width + PAD_X)));
+    rect.setAttribute('height', Math.min(1150, Math.max(430, box.height + 80)));
 }
 
 function hide() {
