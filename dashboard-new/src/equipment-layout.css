@@ -29,3 +29,37 @@
 .equipment .item-slot>span{font:9px Geist Mono;color:#8d98a8;line-height:1.05;margin-top:3px}.equipment .item-slot>b{font-size:10px;line-height:1.1;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.equipment .item-slot select{height:22px;margin-top:4px;font-size:9px}
 .equipment .flasks,.equipment .jewels{max-width:560px;margin:14px auto 0;padding-top:10px;display:flex;justify-content:center;align-items:center;gap:10px;border-top:1px solid #1b2430}.equipment .flasks small,.equipment .jewels small{margin-right:2px}.equipment .flasks button{width:54px;padding:0;background:transparent;border:0;color:#8d98a8;text-align:center;font-size:9px}.equipment .flasks .flask{display:grid;place-items:center;width:42px;height:58px;margin:0 auto 4px;border:1px solid #45536a;border-radius:3px;background:#111927}.equipment .flasks img{width:100%;height:100%;object-fit:contain}.equipment .jewels span{display:grid;place-items:center;width:54px;height:54px;padding:4px;border:1px solid #55452d;border-radius:3px;background:#111927;font-size:0}.equipment .jewels img{width:100%;height:100%;object-fit:contain}
 @media(max-width:780px){.equipment .equipment-board{min-width:0;overflow-x:auto}.equipment .loadout-grid.poe-layout{width:560px;min-width:560px}}
+
+/* POBB-style fixed paper-doll layout. This is intentionally absolute so item
+   art and labels cannot reflow into other slots when sprites have odd ratios. */
+.equipment .equipment-board{min-height:520px;padding:18px 18px 120px;overflow:visible}
+.equipment .loadout-grid.poe-layout{position:relative;display:block;width:560px;height:410px;min-width:560px;max-width:560px;margin:0 auto}
+.equipment .loadout-grid.poe-layout .item-slot{position:absolute;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:6px;border-radius:7px;background:linear-gradient(180deg,#141d28,#0b1017);overflow:visible}
+.equipment .loadout-grid.poe-layout .item-slot>i{display:grid;place-items:center;width:100%;height:auto;min-height:0;flex:1;background:#081018;border-radius:5px;overflow:hidden}
+.equipment .loadout-grid.poe-layout .item-slot>i img{display:block;width:100%;height:100%;object-fit:contain;transform:none!important;filter:drop-shadow(0 4px 5px rgb(0 0 0 / .55))}
+.equipment .loadout-grid.poe-layout .item-slot>span{font:800 9px Geist Mono;color:#8d98a8;line-height:1.05;margin-top:4px;text-align:center}
+.equipment .loadout-grid.poe-layout .item-slot>b{font-size:10px;font-weight:850;line-height:1.08;color:#f5f7f8;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.equipment .loadout-grid.poe-layout .item-slot select{width:100%;height:22px;margin-top:5px;font-size:9px}
+.equipment .loadout-grid.poe-layout .weapon{left:8px;top:16px;width:116px;height:310px}
+.equipment .loadout-grid.poe-layout .helmet{left:220px;top:10px;width:96px;height:86px}
+.equipment .loadout-grid.poe-layout .body{left:194px;top:112px;width:150px;height:190px;z-index:2}
+.equipment .loadout-grid.poe-layout .offhand{left:438px;top:16px;width:116px;height:310px}
+.equipment .loadout-grid.poe-layout .amulet{left:356px;top:28px;width:64px;height:88px}
+.equipment .loadout-grid.poe-layout .ring-1{left:138px;top:138px;width:64px;height:88px}
+.equipment .loadout-grid.poe-layout .ring-2{left:356px;top:138px;width:64px;height:88px}
+.equipment .loadout-grid.poe-layout .gloves{left:96px;top:244px;width:86px;height:98px}
+.equipment .loadout-grid.poe-layout .boots{left:356px;top:244px;width:86px;height:98px}
+.equipment .loadout-grid.poe-layout .belt{left:202px;top:334px;width:134px;height:76px}
+.equipment .loadout-grid.poe-layout .weapon>i,.equipment .loadout-grid.poe-layout .offhand>i{height:238px}
+.equipment .loadout-grid.poe-layout .body>i{height:126px}
+.equipment .loadout-grid.poe-layout .helmet>i{height:48px}
+.equipment .loadout-grid.poe-layout .amulet>i,.equipment .loadout-grid.poe-layout .ring-1>i,.equipment .loadout-grid.poe-layout .ring-2>i{height:38px}
+.equipment .loadout-grid.poe-layout .gloves>i,.equipment .loadout-grid.poe-layout .boots>i{height:52px}
+.equipment .loadout-grid.poe-layout .belt>i{height:34px}
+.equipment .flasks{max-width:560px;margin:18px auto 0;padding-top:12px;border-top:1px solid #243043}
+@media(max-width:780px){.equipment .equipment-board{overflow-x:auto}.equipment .loadout-grid.poe-layout{margin-left:0;margin-right:0}}
+.items-dashboard-grid{grid-template-columns:minmax(620px,1fr) minmax(270px,320px)}
+.items-dashboard-grid>.middle-stack{min-width:0}
+.items-dashboard-grid>.inspector{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(260px,.45fr)}
+@media(max-width:1500px){.items-dashboard-grid{grid-template-columns:1fr}.items-dashboard-grid>.inspector{grid-template-columns:1fr}.equipment .equipment-board{overflow-x:auto}.equipment .loadout-grid.poe-layout{margin-left:0;margin-right:0}}
+main{overflow-x:hidden}

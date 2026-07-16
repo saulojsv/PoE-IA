@@ -1,35 +1,32 @@
 {
-  "cycle": 100,
+  "cycle": 102,
   "last_batch": [
-    "Summon Carrion Golem"
+    "Summon Chaos Golem of the Maelström"
   ],
-  "next_az_order": 277,
-  "next_skill": "Summon Carrion Golem of Hordes",
+  "next_az_order": 281,
+  "next_skill": "Summon Chaos Golem of the Maelström",
   "league": "mirage",
-  "version": "0614-20260716-09043",
+  "version": "0819-20260716-26215",
   "snapshot": "mirage",
-  "updated_at": "2026-07-16T08:15:04Z",
+  "updated_at": "2026-07-16T08:45:28Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Summon Carrion Golem",
-      "normalized_name": "summon_carrion_golem",
-      "generated": [],
+      "status": "partial",
+      "skill": "Summon Chaos Golem of the Maelström",
+      "normalized_name": "summon_chaos_golem_of_the_maelstr_m",
+      "generated": [
+        "porkdf_5130_pork_mirage"
+      ],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "Roxalzz-7475",
-          "character": "Roxalz_ColdFishWife",
-          "class": "Necromancer"
-        },
-        {
-          "account": "lazy_daisy-6019",
-          "character": "Saathryn",
-          "class": "Necromancer"
+          "account": "Jimdm3-7843",
+          "character": "Tyty_Jim",
+          "class": "Occultist"
         }
       ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }

@@ -241,7 +241,7 @@ export function BuildDashboard() {
       <BuildHeader skill={skill} build={build} league={league} onLeagueChange={setLeague} />
       <StageSelector selected={stage} onSelect={setStage} />
       <Kpis build={build} />
-      {stage === 'items' && <div className="dashboard-grid">
+      {stage === 'items' && <div className="dashboard-grid items-dashboard-grid">
         <EquipmentBoard map={equipment} rawItems={build.item_details} sprites={bundle.sprites} selectedId={activeItem?.id} onSelect={setSelectedItem} pools={pools} baseMods={bundle.baseMods} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)) }} />
         <div className="middle-stack"><BuildRanking skill={skill} onSelect={next => { setSelectedBuild(next); setOverrides({}) }} /><DefensePanel build={build} /><DamagePanel build={build} /></div>
         {activeItem && <ItemInspector item={{ ...activeItem, sprite: activeItem.raw ? spriteFor(activeItem.raw, bundle.sprites) : activeItem.sprite }} onSelect={setSelectedItem} baseMods={bundle.baseMods} />}
