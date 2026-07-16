@@ -126,6 +126,14 @@ A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada
 - ignora ascendancy por enquanto para não poluir a árvore;
 - não altera círculos, links, `viewBox`, IDs ou `tree_load`.
 
+### Ajuste visual tipo Mobalytics
+
+- sprites usam atlas ativos oficiais (`normalActive`, `notableActive`, `keystoneActive`, `masteryActiveSelected`);
+- o recorte mudou para `clipPath` circular para não aparecer quadrado do atlas;
+- brilho/saturação ficam apenas no `<image>` do overlay;
+- cards abaixo da árvore são renderizados no React, usando os mesmos IDs selecionados e `skilltree-3.28.json`;
+- os cards separam `Keystone`, `Mastery`, `Notable` e `Node` sem alterar o SVG base.
+
 ## Combinações e ganho/perda
 
 É possível simular combinações visuais direto no SVG:

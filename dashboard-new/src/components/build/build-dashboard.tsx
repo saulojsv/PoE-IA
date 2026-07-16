@@ -2,6 +2,7 @@
 import { Activity, Box, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
 import { catalogBasesForSlot, itemPools, loadDashboardData, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
+import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
 
@@ -177,6 +178,37 @@ function DamagePanel({ build }: { build: BuildRow }) {
   return <section className="panel stat-table"><div className="panel-title"><span><Sword /> DPS</span></div>{rows.map(([k, v]) => <p key={k as string}><span>{k}</span><b>{fmt(v as number)}</b></p>)}</section>
 }
 
+type TreeCardNode = { id: string; name: string; stats: string[]; kind: 'Keystone' | 'Mastery' | 'Notable' | 'Node' }
+
+function TreeNodeCards({ nodes }: { nodes: string[] }) {
+  const [cards, setCards] = useState<TreeCardNode[]>([])
+  useEffect(() => {
+    let alive = true
+    loadPassiveTree().then(tree => {
+      if (!alive) return
+      setCards(nodes.map(id => {
+        const node = tree.nodes[id]
+        const kind = node?.isKeystone ? 'Keystone' : node?.isMastery ? 'Mastery' : node?.isNotable ? 'Notable' : 'Node'
+        return { id, name: node?.name || `Node ${id}`, stats: node?.stats || [], kind }
+      }))
+    }).catch(() => setCards([]))
+    return () => { alive = false }
+  }, [nodes])
+  const groups = [
+    ['Keystones', cards.filter(node => node.kind === 'Keystone')],
+    ['Masteries', cards.filter(node => node.kind === 'Mastery')],
+    ['Notables', cards.filter(node => node.kind === 'Notable')],
+    ['Nodes', cards.filter(node => node.kind === 'Node')],
+  ] as const
+  return <div className="tree-card-groups">{groups.map(([label, items]) => <section className="tree-card-group" key={label}>
+    <header><b>{label}</b><small>{items.length}</small></header>
+    <div>{items.map(node => <article className={'tree-info-card ' + node.kind.toLowerCase()} key={node.id}>
+      <span>{node.kind[0]}</span><strong>{node.name}</strong><small>#{node.id}</small>
+      {node.stats.slice(0, 3).map(stat => <p key={stat}>{stat}</p>)}
+    </article>)}</div>
+  </section>)}</div>
+}
+
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   const ref = useRef<HTMLObjectElement>(null)
   const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
@@ -194,6 +226,7 @@ function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   return <section className="panel tree-panel">
     <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
     <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
+    <TreeNodeCards nodes={nodes} />
   </section>
 }
 
