@@ -3,6 +3,19 @@ import { useMemo, useState } from 'react'
 import type { EquipmentItem } from '../../types/build'
 import { modOptionsForItem, tierForStat } from '../../data/mod-tiers'
 
+function firstValue(line: string) {
+  const match = line.match(/[+-]?\d+(?:\.\d+)?/)
+  return match ? Number(match[0]) : undefined
+}
+
+function previewDelta(before: string, after: string) {
+  const oldValue = firstValue(before)
+  const newValue = firstValue(after)
+  if (oldValue === undefined || newValue === undefined || oldValue === 0 || before === after) return null
+  const delta = newValue - oldValue
+  return { delta, percent: Math.abs(delta / oldValue * 100), positive: delta > 0 }
+}
+
 export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelect: (x: EquipmentItem) => void; baseMods: any }) {
   const [editing, setEditing] = useState(false)
   const [draftMods, setDraftMods] = useState(item.explicits || item.stats)
@@ -28,7 +41,7 @@ export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelec
         </p>)}
         {editing && <div className="mod-editor">
           <small>Editar mods explícitos</small>
-          {draftMods.map((mod, i) => <label className="mod-choice" key={i}><span>Mod {i + 1}</span><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line}</option>)}</select></label>)}
+          {draftMods.map((mod, i) => { const delta = previewDelta((item.explicits || item.stats)[i] || '', mod); return <label className="mod-choice" key={i}><span>Mod {i + 1}</span><div className="mod-choice-row"><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line}</option>)}</select>{delta && <em className={delta.positive ? 'mod-gain' : 'mod-loss'}>{delta.positive ? '↑' : '↓'} {Math.abs(delta.delta).toLocaleString('pt-PT')} ({delta.percent.toFixed(1)}%)</em>}</div></label> })}
           <button className="add-mod-choice" onClick={() => { const next = options.find(option => !draftMods.includes(option.line)); if (next) setDraftMods(current => [...current, next.line]) }}>+ Adicionar mod compatível</button>
           <button className="save-mods" disabled={!changed} onClick={() => setEditing(false)}><Check /> Aplicar prévia</button>
           {changed && <span className="mod-preview">Alteração pendente: recalcule no PoB para confirmar DPS/EHP.</span>}
