@@ -147,6 +147,7 @@ A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada
 - ornamentos vetoriais simples nos cantos, sem imagens externas;
 - corpo preto translúcido para stats;
 - stats em azul-violeta, próximo ao visual antigo oficial;
+- stats com `\n` interno são quebrados antes do wrap por palavras para evitar vazamento;
 - alteração restrita a `<g id="dashboard-node-tooltip">`.
 
 ## Combinações e ganho/perda

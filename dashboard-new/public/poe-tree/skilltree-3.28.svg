@@ -6098,15 +6098,15 @@ tooltip.appendChild(kind);
 
 const stats = document.createElementNS(NS, 'text');
 stats.setAttribute('fill', '#8f8cff');
-stats.setAttribute('font-size', '132');
+stats.setAttribute('font-size', '118');
 stats.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(stats);
 root.appendChild(tooltip);
 
-const PAD_X = 62;
+const PAD_X = 72;
 const HEADER_HEIGHT = 178;
-const LINE_HEIGHT = 155;
-const MAX_CHARS = 54;
+const LINE_HEIGHT = 142;
+const MAX_CHARS = 38;
 
 function clearStats() {
     while (stats.firstChild) {
@@ -6167,7 +6167,7 @@ function show(event) {
     if (!node) {
         return;
     }
-    const lines = (node.getAttribute('data-stats') || '').split(';;').filter(Boolean);
+    const lines = (node.getAttribute('data-stats') || '').split(';;').flatMap(line => line.split(/\n+/)).filter(Boolean);
     title.textContent = node.getAttribute('data-name') || node.id;
     kind.textContent = '';
     clearStats();
@@ -6206,8 +6206,8 @@ function move(event) {
     headerGlow.setAttribute('y', '22');
     const titleBox = title.getBBox();
     const statsBox = stats.getBBox();
-    const width = Math.min(2800, Math.max(820, Math.max(titleBox.width, statsBox.width) + PAD_X * 2));
-    const height = Math.min(1050, Math.max(330, HEADER_HEIGHT + statsBox.height + 145));
+    const width = Math.min(3400, Math.max(980, Math.max(titleBox.width, statsBox.width) + PAD_X * 2 + 70));
+    const height = Math.min(1250, Math.max(360, HEADER_HEIGHT + statsBox.height + 160));
     rect.setAttribute('width', width);
     rect.setAttribute('height', height);
     header.setAttribute('width', width);
