@@ -178,89 +178,22 @@ function DamagePanel({ build }: { build: BuildRow }) {
 }
 
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [svg, setSvg] = useState('')
-  const [tooltip, setTooltip] = useState<{ x: number; y: number; name: string; kind: string; stats: string[] } | null>(null)
+  const ref = useRef<HTMLObjectElement>(null)
   const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
-  useEffect(() => { fetch('/poe-tree/skilltree-3.28.svg').then(response => response.text()).then(setSvg) }, [])
   useEffect(() => {
-    const root = ref.current
-    const svgElement = root?.querySelector('svg')
-    if (!root || !svgElement) return
-    const nodeSet = new Set(nodes)
-    let style = svgElement.querySelector('style[data-dashboard-active]') as SVGStyleElement | null
-    if (!style) {
-      style = document.createElementNS('http://www.w3.org/2000/svg', 'style')
-      style.setAttribute('data-dashboard-active', 'true')
-      svgElement.appendChild(style)
+    const object = ref.current
+    if (!object) return
+    const apply = () => {
+      const win = object.contentWindow as (Window & { tree_load?: (data: unknown) => void }) | null
+      win?.tree_load?.({ nodes: nodes.map(Number), classId: 0, ascendancyId: 0, alternateAscendancyId: 'nil' })
     }
-    const rules = nodes.map(id => `#n${id}{color:var(--active-color)}`).join('\n')
-    const links = Array.from(svgElement.querySelectorAll('.connections > [id^="c"]')).flatMap(element => {
-      const [a, b] = element.id.slice(1).split('-')
-      return nodeSet.has(a) && nodeSet.has(b) ? [`#${element.id}{color:var(--active-color)}`] : []
-    }).join('\n')
-    style.textContent = `${rules}\n${links}`
-    svgElement.querySelectorAll('circle[id^="n"][data-name]').forEach(circle => {
-      if (circle.querySelector('title')) return
-      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title')
-      const name = (circle as SVGElement).dataset.name || circle.id
-      const stats = ((circle as SVGElement).dataset.stats || '').split(';;').filter(Boolean).join('\n')
-      title.textContent = stats ? `${name}\n${stats}` : name
-      circle.appendChild(title)
-    })
-    const show = (event: PointerEvent | MouseEvent) => {
-      const target = event.target as SVGElement
-      if (!target?.id?.startsWith('n')) return
-      const rect = root.getBoundingClientRect()
-      setTooltip({
-        x: event.clientX - rect.left + 14,
-        y: event.clientY - rect.top + 14,
-        name: target.dataset.name || `Node ${target.id.slice(1)}`,
-        kind: target.dataset.kind || 'Passive',
-        stats: (target.dataset.stats || '').split(';;').map(stat => stat.trim()).filter(Boolean),
-      })
-    }
-    const move = (event: PointerEvent | MouseEvent) => {
-      const rect = root.getBoundingClientRect()
-      setTooltip(current => current && { ...current, x: event.clientX - rect.left + 14, y: event.clientY - rect.top + 14 })
-    }
-    const hide = () => setTooltip(null)
-    root.addEventListener('pointerover', show)
-    root.addEventListener('pointermove', move)
-    root.addEventListener('pointerout', hide)
-    root.addEventListener('mouseover', show)
-    root.addEventListener('mousemove', move)
-    root.addEventListener('mouseout', hide)
-    return () => {
-      root.removeEventListener('pointerover', show)
-      root.removeEventListener('pointermove', move)
-      root.removeEventListener('pointerout', hide)
-      root.removeEventListener('mouseover', show)
-      root.removeEventListener('mousemove', move)
-      root.removeEventListener('mouseout', hide)
-    }
-  }, [nodes, svg])
+    object.addEventListener('load', apply)
+    apply()
+    return () => object.removeEventListener('load', apply)
+  }, [nodes])
   return <section className="panel tree-panel">
     <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
-    <div className="pob-tree-wrap" onMouseMove={event => {
-      const target = document.elementsFromPoint(event.clientX, event.clientY).find(element => element.id?.startsWith('n') && element instanceof SVGElement) as SVGElement | undefined
-      if (!target) return setTooltip(null)
-      const rect = event.currentTarget.getBoundingClientRect()
-      setTooltip({
-        x: event.clientX - rect.left + 14,
-        y: event.clientY - rect.top + 14,
-        name: target.dataset.name || `Node ${target.id.slice(1)}`,
-        kind: target.dataset.kind || 'Passive',
-        stats: (target.dataset.stats || '').split(';;').map(stat => stat.trim()).filter(Boolean),
-      })
-    }} onMouseLeave={() => setTooltip(null)}>
-      <div ref={ref} className="pob-tree-svg" dangerouslySetInnerHTML={{ __html: svg }} />
-      {tooltip && <div className="tree-node-tooltip" style={{ left: tooltip.x, top: tooltip.y }}>
-        <b>{tooltip.name}</b>
-        <small>{tooltip.kind}</small>
-        {tooltip.stats.length ? tooltip.stats.map(stat => <span key={stat}>{stat}</span>) : <span>No explicit stat text</span>}
-      </div>}
-    </div>
+    <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
   </section>
 }
 
