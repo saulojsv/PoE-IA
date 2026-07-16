@@ -23,7 +23,12 @@ export async function loadDashboardData() {
     loadJson('/poe-data/dashboard/item_base_mod_summary.json').catch(() => ({ bases: {} })),
     loadJson('/poe-data/dashboard/item_mod_tiers.json').catch(() => null),
   ])
-  return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: tierMods || baseMods }
+  // The tier index may contain only a partial base list. The complete base
+  // catalog is required for modifier matching and tier calculation.
+  const catalog = tierMods?.mods && Object.keys(tierMods.mods).length
+    ? tierMods
+    : baseMods
+  return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: catalog }
 }
 
 async function loadJson(path: string) {
