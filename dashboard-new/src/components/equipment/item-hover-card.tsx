@@ -11,10 +11,11 @@ export function ItemHoverCard({
   baseMods: any
 }) {
   const rarity = item.rarity.toLowerCase().replace(' ', '-')
-  const implicits = (item.implicits || []).map(stat => tierForStat(item.raw, stat, baseMods))
+  const implicitLines = (item.implicits || []).filter(Boolean)
+  const implicits = implicitLines.map(stat => tierForStat(item.raw, stat, baseMods))
   const explicitLines = item.explicits?.length
-    ? item.explicits
-    : item.stats.filter(stat => !(item.implicits || []).includes(stat))
+    ? item.explicits.filter(Boolean)
+    : item.stats.filter(stat => stat && !(item.implicits || []).includes(stat))
   const explicitStats = explicitLines.map(stat => tierForStat(item.raw, stat, baseMods))
 
   return <aside className={'item-hover-card ' + placement + ' rarity-' + rarity} role="tooltip">
@@ -36,9 +37,9 @@ export function ItemHoverCard({
     {implicits.length > 0 && explicitStats.length > 0 && <hr className="hover-mod-divider" />}
     {explicitStats.length > 0 && <div className="hover-card-stats explicit-stats">
       <h4>Explicit</h4>
-      {explicitStats.map((stat, index) => <p key={`${stat.line}-${index}`}>
+      {explicitStats.map((stat, index) => <p key={`${explicitLines[index]}-${index}`}>
         <b className={stat.tier ? 'tier-pill affix-code' : 'tier-pill unknown'}>{affixTypeCode(stat)}</b><b className={stat.tier ? 'tier-pill tier-code' : 'tier-pill unknown'}>{tierLabel(stat)}</b>
-        <span>{stat.line}</span>
+        <span>{explicitLines[index]}</span>
       </p>)}
     </div>}
     {(explicitStats.some(stat => stat.affix || stat.group || stat.minItemLevel) || implicits.some(stat => stat.source)) && <div className="hover-mod-meta">
