@@ -259,7 +259,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const candidates = bases.filter(([name, base]) => {
         const baseSlot = String(base.slot || '').toLowerCase()
         const normalized = category === 'ring' ? 'ring' : category
-        return baseSlot === normalized && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade/i.test(`${name} ${base.base_type || ''}`)
+        return baseSlot === normalized && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade|implicit modifiers cannot be changed|has elder, shaper|left ring slot|right ring slot|can be anointed/i.test(`${name} ${base.base_type || ''} ${base.implicit || ''}`)
       })
       const shuffledCandidates = [...candidates].sort(() => Math.random() - .5)
       let selected: [string, any] | undefined
@@ -293,10 +293,10 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
         ? [[1, 0], [0, 1], [1, 1]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
         : category === 'jewel'
           ? [[2, 2]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
-          : [[3, 3]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
+          : [[3, 3], [2, 3], [3, 2], [2, 2], [1, 3], [3, 1], [1, 2], [2, 1], [1, 1]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
       const [prefixTarget, suffixTarget] = targetPairs[Math.floor(Math.random() * targetPairs.length)] || [0, 0]
-      const prefixes = pick('Prefix', isFlask ? 1 : prefixTarget)
-      const suffixes = pick('Suffix', isFlask ? 1 : suffixTarget)
+      const prefixes = pick('Prefix', prefixTarget)
+      const suffixes = pick('Suffix', suffixTarget)
       const jewelLimit = category === 'jewel' ? 2 : 3
       const selectedPrefixes = category === 'jewel' ? prefixes.slice(0, jewelLimit) : prefixes
       const selectedSuffixes = category === 'jewel' ? suffixes.slice(0, jewelLimit) : suffixes
