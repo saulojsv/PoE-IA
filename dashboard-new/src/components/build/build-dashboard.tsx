@@ -291,7 +291,9 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const suffixAvailable = available('Suffix')
       const targetPairs = isFlask
         ? [[1, 0], [0, 1], [1, 1]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
-        : Array.from({ length: limits.prefixes + 1 }, (_, p) => Array.from({ length: limits.suffixes + 1 }, (_, s) => [p, s])).flat().filter(([p, s]) => p + s >= (category === 'jewel' ? 2 : 3) && p + s <= 6 && p <= prefixAvailable && s <= suffixAvailable)
+        : category === 'jewel'
+          ? [[2, 2]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
+          : [[3, 3]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
       const [prefixTarget, suffixTarget] = targetPairs[Math.floor(Math.random() * targetPairs.length)] || [0, 0]
       const prefixes = pick('Prefix', isFlask ? 1 : prefixTarget)
       const suffixes = pick('Suffix', isFlask ? 1 : suffixTarget)
