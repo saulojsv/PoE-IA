@@ -90,16 +90,20 @@ function Kpis({ build }: { build: BuildRow }) {
 
 function socketCapacity(item: EquipmentItem) {
   const text = `${item.slot} ${item.baseType}`.toLowerCase()
-  if (/(body|body armour|bow|twohand|two-handed|staff|quarterstaff|two handed)/.test(text)) return 6
-  if (/(helmet|gloves|boots)/.test(text)) return 4
-  if (/(offhand|shield|wand|sceptre|scepter|dagger|claw|onehand|one-handed|sword|mace|axe)/.test(text)) return 3
-  return 0
+  const level = Math.max(0, Number(item.itemLevel || 0))
+  if (/(belt|amulet|ring|quiver|flask|jewel)/.test(text)) return 0
+  const maximum = /(body|body armour|bow|twohand|two-handed|staff|quarterstaff|two handed)/.test(text) ? 6
+    : /(helmet|gloves|boots)/.test(text) ? 4
+      : /(offhand|shield|wand|sceptre|scepter|dagger|claw|onehand|one-handed|sword|mace|axe)/.test(text) ? 3 : 0
+  if (maximum === 0 || level < 1) return 0
+  const byLevel = level >= 50 ? 6 : level >= 35 ? 5 : level >= 25 ? 4 : level >= 2 ? 3 : 2
+  return Math.min(maximum, byLevel)
 }
 
 function SocketOverlay({ item }: { item: EquipmentItem }) {
   const count = socketCapacity(item)
   if (!count) return null
-  return <span className="socket-overlay" aria-label={`${count} sockets disponíveis na base`}>
+  return <span className="socket-overlay" aria-label={`capacidade de até ${count} sockets pela base e item level`}>
     {Array.from({ length: count }, (_, index) => <i key={index} className="socket-dot" aria-hidden="true" />)}
   </span>
 }
