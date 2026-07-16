@@ -1,32 +1,40 @@
 {
   "cycle": 102,
   "last_batch": [
-    "Summon Chaos Golem of the Maelström"
+    "Summon Flame Golem"
   ],
-  "next_az_order": 281,
-  "next_skill": "Summon Chaos Golem of the Maelström",
+  "next_az_order": 283,
+  "next_skill": "Summon Flame Golem of Hordes",
   "league": "mirage",
   "version": "0819-20260716-26215",
   "snapshot": "mirage",
-  "updated_at": "2026-07-16T08:45:28Z",
+  "updated_at": "2026-07-16T08:55:24Z",
   "results": [
     {
-      "status": "partial",
-      "skill": "Summon Chaos Golem of the Maelström",
-      "normalized_name": "summon_chaos_golem_of_the_maelstr_m",
+      "status": "complete",
+      "skill": "Summon Flame Golem",
+      "normalized_name": "summon_flame_golem",
       "generated": [
-        "porkdf_5130_pork_mirage"
+        "kanadarama_4717_hingming",
+        "katsu_9340_katsu_ran",
+        "tchorti_7221_mirage_tchort"
       ],
-      "xml_count": 1,
-      "unique_class_count": 1,
+      "xml_count": 3,
+      "unique_class_count": 3,
       "skipped_same_class": [
         {
-          "account": "Jimdm3-7843",
-          "character": "Tyty_Jim",
-          "class": "Occultist"
+          "account": "TARZAN1018-3055",
+          "character": "NoManaMann",
+          "class": "Inquisitor"
+        },
+        {
+          "account": "Narco3000-4125",
+          "character": "Gnasty_Gnorc",
+          "class": "Inquisitor"
         }
-      ]
+      ],
+      "next_action": "advance"
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
