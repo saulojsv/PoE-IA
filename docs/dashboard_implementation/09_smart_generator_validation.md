@@ -25,6 +25,8 @@ O overlay agora calcula `min(limite_da_categoria, limite_do_item_level)`, usa c�
 
 ## Limitações explícitas
 
+O Smart Combination permite escolher o nível do personagem. O item level gerado é limitado a `min(nível do personagem, 86)`, respeitando também o nível mínimo exigido pela base.
+
 O catálogo público atual fornece `eligible_mods`, grupo, tipo e nível mínimo, mas nem todos os registros expõem domínio, tags estruturadas, origem, tier formal ou propriedades locais. Esses campos não são inferidos a partir de texto para validar um item como se fossem dados oficiais. Mods sem metadados suficientes devem ser enriquecidos no catálogo antes de entrarem no gerador.
 
 Unique items não devem ser sorteados como rares: precisam ser carregados com o conjunto fixo da própria definição. Cluster jewels, Abyss jewels e jewels básicos também devem possuir pools separados quando o catálogo estrutural estiver completo.

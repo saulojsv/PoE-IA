@@ -42,6 +42,7 @@ def main():
             "prefix_count": prefix,
             "suffix_count": suffix,
             "other_count": other,
+            "eligible_mods": base.get("eligible_mods", []),
             "sample_mods": eligible,
         }
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

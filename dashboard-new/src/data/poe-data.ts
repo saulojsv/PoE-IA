@@ -25,8 +25,10 @@ export async function loadDashboardData() {
     loadJson('/poe-data/dashboard/item_mod_tiers.json').catch(() => null),
   ])
   // Prefer the full mod catalog; the tier index may contain only a partial base list.
+  const mergedBases = { ...(baseMods?.bases || {}) } as Record<string, any>
+  for (const [name, base] of Object.entries(fullCatalog?.bases || {})) mergedBases[name] = { ...(mergedBases[name] || {}), ...(base as any) }
   const catalog = fullCatalog?.mods && Object.keys(fullCatalog.mods).length
-    ? fullCatalog
+    ? { ...fullCatalog, bases: mergedBases }
     : tierMods?.mods && Object.keys(tierMods.mods).length
       ? tierMods
       : baseMods

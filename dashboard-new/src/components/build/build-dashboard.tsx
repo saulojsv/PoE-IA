@@ -237,7 +237,7 @@ const smartSlots: SmartSlot[] = ['weapon', 'helmet', 'body', 'gloves', 'boots', 
 function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: BuildRow; sprites: Record<string, string>; baseMods: any; onApply: (items: Partial<Record<SlotKey, ItemDetail>>) => void }) {
   const [result, setResult] = useState<Record<string, ItemDetail>>({})
   const [seed, setSeed] = useState(0)
-  const [itemLevel, setItemLevel] = useState(85)
+  const [characterLevel, setCharacterLevel] = useState(85)
   const [history, setHistory] = useState(() => Number(localStorage.getItem('poe-smart-combination-count') || 0))
   const randomizeRanges = (line: string) => line.replace(/\((-?\d+(?:\.\d+)?)\s*-\s*(-?\d+(?:\.\d+)?)\)/g, (_, a, b) => {
     const lo = Number(a), hi = Number(b)
@@ -253,7 +253,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const [baseName, base] = candidates[Math.floor(Math.random() * candidates.length)] || []
       if (!baseName) continue
       const isFlask = category === 'flask'
-      const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: isFlask ? 'Magic' : 'Rare', item_level: Math.max(Number(base.required_level || 1), itemLevel), slot: category, implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean) : [], explicits: [] }
+      const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: isFlask ? 'Magic' : 'Rare', item_level: Math.max(Number(base.required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean) : [], explicits: [] }
       const options = modOptionsForItem(draft, baseMods).filter(mod => Number(mod.min_item_level || 1) <= draft.item_level)
       const implicit = String(base.implicit || '')
       const limit = (kind: 'Prefix' | 'Suffix') => {
@@ -283,7 +283,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
     <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
     <p className="smart-description">Gera todos os slots: 10 equipamentos, 5 flasks e 6 jewels. Usa limites de prefixo/sufixo da base; flasks mágicas recebem 1 prefixo + 1 sufixo. A combinação fica dentro do resultado e não altera a árvore.</p>
-    <div className="smart-controls"><label>Item level <input type="number" min="1" max="100" value={itemLevel} onChange={event => setItemLevel(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label><button className="smart-generate" onClick={generate}><Dices /> Gerar combinação aleatória</button></div>
+    <div className="smart-controls"><label>Nível do personagem / ilvl máximo <input type="number" min="1" max="100" value={characterLevel} onChange={event => setCharacterLevel(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label><button className="smart-generate" onClick={generate}><Dices /> Gerar combinação aleatória</button></div>
     {!!seed && <div className="smart-result"><header><b>Resultado da tentativa · {rows.length}/{smartSlots.length} slots gerados</b><span className={rows.length === smartSlots.length ? 'valid' : 'invalid'}>{rows.length === smartSlots.length ? 'Item completo validado' : 'Falha: slot ausente'}</span><button disabled={rows.length !== smartSlots.length} onClick={() => onApply(Object.fromEntries(Object.entries(result).filter(([slot]) => slot in slotClass)) as Partial<Record<SlotKey, ItemDetail>>)}>Aplicar equipamentos</button></header><div className="smart-grid">{rows.map(([slot, item]) => <article key={slot} className="smart-card"><div className="smart-card-head"><b>{slot.startsWith('flask') ? `Flask ${slot.slice(5)}` : slot.startsWith('jewel') ? `Jewel ${slot.slice(5)}` : SLOT_LABELS[slot as SlotKey]}</b><small>{item.rarity} · ilvl {item.item_level}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod} <em>{tierLabel(item, mod)}</em></p>)}</article>)}</div></div>}
     <small className="smart-learning">Histórico local: {history} tentativa{history === 1 ? '' : 's'} guardada{history === 1 ? '' : 's'} para ranking futuro.</small>
   </section>
