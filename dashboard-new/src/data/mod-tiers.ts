@@ -7,6 +7,7 @@ type ModEntry = {
   min_item_level?: number
   line?: string
   lines?: string[]
+  tags?: string[]
 }
 
 export type TierInfo = {
@@ -25,6 +26,12 @@ const optionCache = new WeakMap<object, Map<string, ModOption[]>>()
 
 function optionFitsSlot(mod: ModOption, slot: string) {
   const line = mod.line.toLowerCase()
+  const tags = (mod.tags || []).map(tag => tag.toLowerCase())
+  const specialOrigin = /(influence_mod|delve|incursion|essence|veiled|crafted|fractured|eldritch|corruption|synthesis|abyss)/i
+  if (!['prefix', 'suffix'].includes((mod.type || '').toLowerCase())) return false
+  if (specialOrigin.test(tags.join(' ')) || specialOrigin.test(mod.id || '')) return false
+  if (/^(default|str_int_armour|str_animal_charm|[a-z]+_[a-z_]+)$/.test(line.trim())) return false
+  if (line.includes('default') || /(?:^|\s)[a-z]+_[a-z_]+(?:\s|$)/.test(line)) return false
   const isJewel = slot === 'jewel'
   const isFlask = slot === 'flask'
   const isCluster = /cluster jewel|added small passive|added passive skills grant/i.test(line)

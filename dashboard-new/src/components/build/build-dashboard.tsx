@@ -249,11 +249,11 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     const next: Record<string, ItemDetail> = {}
     for (const slot of smartSlots) {
       const category = slot.startsWith('flask') ? 'flask' : slot.startsWith('jewel') ? 'jewel' : slot === 'ring1' || slot === 'ring2' ? 'ring' : slot === 'weapon' ? 'weapon' : slot
-      const candidates = bases.filter(([name, base]) => base.slot === category && !(category === 'jewel' && /cluster jewel|small cluster|medium cluster|large cluster/i.test(`${name} ${base.base_type || ''}`)))
+      const candidates = bases.filter(([name, base]) => base.slot === category && !(category === 'jewel' && /cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm/i.test(`${name} ${base.base_type || ''}`)))
       const [baseName, base] = candidates[Math.floor(Math.random() * candidates.length)] || []
       if (!baseName) continue
       const isFlask = category === 'flask'
-      const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: isFlask ? 'Magic' : 'Rare', item_level: Math.max(Number(base.required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean) : [], explicits: [] }
+      const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: isFlask ? 'Magic' : 'Rare', item_level: Math.max(Number(base.required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean).map(randomizeRanges) : [], explicits: [] }
       const options = modOptionsForItem(draft, baseMods).filter(mod => Number(mod.min_item_level || 1) <= draft.item_level)
       const implicit = String(base.implicit || '')
       const limit = (kind: 'Prefix' | 'Suffix') => {
@@ -271,6 +271,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const prefixes = pick('Prefix', isFlask ? 1 : limit('Prefix'))
       const suffixes = pick('Suffix', isFlask ? 1 : limit('Suffix'))
       draft.explicits = [...prefixes, ...suffixes].map(mod => randomizeRanges(mod.line))
+      if ((draft.rarity === 'Rare' || draft.rarity === 'Magic') && draft.explicits.length === 0) continue
       if (slot in slotClass) next[slot as SlotKey] = draft
       else next[slot] = draft
     }
