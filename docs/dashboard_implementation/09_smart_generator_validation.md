@@ -53,3 +53,5 @@ slot -> classe/base -> item level -> raridade
 - Mods sem tier identificável, sem grupo válido ou fora de Prefix/Suffix são rejeitados antes do sorteio.
 - Bases especiais como Breach Ring, Ratcheting Ring e Capricious Spiritblade ficam fora da primeira versão.
 - A interface mostra contadores `P/S` por item para diagnosticar capacidade e afixos realmente selecionados.
+- Cada tentativa procura múltiplas bases válidas por slot antes de falhar e registra `slot`, `category`, `stage` e quantidade de bases candidatas no diagnóstico.
+- O tipo e o tier são exibidos separadamente: `P`/`S` à esquerda e `T1...Tn` à direita.

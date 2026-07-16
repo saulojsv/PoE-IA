@@ -1,7 +1,7 @@
 import { ArrowUpRight, BadgeCheck, Check, Pencil, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import type { EquipmentItem } from '../../types/build'
-import { affixTierLabel, modOptionsForItem, tierForStat } from '../../data/mod-tiers'
+import { affixTypeCode, modOptionsForItem, tierForStat, tierLabel } from '../../data/mod-tiers'
 
 function firstValue(line: string) {
   const match = line.match(/[+-]?\d+(?:\.\d+)?/)
@@ -51,7 +51,7 @@ export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelec
         {implicits.map(stat => <p className="implicit-line" key={stat.line}><b className="tier-pill implicit">Implicit</b><span>{stat.line}</span></p>)}
         {explicits.length > 0 && <hr />}
         {explicits.map((stat, i) => <p key={`${stat.line}-${i}`}>
-          <b className={stat.tier ? 'tier-pill' : 'tier-pill unknown'}>{affixTierLabel(stat)}</b>
+          <b className={stat.tier ? 'tier-pill affix-code' : 'tier-pill unknown'}>{affixTypeCode(stat)}</b><b className={stat.tier ? 'tier-pill tier-code' : 'tier-pill unknown'}>{tierLabel(stat)}</b>
           <span>{stat.line}</span>
         </p>)}
         {editing && <div className="mod-editor">
