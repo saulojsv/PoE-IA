@@ -12,6 +12,7 @@ export interface ItemDetail {
   implicits: string[]
   explicits: string[]
   locked?: boolean
+  affix_meta?: { modId: string; tier: number; requiredItemLevel: number; group: string; generationType: 'Prefix' | 'Suffix'; source: 'natural' }[]
 }
 
 export interface EquipmentItem {

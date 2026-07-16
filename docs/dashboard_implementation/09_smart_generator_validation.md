@@ -45,3 +45,11 @@ slot -> classe/base -> item level -> raridade
 - `npm run build` deve concluir sem erros TypeScript/Vite.
 - O botão de aplicar permanece desabilitado quando algum slot obrigatório não foi gerado.
 - Falha de base, sprite ou metadado deve ser exibida como ausência explícita, nunca como fallback silencioso.
+
+## Regras adicionais implementadas
+
+- Jewels comuns usam no máximo 2 prefixos e 2 sufixos; cluster, timeless, charm, talisman e bases especiais são excluídos do gerador natural.
+- Cada item gerado guarda `affix_meta` com mod ID, tier, item level mínimo, grupo, tipo e origem natural.
+- Mods sem tier identificável, sem grupo válido ou fora de Prefix/Suffix são rejeitados antes do sorteio.
+- Bases especiais como Breach Ring, Ratcheting Ring e Capricious Spiritblade ficam fora da primeira versão.
+- A interface mostra contadores `P/S` por item para diagnosticar capacidade e afixos realmente selecionados.
