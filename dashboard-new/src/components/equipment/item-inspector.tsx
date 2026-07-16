@@ -33,6 +33,7 @@ function impactOf(line: string) {
 
 export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelect: (x: EquipmentItem) => void; baseMods: any }) {
   const [editing, setEditing] = useState(false)
+  const [auditIndex, setAuditIndex] = useState<number | null>(null)
   const [draftMods, setDraftMods] = useState(item.explicits || item.stats)
   const implicits = (item.implicits || []).map(stat => tierForStat(item.raw, stat, baseMods))
   const explicits = draftMods.map(stat => tierForStat(item.raw, stat, baseMods))
@@ -50,10 +51,11 @@ export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelec
       <div className="item-stats">
         {implicits.map(stat => <p className="implicit-line" key={stat.line}><b className="tier-pill implicit">Implicit</b><span>{stat.line}</span></p>)}
         {explicits.length > 0 && <hr />}
-        {explicits.map((stat, i) => <p key={`${stat.line}-${i}`}>
+        {explicits.map((stat, i) => <button className="audit-mod-line" key={`${stat.line}-${i}`} onClick={() => setAuditIndex(i)}>
           <b className={stat.tier ? 'tier-pill affix-code' : 'tier-pill unknown'}>{affixTypeCode(stat)}</b><b className={stat.tier ? 'tier-pill tier-code' : 'tier-pill unknown'}>{tierLabel(stat)}</b>
           <span>{stat.line}</span>
-        </p>)}
+        </button>)}
+        {auditIndex !== null && explicits[auditIndex] && <div className="affix-audit"><b>Auditoria do afixo</b><span>Texto: {explicits[auditIndex].line}</span><span>Mod ID: {explicits[auditIndex].modId || 'não identificado'}</span><span>Tier: {tierLabel(explicits[auditIndex])} · Tipo: {explicits[auditIndex].affix || 'não identificado'}</span><span>Grupo: {explicits[auditIndex].group || 'não identificado'}</span><span>Origem: {explicits[auditIndex].source || 'natural'}</span><span>Item level mínimo: {explicits[auditIndex].minItemLevel ?? '—'}</span><span>Tags: {explicits[auditIndex].tags?.join(', ') || '—'}</span></div>}
         {editing && <div className="mod-editor">
           <small>Editar mods explícitos</small>
           {draftMods.map((mod, i) => { const delta = previewDelta((item.explicits || item.stats)[i] || '', mod); return <label className="mod-choice" key={i}><span>Mod {i + 1} · {impactOf(mod)}</span><div className="mod-choice-row"><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line} · {impactOf(option.line)}</option>)}</select>{delta && <em className={delta.positive ? 'mod-gain' : 'mod-loss'}>{delta.positive ? '↑' : '↓'} {Math.abs(delta.delta).toLocaleString('pt-PT')} ({delta.percent.toFixed(1)}%)</em>}</div></label> })}

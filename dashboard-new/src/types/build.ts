@@ -12,7 +12,7 @@ export interface ItemDetail {
   implicits: string[]
   explicits: string[]
   locked?: boolean
-  affix_meta?: { modId: string; tier: number; requiredItemLevel: number; group: string; generationType: 'Prefix' | 'Suffix'; source: 'natural' }[]
+  affix_meta?: { modId: string; tier: number | null; tierModel?: 'tiered' | 'tierless'; requiredItemLevel: number | null; group: string; generationType: 'Prefix' | 'Suffix'; source: 'natural'; rawValue?: number; displayMultiplier?: number }[]
 }
 
 export interface EquipmentItem {

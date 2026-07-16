@@ -18,16 +18,44 @@ export type TierInfo = {
   source?: string
   tags?: string[]
   minItemLevel?: number
+  modId?: string
+  tierModel: 'tiered' | 'tierless'
 }
 
 export type ModOption = ModEntry & { line: string }
+
+export function affixLimits(item: ItemDetail, baseMods: any) {
+  const implicit = String(baseMods?.bases?.[item.base]?.implicit || '')
+  const read = (kind: 'prefix' | 'suffix') => {
+    const match = implicit.match(new RegExp('([+-]\\d+)\\s+' + kind + ' modifiers? allowed', 'i'))
+    return Math.max(0, (item.slot === 'jewel' ? 2 : item.rarity === 'Magic' ? 1 : 3) + (match ? Number(match[1]) : 0))
+  }
+  return { prefixes: read('prefix'), suffixes: read('suffix') }
+}
+
+export function validateItem(item: ItemDetail, baseMods: any) {
+  const errors: string[] = [], groups = new Set<string>(), stats = new Set<string>()
+  const limits = affixLimits(item, baseMods); let prefixes = 0; let suffixes = 0
+  for (const [index, line] of item.explicits.entries()) {
+    const meta = item.affix_meta?.[index]; const info = tierForStat(item, line, baseMods); const type = meta?.generationType || info.affix
+    if (!meta?.modId && !info.modId) errors.push(`Mod sem ID: ${line}`)
+    if (type === 'Prefix') prefixes += 1; else if (type === 'Suffix') suffixes += 1; else errors.push(`Tipo inválido: ${line}`)
+    const group = meta?.group || info.group; if (group && groups.has(`${type}:${group}`)) errors.push(`Grupo duplicado: ${group}`); if (group) groups.add(`${type}:${group}`)
+    const family = line.toLowerCase().replace(/[+-]?\d+(?:\.\d+)?/g, '#').replace(/\([^)]*\)/g, '#').replace(/\s+/g, ' ').trim(); if (stats.has(family)) errors.push(`Estatística duplicada: ${family}`); stats.add(family)
+    if (item.slot !== 'jewel' && info.tier === null) errors.push(`Tier inexistente: ${line}`)
+    if (item.slot !== 'jewel' && Number(meta?.requiredItemLevel ?? info.minItemLevel ?? 1) > item.item_level) errors.push(`Ilvl insuficiente: ${line}`)
+  }
+  if (prefixes > limits.prefixes) errors.push(`Prefixos excedidos: ${prefixes}/${limits.prefixes}`)
+  if (suffixes > limits.suffixes) errors.push(`Sufixos excedidos: ${suffixes}/${limits.suffixes}`)
+  return { valid: errors.length === 0, errors, prefixes, suffixes, limits }
+}
 
 export function affixTypeCode(info: TierInfo) {
   return info.affix.toLowerCase().startsWith('prefix') ? 'P' : info.affix.toLowerCase().startsWith('suffix') ? 'S' : '—'
 }
 
 export function tierLabel(info: TierInfo) {
-  return info.tier ? `T${info.tier}` : '—'
+  return info.tierModel === 'tierless' ? 'Sem tier' : info.tier ? `T${info.tier}` : 'Tier desconhecido'
 }
 
 const optionCache = new WeakMap<object, Map<string, ModOption[]>>()
@@ -129,7 +157,7 @@ export function tierForStat(item: ItemDetail | undefined, stat: string, baseMods
     : Object.values(fullMods) as ModEntry[]
   const exact = mods.find(mod => mod.line && shape(mod.line) === shape(clean) && inRanges(clean, mod.line))
   const matched = exact || mods.find(mod => mod.line && shape(mod.line) === shape(clean))
-  if (!matched) return { line: clean, affix: '', group: '', tier: null }
+  if (!matched) return { line: clean, affix: '', group: '', tier: null, tierModel: item?.slot === 'jewel' ? 'tierless' : 'tiered' }
 
   const family = mods
     .filter(mod => mod.group === matched.group && mod.type === matched.type && mod.line)
@@ -147,10 +175,12 @@ export function tierForStat(item: ItemDetail | undefined, stat: string, baseMods
     line: clean,
     affix: matched.type || '',
     group: matched.group || '',
-    tier: idx >= 0 ? idx + 1 : null,
+    tier: item?.slot === 'jewel' ? null : idx >= 0 ? idx + 1 : null,
     source: (matched as ModEntry & { source?: string }).source || '',
     tags: (matched as ModEntry & { tags?: string[] }).tags || [],
     minItemLevel: matched.min_item_level,
+    modId: matched.id,
+    tierModel: item?.slot === 'jewel' ? 'tierless' : 'tiered',
   }
 }
 

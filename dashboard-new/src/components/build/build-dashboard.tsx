@@ -5,7 +5,7 @@ import { catalogBasesForSlot, itemPools, loadDashboardData, loadGenerationCatalo
 import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
-import { modOptionsForItem, tierForStat, tierLabel as formatTier } from '../../data/mod-tiers'
+import { affixLimits, modOptionsForItem, tierForStat, tierLabel as formatTier, validateItem } from '../../data/mod-tiers'
 
 const stages: { id: BuildStage; label: string; description: string }[] = [
   { id: 'items', label: 'Items', description: 'PoE Ninja / Mobalytics paper-doll' },
@@ -261,19 +261,16 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       let selected: [string, any] | undefined
       for (const candidate of shuffledCandidates.slice(0, 16)) {
         const probe: ItemDetail = { name: `Smart ${candidate[0]}`, base: candidate[0], rarity: category === 'flask' ? 'Magic' : 'Rare', item_level: Math.max(Number(candidate[1].required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: [], explicits: [] }
-        const viable = modOptionsForItem(probe, baseMods).filter(mod => Number(mod.min_item_level || 1) <= probe.item_level && tierForStat(probe, mod.line, baseMods).tier !== null)
+        const viable = modOptionsForItem(probe, baseMods).filter(mod => (tierForStat(probe, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= probe.item_level && tierForStat(probe, mod.line, baseMods).tier !== null)))
         if (viable.length >= 2) { selected = candidate; break }
       }
       const [baseName, base] = selected || []
       if (!baseName) continue
       const isFlask = category === 'flask'
       const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: isFlask ? 'Magic' : 'Rare', item_level: Math.max(Number(base.required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean).map(randomizeRanges) : [], explicits: [] }
-      const options = modOptionsForItem(draft, baseMods).filter(mod => Number(mod.min_item_level || 1) <= draft.item_level && tierForStat(draft, mod.line, baseMods).tier !== null)
+      const options = modOptionsForItem(draft, baseMods).filter(mod => (tierForStat(draft, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= draft.item_level && tierForStat(draft, mod.line, baseMods).tier !== null)))
       const implicit = String(base.implicit || '')
-      const limit = (kind: 'Prefix' | 'Suffix') => {
-        const match = implicit.match(new RegExp('([+-]\\d+)\\s+' + kind + ' Modifiers? allowed', 'i'))
-        return Math.max(0, 3 + (match ? Number(match[1]) : 0))
-      }
+      const limits = affixLimits(draft, baseMods)
       const used = new Set<string>()
       const pick = (kind: 'Prefix' | 'Suffix', max: number) => {
         return options.filter(mod => new RegExp(kind, 'i').test(mod.type || '')).sort(() => Math.random() - .5).filter(mod => {
@@ -282,13 +279,14 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
           return true
         }).slice(0, max)
       }
-      const prefixes = pick('Prefix', isFlask ? 1 : limit('Prefix'))
-      const suffixes = pick('Suffix', isFlask ? 1 : limit('Suffix'))
+      const prefixes = pick('Prefix', isFlask ? 1 : limits.prefixes)
+      const suffixes = pick('Suffix', isFlask ? 1 : limits.suffixes)
       const jewelLimit = category === 'jewel' ? 2 : 3
       const selectedPrefixes = category === 'jewel' ? prefixes.slice(0, jewelLimit) : prefixes
       const selectedSuffixes = category === 'jewel' ? suffixes.slice(0, jewelLimit) : suffixes
       draft.explicits = [...selectedPrefixes, ...selectedSuffixes].map(mod => randomizeRanges(mod.line))
-      draft.affix_meta = [...selectedPrefixes, ...selectedSuffixes].map(mod => { const tier = tierForStat(draft, mod.line, baseMods); return { modId: mod.id || '', tier: tier.tier || 0, requiredItemLevel: Number(mod.min_item_level || 1), group: mod.group || '', generationType: mod.type as 'Prefix' | 'Suffix', source: 'natural' as const } })
+      draft.affix_meta = [...selectedPrefixes, ...selectedSuffixes].map(mod => { const tier = tierForStat(draft, mod.line, baseMods); return { modId: mod.id || '', tier: tier.tier, tierModel: tier.tierModel, requiredItemLevel: tier.tierModel === 'tierless' ? null : Number(mod.min_item_level || 1), group: mod.group || '', generationType: mod.type as 'Prefix' | 'Suffix', source: 'natural' as const } })
+      if (!validateItem(draft, baseMods).valid) continue
       if ((draft.rarity === 'Rare' || draft.rarity === 'Magic') && draft.explicits.length === 0) continue
       if (slot in slotClass) next[slot as SlotKey] = draft
       else next[slot] = draft
