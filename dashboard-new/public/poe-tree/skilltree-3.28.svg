@@ -5895,5 +5895,110 @@ window.tree_highlight = function(nodes) {
     document.adoptedStyleSheets[1] = css;
 }
  })]]></script>
+<script><![CDATA[(function() {
+const root = document.getElementsByTagName('svg')[0];
+const NS = 'http://www.w3.org/2000/svg';
+const tooltip = document.createElementNS(NS, 'g');
+tooltip.setAttribute('id', 'dashboard-node-tooltip');
+tooltip.setAttribute('style', 'display:none;pointer-events:none');
+
+const rect = document.createElementNS(NS, 'rect');
+rect.setAttribute('rx', '35');
+rect.setAttribute('ry', '35');
+rect.setAttribute('fill', '#080d18');
+rect.setAttribute('stroke', '#8b6a2d');
+rect.setAttribute('stroke-width', '18');
+rect.setAttribute('opacity', '0.96');
+tooltip.appendChild(rect);
+
+const title = document.createElementNS(NS, 'text');
+title.setAttribute('fill', '#f2d267');
+title.setAttribute('font-size', '155');
+title.setAttribute('font-weight', '700');
+title.setAttribute('font-family', 'Georgia, serif');
+tooltip.appendChild(title);
+
+const kind = document.createElementNS(NS, 'text');
+kind.setAttribute('fill', '#9db0c7');
+kind.setAttribute('font-size', '95');
+kind.setAttribute('font-family', 'Arial, sans-serif');
+tooltip.appendChild(kind);
+
+const stats = document.createElementNS(NS, 'text');
+stats.setAttribute('fill', '#8bb7ff');
+stats.setAttribute('font-size', '110');
+stats.setAttribute('font-family', 'Arial, sans-serif');
+tooltip.appendChild(stats);
+root.appendChild(tooltip);
+
+function clearStats() {
+    while (stats.firstChild) {
+        stats.removeChild(stats.firstChild);
+    }
+}
+
+function addLine(text, y) {
+    const tspan = document.createElementNS(NS, 'tspan');
+    tspan.setAttribute('x', '0');
+    tspan.setAttribute('dy', y);
+    tspan.textContent = text;
+    stats.appendChild(tspan);
+}
+
+function svgPoint(event) {
+    const point = root.createSVGPoint();
+    point.x = event.clientX;
+    point.y = event.clientY;
+    return point.matrixTransform(root.getScreenCTM().inverse());
+}
+
+function show(event) {
+    const node = event.target;
+    if (!node || !node.id || !node.id.startsWith('n') || !node.dataset) {
+        return;
+    }
+    const lines = (node.dataset.stats || '').split(';;').filter(Boolean);
+    title.textContent = node.dataset.name || node.id;
+    kind.textContent = node.dataset.kind || 'Passive';
+    clearStats();
+    if (lines.length) {
+        for (const line of lines.slice(0, 8)) {
+            addLine(line, stats.childNodes.length ? '135' : '0');
+        }
+    } else {
+        addLine('No explicit stat text', '0');
+    }
+    move(event);
+    tooltip.setAttribute('style', 'display:block;pointer-events:none');
+}
+
+function move(event) {
+    if (tooltip.style.display === 'none') {
+        return;
+    }
+    const point = svgPoint(event);
+    const x = point.x + 150;
+    const y = point.y + 150;
+    title.setAttribute('x', x + 120);
+    title.setAttribute('y', y + 170);
+    kind.setAttribute('x', x + 120);
+    kind.setAttribute('y', y + 315);
+    stats.setAttribute('x', x + 120);
+    stats.setAttribute('y', y + 475);
+    const box = tooltip.getBBox();
+    rect.setAttribute('x', x);
+    rect.setAttribute('y', y);
+    rect.setAttribute('width', Math.max(1150, box.width + 240));
+    rect.setAttribute('height', Math.max(560, box.height + 210));
+}
+
+function hide() {
+    tooltip.setAttribute('style', 'display:none;pointer-events:none');
+}
+
+root.addEventListener('pointerover', show);
+root.addEventListener('pointermove', move);
+root.addEventListener('pointerout', hide);
+})()]]></script>
 </svg>
 
