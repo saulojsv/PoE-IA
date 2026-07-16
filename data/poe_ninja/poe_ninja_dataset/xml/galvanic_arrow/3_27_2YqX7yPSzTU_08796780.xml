@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathOfBuilding>
+	<Build level="64" mainSocketGroup="1" ascendClassName="Deadeye" pantheonMajorGod="None" pantheonMinorGod="None" bandit="None" className="Ranger" viewMode="IMPORT" characterLevelAutoMode="true" targetVersion="3_0">
+		<PlayerStat value="0" stat="CombinedDPS"/>
+		<PlayerStat value="44" stat="Str"/>
+		<PlayerStat value="155" stat="ReqStr"/>
+		<PlayerStat value="182" stat="Dex"/>
+		<PlayerStat value="155" stat="ReqDex"/>
+		<PlayerStat value="134" stat="Int"/>
+		<PlayerStat value="155" stat="ReqInt"/>
+		<PlayerStat value="0" stat="Devotion"/>
+		<PlayerStat value="2923.999199276" stat="TotalEHP"/>
+		<PlayerStat value="3517" stat="PhysicalMaximumHitTaken"/>
+		<PlayerStat value="2269" stat="LightningMaximumHitTaken"/>
+		<PlayerStat value="2269" stat="FireMaximumHitTaken"/>
+		<PlayerStat value="2269" stat="ColdMaximumHitTaken"/>
+		<PlayerStat value="2198" stat="ChaosMaximumHitTaken"/>
+		<PlayerStat value="1308" stat="Life"/>
+		<PlayerStat value="58" stat="Spec:LifeInc"/>
+		<PlayerStat value="1308" stat="LifeUnreserved"/>
+		<PlayerStat value="1308" stat="LifeRecoverable"/>
+		<PlayerStat value="100" stat="LifeUnreservedPercent"/>
+		<PlayerStat value="0" stat="LifeRegenRecovery"/>
+		<PlayerStat value="660" stat="Mana"/>
+		<PlayerStat value="36" stat="Spec:ManaInc"/>
+		<PlayerStat value="101" stat="ManaUnreserved"/>
+		<PlayerStat value="15.30303030303" stat="ManaUnreservedPercent"/>
+		<PlayerStat value="11.6" stat="ManaRegenRecovery"/>
+		<PlayerStat value="0" stat="EnergyShield"/>
+		<PlayerStat value="0" stat="EnergyShieldRecoveryCap"/>
+		<PlayerStat value="15" stat="Spec:EnergyShieldInc"/>
+		<PlayerStat value="0" stat="EnergyShieldRegenRecovery"/>
+		<PlayerStat value="0" stat="Ward"/>
+		<PlayerStat value="0" stat="RageRegenRecovery"/>
+		<PlayerStat value="23" stat="Evasion"/>
+		<PlayerStat value="15" stat="Spec:EvasionInc"/>
+		<PlayerStat value="0" stat="MeleeEvadeChance"/>
+		<PlayerStat value="0" stat="ProjectileEvadeChance"/>
+		<PlayerStat value="0" stat="Armour"/>
+		<PlayerStat value="0" stat="Spec:ArmourInc"/>
+		<PlayerStat value="0" stat="PhysicalDamageReduction"/>
+		<PlayerStat value="0" stat="EffectiveBlockChance"/>
+		<PlayerStat value="0" stat="EffectiveSpellBlockChance"/>
+		<PlayerStat value="0" stat="AttackDodgeChance"/>
+		<PlayerStat value="0" stat="SpellDodgeChance"/>
+		<PlayerStat value="80" stat="EffectiveSpellSuppressionChance"/>
+		<PlayerStat value="-52" stat="FireResist"/>
+		<PlayerStat value="0" stat="FireResistOverCap"/>
+		<PlayerStat value="-52" stat="ColdResist"/>
+		<PlayerStat value="0" stat="ColdResistOverCap"/>
+		<PlayerStat value="-52" stat="LightningResist"/>
+		<PlayerStat value="0" stat="LightningResistOverCap"/>
+		<PlayerStat value="-60" stat="ChaosResist"/>
+		<PlayerStat value="0" stat="ChaosResistOverCap"/>
+		<PlayerStat value="1.2096" stat="EffectiveMovementSpeedMod"/>
+		<PlayerStat value="0" stat="FullDPS"/>
+		<PlayerStat value="0" stat="FullDotDPS"/>
+		<PlayerStat value="0" stat="PowerCharges"/>
+		<PlayerStat value="3" stat="PowerChargesMax"/>
+		<PlayerStat value="0" stat="FrenzyCharges"/>
+		<PlayerStat value="3" stat="FrenzyChargesMax"/>
+		<PlayerStat value="0" stat="EnduranceCharges"/>
+		<PlayerStat value="3" stat="EnduranceChargesMax"/>
+		<TimelessData searchListFallback="" devotionVariant1="1" devotionVariant2="1" searchList=""/>
+	</Build>
+	<Items activeItemSet="1" useSecondWeaponSet="nil" showStatDifferences="true">
+		<ItemSet useSecondWeaponSet="nil" id="1">
+			<Slot name="Weapon 1" itemId="0" itemPbURL=""/>
+			<Slot name="Amulet" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves" itemId="0" itemPbURL=""/>
+			<Slot name="Boots" itemId="0" itemPbURL=""/>
+			<Slot name="Ring 1" itemId="0" itemPbURL=""/>
+			<Slot name="Ring 2" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Flask 5" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Flask 4" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Flask 3" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Belt" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Flask 2" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Swap Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Flask 1" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 1 Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Swap Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Weapon 2 Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Helmet Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Body Armour Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Gloves Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Boots Abyssal Socket 6" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 1" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 2" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 3" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 4" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 5" itemId="0" itemPbURL=""/>
+			<Slot name="Belt Abyssal Socket 6" itemId="0" itemPbURL=""/>
+		</ItemSet>
+	</Items>
+	<Calcs>
+		<Input name="skill_number" number="1"/>
+		<Input name="misc_buffMode" string="EFFECTIVE"/>
+		<Section subsection="ViewSkillDetails" id="SkillSelect" collapsed="false"/>
+		<Section subsection="SkillHitDamage" id="HitDamage" collapsed="false"/>
+		<Section subsection="ExertingWarcries" id="Warcries" collapsed="false"/>
+		<Section subsection="SkillDamageoverTime" id="Dot" collapsed="false"/>
+		<Section subsection="AttackCastRate" id="Speed" collapsed="false"/>
+		<Section subsection="Crits" id="Crit" collapsed="false"/>
+		<Section subsection="Impale" id="Impale" collapsed="false"/>
+		<Section subsection="SkilltypespecificStats" id="SkillTypeStats" collapsed="false"/>
+		<Section subsection="Accuracy" id="HitChance" collapsed="false"/>
+		<Section subsection="Bleed" id="Bleed" collapsed="false"/>
+		<Section subsection="Poison" id="Poison" collapsed="false"/>
+		<Section subsection="Ignite" id="Ignite" collapsed="false"/>
+		<Section subsection="Decay" id="Decay" collapsed="false"/>
+		<Section subsection="LeechGainonHit" id="LeechGain" collapsed="false"/>
+		<Section subsection="NonDamagingAilments" id="EleAilments" collapsed="false"/>
+		<Section subsection="OtherEffects" id="MiscEffects" collapsed="false"/>
+		<Section subsection="Attributes" id="Attributes" collapsed="false"/>
+		<Section subsection="Life" id="Life" collapsed="false"/>
+		<Section subsection="Mana" id="Mana" collapsed="false"/>
+		<Section subsection="EnergyShield" id="EnergyShield" collapsed="false"/>
+		<Section subsection="Ward" id="Ward" collapsed="false"/>
+		<Section subsection="Resists" id="Resist" collapsed="false"/>
+		<Section subsection="Armour" id="Armour" collapsed="false"/>
+		<Section subsection="Evasion" id="Evasion" collapsed="false"/>
+		<Section subsection="DamageAvoidance" id="DamageAvoidance" collapsed="false"/>
+		<Section subsection="Block" id="DamageAvoidance" collapsed="false"/>
+		<Section subsection="Dodge" id="DamageAvoidance" collapsed="false"/>
+		<Section subsection="SpellSuppression" id="DamageAvoidance" collapsed="false"/>
+		<Section subsection="Flasks" id="Flasks" collapsed="false"/>
+		<Section subsection="UtilityFlasks" id="Flasks" collapsed="true"/>
+		<Section subsection="LifeFlasks" id="Flasks" collapsed="true"/>
+		<Section subsection="ManaFlasks" id="Flasks" collapsed="true"/>
+		<Section subsection="Tinctures" id="Flasks" collapsed="true"/>
+		<Section subsection="Rage" id="Rage" collapsed="true"/>
+		<Section subsection="Charges" id="Charges" collapsed="true"/>
+		<Section subsection="Endurance" id="Charges" collapsed="true"/>
+		<Section subsection="Frenzy" id="Charges" collapsed="true"/>
+		<Section subsection="Power" id="Charges" collapsed="true"/>
+		<Section subsection="OtherDefences" id="MiscDefences" collapsed="false"/>
+		<Section subsection="StunDuration" id="MiscDefences" collapsed="false"/>
+		<Section subsection="OtherAvoidance" id="MiscDefences" collapsed="true"/>
+		<Section subsection="OtherAilmentDefences" id="MiscDefences" collapsed="true"/>
+		<Section subsection="DamageTaken" id="DamageTaken" collapsed="false"/>
+		<Section subsection="DamagingHits" id="DamageTaken" collapsed="false"/>
+		<Section subsection="EffectiveHealthPool" id="DamageTaken" collapsed="false"/>
+		<Section subsection="MaximumHitTaken" id="DamageTaken" collapsed="false"/>
+		<Section subsection="RecoupandHitTakenOverTime" id="DamageTaken" collapsed="true"/>
+		<Section subsection="DotsandBuildDegens" id="DamageTaken" collapsed="false"/>
+		<Section subsection="EnemyDegens" id="DamageTaken" collapsed="true"/>
+	</Calcs>
+	<Party destination="All" append="false" ShowAdvanceTools="false"/>
+	<TreeView zoomLevel="0" searchStr="" zoomY="-173.06003863218" showStatDifferences="true" zoomX="-783.39392512601"/>
+	<Import exportParty="false"/>
+	<Tree activeSpec="7">
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="" title="1-8" nodes="41536,50459,465,62712,41250,57240,25178,56856,45035,50338">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICCKJAAdH0-KEi35hiWq_rxKIAAA==
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="" title="Level 16" nodes="50459,63620,57240,61306,45035,54142,3469,41536,9373,465,62712,41250,60942,50338,56856,25178,64709">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICD_iE35jveq_r034NjaJAJJ0B0fT4oSLuDsSiYlr8xQAA
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="{37502,36967}" title="Level 26" nodes="50459,5237,63620,4944,42178,37502,50338,57240,23471,53002,56856,45035,25178,3469,41536,34678,9373,465,62712,16851,41250,12068,47743,60942,18703,54142,61306,19069,64709">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICGxR1-IQTUKTCkn7Eot-YW6_PCq_rYloNjaJAh3YknQHR9PhB06EiLyS6f-4OSQ_Tfu96Sn38xQABkGeSfg==
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="{37502,36967}" title="Level 33" nodes="50459,5237,63620,36221,12412,25178,3469,41536,42178,12068,62712,903,41250,3187,24848,41866,4944,57240,59837,53002,56856,45035,54142,2715,64709,37504,9373,465,19858,47743,16851,23471,50338,37502,18703,60942,34678,19069,9206">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICJRR1-ISNfTB8YloNjaJApMIvJPT4A4ehIgxzYRCjihNQ35jpvc8Kr-vTfgqb_MWSgCSdAdFNkrp_QdNbr8Sikn5JD-4Oh3ZKfSP2AAGQZ5J-
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="{58302,9755},{37502,36967}" title="LA Swap" nodes="13375,50459,63620,23912,36221,12412,58302,50338,3469,41536,12068,62712,903,41250,3187,2185,57080,2715,49621,10843,31222,65427,36287,45202,41866,20953,4944,38149,39665,19069,57240,23471,53002,56856,45035,37502,9206,51881,37504,9373,465,19858,34678,16851,60942,25178,20807,18703,54142,42104,47743,64709">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICMjQ_-IRdaI19MHzjvsSiDY2iQC8k9PgDh6EiDHMIid74CpvB1Spbefb_k42_sJKjilHZE1CVBZrxSn3fmFuvzwqv65J-I_bKqZKAJJ0B0U2Sh3ZB0-4OYlpRR0kP036keLp__MUAAiYb476QZ5J-
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="{48660,17942},{3571,64875},{6427,56951},{58302,9755},{7488,62252}" title="Start of Mapping (Bow)" nodes="13375,36281,55750,36221,58302,50338,41536,63251,64878,62712,64265,31222,25260,2185,24848,27788,30969,65427,39665,49900,57240,28995,56856,6538,11678,59220,2715,19858,8001,6427,18670,20807,28658,9206,15842,14804,50459,64028,26067,18770,7488,8458,59837,10843,23912,45035,12412,32514,25178,41250,41119,44306,22266,903,45202,3187,30679,4656,10840,59866,63194,62744,29454,48660,32477,32555,1461,49621,6799,36287,20953,38149,57080,38995,13935,54142,9469,51881,37504,9373,465,46277,12948,65502,45313,41866,49459,38662,3571,42104">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICWDQ_jbnZxo19477EoqJA9xP9bvT4-wl59mKsCIlhEGyMePn_k5rxwuzfmHFDGYotnudUCptNkh9BGRtI7lFHb_Ij9j3iOdT6HGXTSVIdQCEK6b0qW11or-swfH8CYlqhIqCfrRJW-gOHsJIMc3fXEjAqWOna9tr1GHMOvhR-3X8rBbXB1RqPjb9R2ZUF3viYUzZv034k_cqpkoAknQHRtMUylP_esQGjisEzlwYN86R4AAUmG-O-3ncZG_MsHUBGFr4U_WsN8w==
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+		<Spec secondaryAscendClassId="nil" ascendClassId="2" classId="2" treeVersion="3_26" masteryEffects="{48660,17942},{53828,42540},{7488,62252},{3571,64875}" title="Start of Mapping (Wand)" nodes="13375,36281,27879,36221,50338,56295,41536,63251,48878,64878,62712,64265,25260,24848,27788,52031,30969,65427,35851,32477,57240,28995,56856,6538,59220,2715,19858,8001,18670,26067,20807,60592,61653,18769,47484,53828,14804,50459,53456,60440,18770,7488,49605,33310,36858,39521,12412,51146,25178,51524,16243,59866,15842,49900,3571,903,45202,62744,38662,10840,41866,63194,59837,29454,48660,41250,32555,28658,9206,9373,37504,1461,18182,6799,36287,20953,38995,13935,54142,9469,30679,465,46277,65502,45313,45035,64028,41119,22266,3187,4656">
+			<URL>
+				https://www.pathofexile.com/passive-skill-tree/AAAABgICWTQ_jbls5419xKLb56JA9xO-7v1u9Pj7CWKsYRBsjMs_ePn_k4wLft3fmHFDGYrnVAqbTZIfQUjuZdNRR-yw8NVJUbl80kQ51NDQ7BhJUh1AwcWCHo_6mmEwfMfKYlrJRD9z6do94sLsDfMDh7CS9RiXBipYo4r22um9cw6-FKEifytv8iP2JJ2SgAW1RwYaj42_UdmYUzZv034k_XfXAdG0xf_esQGv6_ocoJ9W-gxzEjAABKYs0kTzLB1A_WsN80YWvhQ=
+			</URL>
+			<Sockets/>
+			<Overrides/>
+		</Spec>
+	</Tree>
+	<Skills sortGemsByDPS="true" sortGemsByDPSField="CombinedDPS" showSupportGemTypes="ALL" defaultGemQuality="0" defaultGemLevel="normalMaximum" activeSkillSet="7" showAltQualityGems="false">
+		<SkillSet id="1" title="1-11">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="GalvanicArrow" quality="0" qualityId="Default" level="20" nameSpec="Galvanic Arrow" skillPart="1" gemId="Metadata/Items/Gems/SkillGemShrapnelShot" enableGlobal1="true" count="1" skillId="GalvanicArrow" skillPartCalcs="1"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" skillMinionSkillCalcs="1" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" skillMinionSkill="1" skillMinion="AbsolutionTemplarJudge" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="ShrapnelBallista" quality="0" qualityId="Default" level="20" nameSpec="Shrapnel Ballista" gemId="Metadata/Items/Gems/SkillGemShrapnelBallista" enableGlobal1="true" count="1" skillId="ShrapnelBallista"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportChancetoBleed" quality="0" qualityId="Default" level="20" nameSpec="Chance to Bleed" skillPart="1" gemId="Metadata/Items/Gems/SupportGemChanceToBleed" enableGlobal1="true" count="1" skillId="SupportChanceToBleed"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Precision" quality="0" qualityId="Default" level="20" nameSpec="Precision" gemId="Metadata/Items/Gems/SkillGemPrecision" enableGlobal1="true" count="1" skillId="Precision"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="2" title="12-28">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="RainOfArrows" quality="0" qualityId="Default" level="20" nameSpec="Rain of Arrows" gemId="Metadata/Items/Gems/SkillGemRainOfArrows" enableGlobal1="true" count="1" skillId="RainOfArrows"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" skillMinionSkillCalcs="1" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" skillMinionSkill="1" skillMinion="AbsolutionTemplarJudge" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="RainOfArrows" quality="0" qualityId="Default" level="20" nameSpec="Rain of Arrows" gemId="Metadata/Items/Gems/SkillGemRainOfArrows" enableGlobal1="true" count="1" skillId="RainOfArrows"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportBallistaTotem" quality="0" qualityId="Default" level="20" nameSpec="Ballista Totem" gemId="Metadata/Items/Gems/SupportGemRangedAttackTotem" enableGlobal1="true" count="1" skillId="SupportBallistaTotem"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="Swap Heralds to Anger when you can">
+				<Gem enabled="true" enableGlobal2="true" variantId="HeraldOfIce" quality="0" qualityId="Default" level="20" nameSpec="Herald of Ice" gemId="Metadata/Items/Gems/SkillGemHeraldOfIce" enableGlobal1="true" count="1" skillId="HeraldOfIce"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="HeraldOfThunder" quality="0" qualityId="Default" level="20" nameSpec="Herald of Thunder" gemId="Metadata/Items/Gems/SkillGemHeraldOfThunder" enableGlobal1="true" count="1" skillId="HeraldOfThunder"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Anger" quality="0" qualityId="Default" level="20" nameSpec="Anger" gemId="Metadata/Items/Gems/SkillGemAnger" enableGlobal1="true" count="1" skillId="Anger"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="3" title="28-LA Swap">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="RainOfArrows" quality="0" qualityId="Default" level="20" nameSpec="Rain of Arrows" gemId="Metadata/Items/Gems/SkillGemRainOfArrows" enableGlobal1="true" count="1" skillId="RainOfArrows"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" skillMinionSkillCalcs="1" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" skillMinionSkill="1" skillMinion="AbsolutionTemplarJudge" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="ArtilleryBallista" quality="0" qualityId="Default" level="20" nameSpec="Artillery Ballista" gemId="Metadata/Items/Gems/SkillGemArtilleryBallista" enableGlobal1="true" count="1" skillId="ArtilleryBallista"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="Swap Heralds to Anger when you can">
+				<Gem enabled="true" enableGlobal2="true" variantId="HeraldOfIce" quality="0" qualityId="Default" level="20" nameSpec="Herald of Ice" gemId="Metadata/Items/Gems/SkillGemHeraldOfIce" enableGlobal1="true" count="1" skillId="HeraldOfIce"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="HeraldOfThunder" quality="0" qualityId="Default" level="20" nameSpec="Herald of Thunder" gemId="Metadata/Items/Gems/SkillGemHeraldOfThunder" enableGlobal1="true" count="1" skillId="HeraldOfThunder"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Anger" quality="0" qualityId="Default" level="20" nameSpec="Anger" gemId="Metadata/Items/Gems/SkillGemAnger" enableGlobal1="true" count="1" skillId="Anger"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="4" title="LA Swap">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="Lightning Arrow (EHotS if cheap)">
+				<Gem enabled="true" enableGlobal2="true" variantId="LightningArrow" quality="0" qualityId="Default" level="20" nameSpec="Lightning Arrow" gemId="Metadata/Items/Gems/SkillGemLightningArrow" enableGlobal1="true" count="1" skillId="LightningArrow"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportTrinity" quality="0" qualityId="Default" level="20" nameSpec="Trinity" gemId="Metadata/Items/Gems/SupportGemTrinity" enableGlobal1="true" count="1" skillId="SupportTrinity"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="ArtilleryBallista" quality="0" qualityId="Default" level="20" nameSpec="Artillery Ballista" gemId="Metadata/Items/Gems/SkillGemArtilleryBallista" enableGlobal1="true" count="1" skillId="ArtilleryBallista"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="Anger">
+				<Gem enabled="true" enableGlobal2="true" variantId="Anger" quality="0" qualityId="Default" level="20" nameSpec="Anger" gemId="Metadata/Items/Gems/SkillGemAnger" enableGlobal1="true" count="1" skillId="Anger"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="5" title="Act 6">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="Lightning Arrow (EHotS if cheap)">
+				<Gem enabled="true" enableGlobal2="true" variantId="LightningArrow" quality="0" qualityId="Default" level="20" nameSpec="Lightning Arrow" gemId="Metadata/Items/Gems/SkillGemLightningArrow" enableGlobal1="true" count="1" skillId="LightningArrow"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportTrinity" quality="0" qualityId="Default" level="20" nameSpec="Trinity" gemId="Metadata/Items/Gems/SupportGemTrinity" enableGlobal1="true" count="1" skillId="SupportTrinity"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="ArtilleryBallista" quality="0" qualityId="Default" level="20" nameSpec="Artillery Ballista" gemId="Metadata/Items/Gems/SkillGemArtilleryBallista" enableGlobal1="true" count="1" skillId="ArtilleryBallista"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMarkOnHit" quality="0" qualityId="Default" level="20" nameSpec="Mark On Hit" gemId="Metadata/Items/Gems/SupportGemMarkOnHit" enableGlobal1="true" count="1" skillId="SupportMarkOnHit"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportLifetap" quality="0" qualityId="Default" level="20" nameSpec="Lifetap" gemId="Metadata/Items/Gems/SupportGemLifetap" enableGlobal1="true" count="1" skillId="SupportLifetap"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="Anger">
+				<Gem enabled="true" enableGlobal2="true" variantId="Anger" quality="0" qualityId="Default" level="20" nameSpec="Anger" gemId="Metadata/Items/Gems/SkillGemAnger" enableGlobal1="true" count="1" skillId="Anger"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frenzy" quality="0" qualityId="Default" level="20" nameSpec="Frenzy" gemId="Metadata/Items/Gems/SkillGemFrenzy" enableGlobal1="true" count="1" skillId="Frenzy"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportManaforgedArrows" quality="0" qualityId="Default" level="20" nameSpec="Manaforged Arrows" gemId="Metadata/Items/Gems/SupportGemManaforgedArrows" enableGlobal1="true" count="1" skillId="SupportManaforgedArrows"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportLifetap" quality="0" qualityId="Default" level="20" nameSpec="Lifetap" gemId="Metadata/Items/Gems/SupportGemLifetap" enableGlobal1="true" count="1" skillId="SupportLifetap"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="6" title="Start of Maps (Bow)">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="Lightning Arrow (EHotS if cheap)">
+				<Gem enabled="true" enableGlobal2="true" variantId="LightningArrow" quality="0" qualityId="Default" level="20" nameSpec="Lightning Arrow" gemId="Metadata/Items/Gems/SkillGemLightningArrow" enableGlobal1="true" count="1" skillId="LightningArrow"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMirageArcher" quality="0" qualityId="Default" level="20" nameSpec="Mirage Archer" gemId="Metadata/Items/Gems/SupportGemMirageArcher" enableGlobal1="true" count="1" skillId="SupportMirageArcher"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportTrinity" quality="0" qualityId="Default" level="20" nameSpec="Trinity" gemId="Metadata/Items/Gems/SupportGemTrinity" enableGlobal1="true" count="1" skillId="SupportTrinity"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFasterAttacks" quality="0" qualityId="Default" level="20" nameSpec="Faster Attacks" gemId="Metadata/Items/Gems/SupportGemFasterAttack" enableGlobal1="true" count="1" skillId="SupportFasterAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="ArtilleryBallista" quality="0" qualityId="Default" level="20" nameSpec="Artillery Ballista" gemId="Metadata/Items/Gems/SkillGemArtilleryBallista" enableGlobal1="true" count="1" skillId="ArtilleryBallista"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedColdDamage" quality="0" qualityId="Default" level="20" nameSpec="Added Cold Damage" gemId="Metadata/Items/Gems/SupportGemAddedColdDamage" enableGlobal1="true" count="1" skillId="SupportAddedColdDamage"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMarkOnHit" quality="0" qualityId="Default" level="20" nameSpec="Mark On Hit" gemId="Metadata/Items/Gems/SupportGemMarkOnHit" enableGlobal1="true" count="1" skillId="SupportMarkOnHit"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportLifetap" quality="0" qualityId="Default" level="20" nameSpec="Lifetap" gemId="Metadata/Items/Gems/SupportGemLifetap" enableGlobal1="true" count="1" skillId="SupportLifetap"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Anger" quality="0" qualityId="Default" level="20" nameSpec="Anger" gemId="Metadata/Items/Gems/SkillGemAnger" enableGlobal1="true" count="1" skillId="Anger"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Grace" quality="0" qualityId="Default" level="20" nameSpec="Grace" gemId="Metadata/Items/Gems/SkillGemGrace" enableGlobal1="true" count="1" skillId="Grace"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Frenzy" quality="0" qualityId="Default" level="20" nameSpec="Frenzy" gemId="Metadata/Items/Gems/SkillGemFrenzy" enableGlobal1="true" count="1" skillId="Frenzy"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportManaforgedArrows" quality="0" qualityId="Default" level="20" nameSpec="Manaforged Arrows" gemId="Metadata/Items/Gems/SupportGemManaforgedArrows" enableGlobal1="true" count="1" skillId="SupportManaforgedArrows"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="StormRain" quality="0" qualityId="Default" level="20" nameSpec="Storm Rain" skillPart="1" gemId="Metadata/Items/Gems/SkillGemStormRain" enableGlobal1="true" count="1" skillId="StormRain"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="BlastRain" quality="0" qualityId="Default" level="20" nameSpec="Blast Rain" skillPart="1" gemId="Metadata/Items/Gems/SkillGemBlastRain" enableGlobal1="true" count="1" skillId="BlastRain"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="QuickGuard" quality="0" qualityId="Default" level="20" nameSpec="Steelskin" gemId="Metadata/Items/Gems/SkillGemSteelskin" enableGlobal1="true" count="1" skillId="QuickGuard"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportCastWhenDamageTaken" quality="0" qualityId="Default" level="20" nameSpec="Cast when Damage Taken" gemId="Metadata/Items/Gems/SupportGemCastOnDamageTaken" enableGlobal1="true" count="1" skillId="SupportCastWhenDamageTaken"/>
+			</Skill>
+		</SkillSet>
+		<SkillSet id="7" title="Start of Maps (Wand)">
+			<Skill enabled="true" mainActiveSkillCalcs="1" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="KineticBlast" quality="0" qualityId="Default" level="20" nameSpec="Kinetic Blast" skillPart="1" gemId="Metadata/Items/Gems/SkillGemKineticBlast" enableGlobal1="true" count="1" skillId="KineticBlast" skillPartCalcs="1"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportSacredWisps" quality="0" qualityId="Default" level="20" nameSpec="Sacred Wisps" gemId="Metadata/Items/Gems/SupportGemSacredWisps" enableGlobal1="true" count="1" skillId="SupportSacredWisps"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportReturningProjectiles" quality="0" qualityId="Default" level="20" nameSpec="Returning Projectiles" gemId="Metadata/Items/Gems/SupportGemReturningProjectiles" enableGlobal1="true" count="1" skillId="SupportReturningProjectiles"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportFork" quality="0" qualityId="Default" level="20" nameSpec="Fork" gemId="Metadata/Items/Gems/SupportGemFork" enableGlobal1="true" count="1" skillId="SupportFork"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="SnipersMark" quality="0" qualityId="Default" level="20" nameSpec="Sniper&apos;s Mark" gemId="Metadata/Items/Gems/SkillGemProjectileWeakness" enableGlobal1="true" count="1" skillId="SnipersMark"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportMarkOnHit" quality="0" qualityId="Default" level="20" nameSpec="Mark On Hit" gemId="Metadata/Items/Gems/SupportGemMarkOnHit" enableGlobal1="true" count="1" skillId="SupportMarkOnHit"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportLifetap" quality="0" qualityId="Default" level="20" nameSpec="Lifetap" gemId="Metadata/Items/Gems/SupportGemLifetap" enableGlobal1="true" count="1" skillId="SupportLifetap"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Frostblink" quality="0" qualityId="Default" level="20" nameSpec="Frostblink" gemId="Metadata/Items/Gems/SkillGemFrostblink" enableGlobal1="true" count="1" skillId="Frostblink"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="1" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Wrath" quality="0" qualityId="Default" level="20" nameSpec="Wrath" gemId="Metadata/Items/Gems/SkillGemWrath" enableGlobal1="true" count="1" skillId="Wrath"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="TempestShield" quality="0" qualityId="Default" level="20" nameSpec="Tempest Shield" gemId="Metadata/Items/Gems/SkillGemTempestShield" enableGlobal1="true" count="1" skillId="TempestShield"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="Kinetic Rain (Hopefully!)">
+				<Gem enabled="true" enableGlobal2="true" variantId="KineticBlast" quality="0" qualityId="Default" level="20" nameSpec="Kinetic Blast" skillPart="1" gemId="Metadata/Items/Gems/SkillGemKineticBlast" enableGlobal1="true" count="1" skillId="KineticBlast"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportAddedLightningDamage" quality="0" qualityId="Default" level="20" nameSpec="Added Lightning Damage" gemId="Metadata/Items/Gems/SupportGemAddedLightningDamage" enableGlobal1="true" count="1" skillId="SupportAddedLightningDamage"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportElementalDamageWithAttacks" quality="0" qualityId="Default" level="20" nameSpec="Elemental Damage with Attacks" gemId="Metadata/Items/Gems/SupportGemWeaponElementalDamage" enableGlobal1="true" count="1" skillId="SupportElementalDamageWithAttacks"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportConcentratedEffect" quality="0" qualityId="Default" level="20" nameSpec="Concentrated Effect" gemId="Metadata/Items/Gems/SupportGemConcentratedEffect" enableGlobal1="true" count="1" skillId="SupportConcentratedEffect"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportSacredWisps" quality="0" qualityId="Default" level="20" nameSpec="Sacred Wisps" gemId="Metadata/Items/Gems/SupportGemSacredWisps" enableGlobal1="true" count="1" skillId="SupportSacredWisps"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="QuickGuard" quality="0" qualityId="Default" level="20" nameSpec="Steelskin" gemId="Metadata/Items/Gems/SkillGemSteelskin" enableGlobal1="true" count="1" skillId="QuickGuard"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="SupportCastWhenDamageTaken" quality="0" qualityId="Default" level="20" nameSpec="Cast when Damage Taken" gemId="Metadata/Items/Gems/SupportGemCastOnDamageTaken" enableGlobal1="true" count="1" skillId="SupportCastWhenDamageTaken"/>
+			</Skill>
+			<Skill enabled="true" mainActiveSkillCalcs="nil" includeInFullDPS="nil" mainActiveSkill="nil" label="">
+				<Gem enabled="true" enableGlobal2="true" variantId="Spellslinger" quality="0" skillMinionSkillCalcs="1" qualityId="Default" level="20" nameSpec="Spellslinger" gemId="Metadata/Items/Gems/SkillGemSpellslinger" skillMinionSkill="1" skillMinion="AbsolutionTemplarJudge" enableGlobal1="true" count="1" skillId="Spellslinger"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Tornado" quality="0" qualityId="Default" level="20" nameSpec="Tornado" gemId="Metadata/Items/Gems/SkillGemTornado" enableGlobal1="true" count="1" skillId="Tornado"/>
+				<Gem enabled="true" enableGlobal2="true" variantId="Hydrosphere" quality="0" qualityId="Default" level="20" nameSpec="Hydrosphere" skillPart="1" gemId="Metadata/Items/Gems/SkillGemHydrosphere" enableGlobal1="true" count="1" skillId="Hydrosphere"/>
+			</Skill>
+		</SkillSet>
+	</Skills>
+	<Notes>
+		^xE05030^xD02090ACT 1^7^7
+As a warning, this guide purchaes a lot of skills from vendors.
+Pick up all magic and rare items you can to sell for transmutes and alterations.
+
+Pick Galvanic Arrow for first skill gem. link with momentum in bow, Drop burning arrow.
+Search for ^x70FF70^x70FF70^x70FF70^x70FF70GG^7^x70FF70G^7^7^7^7 or ^x70FF70GG^7^xE05030R^7 linked items, and movement speed boots.
+If none are available buy an iron ring from Lily for 2 Wisdom Scrolls
+
+After Mud Flats and Tidal island:
+Get Quicksilver flsk and Mirage Archer Support and Shraphel Balista from queest rewards.
+Purchase Sniper&apos;s Mark and Frostblink, (DO NOT LEVEL FROSTBLINK). You can equip after taking Int on tree. Use dash until then.
+Equip all gems, link Galvanic to mirage archer.
+Remember to keep checking venors for 3 links above!
+If you have another wisdom and a green-red link you purchase chance to bleed for shrapnel balista.
+
+After getting to prison and skaying Dweller of the Deep:
+Select Added Cold Support. Link to Galvanic if you have your 3 green already.
+Hopefully you got a flat damage essence, use on your short bow. 
+Purchase faster attacks and link to siege balista.
+You should be able to or close to being able to use frostblink now.
+
+After Brutus, choose precision. Equip at 10.
+The accuracy this gives you will be important for precise technique later.
+If you have not gotten movement speed boots yet you should be able to gamble from Besterl a couple of times at this point.
+
+Level 12 (Pre Merveil)
+Select Rain of Arrows for your reward this will replace Galvanic Arrow
+Purchase another Rain of Arrows and Balista Totem Support, link those two with fasters attacks. Drop Shrapnel balista.
+If you do not have the links or currency to do this, stick with siege balista for now.
+Purchase a Sapphire ring or trade an iron ring plus blue gem for a Sapphire Ring.
+
+^xD02090ACT 2^7
+Level 16
+Should have Precise Technique at this point, make sure to balance Accuracy rating and life correctly.
+First accuracy/bow mastery solve this almost entirely, but be careful until then.
+Choose Herald of Ice for reward and purchase herald of thunder. Equip both.
+If at any point your damage feels bad look for a bow upgrade, flat ele damage is king here.
+
+Choose Elemental Damage with Attacks for next support reward. You wont use it yet likely, but will later.
+Bandits - Help Alira
+
+^xD02090ACT 3^7
+First reward doesn&apos;t matter, purchase Anger. This will replace both heralds.
+At level 25 start gambling Evasion chests for 4 links from Maramoa. Any other gold can be used to for other gear after.
+Pick Artillery Balista for Piety reward, swap RoA/totem setup for Artillery balista
+
+You do not need to do library on this build!
+
+^xD02090Normal Lab^7
+This is a great time to upgrade your bow!
+I genrally aim for 600 tooltip DPS on RoA for Lab (can be done with less, but might feel bad)
+First Lab is Gathering Winds for Tailwind (gotta go fast!)
+
+^xD02090Act 4/Act 5^7
+Nothing really happening in these acts.
+Keep upgrading gear and upgrade bow when dps feels bad.
+I pick up all rare bows and id. Usually theres at least one really good bow. (looking for high total elemental dps)
+
+Other than that we are just blasting until we are ready for Lightning Arrow Swap
+
+^xD02090Lightning Arrow Sawp^7
+I swap to lightning arrow after the following confitions are met
+1) 3 projectils total (+1 from Master Fletcher and +1 from Multishot)
+2 At least one pierce, pierce node on tree
+When you are ready to swap, go back to Act 1 and purchase a leveled Lightning Arrow gem. It should slot directly in to your RoA gem slot.
+You can drop Point Blank at this point as well.
+
+^xD02090Act 6^7
+Add in your utility:
+Automated Marks
+Manafgorged setup
+Start Blasting!
+
+^xD02090Start of Maps^7
+I will swap to wander, but bow will likely remain stronger for mot of mapping so I provided a start of Mapping setup for each!
+
+
+
+
+
+	</Notes>
+	<Config activeConfigSet="1">
+		<ConfigSet id="1">
+			<Placeholder name="enemyChaosResist" number="30"/>
+			<Placeholder name="enemyDamageRollRange" number="70"/>
+			<Placeholder name="sigilOfPowerStages" number="1"/>
+			<Placeholder name="ShockStacks" number="1"/>
+			<Placeholder name="enemyLevel" number="84"/>
+			<Placeholder name="enemySpeed" number="700"/>
+			<Placeholder name="enemyCritChance" number="5"/>
+			<Placeholder name="enemyCritDamage" number="30"/>
+			<Placeholder name="enemyEvasion" number="10143"/>
+			<Placeholder name="enemyPhysicalDamage" number="2241"/>
+			<Placeholder name="enemyFirePen" number="3"/>
+			<Placeholder name="ScorchStacks" number="1"/>
+			<Placeholder name="enemyLightningDamage" number="2241"/>
+			<Placeholder name="enemyColdDamage" number="2241"/>
+			<Placeholder name="enemyFireDamage" number="2241"/>
+			<Placeholder name="multiplierWitheredStackCountSelf" number="15"/>
+			<Placeholder name="enemyChaosDamage" number="896"/>
+			<Placeholder name="enemyLightningPen" number="3"/>
+			<Placeholder name="enemyFireResist" number="50"/>
+			<Placeholder name="enemyColdPen" number="3"/>
+			<Placeholder name="enemyColdResist" number="50"/>
+			<Placeholder name="enemyArmour" number="61989"/>
+			<Placeholder name="enemyLightningResist" number="50"/>
+		</ConfigSet>
+	</Config>
+</PathOfBuilding>

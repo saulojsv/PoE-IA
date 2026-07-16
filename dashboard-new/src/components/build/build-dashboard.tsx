@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, Box, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
-import { itemPools, loadDashboardData, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
+import { catalogBasesForSlot, itemPools, loadDashboardData, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
 
@@ -47,8 +47,8 @@ function SkillList({ skills, selected, onSelect }: { skills: SkillGroup[]; selec
     <div className="skill-search"><input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar skill, classe, item..." /></div>
     <div className="skill-list">
       {filtered.slice(0, 120).map(skill => <button key={skill.skill} className={selected?.skill === skill.skill ? 'active' : ''} onClick={() => onSelect(skill)}>
-        <b>{skill.skill}</b><span>{fmt(skill.builds)} XMLs · DPS {fmt(skill.best_dps)}</span>
-        <small>{skill.classes.slice(0, 2).map(([name, count]) => `${name} ${count}`).join(' · ')}</small>
+        <b>{skill.skill}</b><span>{fmt(skill.builds)} XMLs Â· DPS {fmt(skill.best_dps)}</span>
+        <small>{skill.classes.slice(0, 2).map(([name, count]) => `${name} ${count}`).join(' Â· ')}</small>
       </button>)}
     </div>
   </section>
@@ -58,7 +58,7 @@ function BuildHeader({ skill, build, league, onLeagueChange }: { skill: SkillGro
   return <section className="build-hero">
     <div className="skill-orb"><Zap /></div>
     <div className="hero-copy">
-      <small><Sparkles /> POE 1 ONLY · XML BUILDS</small>
+      <small><Sparkles /> POE 1 ONLY Â· XML BUILDS</small>
       <h1>{skill.skill}</h1>
       <div className="badges"><span className="green">{build.ascendancy || build.class || 'Class'}</span><span className="purple">Level {build.level || '-'}</span><span className="blue">poe.ninja XML</span><span>{fmt(skill.candidate_space)} combos</span></div>
       <p>Arquivo <b>{shortFile(build.file)}</b><i /> Pontos usados <b>{build.points_used}</b><i /> Itens reais do XML</p>
@@ -86,6 +86,8 @@ function Kpis({ build }: { build: BuildRow }) {
 }
 
 function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, onSwap, baseMods }: { map: Partial<Record<SlotKey, EquipmentItem>>; rawItems: ItemDetail[]; sprites: Record<string, string>; selectedId?: string; onSelect: (item: EquipmentItem) => void; pools: Partial<Record<SlotKey, ItemDetail[]>>; onSwap: (slot: SlotKey, item: ItemDetail) => void; baseMods: any }) {
+  const [activeSlot, setActiveSlot] = useState<SlotKey>()
+  const candidates = activeSlot ? [...(pools[activeSlot] || []), ...catalogBasesForSlot(activeSlot, baseMods)].filter((item, i, all) => all.findIndex(other => other.name === item.name && other.base === item.base) === i) : []
   return <section className="panel equipment">
     <div className="panel-title"><span><Sparkles /> Equipment Set</span><small>PoE 1 layout</small></div>
     <div className="equipment-board">
@@ -93,18 +95,19 @@ function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, o
         {slotOrder.map(slot => {
           const item = map[slot]
           const sprite = item?.raw ? spriteFor(item.raw, sprites) : ''
-          return <button key={slot} className={'item-slot ' + slotClass[slot] + (selectedId === item?.id ? ' selected' : '') + (item?.locked ? ' locked' : '')} onClick={() => item && !item.locked && onSelect(item)}>
-            <i>{sprite ? <img src={sprite} alt="" /> : item?.locked ? '×' : '+'}</i>
+          return <button key={slot} className={'item-slot ' + slotClass[slot] + (selectedId === item?.id ? ' selected' : '') + (item?.locked ? ' locked' : '')} onClick={() => { if (item && !item.locked) onSelect(item); setActiveSlot(slot) }}>
+            <i>{sprite ? <img src={sprite} alt="" /> : item?.locked ? 'Ã—' : '+'}</i>
             <span>{SLOT_LABELS[slot]}</span>
             <b>{item?.name || 'Empty'}</b>
             {item && !item.locked && <ItemHoverCard item={{ ...item, sprite }} placement={slot === 'weapon' ? 'right' : slot === 'offhand' ? 'left' : 'bottom'} baseMods={baseMods} />}
             <select value="" onClick={e => e.stopPropagation()} onChange={e => { const next = pools[slot]?.[Number(e.target.value)]; if (next) onSwap(slot, next) }}>
               <option value="">Trocar</option>
-              {(pools[slot] || []).slice(0, 80).map((candidate, i) => <option key={`${candidate.name}-${candidate.base}-${i}`} value={i}>{candidate.name} · {candidate.base}</option>)}
+              {(pools[slot] || []).slice(0, 80).map((candidate, i) => <option key={`${candidate.name}-${candidate.base}-${i}`} value={i}>{candidate.name} Â· {candidate.base}</option>)}
             </select>
           </button>
         })}
       </div>
+      {activeSlot && <aside className="slot-browser"><header><b>{SLOT_LABELS[activeSlot]}</b><button onClick={() => setActiveSlot(undefined)} aria-label="Fechar">×</button></header><p>{candidates.length} opções: itens dos XMLs e bases PoE 1 disponíveis.</p><div className="slot-browser-list">{candidates.map((candidate, i) => <button key={`${candidate.name}-${candidate.base}-${i}`} onClick={event => { event.stopPropagation(); onSwap(activeSlot, candidate); setActiveSlot(undefined) }}>{spriteFor(candidate, sprites) && <img src={spriteFor(candidate, sprites)} alt="" />}<span><b>{candidate.name}</b><small>{candidate.base} · Base mínima {candidate.item_level}</small></span></button>)}</div></aside>}
       <Flasks items={rawItems} sprites={sprites} baseMods={baseMods} />
       <Jewels items={rawItems} sprites={sprites} baseMods={baseMods} />
     </div>
@@ -139,7 +142,7 @@ function BuildExplorer({ skill, selectedBuild, onSelect }: { skill: SkillGroup; 
     <div className="build-list">
       {rows.map(build => <button key={build.file} className={selectedBuild.file === build.file ? 'active' : ''} onClick={() => onSelect(build)}>
         <b>{shortFile(build.file)}</b>
-        <span>{build.ascendancy || build.class || 'Class'} · Lv {build.level || '-'} · DPS {fmt(build.combined_dps)} · EHP {fmt(build.ehp)}</span>
+        <span>{build.ascendancy || build.class || 'Class'} Â· Lv {build.level || '-'} Â· DPS {fmt(build.combined_dps)} Â· EHP {fmt(build.ehp)}</span>
       </button>)}
     </div>
   </section>
@@ -150,7 +153,7 @@ function CombinationPanel({ skill, build, pools, sprites, onBuild, onSwap }: { s
   return <div className="combination-grid">
     <BuildExplorer skill={skill} selectedBuild={build} onSelect={onBuild} />
     <section className="panel combo-pools">
-      <div className="panel-title"><span><Sparkles /> Pools de combinação</span><small>{fmt(total)} candidatos</small></div>
+      <div className="panel-title"><span><Sparkles /> Pools de combinaÃ§Ã£o</span><small>{fmt(total)} candidatos</small></div>
       {slotOrder.map(slot => <div className="combo-slot" key={slot}>
         <h3>{SLOT_LABELS[slot]} <small>{pools[slot]?.length || 0}</small></h3>
         <div>
@@ -174,28 +177,90 @@ function DamagePanel({ build }: { build: BuildRow }) {
   return <section className="panel stat-table"><div className="panel-title"><span><Sword /> DPS</span></div>{rows.map(([k, v]) => <p key={k as string}><span>{k}</span><b>{fmt(v as number)}</b></p>)}</section>
 }
 
-function PassiveTree({ build, skill }: { build: BuildRow; skill: SkillGroup }) {
-  const nodes = build.nodes.slice(0, 140)
-  const notableSet = new Set(skill.nodes.slice(0, 20).map(([node]) => node))
-  const cx = 420, cy = 330
-  const points = nodes.map((node, i) => {
-    const ring = 82 + (i % 5) * 46
-    const angle = (i / Math.max(nodes.length, 1)) * Math.PI * 2
-    const mastery = i % 17 === 0
-    const notable = notableSet.has(node) || i % 11 === 0
-    return { node, x: cx + Math.cos(angle) * ring, y: cy + Math.sin(angle) * ring, mastery, notable }
-  })
+function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [svg, setSvg] = useState('')
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; name: string; kind: string; stats: string[] } | null>(null)
+  const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
+  useEffect(() => { fetch('/poe-tree/skilltree-3.28.svg').then(response => response.text()).then(setSvg) }, [])
+  useEffect(() => {
+    const root = ref.current
+    const svgElement = root?.querySelector('svg')
+    if (!root || !svgElement) return
+    const nodeSet = new Set(nodes)
+    let style = svgElement.querySelector('style[data-dashboard-active]') as SVGStyleElement | null
+    if (!style) {
+      style = document.createElementNS('http://www.w3.org/2000/svg', 'style')
+      style.setAttribute('data-dashboard-active', 'true')
+      svgElement.appendChild(style)
+    }
+    const rules = nodes.map(id => `#n${id}{color:var(--active-color)}`).join('\n')
+    const links = Array.from(svgElement.querySelectorAll('.connections > [id^="c"]')).flatMap(element => {
+      const [a, b] = element.id.slice(1).split('-')
+      return nodeSet.has(a) && nodeSet.has(b) ? [`#${element.id}{color:var(--active-color)}`] : []
+    }).join('\n')
+    style.textContent = `${rules}\n${links}`
+    svgElement.querySelectorAll('circle[id^="n"][data-name]').forEach(circle => {
+      if (circle.querySelector('title')) return
+      const title = document.createElementNS('http://www.w3.org/2000/svg', 'title')
+      const name = (circle as SVGElement).dataset.name || circle.id
+      const stats = ((circle as SVGElement).dataset.stats || '').split(';;').filter(Boolean).join('\n')
+      title.textContent = stats ? `${name}\n${stats}` : name
+      circle.appendChild(title)
+    })
+    const show = (event: PointerEvent | MouseEvent) => {
+      const target = event.target as SVGElement
+      if (!target?.id?.startsWith('n')) return
+      const rect = root.getBoundingClientRect()
+      setTooltip({
+        x: event.clientX - rect.left + 14,
+        y: event.clientY - rect.top + 14,
+        name: target.dataset.name || `Node ${target.id.slice(1)}`,
+        kind: target.dataset.kind || 'Passive',
+        stats: (target.dataset.stats || '').split(';;').map(stat => stat.trim()).filter(Boolean),
+      })
+    }
+    const move = (event: PointerEvent | MouseEvent) => {
+      const rect = root.getBoundingClientRect()
+      setTooltip(current => current && { ...current, x: event.clientX - rect.left + 14, y: event.clientY - rect.top + 14 })
+    }
+    const hide = () => setTooltip(null)
+    root.addEventListener('pointerover', show)
+    root.addEventListener('pointermove', move)
+    root.addEventListener('pointerout', hide)
+    root.addEventListener('mouseover', show)
+    root.addEventListener('mousemove', move)
+    root.addEventListener('mouseout', hide)
+    return () => {
+      root.removeEventListener('pointerover', show)
+      root.removeEventListener('pointermove', move)
+      root.removeEventListener('pointerout', hide)
+      root.removeEventListener('mouseover', show)
+      root.removeEventListener('mousemove', move)
+      root.removeEventListener('mouseout', hide)
+    }
+  }, [nodes, svg])
   return <section className="panel tree-panel">
-    <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs · graph validation pending</small></div>
-    <div className="tree-warning">Preview estrutural: links, notables e masteries só serão marcados após carregar o grafo versionado da GGG/PoB. Nenhum link é inferido por proximidade.</div>
-    <svg viewBox="0 0 840 660" role="img">
-      <defs><radialGradient id="nodeGlow"><stop offset="0" stopColor="#e8c762" /><stop offset="1" stopColor="#7d5c22" /></radialGradient></defs>
-      {points.map(p => <g key={p.node} className={p.mastery ? 'mastery-node' : p.notable ? 'notable-node' : 'small-node'}>
-        <circle cx={p.x} cy={p.y} r={p.mastery ? 12 : p.notable ? 9 : 5} />
-        {(p.mastery || p.notable) && <text x={p.x} y={p.y - 15}>{p.mastery ? 'M' : 'N'}</text>}
-        <title>{p.mastery ? 'Mastery' : p.notable ? 'Notable' : 'Node'} {p.node}</title>
-      </g>)}
-    </svg>
+    <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
+    <div className="pob-tree-wrap" onMouseMove={event => {
+      const target = document.elementsFromPoint(event.clientX, event.clientY).find(element => element.id?.startsWith('n') && element instanceof SVGElement) as SVGElement | undefined
+      if (!target) return setTooltip(null)
+      const rect = event.currentTarget.getBoundingClientRect()
+      setTooltip({
+        x: event.clientX - rect.left + 14,
+        y: event.clientY - rect.top + 14,
+        name: target.dataset.name || `Node ${target.id.slice(1)}`,
+        kind: target.dataset.kind || 'Passive',
+        stats: (target.dataset.stats || '').split(';;').map(stat => stat.trim()).filter(Boolean),
+      })
+    }} onMouseLeave={() => setTooltip(null)}>
+      <div ref={ref} className="pob-tree-svg" dangerouslySetInnerHTML={{ __html: svg }} />
+      {tooltip && <div className="tree-node-tooltip" style={{ left: tooltip.x, top: tooltip.y }}>
+        <b>{tooltip.name}</b>
+        <small>{tooltip.kind}</small>
+        {tooltip.stats.length ? tooltip.stats.map(stat => <span key={stat}>{stat}</span>) : <span>No explicit stat text</span>}
+      </div>}
+    </div>
   </section>
 }
 
@@ -253,3 +318,4 @@ export function BuildDashboard() {
     </div>
   </div>
 }
+
