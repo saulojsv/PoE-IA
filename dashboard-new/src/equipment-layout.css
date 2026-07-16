@@ -76,6 +76,7 @@ main{overflow-x:hidden}
 .equipment .loadout-grid.poe-layout .item-slot select{position:absolute;left:6px;right:6px;bottom:6px;width:calc(100% - 12px);height:24px;margin:0;opacity:0;pointer-events:none;background:#111b29;border-color:#42536a;color:#dbe6f2}
 .equipment .loadout-grid.poe-layout .item-slot:hover select,.equipment .loadout-grid.poe-layout .item-slot:focus-within select{opacity:1;pointer-events:auto}
 .equipment .loadout-grid.poe-layout .weapon{left:0;top:0;width:134px;height:275px}
+.equipment .loadout-grid.poe-layout .weapon>i img{width:88%;height:92%;max-width:88%;max-height:92%;object-fit:contain}
 .equipment .loadout-grid.poe-layout .helmet{left:212px;top:0;width:134px;height:134px}
 .equipment .loadout-grid.poe-layout .offhand{left:425px;top:0;width:134px;height:275px}
 .equipment .loadout-grid.poe-layout .body{left:212px;top:142px;width:134px;height:200px;z-index:1}
