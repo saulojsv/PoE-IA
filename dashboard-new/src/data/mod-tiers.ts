@@ -25,12 +25,21 @@ const optionCache = new WeakMap<object, Map<string, ModOption[]>>()
 
 function optionFitsSlot(mod: ModOption, slot: string) {
   const line = mod.line.toLowerCase()
-  if (['weapon', 'twohand'].includes(slot)) return true
+  const isJewel = slot === 'jewel'
+  const isFlask = slot === 'flask'
+  const isCluster = /cluster jewel|added small passive|added passive skills grant/i.test(line)
+  const needsSocket = /socketed|socket/i.test(line)
+  const isSocketBase = /unset ring/i.test(slot) || /body|helmet|gloves|boots|weapon|shield|offhand|bow|twohand/i.test(slot)
+  if (isCluster && !/cluster/i.test(slot)) return false
+  if (needsSocket && !isSocketBase) return false
+  if (isFlask) return !/(socketed|claw|bow|sword|axe|mace|dagger|wand|sceptre|staff|cluster|jewel|melee gem|spell skill gem|attack damage)/i.test(line)
+  if (isJewel) return !/(socketed|flask|with this weapon|cluster|fishing|armour|evasion rating|energy shield|ward|attack speed with|damage with (?:claw|bow|sword|axe|mace|dagger|wand|sceptre|staff))/i.test(line)
+  if (['weapon', 'twohand'].includes(slot)) return !/(flask|cluster jewel|fishing|added small passive)/i.test(line)
   if (slot === 'boots' || slot === 'gloves' || slot === 'helmet' || slot === 'body') {
     return !/(with this weapon|socketed attacks|attack skills|claw|bow|sword|axe|mace|dagger|wand|sceptre|weapon damage)/i.test(line)
   }
   if (slot === 'ring1' || slot === 'ring2' || slot === 'amulet' || slot === 'belt') {
-    return !/(with this weapon|socketed attacks|claw|bow|sword|axe|mace|dagger|wand|sceptre)/i.test(line)
+    return !/(with this weapon|socketed|cluster|fishing|flask|claw|bow|sword|axe|mace|dagger|wand|sceptre|staff|attack speed with)/i.test(line)
   }
   return true
 }
@@ -43,7 +52,7 @@ export function modOptionsForItem(item: ItemDetail | undefined, baseMods: any): 
   let cached = optionCache.get(baseMods)?.get(key)
   if (cached) return cached
   const ids = (base?.eligible_mods || []).map((entry: string | [string, number]) => Array.isArray(entry) ? entry[0] : entry)
-  const source = ids.length ? ids.map((id: string) => fullMods[id]).filter(Boolean) : Object.values(fullMods)
+  const source = ids.length ? ids.map((id: string) => fullMods[id]).filter(Boolean) : []
   const result = (source as ModEntry[]).flatMap(mod => (mod.lines || [mod.line]).filter((line): line is string => Boolean(line)).map(line => ({ ...mod, line })))
     .filter(mod => optionFitsSlot(mod, item?.slot || base?.slot || ''))
   if (!optionCache.has(baseMods)) optionCache.set(baseMods, new Map())
