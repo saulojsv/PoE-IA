@@ -1,7 +1,7 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, Box, Dices, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
-import { catalogBasesForSlot, itemPools, loadDashboardData, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
+import { catalogBasesForSlot, itemPools, loadDashboardData, loadGenerationCatalog, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
 import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
@@ -319,9 +319,14 @@ export function BuildDashboard() {
   const [overrides, setOverrides] = useState<Partial<Record<SlotKey, ItemDetail>>>({})
   const [selectedItem, setSelectedItem] = useState<EquipmentItem | undefined>()
   const [league, setLeague] = useState(() => localStorage.getItem('poe-dashboard-league') || 'PoE 1')
+  const [generationCatalog, setGenerationCatalog] = useState<any>()
 
   useEffect(() => { loadDashboardData().then(setBundle) }, [])
   useEffect(() => { localStorage.setItem('poe-dashboard-league', league) }, [league])
+  useEffect(() => {
+    if (stage !== 'smart-combination' || generationCatalog || !bundle) return
+    loadGenerationCatalog(bundle.baseMods).then(setGenerationCatalog)
+  }, [stage, generationCatalog, bundle])
   const skills = useMemo(() => bundle ? validSkills(bundle.data) : [], [bundle])
   const skill = selectedSkill || skills[0]
   const build = selectedBuild || skill?.build_rows?.[0]
@@ -361,7 +366,7 @@ export function BuildDashboard() {
       {stage === 'defense' && <DefensePanel build={build} />}
       {stage === 'damage' && <DamagePanel build={build} />}
       {stage === 'combinations' && <CombinationPanel skill={skill} build={build} pools={pools} sprites={bundle.sprites} onBuild={next => { setSelectedBuild(next); setOverrides({}) }} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)); setStage('items') }} />}
-      {stage === 'smart-combination' && <SmartCombinationPanel build={build} sprites={bundle.sprites} baseMods={bundle.baseMods} onApply={items => { setOverrides(items); setStage('items') }} />}
+      {stage === 'smart-combination' && (generationCatalog ? <SmartCombinationPanel build={build} sprites={bundle.sprites} baseMods={generationCatalog} onApply={items => { setOverrides(items); setStage('items') }} /> : <section className="panel loading">Carregando catálogo de modificadores apenas para o gerador...</section>)}
       {stage === 'tree' && <PassiveTree build={build} skill={skill} />}
     </div>
   </div>

@@ -20,7 +20,7 @@ export async function loadDashboardData() {
   const [data, sprites, baseMods, fullCatalog, tierMods] = await Promise.all([
     loadJson('/poe-data/dashboard/build_dashboard_data.json'),
     loadJson('/poe-data/dashboard/item_sprite_index.json'),
-    loadJson('/poe-data/dashboard/item_base_mod_summary.json').catch(() => ({ bases: {} })),
+    loadJson('/poe-data/dashboard/item_base_index.json').catch(() => ({ bases: {} })),
     loadJson('/poe-data/dashboard/item_mod_catalog.json').catch(() => null),
     loadJson('/poe-data/dashboard/item_mod_tiers.json').catch(() => null),
   ])
@@ -33,6 +33,11 @@ export async function loadDashboardData() {
       ? tierMods
       : baseMods
   return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: catalog }
+}
+
+export async function loadGenerationCatalog(baseMods: any) {
+  const summary = await loadJson('/poe-data/dashboard/item_base_mod_summary.json')
+  return { ...(baseMods || {}), bases: summary.bases || {} }
 }
 
 async function loadJson(path: string) {
