@@ -5,7 +5,7 @@ import { catalogBasesForSlot, itemPools, loadDashboardData, mapEquipment, scoreB
 import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
-import { modOptionsForItem } from '../../data/mod-tiers'
+import { modOptionsForItem, tierForStat } from '../../data/mod-tiers'
 
 const stages: { id: BuildStage; label: string; description: string }[] = [
   { id: 'items', label: 'Items', description: 'PoE Ninja / Mobalytics paper-doll' },
@@ -217,6 +217,11 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
   const [result, setResult] = useState<Record<string, ItemDetail>>({})
   const [seed, setSeed] = useState(0)
   const [history, setHistory] = useState(() => Number(localStorage.getItem('poe-smart-combination-count') || 0))
+  const randomizeRanges = (line: string) => line.replace(/\((-?\d+(?:\.\d+)?)\s*-\s*(-?\d+(?:\.\d+)?)\)/g, (_, a, b) => {
+    const lo = Number(a), hi = Number(b)
+    const value = Number.isInteger(lo) && Number.isInteger(hi) ? Math.floor(Math.random() * (hi - lo + 1)) + lo : lo + Math.random() * (hi - lo)
+    return Number.isInteger(value) ? String(value) : value.toFixed(1)
+  })
   const generate = () => {
     const bases = Object.entries(baseMods?.bases || {}) as [string, any][]
     const next: Record<string, ItemDetail> = {}
@@ -243,7 +248,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       }
       const prefixes = pick('Prefix', isFlask ? 1 : limit('Prefix'))
       const suffixes = pick('Suffix', isFlask ? 1 : limit('Suffix'))
-      draft.explicits = [...prefixes, ...suffixes].map(mod => mod.line)
+      draft.explicits = [...prefixes, ...suffixes].map(mod => randomizeRanges(mod.line))
       if (slot in slotClass) next[slot as SlotKey] = draft
       else next[slot] = draft
     }
@@ -251,11 +256,13 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     setHistory(count); localStorage.setItem('poe-smart-combination-count', String(count)); setSeed(Date.now()); setResult(next)
   }
   const rows = Object.entries(result) as [SmartSlot, ItemDetail][]
+  const tierLabel = (item: ItemDetail, line: string) => { const tier = tierForStat(item, line, baseMods).tier; return tier ? `T${tier}` : 'tier não identificado' }
   return <section className="panel smart-generator">
     <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
+    <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
     <p className="smart-description">Gera todos os slots: 10 equipamentos, 5 flasks e 6 jewels. Usa limites de prefixo/sufixo da base; flasks mágicas recebem 1 prefixo + 1 sufixo. A combinação fica dentro do resultado e não altera a árvore.</p>
     <button className="smart-generate" onClick={generate}><Dices /> Gerar combinação aleatória</button>
-    {!!seed && <div className="smart-result"><header><b>Resultado da tentativa · {rows.length}/{smartSlots.length} slots gerados</b><button onClick={() => onApply(Object.fromEntries(Object.entries(result).filter(([slot]) => slot in slotClass)) as Partial<Record<SlotKey, ItemDetail>>)}>Aplicar equipamentos</button></header><div className="smart-grid">{rows.map(([slot, item]) => <article key={slot} className="smart-card"><div className="smart-card-head"><b>{slot.startsWith('flask') ? `Flask ${slot.slice(5)}` : slot.startsWith('jewel') ? `Jewel ${slot.slice(5)}` : SLOT_LABELS[slot as SlotKey]}</b><small>{item.rarity} · ilvl {item.item_level}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod}</p>)}</article>)}</div></div>}
+    {!!seed && <div className="smart-result"><header><b>Resultado da tentativa · {rows.length}/{smartSlots.length} slots gerados</b><span className={rows.length === smartSlots.length ? 'valid' : 'invalid'}>{rows.length === smartSlots.length ? 'Item completo validado' : 'Falha: slot ausente'}</span><button disabled={rows.length !== smartSlots.length} onClick={() => onApply(Object.fromEntries(Object.entries(result).filter(([slot]) => slot in slotClass)) as Partial<Record<SlotKey, ItemDetail>>)}>Aplicar equipamentos</button></header><div className="smart-grid">{rows.map(([slot, item]) => <article key={slot} className="smart-card"><div className="smart-card-head"><b>{slot.startsWith('flask') ? `Flask ${slot.slice(5)}` : slot.startsWith('jewel') ? `Jewel ${slot.slice(5)}` : SLOT_LABELS[slot as SlotKey]}</b><small>{item.rarity} · ilvl {item.item_level}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod} <em>{tierLabel(item, mod)}</em></p>)}</article>)}</div></div>}
     <small className="smart-learning">Histórico local: {history} tentativa{history === 1 ? '' : 's'} guardada{history === 1 ? '' : 's'} para ranking futuro.</small>
   </section>
 }
