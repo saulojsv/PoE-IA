@@ -243,8 +243,23 @@ function solveAffixDistribution(options: any[], category: string, limits: { pref
   const count = (type: string) => new Set(options.filter(mod => mod.type === type).map(mod => mod.group || mod.id || mod.line)).size
   const maxP = Math.min(3, limits.prefixes, count('Prefix'))
   const maxS = Math.min(3, limits.suffixes, count('Suffix'))
-  const pairs = category === 'flask' ? [[1, 1], [1, 0], [0, 1]] : category === 'jewel' ? [[2, 2]] : [[3, 3], [2, 3], [3, 2], [2, 2], [1, 3], [3, 1], [1, 2], [2, 1], [1, 1]]
+  const pairs = category === 'flask' ? [[1, 1], [1, 0], [0, 1]] : category === 'jewel' ? [[2, 2]] : [[3, 3]]
   return pairs.filter(([prefixes, suffixes]) => prefixes <= maxP && suffixes <= maxS)
+}
+function selectAffixes(options: any[], kind: 'Prefix' | 'Suffix', target: number) {
+  const candidates = options.filter(mod => mod.type === kind).sort(() => Math.random() - .5)
+  const search = (start: number, selected: any[], groups: Set<string>): any[] | undefined => {
+    if (selected.length === target) return selected
+    for (let index = start; index < candidates.length; index += 1) {
+      const mod = candidates[index]; const group = mod.group || mod.id || mod.line
+      if (groups.has(group)) continue
+      const next = new Set(groups); next.add(group)
+      const result = search(index + 1, [...selected, mod], next)
+      if (result) return result
+    }
+    return undefined
+  }
+  return search(0, [], new Set()) || []
 }
 function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: BuildRow; sprites: Record<string, string>; baseMods: any; onApply: (items: Partial<Record<SlotKey, ItemDetail>>) => void }) {
   const [result, setResult] = useState<Record<string, ItemDetail>>({})
@@ -274,7 +289,9 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
         const probe: ItemDetail = { name: `Smart ${candidate[0]}`, base: candidate[0], rarity: category === 'flask' ? 'Magic' : 'Rare', item_level: Math.max(Number(candidate[1].required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: [], explicits: [] }
         const viable = modOptionsForItem(probe, baseMods).filter(mod => (tierForStat(probe, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= probe.item_level && tierForStat(probe, mod.line, baseMods).tier !== null)))
         const probeLimits = affixLimits(probe, baseMods)
-        if (solveAffixDistribution(viable, category, probeLimits).length > 0) { selected = candidate; break }
+        if (category === 'flask' || category === 'jewel' || (probeLimits.prefixes === 3 && probeLimits.suffixes === 3)) {
+          if (solveAffixDistribution(viable, category, probeLimits).length > 0) { selected = candidate; break }
+        }
       }
       const [baseName, base] = selected || []
       if (!baseName) continue
@@ -283,19 +300,10 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const options = modOptionsForItem(draft, baseMods).filter(mod => (tierForStat(draft, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= draft.item_level && tierForStat(draft, mod.line, baseMods).tier !== null)))
       const implicit = String(base.implicit || '')
       const limits = affixLimits(draft, baseMods)
-      const used = new Set<string>()
-      const pick = (kind: 'Prefix' | 'Suffix', max: number) => {
-        return options.filter(mod => new RegExp(kind, 'i').test(mod.type || '')).sort(() => Math.random() - .5).filter(mod => {
-          const key = `${kind}:${mod.group || mod.id || mod.line}`
-          if (used.has(key)) return false
-          used.add(key)
-          return true
-        }).slice(0, max)
-      }
       const targetPairs = solveAffixDistribution(options, category, limits)
       const [prefixTarget, suffixTarget] = targetPairs[Math.floor(Math.random() * targetPairs.length)] || [0, 0]
-      const prefixes = pick('Prefix', prefixTarget)
-      const suffixes = pick('Suffix', suffixTarget)
+      const prefixes = selectAffixes(options, 'Prefix', prefixTarget)
+      const suffixes = selectAffixes(options, 'Suffix', suffixTarget)
       const jewelLimit = category === 'jewel' ? 2 : 3
       const selectedPrefixes = category === 'jewel' ? prefixes.slice(0, jewelLimit) : prefixes
       const selectedSuffixes = category === 'jewel' ? suffixes.slice(0, jewelLimit) : suffixes
@@ -313,7 +321,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     for (const slot of smartSlots) if (!next[slot]) {
       const category = slot.startsWith('flask') ? 'flask' : slot.startsWith('jewel') ? 'basic_jewel' : slot
       const candidates = bases.filter(([, base]) => base.slot === (category === 'basic_jewel' ? 'jewel' : category)).length
-      const stage = candidates === 0 ? 'no_base_candidates' : category === 'flask' ? 'no_suffix_candidates' : 'target_distribution_impossible'
+      const stage = candidates === 0 ? 'no_base_candidates' : category === 'flask' ? 'no_suffix_candidates' : 'no_base_supports_full_3p3s'
       failed.push({ slot, category, stage, candidates })
       next[slot] = { name: 'Generation failed', base: 'No valid item generated', rarity: 'Rare', item_level: characterLevel, slot: category, implicits: [], explicits: [], failure: stage }
     }
