@@ -142,6 +142,22 @@ export function itemPools(skill: BuildData['skills'][number], weapon?: ItemDetai
   return pools
 }
 
+export function catalogBasesForSlot(slot: SlotKey, baseMods: any): ItemDetail[] {
+  const target = slot === 'ring1' || slot === 'ring2' ? 'ring' : slot === 'body' ? 'body' : slot
+  return Object.entries(baseMods?.bases || {})
+    .filter(([, base]: [string, any]) => base.slot === target)
+    .map(([name, base]: [string, any]) => ({
+      name,
+      base: name,
+      rarity: 'Normal',
+      item_level: Number(base.required_level || 1),
+      slot: target,
+      implicits: base.implicit ? String(base.implicit).split('\\n').filter(Boolean) : [],
+      explicits: [],
+    }))
+    .sort((a, b) => a.base.localeCompare(b.base))
+}
+
 export function scoreBuild(build: BuildRow) {
   return (build.combined_dps || 0) * 3 + (build.ehp || 0) * 3 + (build.life || 0) * 2 + (build.energy_shield || 0) + (build.block || 0) * 2000 + (build.suppression || 0) * 1500
 }
