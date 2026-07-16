@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "entity": "poe_build_combination",
+  "required": ["id", "request", "layers", "relations", "validation", "score", "provenance"],
+  "request": {
+    "required": ["patch", "main_skill", "content", "budget", "delivery_method"],
+    "allowed_delivery_method": ["attack", "spell", "totem", "trap", "mine", "brand", "minion", "trigger", "other"]
+  },
+  "layers": {
+    "identity": ["class", "ascendancy", "main_skill"],
+    "gems": ["active", "supports", "links", "tags", "costs"],
+    "tree": ["nodes", "ascendancy_nodes", "masteries", "keystones", "sockets", "point_cost"],
+    "equipment": ["items", "uniques", "bases", "affixes", "jewels", "flasks"],
+    "config": ["target", "conditions", "buffs", "debuffs", "charges", "uptime"],
+    "full_build": ["xml_status", "metrics", "runtime_handoff"]
+  },
+  "relation_types": ["requires", "enables", "supports", "conflicts", "consumes", "scales_with", "conditional", "observed_with"],
+  "validation": {
+    "required": ["status", "gates", "blockers", "warnings", "rules_version"],
+    "statuses": ["generated", "blocked", "validated_partial", "validated", "needs_review", "invalid"],
+    "gate_result": ["pass", "fail", "pending", "not_applicable"]
+  },
+  "measurement": {
+    "required": ["status", "source", "metrics"],
+    "statuses": ["not_run", "running", "measured", "failed", "pending"],
+    "rule": "metrics are valid only when status = measured"
+  },
+  "evaluation": {
+    "required": ["status", "score"],
+    "statuses": ["pending_measurement", "scored", "failed"]
+  },
+  "score": {
+    "required": ["final", "legality", "functionality", "defense", "damage", "efficiency", "cost", "evidence", "pob_realism"],
+    "rule": "critical_blocker => final = 0; measurement.status != measured => score = null"
+  },
+  "provenance": {
+    "required": ["patch", "source_versions", "schema_version", "generated_at", "sources"]
+  }
+}
