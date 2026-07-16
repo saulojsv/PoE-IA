@@ -10,10 +10,12 @@ export function ItemHoverCard({
   placement: 'left' | 'right' | 'bottom'
   baseMods: any
 }) {
-  const explicitStats = (item.explicits?.length ? item.explicits : item.stats).map(stat => tierForStat(item.raw, stat, baseMods))
-
   const rarity = item.rarity.toLowerCase().replace(' ', '-')
   const implicits = (item.implicits || []).map(stat => tierForStat(item.raw, stat, baseMods))
+  const explicitLines = item.explicits?.length
+    ? item.explicits
+    : item.stats.filter(stat => !(item.implicits || []).includes(stat))
+  const explicitStats = explicitLines.map(stat => tierForStat(item.raw, stat, baseMods))
 
   return <aside className={'item-hover-card ' + placement + ' rarity-' + rarity} role="tooltip">
     <div className="hover-card-heading">
@@ -28,15 +30,17 @@ export function ItemHoverCard({
     </div>
     {(item.requiredLevel || item.requiredStrength) && <p className="hover-requirements">Requires: {item.requiredLevel && <b>Level {item.requiredLevel}</b>}{item.requiredLevel && item.requiredStrength && ', '}{item.requiredStrength && <b>{item.requiredStrength} Str</b>}</p>}
     {implicits.length > 0 && <div className="hover-card-stats implicit-stats">
+      <h4>Implicit</h4>
       {implicits.map(stat => <p key={stat.line}><span>{stat.line}</span></p>)}
     </div>}
     {implicits.length > 0 && explicitStats.length > 0 && <hr className="hover-mod-divider" />}
-    <div className="hover-card-stats explicit-stats">
-      {explicitStats.map(stat => <p key={stat.line}>
+    {explicitStats.length > 0 && <div className="hover-card-stats explicit-stats">
+      <h4>Explicit</h4>
+      {explicitStats.map((stat, index) => <p key={`${stat.line}-${index}`}>
         <b className={stat.tier ? 'tier-pill affix-code' : 'tier-pill unknown'}>{affixTypeCode(stat)}</b><b className={stat.tier ? 'tier-pill tier-code' : 'tier-pill unknown'}>{tierLabel(stat)}</b>
         <span>{stat.line}</span>
       </p>)}
-    </div>
+    </div>}
     {(explicitStats.some(stat => stat.affix || stat.group || stat.minItemLevel) || implicits.some(stat => stat.source)) && <div className="hover-mod-meta">
       {explicitStats.some(stat => stat.affix) && <span>{[...new Set(explicitStats.map(stat => stat.affix).filter(Boolean))].join(' / ')}</span>}
       {explicitStats.some(stat => stat.group) && <span>Grupo: {[...new Set(explicitStats.map(stat => stat.group).filter(Boolean))].join(', ')}</span>}
