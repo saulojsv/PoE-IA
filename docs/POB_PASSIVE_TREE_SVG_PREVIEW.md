@@ -114,11 +114,15 @@ O script local no fim de `skilltree-3.28.svg`:
 
 A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada da árvore base:
 
+- fonte primária: `skilltree-3.28.json` oficial da GGG/PoE CDN; Wiki/Fandom servem só para conferência visual;
 - cria `<g id="dashboard-node-sprites">` com `pointer-events:none`;
 - lê `/poe-tree/skilltree-3.28.json`;
 - cruza `circle#n{id}` com `json.nodes[id].icon`;
-- usa os sprite sheets oficiais em `json.sprites`;
-- desenha imagens recortadas por `clipPath` sobre `Normal`, `Notable`, `Keystone`, `Mastery` e `Jewel`;
+- usa os sprite sheets oficiais da GGG/PoE CDN em `json.sprites`;
+- desenha imagens recortadas por `clipPath` em fases:
+  - Fase 1: `Normal` e `Jewel`;
+  - Fase 2: `Mastery`;
+  - Fase 3: `Notable` e `Keystone`;
 - ignora ascendancy por enquanto para não poluir a árvore;
 - não altera círculos, links, `viewBox`, IDs ou `tree_load`.
 
