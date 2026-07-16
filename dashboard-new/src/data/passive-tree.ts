@@ -68,10 +68,22 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
   const sector = (node: PassiveTreeNode) => `${Math.round(node.x / 500)}:${Math.round(node.y / 500)}`
   const sectorCounts = new Map<string, number>()
   sectorCounts.set(sector(tree.nodes[start]), 1)
+  const leadsToNotable = (origin: PassiveTreeNode) => {
+    const seen = new Set([origin.id])
+    const queue: Array<[string, number]> = [[origin.id, 0]]
+    while (queue.length) {
+      const [id, depth] = queue.shift()!
+      if (depth > 0 && tree.nodes[id]?.isNotable) return true
+      if (depth >= 6) continue
+      for (const next of tree.nodes[id]?.neighbors || []) if (!seen.has(next) && !tree.nodes[next]?.isMastery) { seen.add(next); queue.push([next, depth + 1]) }
+    }
+    return false
+  }
   while (selected.size < budget) {
     const frontier = [...selected].flatMap(id => (tree.nodes[id]?.neighbors || []).map(nodeId => tree.nodes[nodeId]).filter(node => node && !selected.has(node.id)))
     if (!frontier.length) break
-    const unique = [...new Map(frontier.map(node => [node.id, node])).values()]
+    const unique = [...new Map(frontier.map(node => [node.id, node])).values()].filter(node => node.isNotable || node.isKeystone || node.isMastery || leadsToNotable(node))
+    if (!unique.length) break
     const ranked = unique.map(node => {
       const key = sector(node)
       const count = sectorCounts.get(key) || 0
