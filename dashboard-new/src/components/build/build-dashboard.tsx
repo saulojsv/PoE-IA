@@ -105,21 +105,21 @@ function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, o
           </button>
         })}
       </div>
-      <Flasks items={rawItems} sprites={sprites} />
-      <Jewels items={rawItems} sprites={sprites} />
+      <Flasks items={rawItems} sprites={sprites} baseMods={baseMods} />
+      <Jewels items={rawItems} sprites={sprites} baseMods={baseMods} />
     </div>
   </section>
 }
 
-function Flasks({ items, sprites }: { items: ItemDetail[]; sprites: Record<string, string> }) {
+function Flasks({ items, sprites, baseMods }: { items: ItemDetail[]; sprites: Record<string, string>; baseMods: any }) {
   const flasks = items.filter(item => `${item.name} ${item.base}`.toLowerCase().includes('flask')).slice(0, 5)
-  return <div className="flasks"><small>FLASKS</small>{Array.from({ length: 5 }).map((_, i) => <button key={i}><i className="flask">{flasks[i] && <img src={spriteFor(flasks[i], sprites)} alt="" />}</i><span>{flasks[i]?.name || 'Empty'}</span></button>)}</div>
+  return <div className="flasks"><small>FLASKS</small>{Array.from({ length: 5 }).map((_, i) => { const item = flasks[i]; const equipment = item ? toEquipmentItem(item, 'belt') : undefined; return <button key={i}>{<i className="flask">{item && <img src={spriteFor(item, sprites)} alt="" />}</i>}<span>{item?.name || 'Empty'}</span>{equipment && <ItemHoverCard item={{ ...equipment, sprite: spriteFor(item, sprites) }} placement="bottom" baseMods={baseMods} />}</button> })}</div>
 }
 
-function Jewels({ items, sprites }: { items: ItemDetail[]; sprites: Record<string, string> }) {
+function Jewels({ items, sprites, baseMods }: { items: ItemDetail[]; sprites: Record<string, string>; baseMods: any }) {
   const jewels = items.filter(item => `${item.name} ${item.base} ${item.slot || ''}`.toLowerCase().includes('jewel')).slice(0, 6)
   if (!jewels.length) return null
-  return <div className="jewels"><small>JEWELS</small>{jewels.map((jewel, i) => <span key={`${jewel.name}-${jewel.base}-${i}`}><img src={spriteFor(jewel, sprites)} alt="" />{jewel.name}</span>)}</div>
+  return <div className="jewels"><small>JEWELS</small>{jewels.map((jewel, i) => { const equipment = toEquipmentItem(jewel, 'ring1'); return <span className="jewel-slot" key={`${jewel.name}-${jewel.base}-${i}`}><img src={spriteFor(jewel, sprites)} alt="" /><ItemHoverCard item={{ ...equipment, sprite: spriteFor(jewel, sprites) }} placement="bottom" baseMods={baseMods} /></span> })}</div>
 }
 
 function BuildRanking({ skill, onSelect }: { skill: SkillGroup; onSelect: (build: BuildRow) => void }) {
