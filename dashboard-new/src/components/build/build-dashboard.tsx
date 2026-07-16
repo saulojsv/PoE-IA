@@ -266,7 +266,10 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       for (const candidate of shuffledCandidates.slice(0, 16)) {
         const probe: ItemDetail = { name: `Smart ${candidate[0]}`, base: candidate[0], rarity: category === 'flask' ? 'Magic' : 'Rare', item_level: Math.max(Number(candidate[1].required_level || 1), Math.min(characterLevel, 86)), slot: category, implicits: [], explicits: [] }
         const viable = modOptionsForItem(probe, baseMods).filter(mod => (tierForStat(probe, mod.line, baseMods).tierModel === 'tierless' || (Number(mod.min_item_level || 1) <= probe.item_level && tierForStat(probe, mod.line, baseMods).tier !== null)))
-        if (viable.length >= 2) { selected = candidate; break }
+        const prefixes = new Set(viable.filter(mod => mod.type === 'Prefix').map(mod => mod.group || mod.id || mod.line)).size
+        const suffixes = new Set(viable.filter(mod => mod.type === 'Suffix').map(mod => mod.group || mod.id || mod.line)).size
+        const minimum = category === 'flask' ? 1 : category === 'jewel' ? 2 : 3
+        if (prefixes + suffixes >= minimum && (category === 'flask' || (prefixes > 0 && suffixes > 0))) { selected = candidate; break }
       }
       const [baseName, base] = selected || []
       if (!baseName) continue
@@ -283,9 +286,13 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
           return true
         }).slice(0, max)
       }
-      const totalTarget = isFlask ? 2 : category === 'jewel' ? 4 : Math.max(1, Math.floor(Math.random() * (Math.min(6, limits.prefixes + limits.suffixes) - 2)) + 3)
-      const prefixTarget = Math.min(limits.prefixes, Math.max(1, Math.floor(totalTarget / 2)))
-      const suffixTarget = Math.min(limits.suffixes, Math.max(0, totalTarget - prefixTarget))
+      const available = (kind: 'Prefix' | 'Suffix') => new Set(options.filter(mod => mod.type === kind).map(mod => mod.group || mod.id || mod.line)).size
+      const prefixAvailable = available('Prefix')
+      const suffixAvailable = available('Suffix')
+      const targetPairs = isFlask
+        ? [[1, 0], [0, 1], [1, 1]].filter(([p, s]) => p <= Math.min(limits.prefixes, prefixAvailable) && s <= Math.min(limits.suffixes, suffixAvailable))
+        : Array.from({ length: limits.prefixes + 1 }, (_, p) => Array.from({ length: limits.suffixes + 1 }, (_, s) => [p, s])).flat().filter(([p, s]) => p + s >= (category === 'jewel' ? 2 : 3) && p + s <= 6 && p <= prefixAvailable && s <= suffixAvailable)
+      const [prefixTarget, suffixTarget] = targetPairs[Math.floor(Math.random() * targetPairs.length)] || [0, 0]
       const prefixes = pick('Prefix', isFlask ? 1 : prefixTarget)
       const suffixes = pick('Suffix', isFlask ? 1 : suffixTarget)
       const jewelLimit = category === 'jewel' ? 2 : 3
@@ -304,7 +311,10 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     }
     for (const slot of smartSlots) if (!next[slot]) {
       const category = slot.startsWith('flask') ? 'flask' : slot.startsWith('jewel') ? 'basic_jewel' : slot
-      failed.push({ slot, category, stage: 'select_base_or_affix', candidates: bases.filter(([, base]) => base.slot === (category === 'basic_jewel' ? 'jewel' : category)).length })
+      const candidates = bases.filter(([, base]) => base.slot === (category === 'basic_jewel' ? 'jewel' : category)).length
+      const stage = candidates === 0 ? 'no_base_candidates' : category === 'flask' ? 'no_suffix_candidates' : 'target_distribution_impossible'
+      failed.push({ slot, category, stage, candidates })
+      next[slot] = { name: 'Generation failed', base: 'No valid item generated', rarity: 'Rare', item_level: characterLevel, slot: category, implicits: [], explicits: [], failure: stage }
     }
     const count = history + 1
     setHistory(count); localStorage.setItem('poe-smart-combination-count', String(count)); setSeed(Date.now()); setFailures(failed); setResult(next)

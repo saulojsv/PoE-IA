@@ -16,6 +16,7 @@ export interface ItemDetail {
   capacity?: { prefixes: number; suffixes: number }
   target?: { prefixes: number; suffixes: number }
   generated?: { prefixes: number; suffixes: number }
+  failure?: string
 }
 
 export interface EquipmentItem {
