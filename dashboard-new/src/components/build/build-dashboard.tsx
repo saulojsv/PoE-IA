@@ -1,16 +1,18 @@
 ﻿import { useEffect, useMemo, useRef, useState } from 'react'
-import { Activity, Box, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
+import { Activity, Box, Dices, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
 import { catalogBasesForSlot, itemPools, loadDashboardData, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
 import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
+import { modOptionsForItem } from '../../data/mod-tiers'
 
 const stages: { id: BuildStage; label: string; description: string }[] = [
   { id: 'items', label: 'Items', description: 'PoE Ninja / Mobalytics paper-doll' },
   { id: 'defense', label: 'Defense', description: 'Life, ES, EHP, resists, block' },
   { id: 'damage', label: 'DPS', description: 'Damage, speed, crit, scaling' },
   { id: 'combinations', label: 'Combinations', description: 'Builds, slots and candidate swaps' },
+  { id: 'smart-combination', label: 'Smart Combination', description: 'Random items and valid modifiers' },
   { id: 'tree', label: 'Passive Tree', description: 'Nodes, links, notables, masteries' },
 ]
 
@@ -209,6 +211,38 @@ function TreeNodeCards({ nodes }: { nodes: string[] }) {
   </section>)}</div>
 }
 
+const smartSlots: SlotKey[] = ['weapon', 'helmet', 'body', 'gloves', 'boots', 'belt', 'amulet', 'ring1', 'ring2', 'offhand']
+function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: BuildRow; sprites: Record<string, string>; baseMods: any; onApply: (items: Partial<Record<SlotKey, ItemDetail>>) => void }) {
+  const [result, setResult] = useState<Partial<Record<SlotKey, ItemDetail>>>({})
+  const [seed, setSeed] = useState(0)
+  const [history, setHistory] = useState(() => Number(localStorage.getItem('poe-smart-combination-count') || 0))
+  const generate = () => {
+    const bases = Object.entries(baseMods?.bases || {}) as [string, any][]
+    const next: Partial<Record<SlotKey, ItemDetail>> = {}
+    for (const slot of smartSlots) {
+      const candidates = bases.filter(([, base]) => base.slot === (slot === 'ring1' || slot === 'ring2' ? 'ring' : slot === 'weapon' ? 'weapon' : slot))
+      const [baseName, base] = candidates[Math.floor(Math.random() * candidates.length)] || []
+      if (!baseName) continue
+      const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: 'Rare', item_level: Math.max(1, Number(base.required_level || 1)), slot, implicits: base.implicit ? [base.implicit] : [], explicits: [] }
+      const options = modOptionsForItem(draft, baseMods).filter(mod => Number(mod.min_item_level || 1) <= draft.item_level)
+      const prefixes = options.filter(mod => /prefix/i.test(mod.type || '')).sort(() => Math.random() - .5).slice(0, 2)
+      const suffixes = options.filter(mod => /suffix/i.test(mod.type || '')).sort(() => Math.random() - .5).slice(0, 2)
+      draft.explicits = [...prefixes, ...suffixes].map(mod => mod.line)
+      next[slot] = draft
+    }
+    const count = history + 1
+    setHistory(count); localStorage.setItem('poe-smart-combination-count', String(count)); setSeed(Date.now()); setResult(next)
+  }
+  const rows = Object.entries(result) as [SlotKey, ItemDetail][]
+  return <section className="panel smart-generator">
+    <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
+    <p className="smart-description">Gera bases e modificadores aleatórios respeitando categoria, nível mínimo e filtros do catálogo. É uma simulação local; o cálculo exato do PoB será a próxima etapa.</p>
+    <button className="smart-generate" onClick={generate}><Dices /> Gerar combinação aleatória</button>
+    {!!seed && <div className="smart-result"><header><b>Resultado da tentativa</b><button onClick={() => onApply(result)}>Aplicar aos slots</button></header><div className="smart-grid">{rows.map(([slot, item]) => <article key={slot} className="smart-card"><div className="smart-card-head"><b>{SLOT_LABELS[slot]}</b><small>{item.rarity} · ilvl {item.item_level}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod}</p>)}</article>)}</div></div>}
+    <small className="smart-learning">Histórico local: {history} tentativa{history === 1 ? '' : 's'} guardada{history === 1 ? '' : 's'} para ranking futuro.</small>
+  </section>
+}
+
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   const ref = useRef<HTMLObjectElement>(null)
   const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
@@ -280,6 +314,7 @@ export function BuildDashboard() {
       {stage === 'defense' && <DefensePanel build={build} />}
       {stage === 'damage' && <DamagePanel build={build} />}
       {stage === 'combinations' && <CombinationPanel skill={skill} build={build} pools={pools} sprites={bundle.sprites} onBuild={next => { setSelectedBuild(next); setOverrides({}) }} onSwap={(slot, item) => { setOverrides(prev => ({ ...prev, [slot]: item })); setSelectedItem(toEquipmentItem(item, slot)); setStage('items') }} />}
+      {stage === 'smart-combination' && <SmartCombinationPanel build={build} sprites={bundle.sprites} baseMods={bundle.baseMods} onApply={items => { setOverrides(items); setStage('items') }} />}
       {stage === 'tree' && <PassiveTree build={build} skill={skill} />}
     </div>
   </div>
