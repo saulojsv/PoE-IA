@@ -51,11 +51,14 @@ export interface PassiveTreeGenerationStats {
   disconnected: number
   maxDepth: number
   frontierRemaining: number
+  travel: number
+  travelRatio: number
+  regions: number
 }
 
 export function generateRandomTreeResult(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
   const start = tree.classes.find(item => item.name.toLowerCase() === className.toLowerCase())?.startNodeId
-  if (!start || !tree.nodes[start]) return { nodes: [], stats: { requested: budget, generated: 0, connected: false, disconnected: 0, maxDepth: 0, frontierRemaining: 0 } }
+  if (!start || !tree.nodes[start]) return { nodes: [], stats: { requested: budget, generated: 0, connected: false, disconnected: 0, maxDepth: 0, frontierRemaining: 0, travel: 0, travelRatio: 0, regions: 0 } }
   const selected = new Set<string>([start])
   const distance = new Map<string, number>([[start, 0]])
   const distanceQueue = [start]
@@ -88,7 +91,9 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
       const key = sector(node)
       const count = sectorCounts.get(key) || 0
       const degree = node.neighbors?.length || 0
-      const score = (distance.get(node.id) || 0) * 0.45 + (node.isKeystone ? 7 : node.isNotable ? 4 : 0) + (node.stats.length ? 1 : 0) + Math.min(3, degree * .35) - count * 1.8
+      const newRegionPenalty = count === 0 && sectorCounts.size >= 3 ? 10 : 0
+      const travelPenalty = node.isNotable || node.isKeystone || node.isMastery ? 0 : 2.5
+      const score = (node.isKeystone ? 10 : node.isNotable ? 8 : node.isMastery ? 2 : 0) + node.stats.length * 1.5 + Math.min(2, degree * .2) - (distance.get(node.id) || 0) * .8 - count * 1.2 - newRegionPenalty - travelPenalty
       return { node, score }
     }).sort((a, b) => b.score - a.score).slice(0, 12)
     const weighted = ranked.map(item => ({ node: item.node, weight: Math.max(.2, item.score - ranked[ranked.length - 1].score + 1) }))
@@ -102,7 +107,8 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
   const nodes = [...selected]
   const disconnected = disconnectedNodes(nodes, tree, className).length
   const frontierRemaining = new Set(nodes.flatMap(id => tree.nodes[id]?.neighbors || [])).size - selected.size
-  return { nodes, stats: { requested: budget, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining) } }
+  const travel = nodes.filter(id => { const node = tree.nodes[id]; return node && !node.isNotable && !node.isKeystone && !node.isMastery && !node.stats.length }).length
+  return { nodes, stats: { requested: budget, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: sectorCounts.size } }
 }
 
 export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
