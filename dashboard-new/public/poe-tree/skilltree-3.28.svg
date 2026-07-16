@@ -5979,14 +5979,25 @@ function svgPoint(event) {
     return point.matrixTransform(root.getScreenCTM().inverse());
 }
 
+function nodeFromTarget(target) {
+    let node = target;
+    while (node && node !== root) {
+        if (node.id && node.id.startsWith('n') && node.getAttribute('data-name')) {
+            return node;
+        }
+        node = node.parentNode;
+    }
+    return null;
+}
+
 function show(event) {
-    const node = event.target;
-    if (!node || !node.id || !node.id.startsWith('n') || !node.dataset) {
+    const node = nodeFromTarget(event.target);
+    if (!node) {
         return;
     }
-    const lines = (node.dataset.stats || '').split(';;').filter(Boolean);
-    title.textContent = node.dataset.name || node.id;
-    kind.textContent = node.dataset.kind || 'Passive';
+    const lines = (node.getAttribute('data-stats') || '').split(';;').filter(Boolean);
+    title.textContent = node.getAttribute('data-name') || node.id;
+    kind.textContent = node.getAttribute('data-kind') || 'Passive';
     clearStats();
     if (lines.length) {
         for (const line of lines.slice(0, 6)) {
@@ -6030,6 +6041,23 @@ function hide() {
 root.addEventListener('pointerover', show);
 root.addEventListener('pointermove', move);
 root.addEventListener('pointerout', hide);
+root.addEventListener('mouseover', show);
+root.addEventListener('mousemove', move);
+root.addEventListener('mouseout', hide);
+
+root.dashboardShowNodeTooltip = function(id) {
+    const node = document.getElementById(id);
+    if (!node) {
+        return false;
+    }
+    const bounds = node.getBoundingClientRect();
+    show({
+        target: node,
+        clientX: bounds.left + bounds.width / 2,
+        clientY: bounds.top + bounds.height / 2
+    });
+    return true;
+};
 })()]]></script>
 </svg>
 

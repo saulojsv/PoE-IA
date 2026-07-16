@@ -104,9 +104,10 @@ A solução segura é manter o SVG como `<object>` e colocar tooltip dentro do p
 
 O script local no fim de `skilltree-3.28.svg`:
 
-- escuta `pointerover` em círculos `id^="n"`;
+- escuta `pointerover`/`mouseover` em círculos `id^="n"`;
 - lê `data-name`, `data-kind`, `data-stats`;
 - desenha um tooltip em `<g id="dashboard-node-tooltip">`;
+- expõe `document.querySelector('svg').dashboardShowNodeTooltip(id)` para validação no browser;
 - não altera nós, conexões, viewBox ou estilo ativo.
 
 ## Combinações e ganho/perda
