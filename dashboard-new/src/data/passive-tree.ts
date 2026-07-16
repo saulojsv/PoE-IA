@@ -16,13 +16,18 @@ async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
   })
   const classStarts: Record<string, string> = {}
   for (const [id, node] of Object.entries(raw.nodes)) if (Number.isInteger(node.classStartIndex)) classStarts[raw.classes[node.classStartIndex]?.name] = id
-  const nodes = Object.fromEntries(Object.entries(raw.nodes).map(([id, node]) => {
+  const nodes: Record<string, any> = Object.fromEntries(Object.entries(raw.nodes).map(([id, node]) => {
     const group = raw.groups[String(node.group)] || { x: 0, y: 0 }
     const orbit = node.orbit || 0
     const angle = (node.orbitIndex || 0) * Math.PI * 2 / (raw.constants.skillsPerOrbit[orbit] || 1)
     const radius = raw.constants.orbitRadii[orbit] || 0
-    return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, out: node.out || [] }]
+    return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, out: node.out || [], neighbors: [] }]
   }))
+  for (const node of Object.values(nodes)) {
+    const neighbors = new Set(node.out)
+    for (const candidate of Object.values(nodes)) if (candidate.out.includes(node.id)) neighbors.add(candidate.id)
+    node.neighbors = [...neighbors] as string[]
+  }
   return { version: '3.28', min_x: raw.min_x, min_y: raw.min_y, max_x: raw.max_x, max_y: raw.max_y, nodes, classes: raw.classes.map(item => ({ name: item.name, startNodeId: classStarts[item.name] || '' })) }
 }
 
@@ -48,11 +53,11 @@ export function generateRandomTree(tree: PassiveTreeData, className: string, bud
   const selected = new Set<string>([start])
   let state = Math.floor(seed * 0x7fffffff) || 1
   const random = () => { state = (state * 48271) % 0x7fffffff; return state / 0x7fffffff }
-  const neighbors = (id: string) => Object.values(tree.nodes).filter(node => node.out.includes(id) || tree.nodes[id]?.out.includes(node.id))
+  const neighbors = (id: string) => (tree.nodes[id]?.neighbors || []).map(nodeId => tree.nodes[nodeId]).filter(Boolean)
   while (selected.size < budget) {
     const frontier = [...selected].flatMap(id => neighbors(id).filter(node => !selected.has(node.id)))
     if (!frontier.length) break
-    const unique = [...new Map(frontier.map(node => [node.id, node])).values()]
+    const unique = [...new Map(frontier.map(node => [node.id, node])).values()].slice(0, 180)
     const weighted = unique.map(node => ({ node, weight: 1 + (node.isKeystone ? 5 : node.isNotable ? 3 : 0) + (node.stats.length ? 1 : 0) }))
     const total = weighted.reduce((sum, item) => sum + item.weight, 0)
     let pick = random() * total

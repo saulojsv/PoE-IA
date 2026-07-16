@@ -164,6 +164,7 @@ export interface PassiveTreeNode {
   isKeystone?: boolean
   isMastery?: boolean
   out: string[]
+  neighbors?: string[]
 }
 
 export interface PassiveTreeData {
