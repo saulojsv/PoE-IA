@@ -27,8 +27,9 @@ export async function loadDashboardData() {
   // Prefer the full mod catalog; the tier index may contain only a partial base list.
   const mergedBases = { ...(baseMods?.bases || {}) } as Record<string, any>
   for (const [name, base] of Object.entries(fullCatalog?.bases || {})) mergedBases[name] = { ...(mergedBases[name] || {}), ...(base as any) }
+  const mergedMods = { ...(fullCatalog?.mods || {}), ...(tierMods?.mods || {}) }
   const catalog = fullCatalog?.mods && Object.keys(fullCatalog.mods).length
-    ? { ...fullCatalog, bases: mergedBases }
+    ? { ...fullCatalog, mods: mergedMods, bases: mergedBases }
     : tierMods?.mods && Object.keys(tierMods.mods).length
       ? tierMods
       : baseMods
