@@ -77,6 +77,14 @@ main{overflow-x:hidden}
 .equipment .loadout-grid.poe-layout .item-slot:hover select,.equipment .loadout-grid.poe-layout .item-slot:focus-within select{opacity:1;pointer-events:auto}
 .equipment .loadout-grid.poe-layout .weapon{left:0;top:0;width:134px;height:275px}
 .equipment .loadout-grid.poe-layout .weapon>i img{width:88%;height:92%;max-width:88%;max-height:92%;object-fit:contain}
+.item-hover-card{border-color:#77808b;background:#050608;font-family:Verdana,Arial,sans-serif}
+.item-hover-card.rarity-unique{border-color:#af6d35}.item-hover-card.rarity-rare{border-color:#c5a84c}.item-hover-card.rarity-magic{border-color:#5c93d6}.item-hover-card.rarity-normal{border-color:#d5d8dc}
+.item-hover-card .hover-card-heading{justify-content:center;text-align:center;display:grid;gap:5px;padding:8px 0 12px;border-bottom:0}
+.item-hover-card .hover-card-heading img{width:56px;height:56px;margin:auto;order:2}.item-hover-card .hover-card-heading div{display:grid;gap:3px;order:1}
+.item-hover-card .hover-card-heading small{font-size:12px;font-weight:700;letter-spacing:.04em;color:#d7dbe0}.item-hover-card.rarity-unique .hover-card-heading small,.item-hover-card.rarity-unique .hover-card-heading strong{color:#c77b3c}.item-hover-card.rarity-rare .hover-card-heading small,.item-hover-card.rarity-rare .hover-card-heading strong{color:#e5c95a}.item-hover-card.rarity-magic .hover-card-heading small,.item-hover-card.rarity-magic .hover-card-heading strong{color:#6fa8ee}.item-hover-card.rarity-normal .hover-card-heading small,.item-hover-card.rarity-normal .hover-card-heading strong{color:#f0f1f2}
+.item-hover-card .hover-card-heading strong{font:700 15px Georgia,serif;line-height:1.15}.item-hover-card .hover-card-heading span{font-size:12px;color:#b7bdc6}
+.item-hover-card .hover-card-meta{text-align:center;border-block:1px solid #252a30;padding:8px 0}.item-hover-card .hover-card-meta p{font-size:11px;color:#9fa6af}.item-hover-card .hover-card-meta b{color:#e4e6e8}
+.item-hover-card .hover-requirements{text-align:center;color:#aeb4bc;border-bottom:0;padding:10px 0 4px}.item-hover-card .hover-card-stats{padding:4px 0 6px;text-align:center}.item-hover-card .hover-card-stats p{display:block;margin:5px 0;color:#8e9cff;font-size:11px;line-height:1.35}.item-hover-card .implicit-stats p{color:#d6bb72}.item-hover-card .hover-mod-divider{border:0;border-top:1px solid #353b42;margin:7px 0}.item-hover-card footer{text-align:center}
 .equipment .loadout-grid.poe-layout .helmet{left:212px;top:0;width:134px;height:134px}
 .equipment .loadout-grid.poe-layout .offhand{left:425px;top:0;width:134px;height:275px}
 .equipment .loadout-grid.poe-layout .body{left:212px;top:142px;width:134px;height:200px;z-index:1}

@@ -12,7 +12,10 @@ export function ItemHoverCard({
 }) {
   const explicitStats = (item.explicits?.length ? item.explicits : item.stats).map(stat => tierForStat(item.raw, stat, baseMods))
 
-  return <aside className={'item-hover-card ' + placement} role="tooltip">
+  const rarity = item.rarity.toLowerCase().replace(' ', '-')
+  const implicits = (item.implicits || []).map(stat => tierForStat(item.raw, stat, baseMods))
+
+  return <aside className={'item-hover-card ' + placement + ' rarity-' + rarity} role="tooltip">
     <div className="hover-card-heading">
       {item.sprite && <img src={item.sprite} alt="" />}
       <div><small>{item.rarity}</small><strong>{item.name}</strong><span>{item.baseType}</span></div>
@@ -24,9 +27,12 @@ export function ItemHoverCard({
       {item.properties?.map(property => <p key={property.label}>{property.label} <b>{property.value}</b></p>)}
     </div>
     {(item.requiredLevel || item.requiredStrength) && <p className="hover-requirements">Requires: {item.requiredLevel && <b>Level {item.requiredLevel}</b>}{item.requiredLevel && item.requiredStrength && ', '}{item.requiredStrength && <b>{item.requiredStrength} Str</b>}</p>}
-    <div className="hover-card-stats">
+    {implicits.length > 0 && <div className="hover-card-stats implicit-stats">
+      {implicits.map(stat => <p key={stat.line}><span>{stat.line}</span></p>)}
+    </div>}
+    {implicits.length > 0 && explicitStats.length > 0 && <hr className="hover-mod-divider" />}
+    <div className="hover-card-stats explicit-stats">
       {explicitStats.map(stat => <p key={stat.line}>
-        <b className={stat.tier ? 'tier-pill' : 'tier-pill unknown'}>{stat.tier ? `T${stat.tier}` : '-'}</b>
         <span>{stat.line}</span>
       </p>)}
     </div>
