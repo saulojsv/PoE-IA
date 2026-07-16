@@ -5898,6 +5898,117 @@ window.tree_highlight = function(nodes) {
 <script><![CDATA[(function() {
 const root = document.getElementsByTagName('svg')[0];
 const NS = 'http://www.w3.org/2000/svg';
+const XLINK = 'http://www.w3.org/1999/xlink';
+
+function pickZoom(spriteSet) {
+    return spriteSet && (spriteSet['0.5'] || spriteSet['0.3835'] || spriteSet[Object.keys(spriteSet).pop()]);
+}
+
+function spriteForNode(node, sprites) {
+    if (!node) {
+        return null;
+    }
+    if (node.isMastery) {
+        return { icon: node.inactiveIcon || node.icon, sheet: pickZoom(sprites.masteryInactive || sprites.mastery) };
+    }
+    if (node.isKeystone) {
+        return { icon: node.icon, sheet: pickZoom(sprites.keystoneInactive || sprites.keystoneActive) };
+    }
+    if (node.isNotable) {
+        return { icon: node.icon, sheet: pickZoom(sprites.notableInactive || sprites.notableActive) };
+    }
+    return { icon: node.icon, sheet: pickZoom(sprites.normalInactive || sprites.normalActive) };
+}
+
+function iconSize(kind, radius) {
+    if (kind === 'Mastery') {
+        return 96;
+    }
+    if (kind === 'Keystone') {
+        return Math.max(112, radius * 1.55);
+    }
+    if (kind === 'Notable') {
+        return Math.max(82, radius * 1.35);
+    }
+    return Math.max(58, radius * 1.12);
+}
+
+function iconOpacity(kind) {
+    if (kind === 'Normal') {
+        return '0.48';
+    }
+    if (kind === 'Notable') {
+        return '0.72';
+    }
+    return '0.82';
+}
+
+async function drawSprites() {
+    if (root.querySelector('#dashboard-node-sprites')) {
+        return;
+    }
+    const response = await fetch('skilltree-3.28.json');
+    const tree = await response.json();
+    const layer = document.createElementNS(NS, 'g');
+    const defs = document.createElementNS(NS, 'defs');
+    layer.setAttribute('id', 'dashboard-node-sprites');
+    layer.setAttribute('style', 'pointer-events:none');
+    root.appendChild(defs);
+    root.appendChild(layer);
+
+    let drawn = 0;
+    for (const circle of root.querySelectorAll('circle[id^="n"][data-kind]')) {
+        const id = circle.id.slice(1);
+        const node = tree.nodes && tree.nodes[id];
+        const kind = circle.getAttribute('data-kind') || 'Normal';
+        if (!node || kind === 'Ascendancy') {
+            continue;
+        }
+        const sprite = spriteForNode(node, tree.sprites || {});
+        const coord = sprite && sprite.sheet && sprite.sheet.coords && sprite.sheet.coords[sprite.icon];
+        if (!coord) {
+            continue;
+        }
+        const cx = Number(circle.getAttribute('cx'));
+        const cy = Number(circle.getAttribute('cy'));
+        const radius = Number(circle.getAttribute('r') || 50);
+        const size = iconSize(kind, radius);
+        const scale = size / coord.w;
+        const clipId = `dashboard-node-sprite-clip-${id}`;
+
+        const clipPath = document.createElementNS(NS, 'clipPath');
+        clipPath.setAttribute('id', clipId);
+        const clipRect = document.createElementNS(NS, 'rect');
+        clipRect.setAttribute('x', cx - size / 2);
+        clipRect.setAttribute('y', cy - size / 2);
+        clipRect.setAttribute('width', size);
+        clipRect.setAttribute('height', size);
+        clipPath.appendChild(clipRect);
+        defs.appendChild(clipPath);
+
+        const image = document.createElementNS(NS, 'image');
+        image.setAttribute('x', cx - size / 2 - coord.x * scale);
+        image.setAttribute('y', cy - size / 2 - coord.y * scale);
+        image.setAttribute('width', sprite.sheet.w * scale);
+        image.setAttribute('height', sprite.sheet.h * scale);
+        image.setAttribute('clip-path', `url(#${clipId})`);
+        image.setAttribute('opacity', iconOpacity(kind));
+        image.setAttribute('preserveAspectRatio', 'none');
+        image.setAttribute('href', sprite.sheet.filename);
+        image.setAttributeNS(XLINK, 'href', sprite.sheet.filename);
+        layer.appendChild(image);
+        drawn += 1;
+    }
+    root.setAttribute('data-dashboard-node-sprites', String(drawn));
+}
+
+drawSprites().catch(() => {
+    root.setAttribute('data-dashboard-node-sprites', 'error');
+});
+})()]]></script>
+<script><![CDATA[(function() {
+const root = document.getElementsByTagName('svg')[0];
+const NS = 'http://www.w3.org/2000/svg';
 const tooltip = document.createElementNS(NS, 'g');
 tooltip.setAttribute('id', 'dashboard-node-tooltip');
 tooltip.setAttribute('style', 'display:none;pointer-events:none');

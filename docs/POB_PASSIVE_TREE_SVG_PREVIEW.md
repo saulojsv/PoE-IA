@@ -110,6 +110,18 @@ O script local no fim de `skilltree-3.28.svg`:
 - expõe `document.querySelector('svg').dashboardShowNodeTooltip(id)` para validação no browser;
 - não altera nós, conexões, viewBox ou estilo ativo.
 
+## Sprites dos nodos
+
+A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada da árvore base:
+
+- cria `<g id="dashboard-node-sprites">` com `pointer-events:none`;
+- lê `/poe-tree/skilltree-3.28.json`;
+- cruza `circle#n{id}` com `json.nodes[id].icon`;
+- usa os sprite sheets oficiais em `json.sprites`;
+- desenha imagens recortadas por `clipPath` sobre `Normal`, `Notable`, `Keystone`, `Mastery` e `Jewel`;
+- ignora ascendancy por enquanto para não poluir a árvore;
+- não altera círculos, links, `viewBox`, IDs ou `tree_load`.
+
 ## Combinações e ganho/perda
 
 É possível simular combinações visuais direto no SVG:
