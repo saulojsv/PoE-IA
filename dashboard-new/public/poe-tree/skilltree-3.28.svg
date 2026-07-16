@@ -6050,10 +6050,11 @@ tooltip.setAttribute('style', 'display:none;pointer-events:none');
 const rect = document.createElementNS(NS, 'rect');
 rect.setAttribute('rx', '0');
 rect.setAttribute('ry', '0');
-rect.setAttribute('fill', '#020407');
+rect.setAttribute('fill', '#000000');
 rect.setAttribute('stroke', '#8a651f');
 rect.setAttribute('stroke-width', '8');
-rect.setAttribute('opacity', '0.92');
+rect.setAttribute('opacity', '1');
+rect.setAttribute('fill-opacity', '1');
 tooltip.appendChild(rect);
 
 const header = document.createElementNS(NS, 'rect');
@@ -6180,6 +6181,7 @@ function show(event) {
     } else {
         addLine('No explicit stat text');
     }
+    root.appendChild(tooltip);
     tooltip.setAttribute('style', 'display:block;pointer-events:none');
     move(event);
 }
