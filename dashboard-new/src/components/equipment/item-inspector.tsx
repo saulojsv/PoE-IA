@@ -16,6 +16,21 @@ function previewDelta(before: string, after: string) {
   return { delta, percent: Math.abs(delta / oldValue * 100), positive: delta > 0 }
 }
 
+function impactOf(line: string) {
+  const text = line.toLowerCase()
+  const impacts: string[] = []
+  if (/maximum life|life regeneration|life recovery/.test(text)) impacts.push('Life/EHP')
+  if (/energy shield/.test(text)) impacts.push('ES/EHP')
+  if (/fire resistance/.test(text)) impacts.push('Fire res')
+  if (/cold resistance/.test(text)) impacts.push('Cold res')
+  if (/lightning resistance/.test(text)) impacts.push('Lightning res')
+  if (/chaos resistance/.test(text)) impacts.push('Chaos res')
+  if (/armour|evasion|spell suppression|block/.test(text)) impacts.push('Defesa')
+  if (/damage|critical|attack speed|cast speed|projectile|penetration|gem level/.test(text)) impacts.push('DPS')
+  if (/strength|dexterity|intelligence|attribute/.test(text)) impacts.push('Atributos/requisitos')
+  return impacts.length ? impacts.join(' · ') : 'Efeito especial'
+}
+
 export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelect: (x: EquipmentItem) => void; baseMods: any }) {
   const [editing, setEditing] = useState(false)
   const [draftMods, setDraftMods] = useState(item.explicits || item.stats)
@@ -41,7 +56,7 @@ export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelec
         </p>)}
         {editing && <div className="mod-editor">
           <small>Editar mods explícitos</small>
-          {draftMods.map((mod, i) => { const delta = previewDelta((item.explicits || item.stats)[i] || '', mod); return <label className="mod-choice" key={i}><span>Mod {i + 1}</span><div className="mod-choice-row"><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line}</option>)}</select>{delta && <em className={delta.positive ? 'mod-gain' : 'mod-loss'}>{delta.positive ? '↑' : '↓'} {Math.abs(delta.delta).toLocaleString('pt-PT')} ({delta.percent.toFixed(1)}%)</em>}</div></label> })}
+          {draftMods.map((mod, i) => { const delta = previewDelta((item.explicits || item.stats)[i] || '', mod); return <label className="mod-choice" key={i}><span>Mod {i + 1} · {impactOf(mod)}</span><div className="mod-choice-row"><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line} · {impactOf(option.line)}</option>)}</select>{delta && <em className={delta.positive ? 'mod-gain' : 'mod-loss'}>{delta.positive ? '↑' : '↓'} {Math.abs(delta.delta).toLocaleString('pt-PT')} ({delta.percent.toFixed(1)}%)</em>}</div></label> })}
           <button className="add-mod-choice" onClick={() => { const next = options.find(option => !draftMods.includes(option.line)); if (next) setDraftMods(current => [...current, next.line]) }}>+ Adicionar mod compatível</button>
           <button className="save-mods" disabled={!changed} onClick={() => setEditing(false)}><Check /> Aplicar prévia</button>
           {changed && <span className="mod-preview">Alteração pendente: recalcule no PoB para confirmar DPS/EHP.</span>}
