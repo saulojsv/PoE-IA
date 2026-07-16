@@ -22,6 +22,12 @@ export type TierInfo = {
 
 export type ModOption = ModEntry & { line: string }
 
+export function affixTierLabel(info: TierInfo) {
+  if (!info.tier) return '—'
+  const prefix = info.affix.toLowerCase().startsWith('prefix') ? 'P' : info.affix.toLowerCase().startsWith('suffix') ? 'S' : ''
+  return prefix ? `${prefix}${info.tier}` : `T${info.tier}`
+}
+
 const optionCache = new WeakMap<object, Map<string, ModOption[]>>()
 
 function optionFitsSlot(mod: ModOption, slot: string) {

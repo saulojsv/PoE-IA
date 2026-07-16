@@ -5,7 +5,7 @@ import { catalogBasesForSlot, itemPools, loadDashboardData, loadGenerationCatalo
 import { loadPassiveTree } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
-import { modOptionsForItem, tierForStat } from '../../data/mod-tiers'
+import { affixTierLabel, modOptionsForItem, tierForStat } from '../../data/mod-tiers'
 
 const stages: { id: BuildStage; label: string; description: string }[] = [
   { id: 'items', label: 'Items', description: 'PoE Ninja / Mobalytics paper-doll' },
@@ -283,7 +283,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     setHistory(count); localStorage.setItem('poe-smart-combination-count', String(count)); setSeed(Date.now()); setResult(next)
   }
   const rows = Object.entries(result) as [SmartSlot, ItemDetail][]
-  const tierLabel = (item: ItemDetail, line: string) => { const tier = tierForStat(item, line, baseMods).tier; return tier ? `T${tier}` : 'tier não identificado' }
+  const tierLabel = (item: ItemDetail, line: string) => affixTierLabel(tierForStat(item, line, baseMods))
   return <section className="panel smart-generator">
     <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
     <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
