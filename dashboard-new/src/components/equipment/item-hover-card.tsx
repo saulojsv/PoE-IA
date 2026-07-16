@@ -36,6 +36,11 @@ export function ItemHoverCard({
         <span>{stat.line}</span>
       </p>)}
     </div>
+    {(explicitStats.some(stat => stat.affix || stat.group || stat.minItemLevel) || implicits.some(stat => stat.source)) && <div className="hover-mod-meta">
+      {explicitStats.some(stat => stat.affix) && <span>{[...new Set(explicitStats.map(stat => stat.affix).filter(Boolean))].join(' / ')}</span>}
+      {explicitStats.some(stat => stat.group) && <span>Grupo: {[...new Set(explicitStats.map(stat => stat.group).filter(Boolean))].join(', ')}</span>}
+      {explicitStats.some(stat => stat.minItemLevel) && <span>Base mínima: ilvl {Math.max(...explicitStats.map(stat => stat.minItemLevel || 0))}</span>}
+    </div>}
     <footer>Source: PoE 1 XML / poe.ninja</footer>
   </aside>
 }

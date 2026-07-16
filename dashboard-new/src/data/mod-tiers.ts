@@ -14,6 +14,9 @@ export type TierInfo = {
   affix: string
   group: string
   tier: number | null
+  source?: string
+  tags?: string[]
+  minItemLevel?: number
 }
 
 function nums(text: string) {
@@ -84,6 +87,9 @@ export function tierForStat(item: ItemDetail | undefined, stat: string, baseMods
     affix: matched.type || '',
     group: matched.group || '',
     tier: idx >= 0 ? idx + 1 : null,
+    source: (matched as ModEntry & { source?: string }).source || '',
+    tags: (matched as ModEntry & { tags?: string[] }).tags || [],
+    minItemLevel: matched.min_item_level,
   }
 }
 
