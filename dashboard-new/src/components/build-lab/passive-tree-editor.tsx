@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, Minus, Plus, Search } from 'lucide-react'
 import type { PassiveTreeData } from '../../types/build'
-import { disconnectedNodes, loadPassiveTree } from '../../data/passive-tree'
+import { disconnectedNodes, generateRandomTree, loadPassiveTree } from '../../data/passive-tree'
 
 export function PassiveTreeEditor({ nodes, className, onChange }: { nodes: string[]; className: string; onChange: (nodes: string[]) => void }) {
   const [tree, setTree] = useState<PassiveTreeData>()

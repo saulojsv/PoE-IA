@@ -41,3 +41,22 @@ export function disconnectedNodes(selected: string[], tree?: PassiveTreeData, cl
   }
   return selected.filter(id => !seen.has(id))
 }
+
+export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
+  const start = tree.classes.find(item => item.name.toLowerCase() === className.toLowerCase())?.startNodeId
+  if (!start || !tree.nodes[start]) return []
+  const selected = new Set<string>([start])
+  let state = Math.floor(seed * 0x7fffffff) || 1
+  const random = () => { state = (state * 48271) % 0x7fffffff; return state / 0x7fffffff }
+  const neighbors = (id: string) => Object.values(tree.nodes).filter(node => node.out.includes(id) || tree.nodes[id]?.out.includes(node.id))
+  while (selected.size < budget) {
+    const frontier = [...selected].flatMap(id => neighbors(id).filter(node => !selected.has(node.id)))
+    if (!frontier.length) break
+    const unique = [...new Map(frontier.map(node => [node.id, node])).values()]
+    const weighted = unique.map(node => ({ node, weight: 1 + (node.isKeystone ? 5 : node.isNotable ? 3 : 0) + (node.stats.length ? 1 : 0) }))
+    const total = weighted.reduce((sum, item) => sum + item.weight, 0)
+    let pick = random() * total
+    selected.add((weighted.find(item => (pick -= item.weight) <= 0) || weighted[0]).node.id)
+  }
+  return [...selected]
+}
