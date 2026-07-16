@@ -88,6 +88,22 @@ function Kpis({ build }: { build: BuildRow }) {
   </div>
 }
 
+function socketCapacity(item: EquipmentItem) {
+  const text = `${item.slot} ${item.baseType}`.toLowerCase()
+  if (/(body|body armour|bow|twohand|two-handed|staff|quarterstaff|two handed)/.test(text)) return 6
+  if (/(helmet|gloves|boots)/.test(text)) return 4
+  if (/(offhand|shield|wand|sceptre|scepter|dagger|claw|onehand|one-handed|sword|mace|axe)/.test(text)) return 3
+  return 0
+}
+
+function SocketOverlay({ item }: { item: EquipmentItem }) {
+  const count = socketCapacity(item)
+  if (!count) return null
+  return <span className="socket-overlay" aria-label={`${count} sockets disponíveis na base`}>
+    {Array.from({ length: count }, (_, index) => <i key={index} className="socket-dot" aria-hidden="true" />)}
+  </span>
+}
+
 function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, onSwap, baseMods }: { map: Partial<Record<SlotKey, EquipmentItem>>; rawItems: ItemDetail[]; sprites: Record<string, string>; selectedId?: string; onSelect: (item: EquipmentItem) => void; pools: Partial<Record<SlotKey, ItemDetail[]>>; onSwap: (slot: SlotKey, item: ItemDetail) => void; baseMods: any }) {
   const [activeSlot, setActiveSlot] = useState<SlotKey>()
   const candidates = activeSlot ? [...(pools[activeSlot] || []), ...catalogBasesForSlot(activeSlot, baseMods)].filter((item, i, all) => all.findIndex(other => other.name === item.name && other.base === item.base) === i) : []
@@ -100,6 +116,7 @@ function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, o
           const sprite = item?.raw ? spriteFor(item.raw, sprites) : ''
           return <button key={slot} className={'item-slot ' + slotClass[slot] + (selectedId === item?.id ? ' selected' : '') + (item?.locked ? ' locked' : '')} onClick={() => { if (item && !item.locked) onSelect(item); setActiveSlot(slot) }}>
             <i>{sprite ? <img src={sprite} alt="" /> : item?.locked ? 'Ã—' : '+'}</i>
+            {item && !item.locked && <SocketOverlay item={item} />}
             <span>{SLOT_LABELS[slot]}</span>
             <b>{item?.name || 'Empty'}</b>
             {item && !item.locked && <ItemHoverCard item={{ ...item, sprite }} placement={slot === 'weapon' ? 'right' : slot === 'offhand' ? 'left' : 'bottom'} baseMods={baseMods} />}
