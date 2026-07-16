@@ -1,26 +1,35 @@
 {
-  "cycle": 93,
+  "cycle": 98,
   "last_batch": [
-    "Smoke Mine"
+    "Storm Rain"
   ],
-  "next_az_order": 255,
-  "next_skill": "Smoke Mine",
+  "next_az_order": 272,
+  "next_skill": "Storm Rain of the Conduit",
   "league": "mirage",
-  "version": "1950-20260715-21951",
+  "version": "0614-20260716-09043",
   "snapshot": "mirage",
-  "updated_at": "2026-07-15T20:34:08Z",
+  "updated_at": "2026-07-16T07:40:08Z",
   "results": [
     {
-      "status": "partial",
-      "skill": "Smoke Mine",
-      "normalized_name": "smoke_mine",
-      "generated": [
-        "buhrese_9326_buhrese"
-      ],
+      "status": "pending",
+      "skill": "Storm Rain",
+      "normalized_name": "storm_rain",
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
-      "skipped_same_class": []
+      "skipped_same_class": [
+        {
+          "account": "elicitafk-6491",
+          "character": "Timmytunner",
+          "class": "Deadeye"
+        },
+        {
+          "account": "Hysygod-1819",
+          "character": "SosuZaPizdu",
+          "class": "Deadeye"
+        }
+      ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
