@@ -1,39 +1,47 @@
 {
   "cycle": 102,
   "last_batch": [
-    "Summon Flame Golem"
+    "Summon Flame Golem of Hordes"
   ],
-  "next_az_order": 283,
-  "next_skill": "Summon Flame Golem of Hordes",
+  "next_az_order": 284,
+  "next_skill": "Summon Flame Golem of the Meteor",
   "league": "mirage",
   "version": "0819-20260716-26215",
   "snapshot": "mirage",
-  "updated_at": "2026-07-16T08:55:24Z",
+  "updated_at": "2026-07-16T09:00:21Z",
   "results": [
     {
-      "status": "complete",
-      "skill": "Summon Flame Golem",
-      "normalized_name": "summon_flame_golem",
+      "status": "partial",
+      "skill": "Summon Flame Golem of Hordes",
+      "normalized_name": "summon_flame_golem_of_hordes",
       "generated": [
-        "kanadarama_4717_hingming",
-        "katsu_9340_katsu_ran",
-        "tchorti_7221_mirage_tchort"
+        "crashbug_6689_cheetodustbug",
+        "kinggaia_6634_jerryflamegolemsobv"
       ],
-      "xml_count": 3,
-      "unique_class_count": 3,
+      "xml_count": 2,
+      "unique_class_count": 2,
       "skipped_same_class": [
         {
-          "account": "TARZAN1018-3055",
-          "character": "NoManaMann",
-          "class": "Inquisitor"
+          "account": "Flav606-5460",
+          "character": "LucemilianoSalvador",
+          "class": "Elementalist"
         },
         {
-          "account": "Narco3000-4125",
-          "character": "Gnasty_Gnorc",
-          "class": "Inquisitor"
+          "account": "Rogerz-5140",
+          "character": "RogerzWastedleaguestart",
+          "class": "Elementalist"
+        },
+        {
+          "account": "Prophecy2014-1538",
+          "character": "Mirage_Elfife",
+          "class": "Elementalist"
+        },
+        {
+          "account": "Shiu-6998",
+          "character": "ShiuMirageGolem",
+          "class": "Elementalist"
         }
-      ],
-      "next_action": "advance"
+      ]
     }
   ],
   "status": "advanced"

@@ -63,3 +63,36 @@
 .items-dashboard-grid>.inspector{grid-column:1/-1;grid-template-columns:minmax(0,1fr) minmax(260px,.45fr)}
 @media(max-width:1500px){.items-dashboard-grid{grid-template-columns:1fr}.items-dashboard-grid>.inspector{grid-template-columns:1fr}.equipment .equipment-board{overflow-x:auto}.equipment .loadout-grid.poe-layout{margin-left:0;margin-right:0}}
 main{overflow-x:hidden}
+
+/* POBB exact-ratio gear board. Coordinates are copied from pobb.in proportions. */
+.equipment .equipment-board{min-height:0;padding:18px;background:#1d2a3b;overflow-x:auto}
+.equipment .loadout-grid.poe-layout{position:relative;display:block;width:584px;height:422px;min-width:584px;max-width:584px;margin:0 auto}
+.equipment .loadout-grid.poe-layout .item-slot{position:absolute;display:block;padding:0;border:0;border-radius:7px;background:#0b1424;box-shadow:0 2px 8px rgb(0 0 0 / .18);overflow:visible}
+.equipment .loadout-grid.poe-layout .item-slot.selected{outline:2px solid #d7e5f8;outline-offset:2px}
+.equipment .loadout-grid.poe-layout .item-slot>i{display:grid;place-items:center;width:100%;height:100%;background:#0b1424;border-radius:7px;overflow:hidden}
+.equipment .loadout-grid.poe-layout .item-slot>i img{display:block;width:100%;height:100%;object-fit:contain;transform:none!important;filter:drop-shadow(0 5px 7px rgb(0 0 0 / .55))}
+.equipment .loadout-grid.poe-layout .item-slot>i:empty::before{content:"+";color:#d5b14d;font:18px Geist Mono}
+.equipment .loadout-grid.poe-layout .item-slot>span,.equipment .loadout-grid.poe-layout .item-slot>b{display:none}
+.equipment .loadout-grid.poe-layout .item-slot select{position:absolute;left:6px;right:6px;bottom:6px;width:calc(100% - 12px);height:24px;margin:0;opacity:0;pointer-events:none;background:#111b29;border-color:#42536a;color:#dbe6f2}
+.equipment .loadout-grid.poe-layout .item-slot:hover select,.equipment .loadout-grid.poe-layout .item-slot:focus-within select{opacity:1;pointer-events:auto}
+.equipment .loadout-grid.poe-layout .weapon{left:0;top:0;width:134px;height:275px}
+.equipment .loadout-grid.poe-layout .helmet{left:212px;top:0;width:134px;height:134px}
+.equipment .loadout-grid.poe-layout .offhand{left:425px;top:0;width:134px;height:275px}
+.equipment .loadout-grid.poe-layout .body{left:212px;top:142px;width:134px;height:200px;z-index:1}
+.equipment .loadout-grid.poe-layout .amulet{left:354px;top:142px;width:63px;height:63px}
+.equipment .loadout-grid.poe-layout .ring-1{left:142px;top:213px;width:63px;height:63px}
+.equipment .loadout-grid.poe-layout .ring-2{left:354px;top:213px;width:63px;height:63px}
+.equipment .loadout-grid.poe-layout .gloves{left:71px;top:284px;width:134px;height:134px}
+.equipment .loadout-grid.poe-layout .boots{left:354px;top:284px;width:134px;height:134px}
+.equipment .loadout-grid.poe-layout .belt{left:212px;top:351px;width:134px;height:67px}
+.equipment .flasks{display:flex;justify-content:center;align-items:flex-start;gap:8px;width:584px;max-width:584px;margin:10px auto 0;padding:0;border:0}
+.equipment .flasks small{display:none}
+.equipment .flasks button{position:relative;width:64px;height:128px;padding:0;border:0;background:#0b1424;border-radius:4px;color:transparent;overflow:hidden}
+.equipment .flasks .flask{display:grid;place-items:center;width:64px;height:128px;margin:0;border:0;background:#0b1424}
+.equipment .flasks img{display:block;width:100%;height:100%;object-fit:contain}
+.equipment .flasks span{display:none}
+.equipment .jewels{display:flex;justify-content:center;align-items:center;gap:8px;width:584px;max-width:584px;margin:16px auto 0;padding:0;border:0}
+.equipment .jewels small{display:none}
+.equipment .jewels span{display:grid;place-items:center;width:63px;height:63px;padding:0;border:0;border-radius:7px;background:#0b1424;font-size:0;overflow:hidden}
+.equipment .jewels img{width:100%;height:100%;object-fit:contain}
+@media(max-width:780px){.equipment .equipment-board{min-width:0}.equipment .loadout-grid.poe-layout,.equipment .flasks,.equipment .jewels{margin-left:0;margin-right:0}}
