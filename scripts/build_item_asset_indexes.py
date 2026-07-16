@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SPRITES = ROOT / "assets" / "poe1_item_sprites"
 DASH_INDEX = ROOT / "dashboard" / "item_sprite_index.json"
+DASH_INDEX_NEW = ROOT / "dashboard-new" / "public" / "poe-data" / "dashboard" / "item_sprite_index.json"
 OUT = ROOT / "data" / "items"
 POB_DATA = ROOT / "external" / "PathOfBuildingTesst" / "src" / "Data"
 
@@ -49,7 +50,16 @@ def build_sprite_aliases():
             aliases[rel].append(key)
 
     OUT.mkdir(parents=True, exist_ok=True)
-    DASH_INDEX.write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+    for target in (DASH_INDEX, DASH_INDEX_NEW):
+        existing = {}
+        if target.exists():
+            try:
+                existing = json.loads(target.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                existing = {}
+        merged = {**existing, **index}
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
     (OUT / "sprite_aliases.json").write_text(
         json.dumps({k: sorted(set(v)) for k, v in aliases.items()}, ensure_ascii=False, indent=2),
         encoding="utf-8",

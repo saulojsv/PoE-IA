@@ -4,15 +4,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "dashboard" / "build_dashboard_data.json"
-INDEX = ROOT / "dashboard" / "item_sprite_index.json"
+INDEX = ROOT / "dashboard-new" / "public" / "poe-data" / "dashboard" / "item_sprite_index.json"
 OUT = ROOT / "data" / "items" / "dashboard_sprite_validation.json"
 FINAL = ROOT / "data" / "items" / "sprite_final_missing.json"
 IGNORED = {"xml", "extraction samples", "root"}
 
 
+def normalize(value):
+    return " ".join(str(value or "").lower().split()).removesuffix(" (replica)").strip()
+
+
 def main():
     data = json.loads(DATA.read_text(encoding="utf-8"))
     sprites = json.loads(INDEX.read_text(encoding="utf-8"))
+    aliases = {normalize(key): value for key, value in sprites.items()}
     missing, non_webp, poe2_refs, broken = [], set(), set(), set()
 
     for skill in data.get("skills", []):
@@ -22,7 +27,7 @@ def main():
             for item in build.get("item_details", []):
                 rarity = item.get("rarity")
                 key = item.get("base") if rarity in {"Rare", "Magic", "Normal"} else item.get("name")
-                src = sprites.get(key) or (sprites.get(item.get("base")) if rarity not in {"Rare", "Magic", "Normal"} else "")
+                src = sprites.get(key) or aliases.get(normalize(key)) or sprites.get(item.get("base")) or aliases.get(normalize(item.get("base")))
                 if not src:
                     missing.append({"skill": skill.get("skill"), "item": item.get("name"), "base": item.get("base"), "key": key})
                     continue

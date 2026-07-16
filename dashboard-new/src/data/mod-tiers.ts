@@ -30,7 +30,9 @@ export function affixLimits(item: ItemDetail, baseMods: any) {
     const match = implicit.match(new RegExp('([+-]\\d+)\\s+' + kind + ' modifiers? allowed', 'i'))
     return Math.max(0, (item.slot === 'jewel' ? 2 : item.rarity === 'Magic' ? 1 : 3) + (match ? Number(match[1]) : 0))
   }
-  return { prefixes: read('prefix'), suffixes: read('suffix') }
+  const basePrefixes = item.slot === 'jewel' ? 2 : item.rarity === 'Magic' ? 1 : 3
+  const baseSuffixes = basePrefixes
+  return { prefixes: read('prefix'), suffixes: read('suffix'), basePrefixes, baseSuffixes }
 }
 
 export function validateItem(item: ItemDetail, baseMods: any) {
@@ -42,11 +44,13 @@ export function validateItem(item: ItemDetail, baseMods: any) {
     if (type === 'Prefix') prefixes += 1; else if (type === 'Suffix') suffixes += 1; else errors.push(`Tipo inválido: ${line}`)
     const group = meta?.group || info.group; if (group && groups.has(`${type}:${group}`)) errors.push(`Grupo duplicado: ${group}`); if (group) groups.add(`${type}:${group}`)
     const family = line.toLowerCase().replace(/[+-]?\d+(?:\.\d+)?/g, '#').replace(/\([^)]*\)/g, '#').replace(/\s+/g, ' ').trim(); if (stats.has(family)) errors.push(`Estatística duplicada: ${family}`); stats.add(family)
-    if (item.slot !== 'jewel' && info.tier === null && !meta?.modId) errors.push(`Tier inexistente: ${line}`)
+    if (item.slot !== 'jewel' && info.tierModel !== 'tierless' && info.tier === null && meta?.tier == null) errors.push(`Tier inexistente: ${line}`)
     if (item.slot !== 'jewel' && Number(meta?.requiredItemLevel ?? info.minItemLevel ?? 1) > item.item_level) errors.push(`Ilvl insuficiente: ${line}`)
   }
   if (prefixes > limits.prefixes) errors.push(`Prefixos excedidos: ${prefixes}/${limits.prefixes}`)
   if (suffixes > limits.suffixes) errors.push(`Sufixos excedidos: ${suffixes}/${limits.suffixes}`)
+  if (item.target && (prefixes !== item.target.prefixes || suffixes !== item.target.suffixes)) errors.push(`Meta de afixos nÃ£o atingida: P${prefixes}/S${suffixes} vs P${item.target.prefixes}/S${item.target.suffixes}`)
+  if (item.generated && (prefixes !== item.generated.prefixes || suffixes !== item.generated.suffixes)) errors.push(`Contagem gerada inconsistente: P${prefixes}/S${suffixes} vs P${item.generated.prefixes}/S${item.generated.suffixes}`)
   return { valid: errors.length === 0, errors, prefixes, suffixes, limits }
 }
 

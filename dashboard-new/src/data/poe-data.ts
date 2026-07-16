@@ -87,7 +87,10 @@ export function compatibleOffhand(weapon?: ItemDetail, offhand?: ItemDetail) {
 
 export function spriteFor(item: ItemDetail, sprites: Record<string, string>) {
   const rare = ['Rare', 'Magic', 'Normal'].includes(item.rarity)
-  const src = rare ? sprites[item.base] : (sprites[item.name] || sprites[item.base])
+  const normalize = (value: string) => value.toLowerCase().replace(/\s+/g, ' ').replace(/ \([^)]*\)$/, '').trim()
+  const aliases = new Map(Object.entries(sprites).map(([key, value]) => [normalize(key), value]))
+  const find = (value: string) => sprites[value] || aliases.get(normalize(value))
+  const src = rare ? find(item.base) : (find(item.name) || find(item.base))
   return src ? src.replace('../', '/') : ''
 }
 

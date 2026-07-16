@@ -13,6 +13,9 @@ export interface ItemDetail {
   explicits: string[]
   locked?: boolean
   affix_meta?: { modId: string; tier: number | null; tierModel?: 'tiered' | 'tierless'; requiredItemLevel: number | null; group: string; generationType: 'Prefix' | 'Suffix'; source: 'natural'; rawValue?: number; displayMultiplier?: number }[]
+  capacity?: { prefixes: number; suffixes: number }
+  target?: { prefixes: number; suffixes: number }
+  generated?: { prefixes: number; suffixes: number }
 }
 
 export interface EquipmentItem {
