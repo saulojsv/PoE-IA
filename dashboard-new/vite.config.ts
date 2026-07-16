@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 
 const repoRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const assetsRoot = resolve(repoRoot, 'assets')
+const dataRoot = repoRoot
 const mime: Record<string, string> = {
   '.json': 'application/json',
   '.png': 'image/png',
@@ -15,13 +16,25 @@ const mime: Record<string, string> = {
 
 function repoAssets() {
   return {
-    name: 'repo-assets',
+    name: 'repo-local-files',
     configureServer(server: any) {
       server.middlewares.use((req: any, res: any, next: any) => {
         const url = decodeURIComponent((req.url || '').split('?')[0])
-        if (!url.startsWith('/assets/')) return next()
-        const file = resolve(assetsRoot, url.slice('/assets/'.length))
-        const rel = relative(assetsRoot, file)
+        let file = ''
+        let base = ''
+        if (url.startsWith('/assets/')) {
+          base = assetsRoot
+          file = resolve(assetsRoot, url.slice('/assets/'.length))
+        } else if (url.startsWith('/poe-data/')) {
+          base = dataRoot
+          file = resolve(dataRoot, url.slice('/poe-data/'.length))
+        } else if (url.startsWith('/poe-tree/')) {
+          base = dataRoot
+          file = resolve(dataRoot, 'data/passive_tree', url.slice('/poe-tree/'.length))
+        } else {
+          return next()
+        }
+        const rel = relative(base, file)
         if (rel.startsWith('..') || rel.includes(`..${sep}`) || !existsSync(file) || !statSync(file).isFile()) return next()
         res.setHeader('Content-Type', mime[extname(file).toLowerCase()] || 'application/octet-stream')
         createReadStream(file).pipe(res)

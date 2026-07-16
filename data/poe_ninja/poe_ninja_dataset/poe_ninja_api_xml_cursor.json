@@ -1,32 +1,35 @@
 {
-  "cycle": 99,
+  "cycle": 100,
   "last_batch": [
-    "Stormblast Mine"
+    "Summon Carrion Golem"
   ],
-  "next_az_order": 274,
-  "next_skill": "Stormblast Mine",
+  "next_az_order": 277,
+  "next_skill": "Summon Carrion Golem of Hordes",
   "league": "mirage",
   "version": "0614-20260716-09043",
   "snapshot": "mirage",
-  "updated_at": "2026-07-16T07:55:23Z",
+  "updated_at": "2026-07-16T08:15:04Z",
   "results": [
     {
-      "status": "partial",
-      "skill": "Stormblast Mine",
-      "normalized_name": "stormblast_mine",
-      "generated": [
-        "ashigaru5_1897_bannerius"
-      ],
+      "status": "pending",
+      "skill": "Summon Carrion Golem",
+      "normalized_name": "summon_carrion_golem",
+      "generated": [],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "sverdrups-3489",
-          "character": "Talnakhite",
-          "class": "Champion"
+          "account": "Roxalzz-7475",
+          "character": "Roxalz_ColdFishWife",
+          "class": "Necromancer"
+        },
+        {
+          "account": "lazy_daisy-6019",
+          "character": "Saathryn",
+          "class": "Necromancer"
         }
       ]
     }
   ],
-  "status": "pending_current"
+  "status": "advanced"
 }
