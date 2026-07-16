@@ -1,8 +1,15 @@
 import type { PassiveTreeData } from '../types/build'
 
 type RawTree = { min_x: number; min_y: number; max_x: number; max_y: number; nodes: Record<string, any>; groups: Record<string, { x: number; y: number }>; classes: Array<{ name: string }>; constants: { skillsPerOrbit: number[]; orbitRadii: number[] } }
+let treeCache: Promise<PassiveTreeData> | undefined
 
 export async function loadPassiveTree(): Promise<PassiveTreeData> {
+  if (treeCache) return treeCache
+  treeCache = loadPassiveTreeUncached()
+  return treeCache
+}
+
+async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
   const raw = await fetch('/poe-tree/skilltree-3.28.json').then(response => {
     if (!response.ok) throw new Error('Não foi possível carregar a árvore passiva 3.28.')
     return response.json() as Promise<RawTree>
