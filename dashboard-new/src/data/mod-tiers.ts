@@ -65,7 +65,12 @@ export function tierForStat(item: ItemDetail | undefined, stat: string, baseMods
     .map((id: string) => fullMods[id])
     .filter(Boolean)
     .flatMap((mod: ModEntry) => (mod.lines || [mod.line]).filter(Boolean).map(line => ({ ...mod, line })))
-  const mods: ModEntry[] = eligible.length ? eligible : (base?.sample_mods || [])
+  // The complete catalog may omit per-base expansion to keep the browser
+  // payload small. Exact line matching against all PoE 1 mods remains
+  // deterministic; it never invents a tier when no source line matches.
+  const mods: ModEntry[] = eligible.length
+    ? eligible
+    : Object.values(fullMods) as ModEntry[]
   const exact = mods.find(mod => mod.line && shape(mod.line) === shape(clean) && inRanges(clean, mod.line))
   const matched = exact || mods.find(mod => mod.line && shape(mod.line) === shape(clean))
   if (!matched) return { line: clean, affix: '', group: '', tier: null }

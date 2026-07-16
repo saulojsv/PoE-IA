@@ -17,17 +17,19 @@ const ignored = new Set(['xml', 'extraction samples', 'root'])
 const bowUniques = /\b(widowhail|voltaxic rift|windripper|lioneye's glare|death's opus|chin sol|darkscorn|doomfletch)\b/i
 
 export async function loadDashboardData() {
-  const [data, sprites, baseMods, tierMods] = await Promise.all([
+  const [data, sprites, baseMods, fullCatalog, tierMods] = await Promise.all([
     loadJson('/poe-data/dashboard/build_dashboard_data.json'),
     loadJson('/poe-data/dashboard/item_sprite_index.json'),
     loadJson('/poe-data/dashboard/item_base_mod_summary.json').catch(() => ({ bases: {} })),
+    loadJson('/poe-data/dashboard/item_mod_catalog.json').catch(() => null),
     loadJson('/poe-data/dashboard/item_mod_tiers.json').catch(() => null),
   ])
-  // The tier index may contain only a partial base list. The complete base
-  // catalog is required for modifier matching and tier calculation.
-  const catalog = tierMods?.mods && Object.keys(tierMods.mods).length
-    ? tierMods
-    : baseMods
+  // Prefer the full mod catalog; the tier index may contain only a partial base list.
+  const catalog = fullCatalog?.mods && Object.keys(fullCatalog.mods).length
+    ? fullCatalog
+    : tierMods?.mods && Object.keys(tierMods.mods).length
+      ? tierMods
+      : baseMods
   return { data: data as BuildData, sprites: sprites as Record<string, string>, baseMods: catalog }
 }
 
