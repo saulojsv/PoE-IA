@@ -1,4 +1,4 @@
-import type { PassiveTreeData } from '../types/build'
+import type { PassiveTreeData, PassiveTreeNode } from '../types/build'
 
 type RawTree = { min_x: number; min_y: number; max_x: number; max_y: number; nodes: Record<string, any>; groups: Record<string, { x: number; y: number }>; classes: Array<{ name: string }>; constants: { skillsPerOrbit: number[]; orbitRadii: number[] } }
 let treeCache: Promise<PassiveTreeData> | undefined
@@ -23,11 +23,9 @@ async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
     const radius = raw.constants.orbitRadii[orbit] || 0
     return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, out: node.out || [], neighbors: [] }]
   }))
-  for (const node of Object.values(nodes)) {
-    const neighbors = new Set(node.out)
-    for (const candidate of Object.values(nodes)) if (candidate.out.includes(node.id)) neighbors.add(candidate.id)
-    node.neighbors = [...neighbors] as string[]
-  }
+  const reverse = new Map<string, string[]>()
+  for (const node of Object.values(nodes)) for (const target of node.out) reverse.set(target, [...(reverse.get(target) || []), node.id])
+  for (const node of Object.values(nodes)) node.neighbors = [...new Set([...node.out, ...(reverse.get(node.id) || [])])]
   return { version: '3.28', min_x: raw.min_x, min_y: raw.min_y, max_x: raw.max_x, max_y: raw.max_y, nodes, classes: raw.classes.map(item => ({ name: item.name, startNodeId: classStarts[item.name] || '' })) }
 }
 
@@ -51,17 +49,35 @@ export function generateRandomTree(tree: PassiveTreeData, className: string, bud
   const start = tree.classes.find(item => item.name.toLowerCase() === className.toLowerCase())?.startNodeId
   if (!start || !tree.nodes[start]) return []
   const selected = new Set<string>([start])
+  const distance = new Map<string, number>([[start, 0]])
+  const distanceQueue = [start]
+  while (distanceQueue.length) {
+    const current = distanceQueue.shift()!
+    for (const next of tree.nodes[current]?.neighbors || []) if (!distance.has(next)) { distance.set(next, distance.get(current)! + 1); distanceQueue.push(next) }
+  }
   let state = Math.floor(seed * 0x7fffffff) || 1
   const random = () => { state = (state * 48271) % 0x7fffffff; return state / 0x7fffffff }
-  const neighbors = (id: string) => (tree.nodes[id]?.neighbors || []).map(nodeId => tree.nodes[nodeId]).filter(Boolean)
+  const sector = (node: PassiveTreeNode) => `${Math.round(node.x / 500)}:${Math.round(node.y / 500)}`
+  const sectorCounts = new Map<string, number>()
+  sectorCounts.set(sector(tree.nodes[start]), 1)
   while (selected.size < budget) {
-    const frontier = [...selected].flatMap(id => neighbors(id).filter(node => !selected.has(node.id)))
+    const frontier = [...selected].flatMap(id => (tree.nodes[id]?.neighbors || []).map(nodeId => tree.nodes[nodeId]).filter(node => node && !selected.has(node.id)))
     if (!frontier.length) break
-    const unique = [...new Map(frontier.map(node => [node.id, node])).values()].slice(0, 180)
-    const weighted = unique.map(node => ({ node, weight: 1 + (node.isKeystone ? 5 : node.isNotable ? 3 : 0) + (node.stats.length ? 1 : 0) }))
+    const unique = [...new Map(frontier.map(node => [node.id, node])).values()]
+    const ranked = unique.map(node => {
+      const key = sector(node)
+      const count = sectorCounts.get(key) || 0
+      const degree = node.neighbors?.length || 0
+      const score = (distance.get(node.id) || 0) * 0.45 + (node.isKeystone ? 7 : node.isNotable ? 4 : 0) + (node.stats.length ? 1 : 0) + Math.min(3, degree * .35) - count * 1.8
+      return { node, score }
+    }).sort((a, b) => b.score - a.score).slice(0, 12)
+    const weighted = ranked.map(item => ({ node: item.node, weight: Math.max(.2, item.score - ranked[ranked.length - 1].score + 1) }))
     const total = weighted.reduce((sum, item) => sum + item.weight, 0)
     let pick = random() * total
-    selected.add((weighted.find(item => (pick -= item.weight) <= 0) || weighted[0]).node.id)
+    const chosen = (weighted.find(item => (pick -= item.weight) <= 0) || weighted[0]).node
+    selected.add(chosen.id)
+    const key = sector(chosen)
+    sectorCounts.set(key, (sectorCounts.get(key) || 0) + 1)
   }
   return [...selected]
 }
