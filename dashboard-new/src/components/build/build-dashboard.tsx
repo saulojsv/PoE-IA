@@ -42,6 +42,11 @@ function MetricCard({ label, value, tone, icon: Icon }: { label: string; value: 
   return <article className={'kpi ' + tone}><Icon /><div><small>{label}</small><strong>{value}</strong><span>PoE 1 dataset</span></div></article>
 }
 
+function AscendancyMiniCard({ name, count }: { name: string; count: number }) {
+  const Icon = /guardian|hierophant|champion|gladiator|chieftain/i.test(name) ? Shield : /deadeye|slayer|berserker|raider|pathfinder/i.test(name) ? Sword : Sparkles
+  return <span className="asc-mini-card"><i><Icon /></i><span><b>{name}</b><small>{count} build{count === 1 ? '' : 's'}</small></span></span>
+}
+
 function SkillList({ skills, selected, onSelect }: { skills: SkillGroup[]; selected?: SkillGroup; onSelect: (skill: SkillGroup) => void }) {
   const [q, setQ] = useState('')
   const filtered = skills.filter(skill => skill.skill.toLowerCase().includes(q.toLowerCase()) || JSON.stringify(skill.classes).toLowerCase().includes(q.toLowerCase()))
@@ -50,8 +55,8 @@ function SkillList({ skills, selected, onSelect }: { skills: SkillGroup[]; selec
     <div className="skill-search"><input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar skill, classe, item..." /></div>
     <div className="skill-list">
       {filtered.slice(0, 120).map(skill => <button key={skill.skill} className={selected?.skill === skill.skill ? 'active' : ''} onClick={() => onSelect(skill)}>
-        <b>{skill.skill}</b><span>{fmt(skill.builds)} XMLs Â· DPS {fmt(skill.best_dps)}</span>
-        <small>{skill.classes.slice(0, 2).map(([name, count]) => `${name} ${count}`).join(' Â· ')}</small>
+        <b>{skill.skill}</b><span>{fmt(skill.builds)} builds · DPS {fmt(skill.best_dps)}</span>
+        <div className="asc-mini-grid">{skill.classes.slice(0, 2).map(([name, count]) => <AscendancyMiniCard key={name} name={name} count={count} />)}</div>
       </button>)}
     </div>
   </section>
