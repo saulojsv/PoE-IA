@@ -36,6 +36,12 @@ def load_base_names():
 
 BASE_NAMES = load_base_names()
 BASE_NAMES_BY_LENGTH = sorted(BASE_NAMES, key=len, reverse=True)
+BASE_SLOT_MAP = {}
+if ITEM_BASE_MODS.exists():
+    try:
+        BASE_SLOT_MAP = {name: info.get("slot", "") for name, info in json.loads(ITEM_BASE_MODS.read_text(encoding="utf-8")).get("bases", {}).items()}
+    except (OSError, json.JSONDecodeError):
+        BASE_SLOT_MAP = {}
 
 
 def flask_base_from_name(name):
@@ -92,13 +98,9 @@ def parse_item(text):
     lines = [x.strip() for x in text.splitlines() if x.strip()]
     rarity = lines[0].replace("Rarity:", "").strip().title() if lines and lines[0].startswith("Rarity:") else ""
     name = first_item_name(text)
-    base = ""
-    if rarity in {"Rare", "Magic"} and len(lines) > 2:
-        base = first_base_line(lines, 2)
-    elif len(lines) > 1 and not lines[1].startswith(("Unique ID:", "Item Level:", "LevelReq:", "Implicits:")):
-        base = lines[1]
-    if not base or base.startswith(("Unique ID:", "Item Level:", "Crafted:")):
-        base = first_base_line(lines, 2)
+    # PoB item text is ordered as rarity, item name, then base for every
+    # rarity. Using lines[1] here misclassified uniques as their own base.
+    base = first_base_line(lines, 2)
     flask_base = flask_base_from_name(name)
     if flask_base:
         base = flask_base
@@ -147,6 +149,9 @@ def item_slot(name, base):
     base_text = (base or "").lower()
     name_text = (name or "").lower()
     text = f"{name_text} {base_text}"
+    catalog_slot = BASE_SLOT_MAP.get(base)
+    if catalog_slot:
+        return catalog_slot
     if "flask" in text:
         return "flask"
     # Prefer the base type. Unique names can contain misleading substrings
