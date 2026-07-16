@@ -5913,28 +5913,28 @@ tooltip.appendChild(rect);
 
 const title = document.createElementNS(NS, 'text');
 title.setAttribute('fill', '#f2d267');
-title.setAttribute('font-size', '185');
+title.setAttribute('font-size', '165');
 title.setAttribute('font-weight', '700');
 title.setAttribute('font-family', 'Georgia, serif');
 tooltip.appendChild(title);
 
 const kind = document.createElementNS(NS, 'text');
 kind.setAttribute('fill', '#9db0c7');
-kind.setAttribute('font-size', '115');
+kind.setAttribute('font-size', '95');
 kind.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(kind);
 
 const stats = document.createElementNS(NS, 'text');
 stats.setAttribute('fill', '#8bb7ff');
-stats.setAttribute('font-size', '130');
+stats.setAttribute('font-size', '110');
 stats.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(stats);
 root.appendChild(tooltip);
 
-const PAD_X = 150;
-const PAD_TOP = 145;
-const LINE_HEIGHT = 160;
-const MAX_CHARS = 48;
+const PAD_X = 110;
+const PAD_TOP = 110;
+const LINE_HEIGHT = 135;
+const MAX_CHARS = 72;
 
 function clearStats() {
     while (stats.firstChild) {
@@ -5966,7 +5966,7 @@ function wrapLine(text) {
 
 function addLine(text) {
     const tspan = document.createElementNS(NS, 'tspan');
-    tspan.setAttribute('x', '0');
+    tspan.setAttribute('x', PAD_X);
     tspan.setAttribute('dy', stats.childNodes.length ? LINE_HEIGHT : '0');
     tspan.textContent = text;
     stats.appendChild(tspan);
@@ -6019,19 +6019,18 @@ function move(event) {
     const point = svgPoint(event);
     const x = point.x + 170;
     const y = point.y + 170;
-    title.setAttribute('x', x + PAD_X);
-    title.setAttribute('y', y + PAD_TOP);
-    kind.setAttribute('x', x + PAD_X);
-    kind.setAttribute('y', y + PAD_TOP + 175);
-    stats.setAttribute('x', x + PAD_X);
-    stats.setAttribute('y', y + PAD_TOP + 385);
-    rect.setAttribute('x', x);
-    rect.setAttribute('y', y);
+    tooltip.setAttribute('transform', `translate(${x} ${y})`);
+    title.setAttribute('x', PAD_X);
+    title.setAttribute('y', PAD_TOP);
+    kind.setAttribute('x', PAD_X);
+    kind.setAttribute('y', PAD_TOP + 135);
+    stats.setAttribute('x', PAD_X);
+    stats.setAttribute('y', PAD_TOP + 310);
+    rect.setAttribute('x', '0');
+    rect.setAttribute('y', '0');
     const box = tooltip.getBBox();
-    rect.setAttribute('x', x);
-    rect.setAttribute('y', y);
-    rect.setAttribute('width', Math.max(1450, box.width + PAD_X * 2));
-    rect.setAttribute('height', Math.max(720, box.height + 180));
+    rect.setAttribute('width', Math.max(1100, box.width + PAD_X));
+    rect.setAttribute('height', Math.max(480, box.height + 95));
 }
 
 function hide() {
