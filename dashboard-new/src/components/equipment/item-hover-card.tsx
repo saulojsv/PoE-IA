@@ -33,6 +33,7 @@ export function ItemHoverCard({
     {implicits.length > 0 && explicitStats.length > 0 && <hr className="hover-mod-divider" />}
     <div className="hover-card-stats explicit-stats">
       {explicitStats.map(stat => <p key={stat.line}>
+        <b className={stat.tier ? 'tier-pill' : 'tier-pill unknown'}>{stat.tier ? `T${stat.tier}` : '—'}</b>
         <span>{stat.line}</span>
       </p>)}
     </div>
