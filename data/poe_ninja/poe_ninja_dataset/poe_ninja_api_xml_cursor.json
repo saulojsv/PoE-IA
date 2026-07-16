@@ -1,35 +1,32 @@
 {
-  "cycle": 98,
+  "cycle": 99,
   "last_batch": [
-    "Storm Rain"
+    "Stormblast Mine"
   ],
-  "next_az_order": 272,
-  "next_skill": "Storm Rain of the Conduit",
+  "next_az_order": 274,
+  "next_skill": "Stormblast Mine",
   "league": "mirage",
   "version": "0614-20260716-09043",
   "snapshot": "mirage",
-  "updated_at": "2026-07-16T07:40:08Z",
+  "updated_at": "2026-07-16T07:55:23Z",
   "results": [
     {
-      "status": "pending",
-      "skill": "Storm Rain",
-      "normalized_name": "storm_rain",
-      "generated": [],
+      "status": "partial",
+      "skill": "Stormblast Mine",
+      "normalized_name": "stormblast_mine",
+      "generated": [
+        "ashigaru5_1897_bannerius"
+      ],
       "xml_count": 1,
       "unique_class_count": 1,
       "skipped_same_class": [
         {
-          "account": "elicitafk-6491",
-          "character": "Timmytunner",
-          "class": "Deadeye"
-        },
-        {
-          "account": "Hysygod-1819",
-          "character": "SosuZaPizdu",
-          "class": "Deadeye"
+          "account": "sverdrups-3489",
+          "character": "Talnakhite",
+          "class": "Champion"
         }
       ]
     }
   ],
-  "status": "advanced"
+  "status": "pending_current"
 }
