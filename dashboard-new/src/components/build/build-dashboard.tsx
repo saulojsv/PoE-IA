@@ -3,7 +3,7 @@ import { Activity, Box, Dices, GitBranch, Heart, Search, Shield, Sparkles, Sword
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
 import { catalogBasesForSlot, itemPools, loadDashboardData, loadGenerationCatalog, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
 import { loadPassiveTree } from '../../data/passive-tree'
-import { generateRandomTree } from '../../data/passive-tree'
+import { generateRandomTreeResult } from '../../data/passive-tree'
 import { ItemHoverCard } from '../equipment/item-hover-card'
 import { ItemInspector } from '../equipment/item-inspector'
 import { affixLimits, modOptionsForItem, tierForStat, tierLabel as formatTier, validateItem } from '../../data/mod-tiers'
@@ -268,6 +268,7 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
   const [characterLevel, setCharacterLevel] = useState(85)
   const [treePoints, setTreePoints] = useState(100)
   const [treeNodes, setTreeNodes] = useState<string[]>(build.nodes.map(String))
+  const [treeStats, setTreeStats] = useState<{ generated: number; connected: boolean; maxDepth: number; frontierRemaining: number } | null>(null)
   const [treeVersion, setTreeVersion] = useState(0)
   const [failures, setFailures] = useState<{ slot: string; category: string; stage: string; candidates: number }[]>([])
   const [history, setHistory] = useState(() => Number(localStorage.getItem('poe-smart-combination-count') || 0))
@@ -334,7 +335,9 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
   }
   const generateTree = async () => {
     const tree = await loadPassiveTree()
-    setTreeNodes(generateRandomTree(tree, build.class, treePoints, Math.random()))
+    const generated = generateRandomTreeResult(tree, build.class, treePoints, Math.random())
+    setTreeNodes(generated.nodes)
+    setTreeStats(generated.stats)
     setTreeVersion(value => value + 1)
   }
   const rows = Object.entries(result) as [SmartSlot, ItemDetail][]
@@ -350,7 +353,7 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
     <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
     <p className="smart-description">Gera equipamentos e rotas aleatórias conectadas à classe. A rota usa o grafo oficial 3.28 e pode ser aplicada ao rascunho da build.</p>
     <div className="smart-controls"><label>Nível / ilvl máximo <input type="number" min="1" max="100" value={characterLevel} onChange={event => setCharacterLevel(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label><label>Pontos da árvore <input type="number" min="1" max="123" value={treePoints} onChange={event => setTreePoints(Math.max(1, Math.min(123, Number(event.target.value) || 1)))} /></label><button className="smart-generate" onClick={generateTree}><GitBranch /> Gerar rota aleatória</button><button className="smart-generate" onClick={generate}><Dices /> Gerar itens</button></div>
-    {treeVersion > 0 && <><div className="smart-tree-result"><b>Rota gerada: {treeNodes.length} nós</b><span>Classe: {build.class} · cópia independente da árvore atual</span><button onClick={() => onTreeApply(treeNodes)}>Aplicar rota à build</button></div><PassiveTree build={{ ...build, nodes: treeNodes, points_used: treeNodes.length }} skill={skill} /></>}
+    {treeVersion > 0 && <><div className="smart-tree-result"><b>Rota gerada: {treeNodes.length} nós</b><span>Classe: {build.class} · {treeStats?.connected ? 'conectada' : 'inválida'} · profundidade {treeStats?.maxDepth ?? 0} · fronteira {treeStats?.frontierRemaining ?? 0}</span><button disabled={!treeStats?.connected} onClick={() => onTreeApply(treeNodes)}>Aplicar rota à build</button></div><PassiveTree build={{ ...build, nodes: treeNodes, points_used: treeNodes.length }} skill={skill} /></>}
     {!!seed && <div className="smart-result"><header><b>Resultado da tentativa · {rows.length}/{smartSlots.length} slots gerados</b><span className={rows.length === smartSlots.length ? 'valid' : 'invalid'}>{rows.length === smartSlots.length ? 'Itens completos validados' : 'Falha: existe slot sem pool válido'}</span><button disabled={rows.length !== smartSlots.length} onClick={() => onApply(Object.fromEntries(Object.entries(result).filter(([slot]) => slot in slotClass)) as Partial<Record<SlotKey, ItemDetail>>)}>Aplicar equipamentos</button></header>{failures.length > 0 && <div className="smart-failures"><b>Diagnóstico por slot</b>{failures.map(failure => <span key={failure.slot}>{failure.slot}: {failure.stage} · {failure.candidates} bases candidatas</span>)}</div>}<div className="smart-grid">{rows.map(([slot, item]) => { const limits = item.capacity || affixLimits(item, baseMods); const generated = item.generated || { prefixes: (item.affix_meta || []).filter(mod => mod.generationType === 'Prefix').length, suffixes: (item.affix_meta || []).filter(mod => mod.generationType === 'Suffix').length }; return <article key={slot} className="smart-card"><div className="smart-card-head"><b>{slot.startsWith('flask') ? `Flask ${slot.slice(5)}` : slot.startsWith('jewel') ? `Jewel ${slot.slice(5)}` : SLOT_LABELS[slot as SlotKey]}</b><small>{item.rarity} · ilvl {item.item_level} · P {generated.prefixes}/{limits.prefixes} · S {generated.suffixes}/{limits.suffixes}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod} <em>{tierLabel(item, mod)}</em></p>)}</article> })}</div></div>}
     <small className="smart-learning">Histórico local: {history} tentativa{history === 1 ? '' : 's'} guardada{history === 1 ? '' : 's'} para ranking futuro.</small>
   </section>

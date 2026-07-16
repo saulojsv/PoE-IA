@@ -39,15 +39,23 @@ export function disconnectedNodes(selected: string[], tree?: PassiveTreeData, cl
   const queue = [start]
   while (queue.length) {
     const current = queue.shift()!
-    for (const next of tree.nodes[current]?.out || []) if (allowed.has(next) && !seen.has(next)) { seen.add(next); queue.push(next) }
-    for (const [id, node] of Object.entries(tree.nodes)) if (node.out.includes(current) && allowed.has(id) && !seen.has(id)) { seen.add(id); queue.push(id) }
+    for (const next of tree.nodes[current]?.neighbors || []) if (allowed.has(next) && !seen.has(next)) { seen.add(next); queue.push(next) }
   }
   return selected.filter(id => !seen.has(id))
 }
 
-export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
+export interface PassiveTreeGenerationStats {
+  requested: number
+  generated: number
+  connected: boolean
+  disconnected: number
+  maxDepth: number
+  frontierRemaining: number
+}
+
+export function generateRandomTreeResult(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
   const start = tree.classes.find(item => item.name.toLowerCase() === className.toLowerCase())?.startNodeId
-  if (!start || !tree.nodes[start]) return []
+  if (!start || !tree.nodes[start]) return { nodes: [], stats: { requested: budget, generated: 0, connected: false, disconnected: 0, maxDepth: 0, frontierRemaining: 0 } }
   const selected = new Set<string>([start])
   const distance = new Map<string, number>([[start, 0]])
   const distanceQueue = [start]
@@ -79,5 +87,12 @@ export function generateRandomTree(tree: PassiveTreeData, className: string, bud
     const key = sector(chosen)
     sectorCounts.set(key, (sectorCounts.get(key) || 0) + 1)
   }
-  return [...selected]
+  const nodes = [...selected]
+  const disconnected = disconnectedNodes(nodes, tree, className).length
+  const frontierRemaining = new Set(nodes.flatMap(id => tree.nodes[id]?.neighbors || [])).size - selected.size
+  return { nodes, stats: { requested: budget, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining) } }
+}
+
+export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
+  return generateRandomTreeResult(tree, className, budget, seed).nodes
 }
