@@ -42,7 +42,7 @@ export function validateItem(item: ItemDetail, baseMods: any) {
     if (type === 'Prefix') prefixes += 1; else if (type === 'Suffix') suffixes += 1; else errors.push(`Tipo inválido: ${line}`)
     const group = meta?.group || info.group; if (group && groups.has(`${type}:${group}`)) errors.push(`Grupo duplicado: ${group}`); if (group) groups.add(`${type}:${group}`)
     const family = line.toLowerCase().replace(/[+-]?\d+(?:\.\d+)?/g, '#').replace(/\([^)]*\)/g, '#').replace(/\s+/g, ' ').trim(); if (stats.has(family)) errors.push(`Estatística duplicada: ${family}`); stats.add(family)
-    if (item.slot !== 'jewel' && info.tier === null) errors.push(`Tier inexistente: ${line}`)
+    if (item.slot !== 'jewel' && info.tier === null && !meta?.modId) errors.push(`Tier inexistente: ${line}`)
     if (item.slot !== 'jewel' && Number(meta?.requiredItemLevel ?? info.minItemLevel ?? 1) > item.item_level) errors.push(`Ilvl insuficiente: ${line}`)
   }
   if (prefixes > limits.prefixes) errors.push(`Prefixos excedidos: ${prefixes}/${limits.prefixes}`)

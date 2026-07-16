@@ -256,7 +256,11 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
     const failed: { slot: string; category: string; stage: string; candidates: number }[] = []
     for (const slot of smartSlots) {
       const category = slot.startsWith('flask') ? 'flask' : slot.startsWith('jewel') ? 'jewel' : slot === 'ring1' || slot === 'ring2' ? 'ring' : slot === 'weapon' ? 'weapon' : slot
-      const candidates = bases.filter(([name, base]) => base.slot === category && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade/i.test(`${name} ${base.base_type || ''}`))
+      const candidates = bases.filter(([name, base]) => {
+        const baseSlot = String(base.slot || '').toLowerCase()
+        const normalized = category === 'ring' ? 'ring' : category
+        return (baseSlot === normalized || (normalized === 'ring' && /ring/i.test(String(base.base_type || name)))) && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade/i.test(`${name} ${base.base_type || ''}`)
+      })
       const shuffledCandidates = [...candidates].sort(() => Math.random() - .5)
       let selected: [string, any] | undefined
       for (const candidate of shuffledCandidates.slice(0, 16)) {
@@ -279,14 +283,18 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
           return true
         }).slice(0, max)
       }
-      const prefixes = pick('Prefix', isFlask ? 1 : limits.prefixes)
-      const suffixes = pick('Suffix', isFlask ? 1 : limits.suffixes)
+      const totalTarget = isFlask ? 2 : category === 'jewel' ? 4 : Math.max(1, Math.floor(Math.random() * (Math.min(6, limits.prefixes + limits.suffixes) - 2)) + 3)
+      const prefixTarget = Math.min(limits.prefixes, Math.max(1, Math.floor(totalTarget / 2)))
+      const suffixTarget = Math.min(limits.suffixes, Math.max(0, totalTarget - prefixTarget))
+      const prefixes = pick('Prefix', isFlask ? 1 : prefixTarget)
+      const suffixes = pick('Suffix', isFlask ? 1 : suffixTarget)
       const jewelLimit = category === 'jewel' ? 2 : 3
       const selectedPrefixes = category === 'jewel' ? prefixes.slice(0, jewelLimit) : prefixes
       const selectedSuffixes = category === 'jewel' ? suffixes.slice(0, jewelLimit) : suffixes
       draft.explicits = [...selectedPrefixes, ...selectedSuffixes].map(mod => randomizeRanges(mod.line))
       draft.affix_meta = [...selectedPrefixes, ...selectedSuffixes].map(mod => { const tier = tierForStat(draft, mod.line, baseMods); return { modId: mod.id || '', tier: tier.tier, tierModel: tier.tierModel, requiredItemLevel: tier.tierModel === 'tierless' ? null : Number(mod.min_item_level || 1), group: mod.group || '', generationType: mod.type as 'Prefix' | 'Suffix', source: 'natural' as const } })
-      if (!validateItem(draft, baseMods).valid) continue
+      const validation = validateItem(draft, baseMods)
+      if (!validation.valid || (prefixes.length + suffixes.length) < (isFlask ? 1 : category === 'jewel' ? 2 : 3)) continue
       if ((draft.rarity === 'Rare' || draft.rarity === 'Magic') && draft.explicits.length === 0) continue
       if (slot in slotClass) next[slot as SlotKey] = draft
       else next[slot] = draft
