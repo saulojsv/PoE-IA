@@ -141,6 +141,14 @@ A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada
 - sem linha de tipo no tooltip para reduzir altura;
 - continua usando só `data-name` e `data-stats` dos círculos existentes.
 
+### Tooltip estilo árvore oficial PoE
+
+- barra superior marrom/dourada com título centralizado;
+- ornamentos vetoriais simples nos cantos, sem imagens externas;
+- corpo preto translúcido para stats;
+- stats em azul-violeta, próximo ao visual antigo oficial;
+- alteração restrita a `<g id="dashboard-node-tooltip">`.
+
 ## Combinações e ganho/perda
 
 É possível simular combinações visuais direto no SVG:
