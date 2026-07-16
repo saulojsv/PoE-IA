@@ -19,6 +19,16 @@ export type TierInfo = {
   minItemLevel?: number
 }
 
+export type ModOption = ModEntry & { line: string }
+
+export function modOptionsForItem(item: ItemDetail | undefined, baseMods: any): ModOption[] {
+  const base = baseMods?.bases?.[item?.base || '']
+  const fullMods = baseMods?.mods || {}
+  const ids = (base?.eligible_mods || []).map((entry: string | [string, number]) => Array.isArray(entry) ? entry[0] : entry)
+  const source = ids.length ? ids.map((id: string) => fullMods[id]).filter(Boolean) : Object.values(fullMods)
+  return (source as ModEntry[]).flatMap(mod => (mod.lines || [mod.line]).filter((line): line is string => Boolean(line)).map(line => ({ ...mod, line })))
+}
+
 function nums(text: string) {
   return [...text.matchAll(/[+-]?\d+(?:\.\d+)?/g)].map(x => Number(x[0]))
 }

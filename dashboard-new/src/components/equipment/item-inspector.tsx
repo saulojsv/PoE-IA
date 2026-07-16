@@ -1,13 +1,14 @@
 import { ArrowUpRight, BadgeCheck, Check, Pencil, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import type { EquipmentItem } from '../../types/build'
-import { tierForStat } from '../../data/mod-tiers'
+import { modOptionsForItem, tierForStat } from '../../data/mod-tiers'
 
 export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelect: (x: EquipmentItem) => void; baseMods: any }) {
   const [editing, setEditing] = useState(false)
   const [draftMods, setDraftMods] = useState(item.explicits || item.stats)
   const implicits = (item.implicits || []).map(stat => tierForStat(item.raw, stat, baseMods))
   const explicits = draftMods.map(stat => tierForStat(item.raw, stat, baseMods))
+  const options = useMemo(() => modOptionsForItem(item.raw, baseMods).filter((mod, index, all) => all.findIndex(other => other.id === mod.id && other.line === mod.line) === index), [item.raw, baseMods])
   const changed = useMemo(() => draftMods.some((stat, i) => stat !== (item.explicits || item.stats)[i]) || draftMods.length !== (item.explicits || item.stats).length, [draftMods, item.explicits, item.stats])
 
   return <div className="inspector">
@@ -27,7 +28,8 @@ export function ItemInspector({ item, baseMods }: { item: EquipmentItem; onSelec
         </p>)}
         {editing && <div className="mod-editor">
           <small>Editar mods explícitos</small>
-          {draftMods.map((mod, i) => <input key={i} value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))} />)}
+          {draftMods.map((mod, i) => <label className="mod-choice" key={i}><span>Mod {i + 1}</span><select value={mod} onChange={event => setDraftMods(current => current.map((value, index) => index === i ? event.target.value : value))}><option value={mod}>{mod} (atual)</option>{options.map(option => <option key={`${option.id}-${option.line}`} value={option.line}>{option.type || 'Mod'} · {option.line}</option>)}</select></label>)}
+          <button className="add-mod-choice" onClick={() => { const next = options.find(option => !draftMods.includes(option.line)); if (next) setDraftMods(current => [...current, next.line]) }}>+ Adicionar mod compatível</button>
           <button className="save-mods" disabled={!changed} onClick={() => setEditing(false)}><Check /> Aplicar prévia</button>
           {changed && <span className="mod-preview">Alteração pendente: recalcule no PoB para confirmar DPS/EHP.</span>}
         </div>}
