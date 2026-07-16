@@ -259,7 +259,7 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       const candidates = bases.filter(([name, base]) => {
         const baseSlot = String(base.slot || '').toLowerCase()
         const normalized = category === 'ring' ? 'ring' : category
-        return (baseSlot === normalized || (normalized === 'ring' && /ring/i.test(String(base.base_type || name)))) && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade/i.test(`${name} ${base.base_type || ''}`)
+        return baseSlot === normalized && !/cluster jewel|small cluster|medium cluster|large cluster|timeless jewel|charm|talisman|breach ring|ratcheting ring|capricious spiritblade/i.test(`${name} ${base.base_type || ''}`)
       })
       const shuffledCandidates = [...candidates].sort(() => Math.random() - .5)
       let selected: [string, any] | undefined
