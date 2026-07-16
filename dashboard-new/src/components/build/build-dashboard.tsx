@@ -225,8 +225,21 @@ function SmartCombinationPanel({ build, sprites, baseMods, onApply }: { build: B
       if (!baseName) continue
       const draft: ItemDetail = { name: `Smart ${baseName}`, base: baseName, rarity: 'Rare', item_level: Math.max(1, Number(base.required_level || 1)), slot, implicits: base.implicit ? [base.implicit] : [], explicits: [] }
       const options = modOptionsForItem(draft, baseMods).filter(mod => Number(mod.min_item_level || 1) <= draft.item_level)
-      const prefixes = options.filter(mod => /prefix/i.test(mod.type || '')).sort(() => Math.random() - .5).slice(0, 2)
-      const suffixes = options.filter(mod => /suffix/i.test(mod.type || '')).sort(() => Math.random() - .5).slice(0, 2)
+      const implicit = String(base.implicit || '')
+      const limit = (kind: 'Prefix' | 'Suffix') => {
+        const match = implicit.match(new RegExp('([+-]\\d+)\\s+' + kind + ' Modifiers? allowed', 'i'))
+        return Math.max(0, 3 + (match ? Number(match[1]) : 0))
+      }
+      const pick = (kind: 'Prefix' | 'Suffix', max: number) => {
+        const used = new Set<string>()
+        return options.filter(mod => new RegExp(kind, 'i').test(mod.type || '')).sort(() => Math.random() - .5).filter(mod => {
+          if (used.has(mod.group || mod.id || mod.line)) return false
+          used.add(mod.group || mod.id || mod.line)
+          return true
+        }).slice(0, max)
+      }
+      const prefixes = pick('Prefix', limit('Prefix'))
+      const suffixes = pick('Suffix', limit('Suffix'))
       draft.explicits = [...prefixes, ...suffixes].map(mod => mod.line)
       next[slot] = draft
     }
