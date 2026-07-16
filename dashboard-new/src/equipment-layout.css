@@ -119,7 +119,7 @@ main{overflow-x:hidden}
 .equipment .loadout-grid.poe-layout .item-slot:focus-within>i img,
 .equipment .loadout-grid.poe-layout .item-slot.selected>i img{transform:none!important}
 .equipment .flask-slot:hover img,.equipment .flask-slot:focus-visible img,
-.equipment .jewel-slot:hover img,.equipment .jewel-slot:focus-visible img{transform:none!important}
+.equipment .jewel-slot:hover img,.equipment .jewel-slot:focus-visible img{transform:none!important}.equipment button.jewel-slot{font:inherit;color:inherit;text-align:center;cursor:pointer}.jewel-missing-mods{position:absolute;inset:auto 2px 2px;color:#d78b70;font:7px Geist Mono;pointer-events:none}
 .equipment .flasks button{overflow:visible}
 .equipment .flasks .item-hover-card,.equipment .jewels .item-hover-card{display:none}
 .equipment .flasks button:hover .item-hover-card,.equipment .flasks button:focus-visible .item-hover-card,

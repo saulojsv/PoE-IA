@@ -138,7 +138,7 @@ function EquipmentBoard({ map, rawItems, sprites, selectedId, onSelect, pools, o
       </div>
       {activeSlot && <aside className="slot-browser"><header><b>{SLOT_LABELS[activeSlot]}</b><button onClick={() => setActiveSlot(undefined)} aria-label="Fechar">×</button></header><p>{candidates.length} opções: itens dos XMLs e bases PoE 1 disponíveis.</p><div className="slot-browser-list">{candidates.map((candidate, i) => <button key={`${candidate.name}-${candidate.base}-${i}`} onClick={event => { event.stopPropagation(); onSwap(activeSlot, candidate); setActiveSlot(undefined) }}>{spriteFor(candidate, sprites) && <img src={spriteFor(candidate, sprites)} alt="" />}<span><b>{candidate.name}</b><small>{candidate.base} · Base mínima {candidate.item_level}</small></span></button>)}</div></aside>}
       <Flasks items={rawItems} sprites={sprites} baseMods={baseMods} />
-      <Jewels items={rawItems} sprites={sprites} baseMods={baseMods} />
+      <Jewels items={rawItems} sprites={sprites} baseMods={baseMods} onSelect={onSelect} />
     </div>
   </section>
 }
@@ -148,10 +148,10 @@ function Flasks({ items, sprites, baseMods }: { items: ItemDetail[]; sprites: Re
   return <div className="flasks"><small>FLASKS</small>{Array.from({ length: 5 }).map((_, i) => { const item = flasks[i]; const equipment = item ? toEquipmentItem(item, 'belt') : undefined; return <button key={i}>{<i className="flask">{item && <img src={spriteFor(item, sprites)} alt="" />}</i>}<span>{item?.name || 'Empty'}</span>{equipment && <ItemHoverCard item={{ ...equipment, sprite: spriteFor(item, sprites) }} placement="bottom" baseMods={baseMods} />}</button> })}</div>
 }
 
-function Jewels({ items, sprites, baseMods }: { items: ItemDetail[]; sprites: Record<string, string>; baseMods: any }) {
+function Jewels({ items, sprites, baseMods, onSelect }: { items: ItemDetail[]; sprites: Record<string, string>; baseMods: any; onSelect: (item: EquipmentItem) => void }) {
   const jewels = items.filter(item => `${item.name} ${item.base} ${item.slot || ''}`.toLowerCase().includes('jewel')).slice(0, 6)
   if (!jewels.length) return null
-  return <div className="jewels"><small>JEWELS</small>{jewels.map((jewel, i) => { const equipment = toEquipmentItem(jewel, 'ring1'); return <span className="jewel-slot" key={`${jewel.name}-${jewel.base}-${i}`}><img src={spriteFor(jewel, sprites)} alt="" /><ItemHoverCard item={{ ...equipment, sprite: spriteFor(jewel, sprites) }} placement="bottom" baseMods={baseMods} /></span> })}</div>
+  return <div className="jewels"><small>JEWELS</small>{jewels.map((jewel, i) => { const equipment = toEquipmentItem(jewel, `jewel${i + 1}` as SlotKey); const sprite = spriteFor(jewel, sprites); return <button type="button" className="jewel-slot" key={`${jewel.name}-${jewel.base}-${i}`} aria-label={`Selecionar jewel ${jewel.name}`} onClick={() => onSelect(equipment)}><img src={sprite} alt="" />{equipment.stats.length ? <ItemHoverCard item={{ ...equipment, sprite }} placement="bottom" baseMods={baseMods} /> : <span className="jewel-missing-mods">Mods ausentes</span>}</button> })}</div>
 }
 
 function BuildRanking({ skill, onSelect }: { skill: SkillGroup; onSelect: (build: BuildRow) => void }) {
