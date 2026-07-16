@@ -207,37 +207,6 @@ function DamagePanel({ build }: { build: BuildRow }) {
   return <section className="panel stat-table"><div className="panel-title"><span><Sword /> DPS</span></div>{rows.map(([k, v]) => <p key={k as string}><span>{k}</span><b>{fmt(v as number)}</b></p>)}</section>
 }
 
-type TreeCardNode = { id: string; name: string; stats: string[]; kind: 'Keystone' | 'Mastery' | 'Notable' | 'Node'; known: boolean }
-
-function TreeNodeCards({ nodes }: { nodes: string[] }) {
-  const [cards, setCards] = useState<TreeCardNode[]>([])
-  useEffect(() => {
-    let alive = true
-    loadPassiveTree().then(tree => {
-      if (!alive) return
-      setCards(nodes.map(id => {
-        const node = tree.nodes[id]
-        const kind = node?.isKeystone ? 'Keystone' : node?.isMastery ? 'Mastery' : node?.isNotable ? 'Notable' : 'Node'
-        return { id, name: node?.name || 'Dados do nodo indisponíveis', stats: node?.stats || [], kind, known: Boolean(node) }
-      }))
-    }).catch(() => setCards([]))
-    return () => { alive = false }
-  }, [nodes])
-  const groups = [
-    ['Keystones', cards.filter(node => node.kind === 'Keystone')],
-    ['Masteries', cards.filter(node => node.kind === 'Mastery')],
-    ['Notables', cards.filter(node => node.kind === 'Notable')],
-    ['Nodes', cards.filter(node => node.kind === 'Node')],
-  ] as const
-  return <div className="tree-card-groups" aria-label="Pontos escolhidos na árvore"><div className="tree-selection-summary"><b>Pontos escolhidos</b><span>{cards.length} selecionados</span></div>{groups.filter(([, items]) => items.length > 0).map(([label, items]) => <section className="tree-card-group" key={label}>
-    <header><b>{label}</b><small>{items.length}</small></header>
-    <div>{items.map(node => <article className={'tree-info-card ' + node.kind.toLowerCase()} key={node.id}>
-      <span className="tree-node-sprite">{node.kind === 'Keystone' ? 'K' : node.kind === 'Mastery' ? 'M' : node.kind === 'Notable' ? 'N' : '•'}</span><div className="tree-info-copy"><strong>{node.name}</strong><small>{node.kind} · ID {node.id}</small></div>
-      <div className="tree-node-impact">{node.known && node.stats.length ? node.stats.map(stat => <p key={stat}>{stat}</p>) : <p className="missing">Impacto não disponível no catálogo</p>}</div>
-    </article>)}</div>
-  </section>)}</div>
-}
-
 type SmartSlot = SlotKey | `flask${1 | 2 | 3 | 4 | 5}` | `jewel${1 | 2 | 3 | 4 | 5 | 6}`
 const smartSlots: SmartSlot[] = ['weapon', 'helmet', 'body', 'gloves', 'boots', 'belt', 'amulet', 'ring1', 'ring2', 'offhand', 'flask1', 'flask2', 'flask3', 'flask4', 'flask5', 'jewel1', 'jewel2', 'jewel3', 'jewel4', 'jewel5', 'jewel6']
 function solveAffixDistribution(options: any[], category: string, limits: { prefixes: number; suffixes: number }) {
@@ -376,7 +345,6 @@ function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   return <section className="panel tree-panel">
     <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
     <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
-    <TreeNodeCards nodes={nodes} />
   </section>
 }
 
