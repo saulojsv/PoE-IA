@@ -134,6 +134,13 @@ A camada de sprites também fica dentro de `skilltree-3.28.svg`, mas é separada
 - cards abaixo da árvore são renderizados no React, usando os mesmos IDs selecionados e `skilltree-3.28.json`;
 - os cards separam `Keystone`, `Mastery`, `Notable` e `Node` sem alterar o SVG base.
 
+### Tooltip estilo poe.ninja
+
+- caixa compacta com fundo azul-escuro e borda cinza;
+- título branco e stats em azul;
+- sem linha de tipo no tooltip para reduzir altura;
+- continua usando só `data-name` e `data-stats` dos círculos existentes.
+
 ## Combinações e ganho/perda
 
 É possível simular combinações visuais direto no SVG:

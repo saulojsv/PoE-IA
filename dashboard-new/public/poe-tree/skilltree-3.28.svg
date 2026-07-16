@@ -6050,36 +6050,36 @@ tooltip.setAttribute('style', 'display:none;pointer-events:none');
 const rect = document.createElementNS(NS, 'rect');
 rect.setAttribute('rx', '35');
 rect.setAttribute('ry', '35');
-rect.setAttribute('fill', '#080d18');
-rect.setAttribute('stroke', '#8b6a2d');
-rect.setAttribute('stroke-width', '18');
-rect.setAttribute('opacity', '0.96');
+rect.setAttribute('fill', '#111923');
+rect.setAttribute('stroke', '#536171');
+rect.setAttribute('stroke-width', '10');
+rect.setAttribute('opacity', '0.98');
 tooltip.appendChild(rect);
 
 const title = document.createElementNS(NS, 'text');
-title.setAttribute('fill', '#f2d267');
-title.setAttribute('font-size', '190');
-title.setAttribute('font-weight', '700');
-title.setAttribute('font-family', 'Georgia, serif');
+title.setAttribute('fill', '#ffffff');
+title.setAttribute('font-size', '150');
+title.setAttribute('font-weight', '500');
+title.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(title);
 
 const kind = document.createElementNS(NS, 'text');
 kind.setAttribute('fill', '#9db0c7');
-kind.setAttribute('font-size', '115');
+kind.setAttribute('font-size', '0');
 kind.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(kind);
 
 const stats = document.createElementNS(NS, 'text');
-stats.setAttribute('fill', '#8bb7ff');
+stats.setAttribute('fill', '#6f8cff');
 stats.setAttribute('font-size', '135');
 stats.setAttribute('font-family', 'Arial, sans-serif');
 tooltip.appendChild(stats);
 root.appendChild(tooltip);
 
-const PAD_X = 95;
-const PAD_TOP = 105;
-const LINE_HEIGHT = 155;
-const MAX_CHARS = 62;
+const PAD_X = 70;
+const PAD_TOP = 92;
+const LINE_HEIGHT = 160;
+const MAX_CHARS = 42;
 
 function clearStats() {
     while (stats.firstChild) {
@@ -6142,7 +6142,7 @@ function show(event) {
     }
     const lines = (node.getAttribute('data-stats') || '').split(';;').filter(Boolean);
     title.textContent = node.getAttribute('data-name') || node.id;
-    kind.textContent = node.getAttribute('data-kind') || 'Passive';
+    kind.textContent = '';
     clearStats();
     if (lines.length) {
         for (const line of lines.slice(0, 6)) {
@@ -6168,14 +6168,14 @@ function move(event) {
     title.setAttribute('x', PAD_X);
     title.setAttribute('y', PAD_TOP);
     kind.setAttribute('x', PAD_X);
-    kind.setAttribute('y', PAD_TOP + 155);
+    kind.setAttribute('y', PAD_TOP);
     stats.setAttribute('x', PAD_X);
-    stats.setAttribute('y', PAD_TOP + 345);
+    stats.setAttribute('y', PAD_TOP + 210);
     rect.setAttribute('x', '0');
     rect.setAttribute('y', '0');
     const box = tooltip.getBBox();
-    rect.setAttribute('width', Math.min(3300, Math.max(900, box.width + PAD_X)));
-    rect.setAttribute('height', Math.min(1150, Math.max(430, box.height + 80)));
+    rect.setAttribute('width', Math.min(2100, Math.max(760, box.width + PAD_X)));
+    rect.setAttribute('height', Math.min(850, Math.max(270, box.height + 70)));
 }
 
 function hide() {
