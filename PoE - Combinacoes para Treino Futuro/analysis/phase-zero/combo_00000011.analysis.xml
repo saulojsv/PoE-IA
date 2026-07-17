@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000011" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000011.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution_of_inspiring\FSvN127jRxu3.xml" sha256="25f4194bdaeb0e4abe0cd598c761115a2e8501a1c64bd6f26c50b54a3bda9f9e" />
+  <phaseZeroProfile class="Witch" ascendancy="Elementalist" mainSkill="Absolution of Inspiring" treeVersion="3_26" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>133</totalPassivePoints>
+    <defensiveNodeCount>43</defensiveNodeCount>
+    <defensiveWeightedPoints>34.383</defensiveWeightedPoints>
+    <travelPoints>81</travelPoints>
+    <offensivePoints>25.95</offensivePoints>
+    <utilityPoints>33.667</utilityPoints>
+    <hybridPoints>19</hybridPoints>
+    <unresolvedNodes>9</unresolvedNodes>
+    <lifePoints>5.417</lifePoints>
+    <mana_defensePoints>5.0</mana_defensePoints>
+    <energy_shieldPoints>9.15</energy_shieldPoints>
+    <leechPoints>0.983</leechPoints>
+    <ailment_avoidancePoints>5.0</ailment_avoidancePoints>
+    <recovery_ratePoints>0.983</recovery_ratePoints>
+    <recovery_on_blockPoints>2.317</recovery_on_blockPoints>
+    <spell_suppressionPoints>2.25</spell_suppressionPoints>
+    <rechargePoints>0.45</rechargePoints>
+    <regenerationPoints>0.667</regenerationPoints>
+    <evasionPoints>0.333</evasionPoints>
+    <elemental_resistancePoints>1.25</elemental_resistancePoints>
+    <maximum_resistancesPoints>0.25</maximum_resistancesPoints>
+    <spell_blockPoints>0.333</spell_blockPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>133</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

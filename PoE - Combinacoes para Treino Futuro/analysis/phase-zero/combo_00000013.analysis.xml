@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000013" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000013.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\ambush\3_28_DfSB4HyHWHg_404716a1.xml" sha256="fb7c7c52256432e682831dffbcb00a2d262fbe5c4dc00eaa6b130ac1d5c56971" />
+  <phaseZeroProfile class="Duelist" ascendancy="Slayer" mainSkill="Ambush" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>130</totalPassivePoints>
+    <defensiveNodeCount>58</defensiveNodeCount>
+    <defensiveWeightedPoints>50.383</defensiveWeightedPoints>
+    <travelPoints>72</travelPoints>
+    <offensivePoints>16.783</offensivePoints>
+    <utilityPoints>37.833</utilityPoints>
+    <hybridPoints>16</hybridPoints>
+    <unresolvedNodes>0</unresolvedNodes>
+    <ailment_avoidancePoints>3.417</ailment_avoidancePoints>
+    <lifePoints>24.7</lifePoints>
+    <leechPoints>1.2</leechPoints>
+    <elemental_resistancePoints>5.667</elemental_resistancePoints>
+    <armourPoints>2.0</armourPoints>
+    <avoidancePoints>1.333</avoidancePoints>
+    <regenerationPoints>2.167</regenerationPoints>
+    <curse_defensePoints>1.5</curse_defensePoints>
+    <mana_defensePoints>2.0</mana_defensePoints>
+    <maximum_resistancesPoints>1.333</maximum_resistancesPoints>
+    <recovery_ratePoints>0.2</recovery_ratePoints>
+    <recovery_on_blockPoints>0.7</recovery_on_blockPoints>
+    <energy_shieldPoints>1.333</energy_shieldPoints>
+    <evasionPoints>0.667</evasionPoints>
+    <attack_blockPoints>0.583</attack_blockPoints>
+    <physical_mitigationPoints>1.25</physical_mitigationPoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Items,Calcs,Notes,Party,Tree,TreeView,Skills,Import,Config</topLevelOrder>
+    <nodeCount>130</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

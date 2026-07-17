@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000024" createdAt="2026-07-17T13:55:25+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000024.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\animate_guardian_of_smiting\aragos_7557_ahojjasemcernykocour.xml" sha256="8bea41aae0c8baaef50712b6e3e4f5bd99fa644e910bdbcd159a9ffe302a4eef" />
+  <phaseZeroProfile class="Witch" ascendancy="Necromancer" mainSkill="Meat Shield" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>134</totalPassivePoints>
+    <defensiveNodeCount>44</defensiveNodeCount>
+    <defensiveWeightedPoints>36.467</defensiveWeightedPoints>
+    <travelPoints>76</travelPoints>
+    <offensivePoints>26.367</offensivePoints>
+    <utilityPoints>34.167</utilityPoints>
+    <hybridPoints>17</hybridPoints>
+    <unresolvedNodes>14</unresolvedNodes>
+    <lifePoints>14.7</lifePoints>
+    <evasionPoints>1.333</evasionPoints>
+    <spell_suppressionPoints>0.667</spell_suppressionPoints>
+    <energy_shieldPoints>2.533</energy_shieldPoints>
+    <maximum_resistancesPoints>1.0</maximum_resistancesPoints>
+    <elemental_resistancePoints>5.167</elemental_resistancePoints>
+    <ailment_avoidancePoints>0.333</ailment_avoidancePoints>
+    <mana_defensePoints>1.833</mana_defensePoints>
+    <armourPoints>3.167</armourPoints>
+    <physical_mitigationPoints>1.2</physical_mitigationPoints>
+    <leechPoints>0.2</leechPoints>
+    <regenerationPoints>3.167</regenerationPoints>
+    <recovery_on_blockPoints>0.5</recovery_on_blockPoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <curse_defensePoints>0.333</curse_defensePoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

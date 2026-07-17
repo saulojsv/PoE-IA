@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000007" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000007.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution\xquQv5JXRgAa.xml" sha256="9e0a0da013bfbcafbbe3b2b45a19c65d8b1b0e54f5c6a6384d9c22e1fb4a3f14" />
+  <phaseZeroProfile class="Templar" ascendancy="Guardian" mainSkill="Tempest Shield" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>134</totalPassivePoints>
+    <defensiveNodeCount>42</defensiveNodeCount>
+    <defensiveWeightedPoints>34.217</defensiveWeightedPoints>
+    <travelPoints>70</travelPoints>
+    <offensivePoints>26.95</offensivePoints>
+    <utilityPoints>26.833</utilityPoints>
+    <hybridPoints>18</hybridPoints>
+    <unresolvedNodes>22</unresolvedNodes>
+    <lifePoints>13.0</lifePoints>
+    <attack_blockPoints>0.2</attack_blockPoints>
+    <spell_blockPoints>2.783</spell_blockPoints>
+    <maximum_resistancesPoints>0.2</maximum_resistancesPoints>
+    <elemental_resistancePoints>0.7</elemental_resistancePoints>
+    <mana_defensePoints>3.833</mana_defensePoints>
+    <regenerationPoints>2.5</regenerationPoints>
+    <energy_shieldPoints>5.417</energy_shieldPoints>
+    <curse_defensePoints>1.667</curse_defensePoints>
+    <physical_mitigationPoints>1.0</physical_mitigationPoints>
+    <armourPoints>1.833</armourPoints>
+    <rechargePoints>0.5</rechargePoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <recovery_on_blockPoints>0.25</recovery_on_blockPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Notes,Config,TreeView,Skills,Import,Items,Tree,Calcs,Party</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

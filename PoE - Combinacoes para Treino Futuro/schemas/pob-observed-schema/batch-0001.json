@@ -1,0 +1,227 @@
+{
+  "tags": {
+    "PathOfBuilding": 25,
+    "Build": 25,
+    "PlayerStat": 2332,
+    "FullDPSSkill": 21,
+    "TimelessData": 25,
+    "Import": 25,
+    "Party": 25,
+    "Tree": 25,
+    "Spec": 39,
+    "URL": 39,
+    "Sockets": 39,
+    "Socket": 272,
+    "Overrides": 39,
+    "Notes": 25,
+    "Skills": 25,
+    "SkillSet": 42,
+    "Skill": 383,
+    "Gem": 952,
+    "Calcs": 25,
+    "Input": 520,
+    "Section": 1247,
+    "TreeView": 25,
+    "Items": 25,
+    "Item": 804,
+    "ModRange": 4627,
+    "ItemSet": 41,
+    "Slot": 3016,
+    "SocketIdURL": 352,
+    "TradeSearchWeights": 24,
+    "Config": 25,
+    "ConfigSet": 27,
+    "Placeholder": 730,
+    "MinionStat": 314,
+    "Override": 340,
+    "Spectre": 2,
+    "Stat": 2
+  },
+  "attributesByTag": {
+    "Build": {
+      "ascendClassName": 25,
+      "bandit": 25,
+      "characterLevelAutoMode": 25,
+      "className": 25,
+      "level": 25,
+      "mainSocketGroup": 25,
+      "pantheonMajorGod": 25,
+      "pantheonMinorGod": 25,
+      "targetVersion": 25,
+      "viewMode": 25
+    },
+    "PlayerStat": {
+      "stat": 25,
+      "value": 25
+    },
+    "FullDPSSkill": {
+      "skillPart": 7,
+      "source": 7,
+      "stat": 7,
+      "value": 7
+    },
+    "TimelessData": {
+      "devotionVariant1": 25,
+      "devotionVariant2": 25,
+      "searchList": 25,
+      "searchListFallback": 25,
+      "socketFilterDistance": 7,
+      "conquerorTypeId": 3,
+      "jewelSocketId": 3,
+      "jewelTypeId": 3,
+      "socketFilter": 3
+    },
+    "Import": {
+      "exportParty": 25,
+      "lastAccountHash": 7,
+      "lastCharacterHash": 7,
+      "lastRealm": 7,
+      "importLink": 1
+    },
+    "Party": {
+      "ShowAdvanceTools": 25,
+      "append": 25,
+      "destination": 25
+    },
+    "Tree": {
+      "activeSpec": 25
+    },
+    "Spec": {
+      "ascendClassId": 25,
+      "classId": 25,
+      "masteryEffects": 25,
+      "nodes": 25,
+      "secondaryAscendClassId": 25,
+      "title": 4,
+      "treeVersion": 25,
+      "clusterHashFormatVersion": 19
+    },
+    "Socket": {
+      "itemId": 25,
+      "nodeId": 25
+    },
+    "Skills": {
+      "activeSkillSet": 25,
+      "defaultGemLevel": 25,
+      "defaultGemQuality": 25,
+      "showAltQualityGems": 6,
+      "showSupportGemTypes": 25,
+      "sortGemsByDPS": 25,
+      "sortGemsByDPSField": 25,
+      "showLegacyGems": 22
+    },
+    "SkillSet": {
+      "id": 25,
+      "title": 4
+    },
+    "Skill": {
+      "enabled": 25,
+      "includeInFullDPS": 25,
+      "label": 21,
+      "mainActiveSkill": 25,
+      "mainActiveSkillCalcs": 25,
+      "slot": 25,
+      "source": 19,
+      "imbuedSupport": 12
+    },
+    "Gem": {
+      "count": 25,
+      "enableGlobal1": 25,
+      "enableGlobal2": 25,
+      "enabled": 25,
+      "gemId": 25,
+      "level": 25,
+      "nameSpec": 25,
+      "quality": 25,
+      "qualityId": 6,
+      "skillId": 25,
+      "skillMinion": 24,
+      "skillMinionSkill": 23,
+      "skillMinionSkillCalcs": 23,
+      "skillPart": 13,
+      "skillPartCalcs": 2,
+      "variantId": 25,
+      "skillMinionCalcs": 7,
+      "skillMinionItemSet": 17,
+      "skillMinionItemSetCalcs": 1
+    },
+    "Input": {
+      "boolean": 25,
+      "name": 25,
+      "number": 25,
+      "string": 25
+    },
+    "Section": {
+      "collapsed": 25,
+      "id": 25,
+      "subsection": 25
+    },
+    "TreeView": {
+      "searchStr": 25,
+      "showStatDifferences": 25,
+      "zoomLevel": 25,
+      "zoomX": 25,
+      "zoomY": 25
+    },
+    "Items": {
+      "activeItemSet": 25,
+      "showStatDifferences": 25,
+      "useSecondWeaponSet": 25
+    },
+    "Item": {
+      "id": 25,
+      "variant": 5,
+      "variantAlt": 2,
+      "variantAlt2": 1
+    },
+    "ModRange": {
+      "id": 25,
+      "range": 25
+    },
+    "ItemSet": {
+      "id": 25,
+      "title": 5,
+      "useSecondWeaponSet": 25
+    },
+    "Slot": {
+      "active": 21,
+      "itemId": 25,
+      "itemPbURL": 25,
+      "name": 25
+    },
+    "SocketIdURL": {
+      "itemPbURL": 25,
+      "name": 25,
+      "nodeId": 25
+    },
+    "Config": {
+      "activeConfigSet": 25
+    },
+    "ConfigSet": {
+      "id": 25,
+      "title": 24
+    },
+    "Placeholder": {
+      "name": 25,
+      "number": 25
+    },
+    "MinionStat": {
+      "stat": 17,
+      "value": 17
+    },
+    "Override": {
+      "activeEffectImage": 18,
+      "dn": 18,
+      "icon": 18,
+      "nodeId": 18
+    },
+    "Spectre": {
+      "id": 1
+    },
+    "Stat": {
+      "label": 1,
+      "stat": 1,
+      "weightMult": 1
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000020" createdAt="2026-07-17T13:55:25+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000020.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\animate_guardian\neilhumanbreen_2739_sixseventotaguy.xml" sha256="6279882c2a9d012effe9413c9bd0f3b60873de45f1cea25c5d95ea774ef286dc" />
+  <phaseZeroProfile class="Duelist" ascendancy="Aristocrat" mainSkill="Gluttony" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>142</totalPassivePoints>
+    <defensiveNodeCount>21</defensiveNodeCount>
+    <defensiveWeightedPoints>18.167</defensiveWeightedPoints>
+    <travelPoints>85</travelPoints>
+    <offensivePoints>16.667</offensivePoints>
+    <utilityPoints>44.167</utilityPoints>
+    <hybridPoints>7</hybridPoints>
+    <unresolvedNodes>36</unresolvedNodes>
+    <evasionPoints>4.167</evasionPoints>
+    <spell_suppressionPoints>1.0</spell_suppressionPoints>
+    <lifePoints>4.333</lifePoints>
+    <recovery_on_blockPoints>0.833</recovery_on_blockPoints>
+    <mana_defensePoints>2.0</mana_defensePoints>
+    <energy_shieldPoints>2.0</energy_shieldPoints>
+    <poison_defensePoints>0.5</poison_defensePoints>
+    <armourPoints>0.667</armourPoints>
+    <elemental_resistancePoints>2.333</elemental_resistancePoints>
+    <leechPoints>0.333</leechPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>142</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

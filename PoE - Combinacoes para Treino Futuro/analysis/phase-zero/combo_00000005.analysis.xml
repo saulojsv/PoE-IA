@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000005" createdAt="2026-07-17T13:55:23+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000005.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution\surgi_xe_5391_surg_mirage.xml" sha256="0084410b4c2cb118601c825a551b2086872ee32bc20d72a98ed79c861f2be711" />
+  <phaseZeroProfile class="Templar" ascendancy="Guardian" mainSkill="Raise Spectre" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>134</totalPassivePoints>
+    <defensiveNodeCount>50</defensiveNodeCount>
+    <defensiveWeightedPoints>41.967</defensiveWeightedPoints>
+    <travelPoints>67</travelPoints>
+    <offensivePoints>23.45</offensivePoints>
+    <utilityPoints>30.583</utilityPoints>
+    <hybridPoints>20</hybridPoints>
+    <unresolvedNodes>17</unresolvedNodes>
+    <curse_defensePoints>2.0</curse_defensePoints>
+    <lifePoints>13.0</lifePoints>
+    <mana_defensePoints>5.167</mana_defensePoints>
+    <energy_shieldPoints>7.117</energy_shieldPoints>
+    <armourPoints>6.2</armourPoints>
+    <recovery_ratePoints>0.25</recovery_ratePoints>
+    <recovery_on_blockPoints>1.2</recovery_on_blockPoints>
+    <spell_blockPoints>3.583</spell_blockPoints>
+    <regenerationPoints>1.617</regenerationPoints>
+    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
+    <elemental_resistancePoints>0.833</elemental_resistancePoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <attack_blockPoints>0.333</attack_blockPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>

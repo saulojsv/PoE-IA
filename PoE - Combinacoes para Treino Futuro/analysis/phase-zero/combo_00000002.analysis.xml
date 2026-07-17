@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000002" createdAt="2026-07-17T13:55:23+00:00" schemaVersion="phase0-1">
+  <pair pobXml="combo_00000002.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution\Absolution - ID 2.xml" sha256="62f0590adadbcba1bcce7127415e820fe0738738b1b1fa9430126933f9cd40be" />
+  <phaseZeroProfile class="Witch" ascendancy="Necromancer" mainSkill="Spark" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics>
+    <totalPassivePoints>125</totalPassivePoints>
+    <defensiveNodeCount>42</defensiveNodeCount>
+    <defensiveWeightedPoints>31.517</defensiveWeightedPoints>
+    <travelPoints>65</travelPoints>
+    <offensivePoints>25.817</offensivePoints>
+    <utilityPoints>30.667</utilityPoints>
+    <hybridPoints>25</hybridPoints>
+    <unresolvedNodes>18</unresolvedNodes>
+    <energy_shieldPoints>5.233</energy_shieldPoints>
+    <lifePoints>11.783</lifePoints>
+    <mana_defensePoints>5.667</mana_defensePoints>
+    <regenerationPoints>1.833</regenerationPoints>
+    <chaos_resistancePoints>1.25</chaos_resistancePoints>
+    <curse_defensePoints>0.833</curse_defensePoints>
+    <spell_blockPoints>1.333</spell_blockPoints>
+    <leechPoints>0.983</leechPoints>
+    <recovery_ratePoints>0.45</recovery_ratePoints>
+    <recovery_on_blockPoints>0.45</recovery_on_blockPoints>
+    <rechargePoints>0.5</rechargePoints>
+    <elemental_resistancePoints>0.5</elemental_resistancePoints>
+    <ailment_avoidancePoints>0.5</ailment_avoidancePoints>
+    <physical_mitigationPoints>0.2</physical_mitigationPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Tree,TreeView,Skills,Import,Items,Calcs,Notes,Party,Config</topLevelOrder>
+    <nodeCount>125</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+  </audit>
+</pobBuildAnalysis>
