@@ -157,6 +157,7 @@ export interface BuildDraft {
 export interface PassiveTreeNode {
   id: string
   name: string
+  group?: string
   x: number
   y: number
   stats: string[]

@@ -21,7 +21,7 @@ async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
     const orbit = node.orbit || 0
     const angle = (node.orbitIndex || 0) * Math.PI * 2 / (raw.constants.skillsPerOrbit[orbit] || 1)
     const radius = raw.constants.orbitRadii[orbit] || 0
-    return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, isClassStart: Number.isInteger(node.classStartIndex), out: node.out || [], neighbors: [] }]
+    return [id, { id, name: node.name, group: String(node.group || ''), x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, isClassStart: Number.isInteger(node.classStartIndex), out: node.out || [], neighbors: [] }]
   }))
   const reverse = new Map<string, string[]>()
   for (const node of Object.values(nodes)) for (const target of node.out) reverse.set(target, [...(reverse.get(target) || []), node.id])
@@ -54,11 +54,23 @@ export interface PassiveTreeGenerationStats {
   travel: number
   travelRatio: number
   regions: number
+  paidPoints?: number
+  travelByReason?: number
+  investment?: number
+  touchedClusters?: number
+  completedClusters?: number
+  travelOnlyClusters?: number
+  incompleteClusters?: number
+  badLeaves?: number
+  redundantNodes?: number
+  proposalsAccepted?: number
+  proposalsRejected?: number
   proposals?: number
   beamWidth?: number
 }
 
-type TreeState = { selected: Set<string>; score: number; regions: Set<string>; proposals: number }
+type SelectionReason = 'path' | 'hybrid' | 'investment' | 'fill'
+type TreeState = { selected: Set<string>; score: number; regions: Set<string>; reasons: Map<string, SelectionReason>; proposals: number; rejected: number }
 type TreeProposal = { target: string; path: string[]; cost: number; value: number; efficiency: number }
 
 const useful = /\blife|energy shield|armour|evasion|resistance|suppress|block|damage|attack|spell|critical|crit|speed|mana|reservation|leech|regeneration|recovery|charge|ailment|elemental|projectile|bow|lightning|cold|fire|chaos|physical\b/i
@@ -80,6 +92,11 @@ function nodeValue(node?: PassiveTreeNode) {
   if (useful.test(text)) score += 4
   if (avoid.test(text) && !useful.test(text)) score -= 6
   return score
+}
+
+function selectionReason(node: PassiveTreeNode, isTarget: boolean): SelectionReason {
+  if (isTarget) return 'investment'
+  return nodeValue(node) >= 10 ? 'hybrid' : 'path'
 }
 
 function pathsFromSelected(tree: PassiveTreeData, selected: Set<string>, maxCost: number) {
@@ -167,20 +184,23 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
   const requested = Math.max(1, Math.min(123, budget))
   const internalBudget = requested + 1
   const beamWidth = 6
-  let beam: TreeState[] = [{ selected: new Set([start]), score: 0, regions: new Set([sector(tree.nodes[start])]), proposals: 0 }]
+  let beam: TreeState[] = [{ selected: new Set([start]), score: 0, regions: new Set([sector(tree.nodes[start])]), reasons: new Map([[start, 'path']]), proposals: 0, rejected: 0 }]
   while (beam.some(state => state.selected.size < internalBudget)) {
     const expanded: TreeState[] = []
     for (const state of beam) {
       const remaining = internalBudget - state.selected.size
       if (remaining <= 0) { expanded.push(state); continue }
-      for (const proposal of proposalsForState(tree, state, remaining)) {
+      const proposals = proposalsForState(tree, state, remaining)
+      for (const proposal of proposals) {
         const nextSelected = new Set(state.selected)
         const nextRegions = new Set(state.regions)
+        const nextReasons = new Map(state.reasons)
         for (const id of proposal.path) {
           nextSelected.add(id)
           nextRegions.add(sector(tree.nodes[id]))
+          if (!nextReasons.has(id) || id === proposal.target) nextReasons.set(id, selectionReason(tree.nodes[id], id === proposal.target))
         }
-        expanded.push({ selected: nextSelected, regions: nextRegions, score: state.score + proposal.value - proposal.cost * 1.5, proposals: state.proposals + 1 })
+        expanded.push({ selected: nextSelected, regions: nextRegions, reasons: nextReasons, score: state.score + proposal.value - proposal.cost * 1.5, proposals: state.proposals + 1, rejected: state.rejected + Math.max(0, proposals.length - 1) })
       }
     }
     if (!expanded.length) break
@@ -189,10 +209,27 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
   }
   const best = fillConnected(tree, beam.sort((a, b) => b.score - a.score)[0], internalBudget)
   const nodes = [...best.selected].filter(id => id !== start && !tree.nodes[id]?.isClassStart).slice(0, requested)
+  for (const id of nodes) if (!best.reasons.has(id)) best.reasons.set(id, nodeValue(tree.nodes[id]) >= 10 ? 'investment' : 'fill')
   const disconnected = disconnectedNodes(nodes, tree, className).length
   const frontierRemaining = new Set(nodes.flatMap(id => tree.nodes[id]?.neighbors || [])).size - best.selected.size
-  const travel = nodes.filter(id => { const node = tree.nodes[id]; return node && !node.isNotable && !node.isKeystone && !node.isMastery && !node.stats.length }).length
-  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: best.regions.size, proposals: best.proposals, beamWidth } }
+  const selectedSet = new Set([...nodes, start])
+  const travel = nodes.filter(id => best.reasons.get(id) === 'path' || best.reasons.get(id) === 'fill').length
+  const groups = new Map<string, string[]>()
+  for (const id of nodes) {
+    const key = tree.nodes[id]?.group || `node:${id}`
+    groups.set(key, [...(groups.get(key) || []), id])
+  }
+  let completedClusters = 0, travelOnlyClusters = 0, incompleteClusters = 0
+  for (const ids of groups.values()) {
+    const hasObjective = ids.some(id => tree.nodes[id]?.isNotable || tree.nodes[id]?.isKeystone || tree.nodes[id]?.isMastery)
+    if (hasObjective) completedClusters += 1
+    else travelOnlyClusters += 1
+  }
+  const routeDegree = (id: string) => (tree.nodes[id]?.neighbors || []).filter(next => selectedSet.has(next)).length
+  const badLeaves = nodes.filter(id => routeDegree(id) <= 1 && nodeValue(tree.nodes[id]) < 10 && !tree.nodes[id]?.isNotable && !tree.nodes[id]?.isKeystone && !tree.nodes[id]?.isMastery).length
+  const redundantNodes = nodes.filter(id => routeDegree(id) > 1 && nodeValue(tree.nodes[id]) < 4 && best.reasons.get(id) !== 'investment').length
+  const strategicRegions = new Set(nodes.map(id => `${Math.round(tree.nodes[id].x / 1800)}:${Math.round(tree.nodes[id].y / 1800)}`)).size
+  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: strategicRegions, paidPoints: nodes.length, travelByReason: travel, investment: nodes.length - travel, touchedClusters: groups.size, completedClusters, travelOnlyClusters, incompleteClusters, badLeaves, redundantNodes, proposals: best.proposals, proposalsAccepted: best.proposals, proposalsRejected: best.rejected, beamWidth } }
 }
 
 export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {

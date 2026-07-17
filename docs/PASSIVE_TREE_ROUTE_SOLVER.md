@@ -11,7 +11,7 @@ O gerador de rota não escolhe nós aleatórios. Ele trata a árvore passiva com
 5. Pontua a proposta por valor do alvo menos custo de travel e dispersão regional.
 6. Mantém as melhores rotas com beam search.
 7. Preenche pontos restantes apenas por vizinhos conectados.
-8. Valida `connected`, `travel`, `travelRatio`, `regions`, `proposals` e `beamWidth`.
+8. Valida `connected`, `travel`, `travelRatio`, clusters, propostas, folhas ruins e redundância estimada.
 
 Critério atual de valor:
 
@@ -23,5 +23,13 @@ Regra importante: a árvore/SVG/base visual não participa da geração. O SVG s
 A dashboard não cria cópias visuais dos nós. Ela mantém o SVG oficial isolado em `<object>` e, quando o documento interno fica disponível, adiciona apenas regras CSS para `#n{id}` e `#c{idA-idB}`. Assim, os nós e as arestas continuam sendo os elementos originais do `skilltree-3.28.svg`.
 
 O start interno da classe é usado pelo solver como âncora, mas não é retornado como ponto comprado quando ele não existe como círculo visual no SVG.
+
+Métricas de auditoria:
+
+- `travelByReason`: pontos comprados por caminho/preenchimento, não por ausência de stats.
+- `investment`: pontos comprados pelo valor do próprio nó.
+- `touchedClusters`, `completedClusters`, `travelOnlyClusters`, `incompleteClusters`.
+- `badLeaves` e `redundantNodes` para indicar galhos fracos ou pontos de baixo valor.
+- `proposalsAccepted` e `proposalsRejected`.
 
 Próxima melhoria segura: passar perfil da skill/build para o solver, por exemplo `bow`, `projectile`, `lightning`, `attack`, `life`, e trocar a pontuação genérica por pontuação contextual.
