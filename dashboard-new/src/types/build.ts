@@ -163,6 +163,7 @@ export interface PassiveTreeNode {
   isNotable?: boolean
   isKeystone?: boolean
   isMastery?: boolean
+  isClassStart?: boolean
   out: string[]
   neighbors?: string[]
 }

@@ -21,7 +21,7 @@ async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
     const orbit = node.orbit || 0
     const angle = (node.orbitIndex || 0) * Math.PI * 2 / (raw.constants.skillsPerOrbit[orbit] || 1)
     const radius = raw.constants.orbitRadii[orbit] || 0
-    return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, out: node.out || [], neighbors: [] }]
+    return [id, { id, name: node.name, x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, isClassStart: Number.isInteger(node.classStartIndex), out: node.out || [], neighbors: [] }]
   }))
   const reverse = new Map<string, string[]>()
   for (const node of Object.values(nodes)) for (const target of node.out) reverse.set(target, [...(reverse.get(target) || []), node.id])
@@ -96,6 +96,7 @@ function pathsFromSelected(tree: PassiveTreeData, selected: Set<string>, maxCost
       if (seen.has(next)) continue
       const node = tree.nodes[next]
       if (!node) continue
+      if (node.isClassStart) continue
       seen.add(next)
       parent.set(next, current)
       depth.set(next, currentDepth + 1)
@@ -140,7 +141,7 @@ function proposalsForState(tree: PassiveTreeData, state: TreeState, remaining: n
 
 function fillConnected(tree: PassiveTreeData, state: TreeState, budget: number) {
   while (state.selected.size < budget) {
-    const frontier = [...state.selected].flatMap(id => tree.nodes[id]?.neighbors || []).filter(id => !state.selected.has(id) && tree.nodes[id])
+    const frontier = [...state.selected].flatMap(id => tree.nodes[id]?.neighbors || []).filter(id => !state.selected.has(id) && tree.nodes[id] && !tree.nodes[id].isClassStart)
     const ranked = [...new Set(frontier)].map(id => {
       const node = tree.nodes[id]
       const regionPenalty = state.regions.has(sector(node)) ? 0 : 4
@@ -164,12 +165,13 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
     for (const next of tree.nodes[current]?.neighbors || []) if (!distance.has(next)) { distance.set(next, distance.get(current)! + 1); distanceQueue.push(next) }
   }
   const requested = Math.max(1, Math.min(123, budget))
+  const internalBudget = requested + 1
   const beamWidth = 6
   let beam: TreeState[] = [{ selected: new Set([start]), score: 0, regions: new Set([sector(tree.nodes[start])]), proposals: 0 }]
-  while (beam.some(state => state.selected.size < requested)) {
+  while (beam.some(state => state.selected.size < internalBudget)) {
     const expanded: TreeState[] = []
     for (const state of beam) {
-      const remaining = requested - state.selected.size
+      const remaining = internalBudget - state.selected.size
       if (remaining <= 0) { expanded.push(state); continue }
       for (const proposal of proposalsForState(tree, state, remaining)) {
         const nextSelected = new Set(state.selected)
@@ -183,10 +185,10 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
     }
     if (!expanded.length) break
     beam = expanded.sort((a, b) => b.score - a.score || a.selected.size - b.selected.size).slice(0, beamWidth)
-    if (beam[0].selected.size >= requested) break
+    if (beam[0].selected.size >= internalBudget) break
   }
-  const best = fillConnected(tree, beam.sort((a, b) => b.score - a.score)[0], requested)
-  const nodes = [...best.selected].slice(0, requested)
+  const best = fillConnected(tree, beam.sort((a, b) => b.score - a.score)[0], internalBudget)
+  const nodes = [...best.selected].filter(id => id !== start && !tree.nodes[id]?.isClassStart).slice(0, requested)
   const disconnected = disconnectedNodes(nodes, tree, className).length
   const frontierRemaining = new Set(nodes.flatMap(id => tree.nodes[id]?.neighbors || [])).size - best.selected.size
   const travel = nodes.filter(id => { const node = tree.nodes[id]; return node && !node.isNotable && !node.isKeystone && !node.isMastery && !node.stats.length }).length

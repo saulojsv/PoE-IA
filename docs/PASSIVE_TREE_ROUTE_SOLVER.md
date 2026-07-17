@@ -20,6 +20,8 @@ Critério atual de valor:
 
 Regra importante: a árvore/SVG/base visual não participa da geração. O SVG só exibe os IDs selecionados. A rota vem do grafo oficial.
 
-A dashboard também renderiza uma camada React por cima do SVG com os mesmos `x/y` do JSON oficial. Essa camada é fallback visual: marca nós e links selecionados mesmo quando o `<object>` do SVG não expõe `tree_load` a tempo. Ela não altera `skilltree-3.28.svg`.
+A dashboard não cria cópias visuais dos nós. Ela injeta o SVG oficial inline e adiciona apenas regras CSS para `#n{id}` e `#c{idA-idB}`. Assim, os nós e as arestas continuam sendo os elementos originais do `skilltree-3.28.svg`.
+
+O start interno da classe é usado pelo solver como âncora, mas não é retornado como ponto comprado quando ele não existe como círculo visual no SVG.
 
 Próxima melhoria segura: passar perfil da skill/build para o solver, por exemplo `bow`, `projectile`, `lightning`, `attack`, `life`, e trocar a pontuação genérica por pontuação contextual.
