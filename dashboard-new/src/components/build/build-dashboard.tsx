@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react'
+﻿import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, Box, Dices, GitBranch, Heart, Search, Shield, Sparkles, Sword, Zap } from 'lucide-react'
 import type { BuildData, BuildRow, BuildStage, EquipmentItem, ItemDetail, SkillGroup, SlotKey } from '../../types/build'
 import { catalogBasesForSlot, itemPools, loadDashboardData, loadGenerationCatalog, mapEquipment, scoreBuild, SLOT_LABELS, spriteFor, toEquipmentItem, validSkills } from '../../data/poe-data'
@@ -329,25 +329,47 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
 }
 
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
+  const ref = useRef<HTMLObjectElement>(null)
   const [tree, setTree] = useState<any>(null)
-  const [svgMarkup, setSvgMarkup] = useState('')
   const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
   const selected = useMemo(() => new Set(nodes), [nodes])
   useEffect(() => { loadPassiveTree().then(setTree).catch(() => setTree(null)) }, [])
-  useEffect(() => { fetch('/poe-tree/skilltree-3.28.svg').then(response => response.text()).then(setSvgMarkup).catch(() => setSvgMarkup('')) }, [])
-  const routeSvg = useMemo(() => {
-    if (!svgMarkup || !tree) return ''
+  const routeCss = useMemo(() => {
+    if (!tree) return ''
     const validNodes = [...new Set(nodes)].filter(id => tree.nodes[id])
     const edgeRules = validNodes.flatMap(id => (tree.nodes[id]?.neighbors || [])
       .filter((next: string) => selected.has(next) && Number(id) < Number(next))
       .flatMap((next: string) => [`#c${id}-${next}`, `#c${next}-${id}`]))
     const nodeRules = validNodes.map(id => `#n${id}`)
-    const routeCss = `<style id="dashboard-route-highlight">${nodeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}${edgeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}</style>`
-    return svgMarkup.replace('</svg>', `${routeCss}</svg>`)
-  }, [nodes, selected, svgMarkup, tree])
+    return `${nodeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}${edgeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}`
+  }, [nodes, selected, tree])
+  useEffect(() => {
+    const object = ref.current
+    if (!object || !routeCss) return
+    let cancelled = false
+    let attempts = 0
+    const apply = () => {
+      const doc = object.contentDocument
+      if (doc?.documentElement) {
+        doc.getElementById('dashboard-route-highlight')?.remove()
+        const style = doc.createElementNS('http://www.w3.org/2000/svg', 'style')
+        style.setAttribute('id', 'dashboard-route-highlight')
+        style.textContent = routeCss
+        doc.documentElement.appendChild(style)
+        return
+      }
+      if (!cancelled && attempts < 80) {
+        attempts += 1
+        window.setTimeout(apply, 50)
+      }
+    }
+    object.addEventListener('load', apply)
+    apply()
+    return () => { cancelled = true; object.removeEventListener('load', apply) }
+  }, [routeCss])
   return <section className="panel tree-panel">
     <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
-    <div className="pob-tree-inline" dangerouslySetInnerHTML={{ __html: routeSvg }} />
+    <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
   </section>
 }
 
@@ -413,6 +435,7 @@ export function BuildDashboard() {
     </div>
   </div>
 }
+
 
 
 

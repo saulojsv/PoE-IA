@@ -20,7 +20,7 @@ Critério atual de valor:
 
 Regra importante: a árvore/SVG/base visual não participa da geração. O SVG só exibe os IDs selecionados. A rota vem do grafo oficial.
 
-A dashboard não cria cópias visuais dos nós. Ela injeta o SVG oficial inline e adiciona apenas regras CSS para `#n{id}` e `#c{idA-idB}`. Assim, os nós e as arestas continuam sendo os elementos originais do `skilltree-3.28.svg`.
+A dashboard não cria cópias visuais dos nós. Ela mantém o SVG oficial isolado em `<object>` e, quando o documento interno fica disponível, adiciona apenas regras CSS para `#n{id}` e `#c{idA-idB}`. Assim, os nós e as arestas continuam sendo os elementos originais do `skilltree-3.28.svg`.
 
 O start interno da classe é usado pelo solver como âncora, mas não é retornado como ponto comprado quando ele não existe como círculo visual no SVG.
 
