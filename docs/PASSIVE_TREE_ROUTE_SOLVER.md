@@ -15,6 +15,14 @@ O gerador de rota não escolhe nós aleatórios. Ele trata a árvore passiva com
 
 Cada geração usa uma `seed` registrada no resultado. A seed injeta pequena variação em desempates, propostas e preenchimento final, então cliques sucessivos geram rotas diferentes sem quebrar conectividade.
 
+Origem da rota:
+
+- O modo padrão da Smart Combination é `Aleatória balanceada`: escolhe uniformemente uma das sete classes antes da busca.
+- `Classe da build` força a origem a usar a classe do XML/build atual.
+- Uma classe específica pode ser selecionada manualmente.
+- O resultado registra `requestedClass`, `resolvedClass`, `startNodeId` e `fallbackUsed`; fallback silencioso deve ser `false`.
+- Ascendência não muda o start da árvore principal.
+
 Critério atual de valor:
 
 - Prioriza vida, ES, defesas, resistências, suppress, block, dano, crítico, velocidade, mana, reserva, recovery, charges, ailments e dano elemental/físico/chaos.
