@@ -8,8 +8,8 @@ O gerador de rota não escolhe nós aleatórios. Ele trata a árvore passiva com
 2. Encontra o start node da classe.
 3. Propõe alvos de valor: notables, keystones e masteries.
 4. Para cada alvo, calcula o menor caminho conectado via BFS.
-5. Pontua a proposta por valor do alvo menos custo de travel e dispersão regional.
-6. Mantém as melhores rotas com beam search.
+5. Pontua a proposta por valor dos novos nós menos travel e penalidade progressiva por nova região.
+6. Mantém as melhores rotas com beam search, deduplicação e diversidade por assinatura estratégica.
 7. Preenche pontos restantes apenas por vizinhos conectados.
 8. Valida `connected`, `travel`, `travelRatio`, clusters, propostas, folhas ruins e redundância estimada.
 
@@ -17,8 +17,11 @@ Cada geração usa uma `seed` registrada no resultado. A seed injeta pequena var
 
 Qualidade estrutural:
 
+- Propostas usam custo marginal real: só contam os nós ainda não selecionados.
 - Propostas com baixa eficiência marginal são rejeitadas antes de entrar no beam.
 - Nova região recebe penalidade crescente, reduzindo dispersão.
+- Estados idênticos são deduplicados por `hash(sorted(selectedNodeIds))`.
+- O beam limita rotas quase iguais por assinatura de regiões e direções abertas.
 - Após o beam, folhas fracas de baixo valor são podadas e os pontos liberados são reinvestidos por vizinhos conectados.
 - `prunedNodes` mostra quantos nós foram removidos nessa poda.
 - O botão `Aplicar rota à build` fica bloqueado se a rota tiver fallback, origem inválida, clusters incompletos, folhas ruins ou redundantes removíveis.
@@ -46,9 +49,14 @@ O start interno da classe é usado pelo solver como âncora, mas não é retorna
 Métricas de auditoria:
 
 - `travelByReason`: pontos comprados por caminho/preenchimento, não por ausência de stats.
+- `travelEssential`: travel de grau 2, usado como conector inevitável.
+- `travelShared`: travel de grau 3+, reaproveitado por vários ramos.
+- `travelSpeculative`: travel de ponta ou preenchimento fraco.
+- `travelRedundant`: travel removível sem quebrar conectividade.
 - `investment`: pontos comprados pelo valor do próprio nó.
 - `touchedClusters`, `completedClusters`, `travelOnlyClusters`, `incompleteClusters`.
-- `badLeaves` e `redundantNodes` para indicar galhos fracos ou pontos de baixo valor.
+- `badLeaves`, `topologicalRedundant` e `strategicRedundant` para indicar galhos fracos ou pontos de baixo valor.
 - `proposalsAccepted` e `proposalsRejected`.
+- `beamDeduped`: estados iguais eliminados durante a busca.
 
 Próxima melhoria segura: passar perfil da skill/build para o solver, por exemplo `bow`, `projectile`, `lightning`, `attack`, `life`, e trocar a pontuação genérica por pontuação contextual.
