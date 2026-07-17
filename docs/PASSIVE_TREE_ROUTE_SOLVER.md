@@ -21,6 +21,7 @@ Qualidade estrutural:
 - Nova região recebe penalidade crescente, reduzindo dispersão.
 - Após o beam, folhas fracas de baixo valor são podadas e os pontos liberados são reinvestidos por vizinhos conectados.
 - `prunedNodes` mostra quantos nós foram removidos nessa poda.
+- O botão `Aplicar rota à build` fica bloqueado se a rota tiver fallback, origem inválida, clusters incompletos, folhas ruins ou redundantes removíveis.
 
 Origem da rota:
 
@@ -29,6 +30,7 @@ Origem da rota:
 - Uma classe específica pode ser selecionada manualmente.
 - O resultado registra `requestedClass`, `resolvedClass`, `startNodeId` e `fallbackUsed`; fallback silencioso deve ser `false`.
 - Ascendência não muda o start da árvore principal.
+- No modo aleatório/específico, a ascendência é resolvida a partir da classe escolhida para evitar combinações impossíveis.
 
 Critério atual de valor:
 

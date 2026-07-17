@@ -21,7 +21,7 @@ async function loadPassiveTreeUncached(): Promise<PassiveTreeData> {
     const orbit = node.orbit || 0
     const angle = (node.orbitIndex || 0) * Math.PI * 2 / (raw.constants.skillsPerOrbit[orbit] || 1)
     const radius = raw.constants.orbitRadii[orbit] || 0
-    return [id, { id, name: node.name, group: String(node.group || ''), x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, isClassStart: Number.isInteger(node.classStartIndex), out: node.out || [], neighbors: [] }]
+    return [id, { id, name: node.name, group: String(node.group || ''), x: group.x + Math.sin(angle) * radius, y: group.y - Math.cos(angle) * radius, stats: node.stats || [], isNotable: node.isNotable, isKeystone: node.isKeystone, isMastery: node.isMastery, isJewelSocket: node.isJewelSocket, isClassStart: Number.isInteger(node.classStartIndex), out: node.out || [], neighbors: [] }]
   }))
   const reverse = new Map<string, string[]>()
   for (const node of Object.values(nodes)) for (const target of node.out) reverse.set(target, [...(reverse.get(target) || []), node.id])
@@ -66,6 +66,15 @@ export interface PassiveTreeGenerationStats {
   proposalsAccepted?: number
   proposalsRejected?: number
   prunedNodes?: number
+  travelJustified?: number
+  travelQuestionable?: number
+  branches?: number
+  directions?: number
+  masteries?: number
+  keystones?: number
+  sockets?: number
+  score?: number
+  generationMs?: number
   proposals?: number
   beamWidth?: number
   seed?: number
@@ -175,9 +184,15 @@ function fillConnected(tree: PassiveTreeData, state: TreeState, budget: number, 
     const frontier = [...state.selected].flatMap(id => tree.nodes[id]?.neighbors || []).filter(id => !state.selected.has(id) && tree.nodes[id] && !tree.nodes[id].isClassStart)
     const ranked = [...new Set(frontier)].map(id => {
       const node = tree.nodes[id]
+      const onward = (node.neighbors || []).filter(next => !state.selected.has(next) && tree.nodes[next] && !tree.nodes[next].isClassStart)
+      const objectiveNearby = onward.some(next => {
+        const target = tree.nodes[next]
+        return target?.isNotable || target?.isKeystone || target?.isMastery || target?.isJewelSocket || nodeValue(target) >= 10
+      })
       const regionPenalty = state.regions.has(sector(node)) ? 0 : 4
-      return { id, score: nodeValue(node) - regionPenalty + Math.min(2, node.neighbors?.length || 0) + (random() - .5) * 2 }
-    }).sort((a, b) => b.score - a.score)
+      const weakLeafPenalty = nodeValue(node) < 10 && onward.length <= 1 ? 12 : 0
+      return { id, score: nodeValue(node) - regionPenalty - weakLeafPenalty + Math.min(3, onward.length) + (objectiveNearby ? 8 : 0) + (random() - .5) * 2 }
+    }).filter(item => item.score > -8).sort((a, b) => b.score - a.score)
     const next = ranked.slice(0, 4)[Math.floor(random() * Math.min(4, ranked.length))]?.id
     if (!next) break
     state.selected.add(next)
@@ -238,6 +253,7 @@ function pruneRedundant(tree: PassiveTreeData, state: TreeState, start: string) 
 }
 
 export function generateRandomTreeResult(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
+  const started = performance.now()
   const resolvedClass = tree.classes.find(item => item.name.toLowerCase() === className.toLowerCase())
   const start = resolvedClass?.startNodeId
   if (!start || !tree.nodes[start]) return { nodes: [], stats: { requested: budget, generated: 0, connected: false, disconnected: 0, maxDepth: 0, frontierRemaining: 0, travel: 0, travelRatio: 0, regions: 0 } }
@@ -300,10 +316,22 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
     else travelOnlyClusters += 1
   }
   const routeDegree = (id: string) => (tree.nodes[id]?.neighbors || []).filter(next => selectedSet.has(next)).length
-  const badLeaves = nodes.filter(id => routeDegree(id) <= 1 && nodeValue(tree.nodes[id]) < 10 && !tree.nodes[id]?.isNotable && !tree.nodes[id]?.isKeystone && !tree.nodes[id]?.isMastery).length
+  const badLeaves = nodes.filter(id => routeDegree(id) <= 1 && nodeValue(tree.nodes[id]) < 10 && !tree.nodes[id]?.isNotable && !tree.nodes[id]?.isKeystone && !tree.nodes[id]?.isMastery && !tree.nodes[id]?.isJewelSocket).length
   const redundantNodes = removableRedundantNodes(tree, best, start).length
   const strategicRegions = new Set(nodes.map(id => macroRegion(tree.nodes[id]))).size
-  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: strategicRegions, paidPoints: nodes.length, travelByReason: travel, investment: nodes.length - travel, touchedClusters: groups.size, completedClusters, travelOnlyClusters, incompleteClusters, badLeaves, redundantNodes, prunedNodes, proposals: best.proposals, proposalsAccepted: best.proposals, proposalsRejected: best.rejected, beamWidth, seed, requestedClass: className, resolvedClass: resolvedClass?.name || className, startNodeId: start, fallbackUsed: false } }
+  const startNode = tree.nodes[start]
+  const directionSet = new Set(nodes.map(id => {
+    const node = tree.nodes[id]
+    const dx = node.x - startNode.x, dy = node.y - startNode.y
+    return Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'E' : 'W') : (dy > 0 ? 'S' : 'N')
+  }))
+  const branches = nodes.filter(id => routeDegree(id) >= 3).length
+  const masteries = nodes.filter(id => tree.nodes[id]?.isMastery).length
+  const keystones = nodes.filter(id => tree.nodes[id]?.isKeystone).length
+  const sockets = nodes.filter(id => tree.nodes[id]?.isJewelSocket).length
+  const travelQuestionable = badLeaves + redundantNodes
+  const generationMs = Math.round(performance.now() - started)
+  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: strategicRegions, paidPoints: nodes.length, travelByReason: travel, investment: nodes.length - travel, touchedClusters: groups.size, completedClusters, travelOnlyClusters, incompleteClusters, badLeaves, redundantNodes, prunedNodes, travelJustified: Math.max(0, travel - travelQuestionable), travelQuestionable, branches, directions: directionSet.size, masteries, keystones, sockets, score: Math.round(best.score), generationMs, proposals: best.proposals, proposalsAccepted: best.proposals, proposalsRejected: best.rejected, beamWidth, seed, requestedClass: className, resolvedClass: resolvedClass?.name || className, startNodeId: start, fallbackUsed: false } }
 }
 
 export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {

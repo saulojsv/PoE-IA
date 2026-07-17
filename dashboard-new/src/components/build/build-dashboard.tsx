@@ -19,6 +19,15 @@ const stages: { id: BuildStage; label: string; description: string }[] = [
 
 const slotOrder: SlotKey[] = ['weapon', 'helmet', 'offhand', 'amulet', 'body', 'ring1', 'ring2', 'gloves', 'belt', 'boots']
 const passiveClasses = ['Marauder', 'Ranger', 'Witch', 'Duelist', 'Templar', 'Shadow', 'Scion']
+const ascendanciesByClass: Record<string, string[]> = {
+  Scion: ['Ascendant', 'Warden', 'Warlock', 'Primalist', 'Reliquarian'],
+  Marauder: ['Juggernaut', 'Berserker', 'Chieftain'],
+  Ranger: ['Raider', 'Deadeye', 'Pathfinder'],
+  Witch: ['Occultist', 'Elementalist', 'Necromancer'],
+  Duelist: ['Slayer', 'Gladiator', 'Champion'],
+  Templar: ['Inquisitor', 'Hierophant', 'Guardian'],
+  Shadow: ['Assassin', 'Trickster', 'Saboteur'],
+}
 const slotClass: Record<SlotKey, string> = {
   weapon: 'weapon',
   helmet: 'helmet',
@@ -239,7 +248,7 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
   const [treePoints, setTreePoints] = useState(100)
   const [routeClassMode, setRouteClassMode] = useState('random')
   const [treeNodes, setTreeNodes] = useState<string[]>(build.nodes.map(String))
-  const [treeStats, setTreeStats] = useState<{ generated: number; connected: boolean; maxDepth: number; frontierRemaining: number; travel: number; travelRatio: number; regions: number; paidPoints?: number; travelByReason?: number; investment?: number; touchedClusters?: number; completedClusters?: number; travelOnlyClusters?: number; incompleteClusters?: number; badLeaves?: number; redundantNodes?: number; prunedNodes?: number; proposalsAccepted?: number; proposalsRejected?: number; proposals?: number; beamWidth?: number; seed?: number; requestedClass?: string; resolvedClass?: string; startNodeId?: string; fallbackUsed?: boolean } | null>(null)
+  const [treeStats, setTreeStats] = useState<{ generated: number; connected: boolean; maxDepth: number; frontierRemaining: number; travel: number; travelRatio: number; regions: number; paidPoints?: number; travelByReason?: number; investment?: number; touchedClusters?: number; completedClusters?: number; travelOnlyClusters?: number; incompleteClusters?: number; badLeaves?: number; redundantNodes?: number; prunedNodes?: number; travelJustified?: number; travelQuestionable?: number; branches?: number; directions?: number; masteries?: number; keystones?: number; sockets?: number; score?: number; generationMs?: number; proposalsAccepted?: number; proposalsRejected?: number; proposals?: number; beamWidth?: number; seed?: number; classSeed?: number; routeSeed?: number; requestedClass?: string; resolvedClass?: string; startNodeId?: string; fallbackUsed?: boolean; ascendancy?: string; ascendancyValid?: boolean; originValid?: boolean } | null>(null)
   const [treeVersion, setTreeVersion] = useState(0)
   const [failures, setFailures] = useState<{ slot: string; category: string; stage: string; candidates: number }[]>([])
   const [history, setHistory] = useState(() => Number(localStorage.getItem('poe-smart-combination-count') || 0))
@@ -306,11 +315,24 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
   }
   const generateTree = async () => {
     const tree = await loadPassiveTree()
+    const classSeed = Math.random()
     const routeSeed = Math.random()
-    const routeClass = routeClassMode === 'build' ? build.class : routeClassMode === 'random' ? passiveClasses[Math.floor(routeSeed * passiveClasses.length)] : routeClassMode
+    const ascendancySeed = Math.random()
+    const classHistory = JSON.parse(localStorage.getItem('poe-route-class-history') || '{}') as Record<string, number>
+    const pickBalancedClass = () => {
+      const weighted = passiveClasses.map(name => ({ name, weight: 1 / (1 + (classHistory[name] || 0)) }))
+      const total = weighted.reduce((sum, item) => sum + item.weight, 0)
+      let pick = classSeed * total
+      return (weighted.find(item => (pick -= item.weight) <= 0) || weighted[0]).name
+    }
+    const routeClass = routeClassMode === 'build' ? build.class : routeClassMode === 'random' ? pickBalancedClass() : routeClassMode
+    const ascendancies = ascendanciesByClass[routeClass] || []
+    const resolvedAscendancy = routeClassMode === 'build' ? build.ascendancy || 'unknown' : ascendancies[Math.floor(ascendancySeed * ascendancies.length)] || 'unknown'
     const generated = generateRandomTreeResult(tree, routeClass, treePoints, routeSeed)
+    classHistory[routeClass] = (classHistory[routeClass] || 0) + 1
+    localStorage.setItem('poe-route-class-history', JSON.stringify(classHistory))
     setTreeNodes(generated.nodes)
-    setTreeStats(generated.stats)
+    setTreeStats({ ...generated.stats, classSeed, routeSeed, ascendancy: resolvedAscendancy, ascendancyValid: resolvedAscendancy === 'unknown' || ascendancies.includes(resolvedAscendancy), originValid: generated.stats.resolvedClass === routeClass && !generated.stats.fallbackUsed && !!generated.stats.startNodeId })
     setTreeVersion(value => value + 1)
   }
   const rows = Object.entries(result) as [SmartSlot, ItemDetail][]
@@ -321,12 +343,13 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
     if (meta?.tier != null) return `T${meta.tier}`
     return formatTier(tierForStat(item, line, baseMods))
   }
+  const treeAuditValid = !!treeStats?.connected && !!treeStats?.originValid && !treeStats?.fallbackUsed && (treeStats?.incompleteClusters ?? 0) === 0 && (treeStats?.badLeaves ?? 0) === 0 && (treeStats?.redundantNodes ?? 0) === 0
   return <section className="panel smart-generator">
     <div className="panel-title"><span><Dices /> Smart Combination</span><small>PoE 1 · tentativa #{history}</small></div>
     <div className="smart-pipeline"><span>1 Slot</span><span>2 Classe/base</span><span>3 Item level</span><span>4 Raridade</span><span>5 Mods elegíveis</span><span>6 Tier + valor</span><span>7 Validação</span></div>
     <p className="smart-description">Gera equipamentos e rotas conectadas à classe. A rota usa grafo oficial 3.28, shortest path, propostas por cluster e beam search.</p>
     <div className="smart-controls"><label>Nível / ilvl máximo <input type="number" min="1" max="100" value={characterLevel} onChange={event => setCharacterLevel(Math.max(1, Math.min(100, Number(event.target.value) || 1)))} /></label><label>Pontos da árvore <input type="number" min="1" max="123" value={treePoints} onChange={event => setTreePoints(Math.max(1, Math.min(123, Number(event.target.value) || 1)))} /></label><label>Origem <select value={routeClassMode} onChange={event => setRouteClassMode(event.target.value)}><option value="random">Aleatória balanceada</option><option value="build">Classe da build ({build.class})</option>{passiveClasses.map(name => <option key={name} value={name}>{name}</option>)}</select></label><button className="smart-generate" onClick={generateTree}><GitBranch /> Gerar rota otimizada</button><button className="smart-generate" onClick={generate}><Dices /> Gerar itens</button></div>
-    {treeVersion > 0 && <><div className="smart-tree-result"><div className="route-result-head"><b>Rota gerada</b><strong>{treeStats?.paidPoints ?? treeNodes.length}/{treePoints}</strong><button disabled={!treeStats?.connected} onClick={() => onTreeApply(treeNodes)}>Aplicar rota à build</button></div><div className="route-result-grid"><article><small>Origem</small><b>{treeStats?.resolvedClass || 'n/a'}</b><span>solicitada {treeStats?.requestedClass || 'n/a'} · start {treeStats?.startNodeId || 'n/a'} · fallback {treeStats?.fallbackUsed ? 'sim' : 'não'}</span></article><article><small>Conectividade</small><b>{treeStats?.connected ? '1 componente' : 'inválida'}</b><span>seed {treeStats?.seed?.toFixed(5) ?? 'n/a'}</span></article><article><small>Eficiência</small><b>{treeStats?.travelByReason ?? treeStats?.travel ?? 0} travel</b><span>{Math.round((treeStats?.travelRatio ?? 0) * 100)}% · investimento {treeStats?.investment ?? 0} · regiões {treeStats?.regions ?? 0}</span></article><article><small>Clusters</small><b>{treeStats?.completedClusters ?? 0} concluídos</b><span>{treeStats?.travelOnlyClusters ?? 0} passagem · {treeStats?.incompleteClusters ?? 0} incompletos · {treeStats?.touchedClusters ?? 0} tocados</span></article><article><small>Auditoria</small><b>{treeStats?.badLeaves ?? 0} folhas ruins</b><span>{treeStats?.redundantNodes ?? 0} redundantes · {treeStats?.prunedNodes ?? 0} podados</span></article><article><small>Propostas</small><b>{treeStats?.proposalsAccepted ?? treeStats?.proposals ?? 0} aceitas</b><span>{treeStats?.proposalsRejected ?? 0} rejeitadas</span></article></div></div><PassiveTree build={{ ...build, class: treeStats?.resolvedClass || build.class, nodes: treeNodes, points_used: treeNodes.length }} skill={skill} /></>}
+    {treeVersion > 0 && <><div className="smart-tree-result"><div className="route-result-head"><b>Rota gerada</b><strong>{treeStats?.paidPoints ?? treeNodes.length}/{treePoints}</strong><button disabled={!treeAuditValid} onClick={() => onTreeApply(treeNodes)}>Aplicar rota à build</button></div><div className="route-result-grid"><article><small>Origem</small><b>{treeStats?.resolvedClass || 'n/a'}</b><span>solicitada {treeStats?.requestedClass || 'n/a'} · start {treeStats?.startNodeId || 'n/a'} · válida {treeStats?.originValid ? 'sim' : 'não'}</span></article><article><small>Ascendência</small><b>{treeStats?.ascendancy || 'unknown'}</b><span>compatível {treeStats?.ascendancyValid ? 'sim' : 'não'} · fallback {treeStats?.fallbackUsed ? 'sim' : 'não'}</span></article><article><small>Conectividade</small><b>{treeStats?.connected ? '1 componente' : 'inválida'}</b><span>class {treeStats?.classSeed?.toFixed(5) ?? 'n/a'} · route {treeStats?.routeSeed?.toFixed(5) ?? treeStats?.seed?.toFixed(5) ?? 'n/a'}</span></article><article><small>Eficiência</small><b>{treeStats?.travelByReason ?? treeStats?.travel ?? 0} travel</b><span>{Math.round((treeStats?.travelRatio ?? 0) * 100)}% · justificado {treeStats?.travelJustified ?? 0} · questionável {treeStats?.travelQuestionable ?? 0}</span></article><article><small>Clusters</small><b>{treeStats?.completedClusters ?? 0} concluídos</b><span>{treeStats?.travelOnlyClusters ?? 0} passagem · {treeStats?.incompleteClusters ?? 0} incompletos · {treeStats?.touchedClusters ?? 0} tocados</span></article><article><small>Estrutura</small><b>{treeStats?.regions ?? 0} regiões</b><span>{treeStats?.directions ?? 0} direções · {treeStats?.branches ?? 0} branches · investimento {treeStats?.investment ?? 0}</span></article><article><small>Objetivos</small><b>{treeStats?.masteries ?? 0} masteries</b><span>{treeStats?.keystones ?? 0} keystones · {treeStats?.sockets ?? 0} sockets</span></article><article><small>Auditoria</small><b>{treeStats?.badLeaves ?? 0} folhas ruins</b><span>{treeStats?.redundantNodes ?? 0} redundantes · {treeStats?.prunedNodes ?? 0} podados</span></article><article><small>Propostas</small><b>{treeStats?.proposalsAccepted ?? treeStats?.proposals ?? 0} aceitas</b><span>{treeStats?.proposalsRejected ?? 0} rejeitadas · score {treeStats?.score ?? 0} · {treeStats?.generationMs ?? 0}ms</span></article></div></div><PassiveTree build={{ ...build, class: treeStats?.resolvedClass || build.class, nodes: treeNodes, points_used: treeNodes.length }} skill={skill} /></>}
     {!!seed && <div className="smart-result"><header><b>Resultado da tentativa · {rows.length}/{smartSlots.length} slots gerados</b><span className={rows.length === smartSlots.length ? 'valid' : 'invalid'}>{rows.length === smartSlots.length ? 'Itens completos validados' : 'Falha: existe slot sem pool válido'}</span><button disabled={rows.length !== smartSlots.length} onClick={() => onApply(Object.fromEntries(Object.entries(result).filter(([slot]) => slot in slotClass)) as Partial<Record<SlotKey, ItemDetail>>)}>Aplicar equipamentos</button></header>{failures.length > 0 && <div className="smart-failures"><b>Diagnóstico por slot</b>{failures.map(failure => <span key={failure.slot}>{failure.slot}: {failure.stage} · {failure.candidates} bases candidatas</span>)}</div>}<div className="smart-grid">{rows.map(([slot, item]) => { const limits = item.capacity || affixLimits(item, baseMods); const generated = item.generated || { prefixes: (item.affix_meta || []).filter(mod => mod.generationType === 'Prefix').length, suffixes: (item.affix_meta || []).filter(mod => mod.generationType === 'Suffix').length }; return <article key={slot} className="smart-card"><div className="smart-card-head"><b>{slot.startsWith('flask') ? `Flask ${slot.slice(5)}` : slot.startsWith('jewel') ? `Jewel ${slot.slice(5)}` : SLOT_LABELS[slot as SlotKey]}</b><small>{item.rarity} · ilvl {item.item_level} · P {generated.prefixes}/{limits.prefixes} · S {generated.suffixes}/{limits.suffixes}</small></div>{spriteFor(item, sprites) ? <img src={spriteFor(item, sprites)} alt="" /> : <div className="smart-missing">Sprite ausente</div>}<strong>{item.base}</strong>{item.implicits.map(mod => <p className="implicit" key={mod}>{mod}</p>)}{item.explicits.map(mod => <p key={mod}>{mod} <em>{tierLabel(item, mod)}</em></p>)}</article> })}</div></div>}
     <small className="smart-learning">Histórico local: {history} tentativa{history === 1 ? '' : 's'} guardada{history === 1 ? '' : 's'} para ranking futuro.</small>
   </section>
