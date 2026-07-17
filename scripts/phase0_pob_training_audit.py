@@ -231,8 +231,8 @@ def xml_text(tag, text):
     return elem
 
 
-def write_analysis_xml(path, build_id, source_path, file_hash, meta, metrics, inspection):
-    root = ET.Element("pobBuildAnalysis", {"id": build_id, "createdAt": now(), "schemaVersion": "phase0-1"})
+def write_analysis_xml(path, build_id, source_path, file_hash, meta, metrics, inspection, subphase):
+    root = ET.Element("pobBuildAnalysis", {"id": build_id, "createdAt": now(), "schemaVersion": "phase0-1", "subphase": subphase})
     ET.SubElement(root, "pair", {"pobXml": f"{build_id}.xml", "source": str(source_path), "sha256": file_hash})
     phase = ET.SubElement(root, "phaseZeroProfile", {
         "class": meta.get("className", ""),
@@ -247,7 +247,7 @@ def write_analysis_xml(path, build_id, source_path, file_hash, meta, metrics, in
         "defenseFromAscendancy": "known_or_unknown",
         "defenseFromFlasks": "unknown",
     })
-    metric_elem = ET.SubElement(root, "defenseMetrics")
+    metric_elem = ET.SubElement(root, "defenseMetrics", {"status": "deferred" if subphase == "0.1" else "observed"})
     for key, value in metrics.items():
         metric_elem.append(xml_text(key, value))
     audit = ET.SubElement(root, "audit")
@@ -272,12 +272,13 @@ def main():
     ap.add_argument("--limit", type=int, default=25)
     ap.add_argument("--batch-id", default="batch-0001")
     ap.add_argument("--copy-pob", action="store_true", help="copy pure PoB XMLs into pob-builds/raw")
+    ap.add_argument("--subphase", choices=["0.1", "0.2"], default="0.1", help="0.1=contrato/auditoria XML; 0.2=métricas defensivas")
     args = ap.parse_args()
 
     ensure_layout(args.out)
     tree_nodes = load_tree()
     xml_paths = sorted(args.source.rglob("*.xml"))[:max(1, args.limit)]
-    batch = {"id": args.batch_id, "totalFiles": len(xml_paths), "parsed": 0, "failed": 0, "createdAt": now(), "files": []}
+    batch = {"id": args.batch_id, "subphase": args.subphase, "status": f"phase0.{args.subphase.split('.')[1]}_complete", "totalFiles": len(xml_paths), "parsed": 0, "failed": 0, "createdAt": now(), "files": []}
     manifest_rows = []
     analysis_rows = []
     dataset_rows = []
@@ -298,7 +299,7 @@ def main():
         batch["parsed"] += 1
         meta = build_meta(root)
         nodes = selected_nodes(root)
-        metrics = build_defense_metrics(nodes, tree_nodes)
+        metrics = build_defense_metrics(nodes, tree_nodes) if args.subphase == "0.2" else {"totalPassivePoints": len(nodes), "unresolvedNodes": 0}
         attrs, seen_tags = attrs_by_tag(root)
         for tag, count in seen_tags.items():
             schema_tags[tag] += count
@@ -312,18 +313,20 @@ def main():
             "nodeCount": len(nodes),
             "parseStatus": "parsed",
             "roundTripStatus": "preserved_original_copy",
+            "scope": "xml_contract_and_audit" if args.subphase == "0.1" else "defensive_metrics",
         }
         if args.copy_pob:
             shutil.copy2(src, args.out / "pob-builds" / "raw" / f"{build_id}.xml")
         analysis_path = args.out / "analysis" / "phase-zero" / f"{build_id}.analysis.xml"
-        write_analysis_xml(analysis_path, build_id, src, file_hash, meta, metrics, inspection)
+        write_analysis_xml(analysis_path, build_id, src, file_hash, meta, metrics, inspection, args.subphase)
         row = {"id": build_id, **meta, "source": str(src), "sha256": file_hash, "analysis": str(analysis_path), **metrics}
         batch["files"].append(row)
         manifest_rows.append({"id": build_id, "class": meta["className"], "ascendancy": meta["ascendClassName"], "treeVersion": meta["treeVersion"], "sha256": file_hash})
         analysis_rows.append({"id": build_id, "analysis": str(analysis_path), "status": "phase0_observed"})
         dataset_rows.append({"id": build_id, "split": "pending", "analysis": str(analysis_path)})
         group_key = "|".join([meta["treeVersion"], meta["className"], meta["ascendClassName"], meta["mainSkill"]])
-        distributions[group_key].append(metrics["defensiveWeightedPoints"])
+        if args.subphase == "0.2":
+            distributions[group_key].append(metrics["defensiveWeightedPoints"])
 
     (args.out / "analysis" / "phase-zero" / f"{args.batch_id}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=2), encoding="utf-8")
     write_simple_manifest(args.out / "manifests" / "builds-manifest.xml", "buildsManifest", manifest_rows)

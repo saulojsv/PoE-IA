@@ -1,34 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<pobBuildAnalysis id="combo_00000010" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+<pobBuildAnalysis id="combo_00000010" createdAt="2026-07-17T14:08:37+00:00" schemaVersion="phase0-1" subphase="0.1">
   <pair pobXml="combo_00000010.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution_of_inspiring\crazi456_0203_crazitota.xml" sha256="3b18a72b7f7baab774f8509e66ac8a585841d8d31b01c7d543a782bdd5800013" />
   <phaseZeroProfile class="Ranger" ascendancy="Wildspeaker" mainSkill="Awakened Enhance" treeVersion="3_28_alternate" status="observed">
     <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
   </phaseZeroProfile>
-  <defenseMetrics>
+  <defenseMetrics status="deferred">
     <totalPassivePoints>128</totalPassivePoints>
-    <defensiveNodeCount>40</defensiveNodeCount>
-    <defensiveWeightedPoints>30.75</defensiveWeightedPoints>
-    <travelPoints>79</travelPoints>
-    <offensivePoints>5.667</offensivePoints>
-    <utilityPoints>61.583</utilityPoints>
-    <hybridPoints>19</hybridPoints>
-    <unresolvedNodes>9</unresolvedNodes>
-    <lifePoints>11.583</lifePoints>
-    <energy_shieldPoints>1.333</energy_shieldPoints>
-    <leechPoints>0.5</leechPoints>
-    <spell_suppressionPoints>3.0</spell_suppressionPoints>
-    <mana_defensePoints>5.333</mana_defensePoints>
-    <regenerationPoints>0.5</regenerationPoints>
-    <curse_defensePoints>2.167</curse_defensePoints>
-    <elemental_resistancePoints>1.333</elemental_resistancePoints>
-    <evasionPoints>1.5</evasionPoints>
-    <recovery_ratePoints>0.417</recovery_ratePoints>
-    <recovery_on_blockPoints>0.417</recovery_on_blockPoints>
-    <physical_mitigationPoints>1.0</physical_mitigationPoints>
-    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
-    <rechargePoints>0.5</rechargePoints>
-    <chaos_resistancePoints>0.333</chaos_resistancePoints>
-    <poison_defensePoints>0.5</poison_defensePoints>
+    <unresolvedNodes>0</unresolvedNodes>
   </defenseMetrics>
   <audit>
     <encoding>utf-8</encoding>
@@ -37,5 +15,6 @@
     <nodeCount>128</nodeCount>
     <parseStatus>parsed</parseStatus>
     <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>xml_contract_and_audit</scope>
   </audit>
 </pobBuildAnalysis>

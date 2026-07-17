@@ -25,6 +25,28 @@ PoE - Combinacoes para Treino Futuro/
   schemas/pob-observed-schema internal-analysis-schema
 ```
 
+## Subfases da Fase 0
+
+Cada subfase é executada separadamente e deixa artefatos rastreáveis:
+
+| Subfase | Responsabilidade | Libera |
+|---|---|---|
+| 0.1 | contrato, ingestão, hash, estrutura XML e seleção de nós | XML observado para análise |
+| 0.2 | perfil defensivo dos nós contra a árvore oficial | estatísticas defensivas |
+| 0.3 | classificação de classe, ascendência, skill e origem | grupos comparáveis |
+| 0.4 | validação de qualidade, quarentena e divisão do dataset | dados aptos para treino |
+| 0.5 | relatório de cobertura e aprovação humana | entrada controlada da Fase 1 |
+
+### 0.1 Contrato e auditoria XML
+
+Rodar somente esta subfase:
+
+```powershell
+python scripts/phase0_pob_training_audit.py --subphase 0.1 --limit 25 --batch-id phase0.1-batch-0001 --copy-pob
+```
+
+O resultado confirma parse, encoding, ordem dos elementos, atributos observados, hash SHA-256 e quantidade de nós. O XML copiado permanece byte-a-byte; o relatório fica no sidecar `.analysis.xml`.
+
 ## Fase 0
 
 Fase 0 não gera árvore. Ela identifica classe/start, cataloga XML real, mede defesa observada, registra defesa externa como `unknown` e só então libera a geração.
@@ -34,7 +56,7 @@ Fase 0 não gera árvore. Ela identifica classe/start, cataloga XML real, mede d
 Rodar lote pequeno:
 
 ```powershell
-python scripts/phase0_pob_training_audit.py --limit 25 --batch-id batch-0001 --copy-pob
+python scripts/phase0_pob_training_audit.py --subphase 0.2 --limit 25 --batch-id phase0.2-batch-0001 --copy-pob
 ```
 
 Saídas principais:

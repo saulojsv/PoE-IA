@@ -400,6 +400,16 @@ function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   </section>
 }
 
+function PhaseZeroPanel() {
+  const [audit, setAudit] = useState<{ status: string; parsed: number; failed: number }>()
+  useEffect(() => { fetch('/poe-data/phase0/phase0.1-batch-0001.json').then(response => response.ok ? response.json() : undefined).then(setAudit).catch(() => undefined) }, [])
+  return <section className="panel phase-zero-panel">
+    <div className="panel-title"><span><GitBranch /> Build Planning Engine</span><small>Fase 0.1 · Dataset Loader</small></div>
+    <div className="phase-zero-status"><b>{audit?.status || 'phase0.1_pending'}</b><span>{audit ? `${audit.parsed} XMLs carregados · ${audit.failed} falhas` : 'A carregar auditoria...'}</span></div>
+    <div className="phase-zero-checks"><span>XML PoB puro</span><span>SHA-256</span><span>Estrutura auditada</span><span>Nós selecionados</span></div>
+  </section>
+}
+
 export function BuildDashboard() {
   const [bundle, setBundle] = useState<{ data: BuildData; sprites: Record<string, string>; baseMods: any } | null>(null)
   const [selectedSkill, setSelectedSkill] = useState<SkillGroup | undefined>()
@@ -447,6 +457,7 @@ export function BuildDashboard() {
     <SkillList skills={skills} selected={skill} onSelect={next => { setSelectedSkill(next); setSelectedBuild(next.build_rows[0]); setOverrides({}); setStage('items') }} />
     <div className="dashboard-main">
       <BuildHeader skill={skill} build={build} league={league} onLeagueChange={setLeague} />
+      <PhaseZeroPanel />
       <StageSelector selected={stage} onSelect={setStage} />
       <Kpis build={build} />
       {stage === 'items' && <div className="dashboard-grid items-dashboard-grid">

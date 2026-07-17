@@ -1,31 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<pobBuildAnalysis id="combo_00000015" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+<pobBuildAnalysis id="combo_00000015" createdAt="2026-07-17T14:08:37+00:00" schemaVersion="phase0-1" subphase="0.1">
   <pair pobXml="combo_00000015.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\highsk1llz_4784_cptpotatoepally.xml" sha256="d0f34d25b0418987ec59be961c225870dec0b550c549de8bbcb3992984240d24" />
   <phaseZeroProfile class="Duelist" ascendancy="Paladin" mainSkill="Vaal Impurity of Fire" treeVersion="3_28_alternate" status="observed">
     <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
   </phaseZeroProfile>
-  <defenseMetrics>
+  <defenseMetrics status="deferred">
     <totalPassivePoints>131</totalPassivePoints>
-    <defensiveNodeCount>49</defensiveNodeCount>
-    <defensiveWeightedPoints>44.5</defensiveWeightedPoints>
-    <travelPoints>70</travelPoints>
-    <offensivePoints>2.0</offensivePoints>
-    <utilityPoints>48.5</utilityPoints>
-    <hybridPoints>10</hybridPoints>
-    <unresolvedNodes>12</unresolvedNodes>
-    <recovery_ratePoints>1.0</recovery_ratePoints>
-    <recovery_on_blockPoints>1.0</recovery_on_blockPoints>
-    <curse_defensePoints>7.167</curse_defensePoints>
-    <lifePoints>17.667</lifePoints>
-    <leechPoints>0.5</leechPoints>
-    <energy_shieldPoints>5.833</energy_shieldPoints>
-    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
-    <elemental_resistancePoints>1.333</elemental_resistancePoints>
-    <rechargePoints>1.0</rechargePoints>
-    <armourPoints>3.0</armourPoints>
-    <mana_defensePoints>4.5</mana_defensePoints>
-    <regenerationPoints>0.833</regenerationPoints>
-    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <unresolvedNodes>0</unresolvedNodes>
   </defenseMetrics>
   <audit>
     <encoding>utf-8</encoding>
@@ -34,5 +15,6 @@
     <nodeCount>131</nodeCount>
     <parseStatus>parsed</parseStatus>
     <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>xml_contract_and_audit</scope>
   </audit>
 </pobBuildAnalysis>

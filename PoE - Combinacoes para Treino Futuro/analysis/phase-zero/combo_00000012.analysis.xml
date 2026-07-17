@@ -1,31 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<pobBuildAnalysis id="combo_00000012" createdAt="2026-07-17T13:55:24+00:00" schemaVersion="phase0-1">
+<pobBuildAnalysis id="combo_00000012" createdAt="2026-07-17T14:08:37+00:00" schemaVersion="phase0-1" subphase="0.1">
   <pair pobXml="combo_00000012.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\absolution_of_inspiring\lelouchzqy_4710_makeguardiangreatagain.xml" sha256="4f2112d504e81361e516629987fad32b5f23e51fdc627d4d3cff4b3cf9200310" />
   <phaseZeroProfile class="Templar" ascendancy="Inquisitor" mainSkill="Frostblink" treeVersion="3_28" status="observed">
     <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
   </phaseZeroProfile>
-  <defenseMetrics>
+  <defenseMetrics status="deferred">
     <totalPassivePoints>110</totalPassivePoints>
-    <defensiveNodeCount>46</defensiveNodeCount>
-    <defensiveWeightedPoints>37.917</defensiveWeightedPoints>
-    <travelPoints>64</travelPoints>
-    <offensivePoints>20.25</offensivePoints>
-    <utilityPoints>37.833</utilityPoints>
-    <hybridPoints>17</hybridPoints>
     <unresolvedNodes>0</unresolvedNodes>
-    <lifePoints>17.917</lifePoints>
-    <mana_defensePoints>2.833</mana_defensePoints>
-    <leechPoints>0.5</leechPoints>
-    <regenerationPoints>4.75</regenerationPoints>
-    <spell_blockPoints>1.25</spell_blockPoints>
-    <armourPoints>3.0</armourPoints>
-    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
-    <elemental_resistancePoints>1.833</elemental_resistancePoints>
-    <energy_shieldPoints>3.167</energy_shieldPoints>
-    <recovery_on_blockPoints>0.5</recovery_on_blockPoints>
-    <chaos_resistancePoints>0.333</chaos_resistancePoints>
-    <rechargePoints>0.5</rechargePoints>
-    <curse_defensePoints>1.0</curse_defensePoints>
   </defenseMetrics>
   <audit>
     <encoding>utf-8</encoding>
@@ -34,5 +15,6 @@
     <nodeCount>110</nodeCount>
     <parseStatus>parsed</parseStatus>
     <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>xml_contract_and_audit</scope>
   </audit>
 </pobBuildAnalysis>

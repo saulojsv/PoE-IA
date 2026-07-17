@@ -1,29 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<pobBuildAnalysis id="combo_00000019" createdAt="2026-07-17T13:55:25+00:00" schemaVersion="phase0-1">
+<pobBuildAnalysis id="combo_00000019" createdAt="2026-07-17T14:08:37+00:00" schemaVersion="phase0-1" subphase="0.1">
   <pair pobXml="combo_00000019.xml" source="C:\Users\joao.carvalho\Desktop\Robô\Agente - PoE_GDRIVE_STAGE\data\poe_ninja\poe_ninja_dataset\xml\animate_guardian\kolyannvd_7950_big_choom.xml" sha256="833a44a5bbd011ce0a35a05138ba0701716385bd8efe9d2a91867477e794c236" />
   <phaseZeroProfile class="Templar" ascendancy="Puppeteer" mainSkill="Convocation" treeVersion="3_28_alternate" status="observed">
     <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
   </phaseZeroProfile>
-  <defenseMetrics>
+  <defenseMetrics status="deferred">
     <totalPassivePoints>131</totalPassivePoints>
-    <defensiveNodeCount>41</defensiveNodeCount>
-    <defensiveWeightedPoints>32.333</defensiveWeightedPoints>
-    <travelPoints>68</travelPoints>
-    <offensivePoints>18.167</offensivePoints>
-    <utilityPoints>31.5</utilityPoints>
-    <hybridPoints>19</hybridPoints>
-    <unresolvedNodes>22</unresolvedNodes>
-    <energy_shieldPoints>6.167</energy_shieldPoints>
-    <recovery_ratePoints>0.333</recovery_ratePoints>
-    <recovery_on_blockPoints>0.333</recovery_on_blockPoints>
-    <curse_defensePoints>7.333</curse_defensePoints>
-    <lifePoints>8.0</lifePoints>
-    <mana_defensePoints>5.667</mana_defensePoints>
-    <regenerationPoints>1.167</regenerationPoints>
-    <spell_blockPoints>1.333</spell_blockPoints>
-    <elemental_resistancePoints>0.833</elemental_resistancePoints>
-    <armourPoints>0.833</armourPoints>
-    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <unresolvedNodes>0</unresolvedNodes>
   </defenseMetrics>
   <audit>
     <encoding>utf-8</encoding>
@@ -32,5 +15,6 @@
     <nodeCount>131</nodeCount>
     <parseStatus>parsed</parseStatus>
     <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>xml_contract_and_audit</scope>
   </audit>
 </pobBuildAnalysis>
