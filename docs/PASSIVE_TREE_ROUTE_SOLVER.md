@@ -13,6 +13,8 @@ O gerador de rota não escolhe nós aleatórios. Ele trata a árvore passiva com
 7. Preenche pontos restantes apenas por vizinhos conectados.
 8. Valida `connected`, `travel`, `travelRatio`, clusters, propostas, folhas ruins e redundância estimada.
 
+Cada geração usa uma `seed` registrada no resultado. A seed injeta pequena variação em desempates, propostas e preenchimento final, então cliques sucessivos geram rotas diferentes sem quebrar conectividade.
+
 Critério atual de valor:
 
 - Prioriza vida, ES, defesas, resistências, suppress, block, dano, crítico, velocidade, mana, reserva, recovery, charges, ailments e dano elemental/físico/chaos.
