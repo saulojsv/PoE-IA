@@ -15,6 +15,13 @@ O gerador de rota não escolhe nós aleatórios. Ele trata a árvore passiva com
 
 Cada geração usa uma `seed` registrada no resultado. A seed injeta pequena variação em desempates, propostas e preenchimento final, então cliques sucessivos geram rotas diferentes sem quebrar conectividade.
 
+Qualidade estrutural:
+
+- Propostas com baixa eficiência marginal são rejeitadas antes de entrar no beam.
+- Nova região recebe penalidade crescente, reduzindo dispersão.
+- Após o beam, folhas fracas de baixo valor são podadas e os pontos liberados são reinvestidos por vizinhos conectados.
+- `prunedNodes` mostra quantos nós foram removidos nessa poda.
+
 Origem da rota:
 
 - O modo padrão da Smart Combination é `Aleatória balanceada`: escolhe uniformemente uma das sete classes antes da busca.

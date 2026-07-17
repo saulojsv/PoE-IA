@@ -65,6 +65,7 @@ export interface PassiveTreeGenerationStats {
   redundantNodes?: number
   proposalsAccepted?: number
   proposalsRejected?: number
+  prunedNodes?: number
   proposals?: number
   beamWidth?: number
   seed?: number
@@ -83,6 +84,10 @@ const avoid = /\bminion|totem|brand|trap|mine\b/i
 
 function sector(node: PassiveTreeNode) {
   return `${Math.round(node.x / 500)}:${Math.round(node.y / 500)}`
+}
+
+function macroRegion(node: PassiveTreeNode) {
+  return `${Math.round(node.x / 1800)}:${Math.round(node.y / 1800)}`
 }
 
 function nodeValue(node?: PassiveTreeNode) {
@@ -154,10 +159,13 @@ function proposalsForState(tree: PassiveTreeData, state: TreeState, remaining: n
       const pathNode = tree.nodes[id]
       return pathNode && !pathNode.isNotable && !pathNode.isKeystone && !pathNode.isMastery && !pathNode.stats.some(stat => useful.test(stat))
     }).length
-    const regionPenalty = path.some(id => !state.regions.has(sector(tree.nodes[id]))) && state.regions.size >= 4 ? 8 : 0
+    const newRegions = path.filter(id => !state.regions.has(sector(tree.nodes[id]))).length
+    const regionPenalty = newRegions && state.regions.size >= 4 ? 8 + Math.max(0, state.regions.size - 6) ** 2 : 0
     const value = path.reduce((sum, id) => sum + nodeValue(tree.nodes[id]), 0) - travel * 4 - regionPenalty
     const jitter = (random() - .5) * 3
-    proposals.push({ target: node.id, path, cost: path.length, value: value + jitter, efficiency: (value + jitter) / Math.max(1, path.length) })
+    const adjusted = value + jitter
+    const efficiency = adjusted / Math.max(1, path.length)
+    if (efficiency >= 2.5 || node.isKeystone) proposals.push({ target: node.id, path, cost: path.length, value: adjusted, efficiency })
   }
   return proposals.sort((a, b) => b.efficiency - a.efficiency || b.value - a.value || random() - .5).slice(0, 10)
 }
@@ -176,6 +184,57 @@ function fillConnected(tree: PassiveTreeData, state: TreeState, budget: number, 
     state.regions.add(sector(tree.nodes[next]))
   }
   return state
+}
+
+function pruneWeakLeaves(tree: PassiveTreeData, state: TreeState, start: string) {
+  let pruned = 0
+  while (true) {
+    const selected = new Set(state.selected)
+    const removable = [...state.selected].filter(id => {
+      if (id === start || tree.nodes[id]?.isClassStart) return false
+      const node = tree.nodes[id]
+      const degree = (node?.neighbors || []).filter(next => selected.has(next)).length
+      return degree <= 1 && nodeValue(node) < 10 && !node?.isNotable && !node?.isKeystone && !node?.isMastery
+    }).sort((a, b) => nodeValue(tree.nodes[a]) - nodeValue(tree.nodes[b]))
+    const next = removable[0]
+    if (!next) break
+    state.selected.delete(next)
+    state.reasons.delete(next)
+    pruned += 1
+  }
+  return pruned
+}
+
+function connectedWithout(tree: PassiveTreeData, selected: Set<string>, start: string, removed: string) {
+  const allowed = new Set([...selected].filter(id => id !== removed))
+  const seen = new Set<string>([start])
+  const queue = [start]
+  while (queue.length) {
+    const current = queue.shift()!
+    for (const next of tree.nodes[current]?.neighbors || []) if (allowed.has(next) && !seen.has(next)) { seen.add(next); queue.push(next) }
+  }
+  return [...allowed].every(id => seen.has(id))
+}
+
+function removableRedundantNodes(tree: PassiveTreeData, state: TreeState, start: string) {
+  return [...state.selected].filter(id => {
+    const node = tree.nodes[id]
+    if (!node || id === start || node.isClassStart || node.isNotable || node.isKeystone || node.isMastery) return false
+    if (nodeValue(node) >= 4 || state.reasons.get(id) === 'investment') return false
+    return connectedWithout(tree, state.selected, start, id)
+  })
+}
+
+function pruneRedundant(tree: PassiveTreeData, state: TreeState, start: string) {
+  let pruned = 0
+  while (true) {
+    const next = removableRedundantNodes(tree, state, start).sort((a, b) => nodeValue(tree.nodes[a]) - nodeValue(tree.nodes[b]))[0]
+    if (!next) break
+    state.selected.delete(next)
+    state.reasons.delete(next)
+    pruned += 1
+  }
+  return pruned
 }
 
 export function generateRandomTreeResult(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
@@ -216,7 +275,13 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
     beam = expanded.sort((a, b) => b.score - a.score || random() - .5).slice(0, beamWidth)
     if (beam[0].selected.size >= internalBudget) break
   }
-  const best = fillConnected(tree, beam.sort((a, b) => b.score - a.score || random() - .5).slice(0, 3)[Math.floor(random() * Math.min(3, beam.length))], internalBudget, random)
+  const best = beam.sort((a, b) => b.score - a.score || random() - .5).slice(0, 3)[Math.floor(random() * Math.min(3, beam.length))]
+  let prunedNodes = 0
+  for (let i = 0; i < 4; i += 1) {
+    prunedNodes += pruneWeakLeaves(tree, best, start)
+    prunedNodes += pruneRedundant(tree, best, start)
+    fillConnected(tree, best, internalBudget, random)
+  }
   const nodes = [...best.selected].filter(id => id !== start && !tree.nodes[id]?.isClassStart).slice(0, requested)
   for (const id of nodes) if (!best.reasons.has(id)) best.reasons.set(id, nodeValue(tree.nodes[id]) >= 10 ? 'investment' : 'fill')
   const disconnected = disconnectedNodes(nodes, tree, className).length
@@ -236,9 +301,9 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
   }
   const routeDegree = (id: string) => (tree.nodes[id]?.neighbors || []).filter(next => selectedSet.has(next)).length
   const badLeaves = nodes.filter(id => routeDegree(id) <= 1 && nodeValue(tree.nodes[id]) < 10 && !tree.nodes[id]?.isNotable && !tree.nodes[id]?.isKeystone && !tree.nodes[id]?.isMastery).length
-  const redundantNodes = nodes.filter(id => routeDegree(id) > 1 && nodeValue(tree.nodes[id]) < 4 && best.reasons.get(id) !== 'investment').length
-  const strategicRegions = new Set(nodes.map(id => `${Math.round(tree.nodes[id].x / 1800)}:${Math.round(tree.nodes[id].y / 1800)}`)).size
-  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: strategicRegions, paidPoints: nodes.length, travelByReason: travel, investment: nodes.length - travel, touchedClusters: groups.size, completedClusters, travelOnlyClusters, incompleteClusters, badLeaves, redundantNodes, proposals: best.proposals, proposalsAccepted: best.proposals, proposalsRejected: best.rejected, beamWidth, seed, requestedClass: className, resolvedClass: resolvedClass?.name || className, startNodeId: start, fallbackUsed: false } }
+  const redundantNodes = removableRedundantNodes(tree, best, start).length
+  const strategicRegions = new Set(nodes.map(id => macroRegion(tree.nodes[id]))).size
+  return { nodes, stats: { requested, generated: nodes.length, connected: disconnected === 0, disconnected, maxDepth: Math.max(...nodes.map(id => distance.get(id) || 0)), frontierRemaining: Math.max(0, frontierRemaining), travel, travelRatio: nodes.length ? travel / nodes.length : 0, regions: strategicRegions, paidPoints: nodes.length, travelByReason: travel, investment: nodes.length - travel, touchedClusters: groups.size, completedClusters, travelOnlyClusters, incompleteClusters, badLeaves, redundantNodes, prunedNodes, proposals: best.proposals, proposalsAccepted: best.proposals, proposalsRejected: best.rejected, beamWidth, seed, requestedClass: className, resolvedClass: resolvedClass?.name || className, startNodeId: start, fallbackUsed: false } }
 }
 
 export function generateRandomTree(tree: PassiveTreeData, className: string, budget: number, seed = Math.random()) {
