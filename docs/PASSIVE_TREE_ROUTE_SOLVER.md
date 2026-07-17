@@ -18,6 +18,8 @@ Critério atual de valor:
 - Prioriza vida, ES, defesas, resistências, suppress, block, dano, crítico, velocidade, mana, reserva, recovery, charges, ailments e dano elemental/físico/chaos.
 - Penaliza apenas tags muito específicas sem perfil ativo: minion, totem, brand, trap e mine.
 
-Regra importante: a árvore/SVG/base visual não participa da geração. O SVG só exibe os IDs selecionados. A rota vem do grafo oficial, e a camada visual apenas marca os nós retornados.
+Regra importante: a árvore/SVG/base visual não participa da geração. O SVG só exibe os IDs selecionados. A rota vem do grafo oficial.
+
+A dashboard também renderiza uma camada React por cima do SVG com os mesmos `x/y` do JSON oficial. Essa camada é fallback visual: marca nós e links selecionados mesmo quando o `<object>` do SVG não expõe `tree_load` a tempo. Ela não altera `skilltree-3.28.svg`.
 
 Próxima melhoria segura: passar perfil da skill/build para o solver, por exemplo `bow`, `projectile`, `lightning`, `attack`, `life`, e trocar a pontuação genérica por pontuação contextual.

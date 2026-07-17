@@ -330,21 +330,44 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
 
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   const ref = useRef<HTMLObjectElement>(null)
+  const [tree, setTree] = useState<any>(null)
   const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
+  const selected = useMemo(() => new Set(nodes), [nodes])
+  useEffect(() => { loadPassiveTree().then(setTree).catch(() => setTree(null)) }, [])
   useEffect(() => {
     const object = ref.current
     if (!object) return
+    const classIds: Record<string, number> = { Scion: 0, Marauder: 1, Ranger: 2, Witch: 3, Duelist: 4, Templar: 5, Shadow: 6 }
+    const numericNodes = nodes.map(Number).filter(Number.isFinite)
+    let cancelled = false
+    let attempts = 0
     const apply = () => {
       const win = object.contentWindow as (Window & { tree_load?: (data: unknown) => void }) | null
-      win?.tree_load?.({ nodes: nodes.map(Number), classId: 0, ascendancyId: 0, alternateAscendancyId: 'nil' })
+      if (win?.tree_load) {
+        win.tree_load({ nodes: numericNodes, classId: classIds[build.class] ?? 0, ascendancyId: 0, alternateAscendancyId: 'nil' })
+        return
+      }
+      if (!cancelled && attempts < 80) {
+        attempts += 1
+        window.setTimeout(apply, 50)
+      }
     }
     object.addEventListener('load', apply)
     apply()
-    return () => object.removeEventListener('load', apply)
-  }, [nodes])
+    return () => { cancelled = true; object.removeEventListener('load', apply) }
+  }, [build.class, nodes])
+  const overlayLinks = tree ? nodes.flatMap(id => (tree.nodes[id]?.neighbors || []).filter((next: string) => selected.has(next) && Number(id) < Number(next)).map((next: string) => [tree.nodes[id], tree.nodes[next]])) : []
+  const overlayNodes = tree ? nodes.map(id => tree.nodes[id]).filter(Boolean) : []
+  const viewBox = tree ? `${tree.min_x} ${tree.min_y} ${tree.max_x - tree.min_x} ${tree.max_y - tree.min_y}` : undefined
   return <section className="panel tree-panel">
     <div className="panel-title"><span><GitBranch /> Passive Tree</span><small>{nodes.length} selected IDs - versioned SVG graph</small></div>
-    <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
+    <div className="pob-tree-wrap">
+      <object ref={ref} className="pob-tree-svg" data="/poe-tree/skilltree-3.28.svg" type="image/svg+xml" title="Passive Tree" />
+      {tree && <svg className="pob-tree-overlay" viewBox={viewBox} aria-hidden="true">
+        {overlayLinks.map(([from, to]: any[]) => <line key={`${from.id}-${to.id}`} x1={from.x} y1={from.y} x2={to.x} y2={to.y} />)}
+        {overlayNodes.map((node: any) => <circle key={node.id} className={node.isMastery ? 'mastery' : node.isKeystone ? 'keystone' : node.isNotable ? 'notable' : ''} cx={node.x} cy={node.y} r={node.isKeystone ? 95 : node.isNotable || node.isMastery ? 78 : 58} />)}
+      </svg>}
+    </div>
   </section>
 }
 
