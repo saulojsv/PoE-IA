@@ -1,8 +1,19 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from '../components/layout/app-shell'
 import { BuildDashboard } from '../components/build/build-dashboard'
+import { DPSType } from '../components/dps-type/dps-type'
 import { ExploreBuilds } from '../components/explore/explore-builds'
 import { BuildDetails } from '../components/explore/build-details'
 import { BuildLab } from '../components/build-lab/build-lab'
+import { Phase03Dashboard } from '../components/phase-zero/phase03-dashboard'
+import { Phase04Dashboard } from '../components/phase-zero/phase04-dashboard'
+import { Phase05Dashboard } from '../components/phase-zero/phase05-dashboard'
+import { Phase06Dashboard } from '../components/phase-zero/phase06-dashboard'
+import { Phase07Dashboard } from '../components/phase-zero/phase07-dashboard'
+import { Phase08Dashboard } from '../components/phase-zero/phase08-dashboard'
+import { Phase09Dashboard } from '../components/phase-zero/phase09-dashboard'
+import { Phase010Dashboard } from '../components/phase-zero/phase010-dashboard'
+import { Phase011Dashboard } from '../components/phase-zero/phase011-dashboard'
+import { Phase0StructureDashboard } from '../components/phase-zero/phase0-structure-dashboard'
 function Placeholder({title}:{title:string}) { return <section className="placeholder"><p>PoE Build Lab</p><h1>{title}</h1><span>This section is ready for advanced build discovery and analysis.</span></section> }
-export default function App(){ return <AppShell><Routes><Route path="/" element={<Navigate to="/dashboard" replace/>}/><Route path="/dashboard" element={<BuildDashboard/>}/><Route path="/explore" element={<ExploreBuilds/>}/><Route path="/explore/:file" element={<BuildDetails/>}/><Route path="/build-lab" element={<BuildLab/>}/><Route path="/build-lab/:id" element={<BuildLab/>}/>{[['compare','Compare'],['my-builds','My Builds'],['skills','Skills'],['items','Items'],['passive-tree','Passive Tree'],['settings','Settings']].map(([path,title])=><Route key={path} path={'/'+path} element={<Placeholder title={title}/>}/>)}</Routes></AppShell> }
+export default function App(){ return <AppShell><Routes><Route path="/" element={<Navigate to="/dashboard" replace/>}/><Route path="/dashboard" element={<BuildDashboard/>}/><Route path="/dps-type" element={<DPSType/>}/><Route path="/phase-0-structure" element={<Phase0StructureDashboard/>}/><Route path="/phase-0-3" element={<Phase03Dashboard/>}/><Route path="/phase-0-4" element={<Phase04Dashboard/>}/><Route path="/phase-0-5" element={<Phase05Dashboard/>}/><Route path="/phase-0-6" element={<Phase06Dashboard/>}/><Route path="/phase-0-7" element={<Phase07Dashboard/>}/><Route path="/phase-0-8" element={<Phase08Dashboard/>}/><Route path="/phase-0-9" element={<Phase09Dashboard/>}/><Route path="/phase-0-10" element={<Phase010Dashboard/>}/><Route path="/phase-0-11" element={<Phase011Dashboard/>}/><Route path="/explore" element={<ExploreBuilds/>}/><Route path="/explore/:file" element={<BuildDetails/>}/><Route path="/build-lab" element={<BuildLab/>}/><Route path="/build-lab/:id" element={<BuildLab/>}/>{[['compare','Compare'],['my-builds','My Builds'],['skills','Skills'],['items','Items'],['passive-tree','Passive Tree'],['settings','Settings']].map(([path,title])=><Route key={path} path={'/'+path} element={<Placeholder title={title}/>}/>)}</Routes></AppShell> }
