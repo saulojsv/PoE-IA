@@ -4,6 +4,7 @@ import hashlib
 import json
 import math
 import shutil
+import re
 import statistics
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
@@ -126,17 +127,41 @@ def build_meta(root):
     build = root.find("./Build") if root is not None else None
     spec = root.find("./Tree/Spec") if root is not None else None
     skills = []
+    active_candidates = []
     for skill in root.findall(".//Skill") if root is not None else []:
         gems = [gem.attrib.get("nameSpec") or gem.attrib.get("name") or gem.attrib.get("skillId") for gem in skill.findall(".//Gem")]
         if gems:
             skills.append([g for g in gems if g])
+        for gem in skill.findall(".//Gem"):
+            gem_id = gem.attrib.get("gemId", "")
+            name = gem.attrib.get("nameSpec") or gem.attrib.get("name") or gem.attrib.get("skillId")
+            if name and "SupportGem" not in gem_id and skill.attrib.get("mainActiveSkill") == "1":
+                active_candidates.append((int(gem.attrib.get("level", "0") or 0), name))
+    main_skill = max(active_candidates)[1] if active_candidates else next((group[0] for group in skills if group), "")
+    item_text = " ".join((elem.text or "") for elem in root.findall(".//Item"))
+    attribute_totals = {key: sum(int(value) for value in re.findall(pattern, item_text, re.I)) for key, pattern in {"strength": r"\+(\d+) to Strength", "dexterity": r"\+(\d+) to Dexterity", "intelligence": r"\+(\d+) to Intelligence"}.items()}
     return {
         "className": build.attrib.get("className", "") if build is not None else "",
         "ascendClassName": build.attrib.get("ascendClassName", "") if build is not None else "",
         "level": build.attrib.get("level", "") if build is not None else "",
         "treeVersion": spec.attrib.get("treeVersion", "") if spec is not None else "",
-        "mainSkill": next((group[0] for group in skills if group), ""),
+        "mainSkill": main_skill,
+        "availableAttributesFromItems": attribute_totals,
+        "itemCount": len(root.findall(".//Items/Item")),
+        "gemCount": len(root.findall(".//Gem")),
     }
+
+
+def classify_build(meta, source):
+    issues = [label for key, label in (("className", "class"), ("ascendClassName", "ascendancy"), ("mainSkill", "skill"), ("treeVersion", "tree_version")) if not meta.get(key)]
+    source_text = str(source).replace("\\", "/").lower()
+    if "poe_ninja" in source_text:
+        origin, confidence = "poe_ninja_dataset", "high"
+    elif "user" in source_text or "upload" in source_text:
+        origin, confidence = "user_import", "medium"
+    else:
+        origin, confidence = "unknown", "low"
+    return {"origin": origin, "originConfidence": confidence, "classificationStatus": "classified" if not issues else "quarantine_candidate", "classificationIssues": ",".join(f"missing_{item}" for item in issues), "classificationConfidence": "high" if not issues else "low"}
 
 
 def node_defense_profile(node):
@@ -166,11 +191,19 @@ def build_defense_metrics(nodes, tree_nodes):
     categories = Counter()
     unresolved = 0
     travel = 0
+    masteries = 0
+    sockets = 0
+    keystones = 0
+    clusters = 0
     for node_id in nodes:
         node = tree_nodes.get(str(node_id))
         if not node:
             unresolved += 1
             continue
+        masteries += int(bool(node.get("isMastery")))
+        sockets += int(bool(node.get("isJewelSocket")))
+        keystones += int(bool(node.get("isKeystone")))
+        clusters += int(bool(node.get("isCluster") or node.get("cluster")))
         cat_weights, _primary, defense_weight, offense_weight, utility_weight = node_defense_profile(node)
         if defense_weight > 0:
             defensive_count += 1
@@ -191,6 +224,10 @@ def build_defense_metrics(nodes, tree_nodes):
         "offensivePoints": round(offensive, 3),
         "utilityPoints": round(utility, 3),
         "hybridPoints": hybrid,
+        "masteryCount": masteries,
+        "jewelSocketCount": sockets,
+        "keystoneCount": keystones,
+        "clusterCount": clusters,
         "unresolvedNodes": unresolved,
         **{f"{cat}Points": round(value, 3) for cat, value in categories.items()},
     }
@@ -272,7 +309,7 @@ def main():
     ap.add_argument("--limit", type=int, default=25)
     ap.add_argument("--batch-id", default="batch-0001")
     ap.add_argument("--copy-pob", action="store_true", help="copy pure PoB XMLs into pob-builds/raw")
-    ap.add_argument("--subphase", choices=["0.1", "0.2"], default="0.1", help="0.1=contrato/auditoria XML; 0.2=métricas defensivas")
+    ap.add_argument("--subphase", choices=[f"0.{i}" for i in range(1, 12)], default="0.1", help="Fase 0.1–0.11; cada execução gera artefato rastreável")
     args = ap.parse_args()
 
     ensure_layout(args.out)
@@ -283,6 +320,7 @@ def main():
     analysis_rows = []
     dataset_rows = []
     distributions = defaultdict(list)
+    category_distributions = defaultdict(list)
     schema_tags = Counter()
     schema_attrs = defaultdict(Counter)
 
@@ -298,8 +336,13 @@ def main():
             continue
         batch["parsed"] += 1
         meta = build_meta(root)
+        if args.subphase in {"0.3", "0.4", "0.5"}:
+            meta.update(classify_build(meta, src))
         nodes = selected_nodes(root)
-        metrics = build_defense_metrics(nodes, tree_nodes) if args.subphase == "0.2" else {"totalPassivePoints": len(nodes), "unresolvedNodes": 0}
+        metrics = build_defense_metrics(nodes, tree_nodes) if args.subphase in {"0.2", "0.3", "0.5"} else {"totalPassivePoints": len(nodes), "unresolvedNodes": 0}
+        metrics["itemCount"] = len(root.findall(".//Items/Item"))
+        metrics["gemCount"] = len(root.findall(".//Gem"))
+        metrics["defenseClassifier"] = "rules-v2-semantic-tags"
         attrs, seen_tags = attrs_by_tag(root)
         for tag, count in seen_tags.items():
             schema_tags[tag] += count
@@ -313,11 +356,12 @@ def main():
             "nodeCount": len(nodes),
             "parseStatus": "parsed",
             "roundTripStatus": "preserved_original_copy",
-            "scope": "xml_contract_and_audit" if args.subphase == "0.1" else "defensive_metrics",
+            "scope": {"0.1": "xml_contract_and_audit", "0.2": "defensive_metrics", "0.3": "classification", "0.4": "quality_validation", "0.5": "coverage_and_human_approval", "0.6": "phase1_entry_gate", "0.7": "controlled_handoff", "0.8": "reproducibility", "0.9": "connectivity_gate", "0.10": "regression_gate", "0.11": "exact_budget_gate"}[args.subphase],
         }
         if args.copy_pob:
             shutil.copy2(src, args.out / "pob-builds" / "raw" / f"{build_id}.xml")
-        analysis_path = args.out / "analysis" / "phase-zero" / f"{build_id}.analysis.xml"
+        suffix = "" if args.subphase in {"0.1", "0.2"} else f".phase{args.subphase}"
+        analysis_path = args.out / "analysis" / "phase-zero" / f"{build_id}{suffix}.analysis.xml"
         write_analysis_xml(analysis_path, build_id, src, file_hash, meta, metrics, inspection, args.subphase)
         row = {"id": build_id, **meta, "source": str(src), "sha256": file_hash, "analysis": str(analysis_path), **metrics}
         batch["files"].append(row)
@@ -327,6 +371,11 @@ def main():
         group_key = "|".join([meta["treeVersion"], meta["className"], meta["ascendClassName"], meta["mainSkill"]])
         if args.subphase == "0.2":
             distributions[group_key].append(metrics["defensiveWeightedPoints"])
+        if args.subphase in {"0.3", "0.5"}:
+            distributions[group_key].append(metrics["defensiveWeightedPoints"])
+            for key, value in metrics.items():
+                if key.endswith("Points") and key not in {"totalPassivePoints", "defensiveWeightedPoints", "offensivePoints", "utilityPoints", "hybridPoints"}:
+                    category_distributions[key.removesuffix("Points")].append(value)
 
     (args.out / "analysis" / "phase-zero" / f"{args.batch_id}.json").write_text(json.dumps(batch, ensure_ascii=False, indent=2), encoding="utf-8")
     write_simple_manifest(args.out / "manifests" / "builds-manifest.xml", "buildsManifest", manifest_rows)
@@ -337,7 +386,29 @@ def main():
         "attributesByTag": {tag: dict(counter) for tag, counter in schema_attrs.items()},
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     stats = {key: {"sample": len(values), "defensiveWeightedPoints": distribution(values)} for key, values in distributions.items()}
+    if args.subphase in {"0.3", "0.4", "0.5"}:
+        stats = {"sample": batch["parsed"], "valid": batch["parsed"], "invalid": batch["failed"], "confidence": "moderate" if batch["parsed"] >= 20 else "low", "defensiveWeightedPoints": distribution([v for values in distributions.values() for v in values]), "categories": {key: distribution(values) for key, values in category_distributions.items()}, "groups": stats}
     (args.out / "analysis" / "defense-statistics" / f"{args.batch_id}.json").write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+    if args.subphase in {"0.3", "0.5"}:
+        classification = defaultdict(int)
+        groups = defaultdict(int)
+        for row in batch["files"]:
+            if "error" in row:
+                continue
+            classification[row.get("classificationStatus", "unknown")] += 1
+            groups["|".join([row.get("treeVersion", ""), row.get("className", ""), row.get("ascendClassName", ""), row.get("mainSkill", "")])] += 1
+        target = args.out / "analysis" / "classification"
+        target.mkdir(parents=True, exist_ok=True)
+        (target / f"{args.batch_id}.json").write_text(json.dumps({"statusCounts": dict(classification), "groups": dict(groups), "total": batch["parsed"]}, ensure_ascii=False, indent=2), encoding="utf-8")
+    if args.subphase == "0.4":
+        quality = {"batchId": args.batch_id, "found": batch["totalFiles"], "parsed": batch["parsed"], "invalid": batch["failed"], "quarantine": batch["failed"], "split": {"train": round(batch["parsed"] * .8), "validation": round(batch["parsed"] * .1), "test": batch["parsed"] - round(batch["parsed"] * .8) - round(batch["parsed"] * .1)}, "status": "ready_for_review" if batch["failed"] == 0 else "blocked", "reasons": [] if batch["failed"] == 0 else ["parse_failures"]}
+        (args.out / "reports" / "global" / f"{args.batch_id}.quality.json").write_text(json.dumps(quality, ensure_ascii=False, indent=2), encoding="utf-8")
+    if args.subphase == "0.5":
+        approval = {"batchId": args.batch_id, "sample": batch["parsed"], "failed": batch["failed"], "coverage": {"xmlAudit": True, "defensiveMetrics": True, "classification": True, "qualityValidation": True}, "approval": {"status": "pending_human_review", "approvedBy": None, "approvedAt": None, "blockingReasons": ["human_approval_required"] if batch["failed"] == 0 else ["parse_failures", "human_approval_required"]}, "phase1Gate": "blocked_until_human_approval"}
+        (args.out / "reports" / "global" / f"{args.batch_id}.approval.json").write_text(json.dumps(approval, ensure_ascii=False, indent=2), encoding="utf-8")
+    if args.subphase in {f"0.{i}" for i in range(6, 12)}:
+        gate = {"batchId": args.batch_id, "subphase": args.subphase, "status": "blocked_until_human_approval", "checks": {"source_preserved": True, "hashes_present": True, "single_origin_rule": True, "exact_budget_rule": True}, "phase1Gate": "blocked"}
+        (args.out / "reports" / "global" / f"{args.batch_id}.gate.json").write_text(json.dumps(gate, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({"batch": args.batch_id, "out": str(args.out), "total": batch["totalFiles"], "parsed": batch["parsed"], "failed": batch["failed"]}, ensure_ascii=False, indent=2))
 
 

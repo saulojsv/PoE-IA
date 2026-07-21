@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000010" createdAt="2026-07-18T14:44:48+00:00" schemaVersion="phase0-1" subphase="0.7">
+  <pair pobXml="combo_00000010.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution_of_inspiring\crazi456_0203_crazitota.xml" sha256="3b18a72b7f7baab774f8509e66ac8a585841d8d31b01c7d543a782bdd5800013" />
+  <phaseZeroProfile class="Ranger" ascendancy="Wildspeaker" mainSkill="Absolution of Inspiring" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>128</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>128</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>controlled_handoff</scope>
+  </audit>
+</pobBuildAnalysis>

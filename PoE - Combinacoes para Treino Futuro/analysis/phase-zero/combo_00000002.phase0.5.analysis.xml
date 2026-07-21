@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000002" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000002.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\00000002_WardenOfHell-0669_KertyMirage.xml" sha256="758adc72765b1931cb3765c4518c97353f7870a87a40be579801e7cd4a38e989" />
+  <phaseZeroProfile class="Templar" ascendancy="Hierophant" mainSkill="Wrath" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>133</totalPassivePoints>
+    <defensiveNodeCount>42</defensiveNodeCount>
+    <defensiveWeightedPoints>33.417</defensiveWeightedPoints>
+    <travelPoints>85</travelPoints>
+    <offensivePoints>32.0</offensivePoints>
+    <utilityPoints>37.583</utilityPoints>
+    <hybridPoints>19</hybridPoints>
+    <masteryCount>9</masteryCount>
+    <jewelSocketCount>7</jewelSocketCount>
+    <keystoneCount>3</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>6</unresolvedNodes>
+    <attack_blockPoints>0.333</attack_blockPoints>
+    <spell_blockPoints>1.667</spell_blockPoints>
+    <physical_mitigationPoints>2.0</physical_mitigationPoints>
+    <elemental_resistancePoints>4.5</elemental_resistancePoints>
+    <ailment_avoidancePoints>1.167</ailment_avoidancePoints>
+    <lifePoints>11.833</lifePoints>
+    <regenerationPoints>3.75</regenerationPoints>
+    <energy_shieldPoints>1.917</energy_shieldPoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <armourPoints>1.417</armourPoints>
+    <evasionPoints>0.333</evasionPoints>
+    <mana_defensePoints>3.833</mana_defensePoints>
+    <curse_defensePoints>0.333</curse_defensePoints>
+    <itemCount>24</itemCount>
+    <gemCount>25</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>133</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

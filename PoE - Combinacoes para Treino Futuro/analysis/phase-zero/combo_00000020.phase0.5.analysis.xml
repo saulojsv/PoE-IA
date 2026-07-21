@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000020" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000020.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\animate_guardian\gsizemore24_1105_bino_strstacking.xml" sha256="1f3b751d0086025a0ba24b19eba57d283bd01c248c0bf997335e231122023ba2" />
+  <phaseZeroProfile class="Duelist" ascendancy="Aristocrat" mainSkill="Steelskin" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>143</totalPassivePoints>
+    <defensiveNodeCount>24</defensiveNodeCount>
+    <defensiveWeightedPoints>20.75</defensiveWeightedPoints>
+    <travelPoints>88</travelPoints>
+    <offensivePoints>16.25</offensivePoints>
+    <utilityPoints>50.0</utilityPoints>
+    <hybridPoints>7</hybridPoints>
+    <masteryCount>5</masteryCount>
+    <jewelSocketCount>14</jewelSocketCount>
+    <keystoneCount>4</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>31</unresolvedNodes>
+    <evasionPoints>2.667</evasionPoints>
+    <lifePoints>7.333</lifePoints>
+    <regenerationPoints>0.833</regenerationPoints>
+    <leechPoints>0.75</leechPoints>
+    <recovery_ratePoints>0.917</recovery_ratePoints>
+    <recovery_on_blockPoints>0.917</recovery_on_blockPoints>
+    <armourPoints>4.167</armourPoints>
+    <physical_mitigationPoints>1.0</physical_mitigationPoints>
+    <avoidancePoints>1.0</avoidancePoints>
+    <attack_blockPoints>0.333</attack_blockPoints>
+    <spell_blockPoints>0.333</spell_blockPoints>
+    <bleed_defensePoints>0.5</bleed_defensePoints>
+    <itemCount>32</itemCount>
+    <gemCount>28</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>143</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

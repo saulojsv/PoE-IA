@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000008" createdAt="2026-07-18T14:44:46+00:00" schemaVersion="phase0-1" subphase="0.6">
+  <pair pobXml="combo_00000008.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution\xquQv5JXRgAa.xml" sha256="9e0a0da013bfbcafbbe3b2b45a19c65d8b1b0e54f5c6a6384d9c22e1fb4a3f14" />
+  <phaseZeroProfile class="Templar" ascendancy="Guardian" mainSkill="Tempest Shield" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>134</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Notes,Config,TreeView,Skills,Import,Items,Tree,Calcs,Party</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>phase1_entry_gate</scope>
+  </audit>
+</pobBuildAnalysis>

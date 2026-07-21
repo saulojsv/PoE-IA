@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000014" createdAt="2026-07-18T14:44:48+00:00" schemaVersion="phase0-1" subphase="0.7">
+  <pair pobXml="combo_00000014.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\alexxblood_4381_screamy_boy.xml" sha256="27a823b9fcc446a7a810b6de5c79d513c99ae26da622dee3bb78c0a5ee260e28" />
+  <phaseZeroProfile class="Duelist" ascendancy="Paladin" mainSkill="Stormblast Mine" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>123</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>123</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>controlled_handoff</scope>
+  </audit>
+</pobBuildAnalysis>

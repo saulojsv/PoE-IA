@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000019" createdAt="2026-07-17T21:33:16+00:00" schemaVersion="phase0-1" subphase="0.3">
+  <pair pobXml="combo_00000019.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\roflolmaoxd_6868_total_retard.xml" sha256="ed1658670612a6df85990baeb3fddde0567f2435cda8c5bc684b5d327b0b0262" />
+  <phaseZeroProfile class="Marauder" ascendancy="Behemoth" mainSkill="Seismic Cry" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>132</totalPassivePoints>
+    <defensiveNodeCount>50</defensiveNodeCount>
+    <defensiveWeightedPoints>48.833</defensiveWeightedPoints>
+    <travelPoints>74</travelPoints>
+    <offensivePoints>2.5</offensivePoints>
+    <utilityPoints>38.667</utilityPoints>
+    <hybridPoints>3</hybridPoints>
+    <unresolvedNodes>8</unresolvedNodes>
+    <lifePoints>22.833</lifePoints>
+    <armourPoints>4.833</armourPoints>
+    <evasionPoints>1.333</evasionPoints>
+    <elemental_resistancePoints>4.833</elemental_resistancePoints>
+    <physical_mitigationPoints>5.5</physical_mitigationPoints>
+    <regenerationPoints>1.333</regenerationPoints>
+    <avoidancePoints>1.333</avoidancePoints>
+    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
+    <recovery_ratePoints>3.0</recovery_ratePoints>
+    <recovery_on_blockPoints>3.0</recovery_on_blockPoints>
+    <leechPoints>0.5</leechPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>132</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>classification</scope>
+  </audit>
+</pobBuildAnalysis>

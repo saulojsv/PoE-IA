@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000017" createdAt="2026-07-17T21:33:16+00:00" schemaVersion="phase0-1" subphase="0.3">
+  <pair pobXml="combo_00000017.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\lethaldarkness_5458_aura_palqcho.xml" sha256="2120e7f5f37ef7e9e02cf94ab19d8475f74d46843ce2c13661db3800e8f604d5" />
+  <phaseZeroProfile class="Duelist" ascendancy="Paladin" mainSkill="Tempest Shield" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>130</totalPassivePoints>
+    <defensiveNodeCount>54</defensiveNodeCount>
+    <defensiveWeightedPoints>43.417</defensiveWeightedPoints>
+    <travelPoints>70</travelPoints>
+    <offensivePoints>10.167</offensivePoints>
+    <utilityPoints>45.417</utilityPoints>
+    <hybridPoints>24</hybridPoints>
+    <unresolvedNodes>6</unresolvedNodes>
+    <curse_defensePoints>5.167</curse_defensePoints>
+    <lifePoints>13.5</lifePoints>
+    <leechPoints>0.5</leechPoints>
+    <regenerationPoints>1.333</regenerationPoints>
+    <evasionPoints>1.583</evasionPoints>
+    <spell_suppressionPoints>2.083</spell_suppressionPoints>
+    <attack_blockPoints>1.5</attack_blockPoints>
+    <spell_blockPoints>1.917</spell_blockPoints>
+    <armourPoints>1.667</armourPoints>
+    <energy_shieldPoints>2.083</energy_shieldPoints>
+    <maximum_resistancesPoints>1.333</maximum_resistancesPoints>
+    <elemental_resistancePoints>3.5</elemental_resistancePoints>
+    <recovery_ratePoints>0.833</recovery_ratePoints>
+    <recovery_on_blockPoints>1.083</recovery_on_blockPoints>
+    <physical_mitigationPoints>1.5</physical_mitigationPoints>
+    <mana_defensePoints>2.167</mana_defensePoints>
+    <avoidancePoints>0.667</avoidancePoints>
+    <ailment_avoidancePoints>0.667</ailment_avoidancePoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>130</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>classification</scope>
+  </audit>
+</pobBuildAnalysis>

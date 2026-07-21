@@ -358,7 +358,25 @@ function SmartCombinationPanel({ build, skill, sprites, baseMods, onApply, onTre
 function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
   const ref = useRef<HTMLObjectElement>(null)
   const [tree, setTree] = useState<any>(null)
-  const nodes = useMemo(() => build.nodes.map(String), [build.nodes])
+  const nodes = useMemo(() => {
+    const raw = [...new Set(build.nodes.map(String))]
+    if (!tree) return raw
+    const start = tree.classes.find((item: any) => item.name.toLowerCase() === String(build.class || '').toLowerCase())?.startNodeId
+    if (!start || !tree.nodes[start]) return raw
+    const allowed = new Set(raw)
+    allowed.add(start)
+    const seen = new Set<string>([start])
+    const queue = [start]
+    while (queue.length) {
+      const current = queue.shift()!
+      for (const next of tree.nodes[current]?.neighbors || []) {
+        if (!allowed.has(next) || seen.has(next) || (tree.nodes[next]?.isClassStart && next !== start)) continue
+        seen.add(next)
+        queue.push(next)
+      }
+    }
+    return raw.filter(id => seen.has(id) && !tree.nodes[id]?.isClassStart)
+  }, [build.nodes, build.class, tree])
   const selected = useMemo(() => new Set(nodes), [nodes])
   useEffect(() => { loadPassiveTree().then(setTree).catch(() => setTree(null)) }, [])
   const routeCss = useMemo(() => {
@@ -368,7 +386,7 @@ function PassiveTree({ build }: { build: BuildRow; skill: SkillGroup }) {
       .filter((next: string) => selected.has(next) && Number(id) < Number(next))
       .flatMap((next: string) => [`#c${id}-${next}`, `#c${next}-${id}`]))
     const nodeRules = validNodes.map(id => `#n${id}`)
-    return `${nodeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}${edgeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}`
+    return `${nodeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:.9!important;stroke-width:20px!important;filter:none!important}${edgeRules.join(',')}{color:var(--active-color)!important;stroke-opacity:1!important}`
   }, [nodes, selected, tree])
   useEffect(() => {
     const object = ref.current

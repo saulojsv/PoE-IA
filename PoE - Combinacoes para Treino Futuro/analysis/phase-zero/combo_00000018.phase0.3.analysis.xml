@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000018" createdAt="2026-07-17T21:33:16+00:00" schemaVersion="phase0-1" subphase="0.3">
+  <pair pobXml="combo_00000018.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\mikodragon_5520_singingclaimer.xml" sha256="cb0dca6eddf19853fbc2959ecb942ade7e9454047e198df0b72bda7063cda6ef" />
+  <phaseZeroProfile class="Marauder" ascendancy="Ancestral Commander" mainSkill="Vengeful Cry" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>128</totalPassivePoints>
+    <defensiveNodeCount>46</defensiveNodeCount>
+    <defensiveWeightedPoints>43.583</defensiveWeightedPoints>
+    <travelPoints>73</travelPoints>
+    <offensivePoints>4.667</offensivePoints>
+    <utilityPoints>39.75</utilityPoints>
+    <hybridPoints>6</hybridPoints>
+    <unresolvedNodes>9</unresolvedNodes>
+    <lifePoints>15.333</lifePoints>
+    <leechPoints>0.5</leechPoints>
+    <mana_defensePoints>2.5</mana_defensePoints>
+    <regenerationPoints>4.25</regenerationPoints>
+    <armourPoints>5.25</armourPoints>
+    <physical_mitigationPoints>3.5</physical_mitigationPoints>
+    <elemental_resistancePoints>1.833</elemental_resistancePoints>
+    <ailment_avoidancePoints>0.333</ailment_avoidancePoints>
+    <maximum_resistancesPoints>0.333</maximum_resistancesPoints>
+    <recovery_ratePoints>3.0</recovery_ratePoints>
+    <recovery_on_blockPoints>3.0</recovery_on_blockPoints>
+    <energy_shieldPoints>1.583</energy_shieldPoints>
+    <avoidancePoints>1.0</avoidancePoints>
+    <evasionPoints>0.667</evasionPoints>
+    <poison_defensePoints>0.5</poison_defensePoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>128</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>classification</scope>
+  </audit>
+</pobBuildAnalysis>

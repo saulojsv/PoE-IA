@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000017" createdAt="2026-07-18T14:44:43+00:00" schemaVersion="phase0-1" subphase="0.4">
+  <pair pobXml="combo_00000017.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\lethaldarkness_5458_aura_palqcho.xml" sha256="2120e7f5f37ef7e9e02cf94ab19d8475f74d46843ce2c13661db3800e8f604d5" />
+  <phaseZeroProfile class="Duelist" ascendancy="Paladin" mainSkill="Tempest Shield" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>130</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>130</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>quality_validation</scope>
+  </audit>
+</pobBuildAnalysis>

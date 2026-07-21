@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000012" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000012.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\alchemists_mark\obratnayavrota_5627_ckaibaplsdeletedeadlock.xml" sha256="f8532f1b84fc1dfac08ddf7f8f6ca621cae9cd9ea4aa0737e54124e6ec838558" />
+  <phaseZeroProfile class="Duelist" ascendancy="Paladin" mainSkill="Wrath" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>134</totalPassivePoints>
+    <defensiveNodeCount>59</defensiveNodeCount>
+    <defensiveWeightedPoints>48.917</defensiveWeightedPoints>
+    <travelPoints>61</travelPoints>
+    <offensivePoints>10.833</offensivePoints>
+    <utilityPoints>42.25</utilityPoints>
+    <hybridPoints>24</hybridPoints>
+    <masteryCount>6</masteryCount>
+    <jewelSocketCount>4</jewelSocketCount>
+    <keystoneCount>2</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>14</unresolvedNodes>
+    <lifePoints>21.333</lifePoints>
+    <evasionPoints>4.667</evasionPoints>
+    <leechPoints>0.75</leechPoints>
+    <spell_suppressionPoints>4.833</spell_suppressionPoints>
+    <recovery_on_blockPoints>1.25</recovery_on_blockPoints>
+    <curse_defensePoints>5.833</curse_defensePoints>
+    <avoidancePoints>0.333</avoidancePoints>
+    <regenerationPoints>0.333</regenerationPoints>
+    <energy_shieldPoints>2.833</energy_shieldPoints>
+    <ailment_avoidancePoints>1.0</ailment_avoidancePoints>
+    <mana_defensePoints>3.833</mana_defensePoints>
+    <armourPoints>0.333</armourPoints>
+    <elemental_resistancePoints>0.333</elemental_resistancePoints>
+    <rechargePoints>1.0</rechargePoints>
+    <recovery_ratePoints>0.25</recovery_ratePoints>
+    <itemCount>19</itemCount>
+    <gemCount>21</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

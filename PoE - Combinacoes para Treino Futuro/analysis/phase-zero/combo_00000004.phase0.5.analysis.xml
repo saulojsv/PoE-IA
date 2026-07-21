@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000004" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000004.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution\Absolution - ID 1.xml" sha256="ef9dc6abdc422067bd30ccdf1361b215203789cb63ca6a6409033473e0f882f0" />
+  <phaseZeroProfile class="Templar" ascendancy="Guardian" mainSkill="Zealotry" treeVersion="3_27" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>10</totalPassivePoints>
+    <defensiveNodeCount>4</defensiveNodeCount>
+    <defensiveWeightedPoints>3.0</defensiveWeightedPoints>
+    <travelPoints>6</travelPoints>
+    <offensivePoints>4.5</offensivePoints>
+    <utilityPoints>1.5</utilityPoints>
+    <hybridPoints>2</hybridPoints>
+    <masteryCount>0</masteryCount>
+    <jewelSocketCount>0</jewelSocketCount>
+    <keystoneCount>0</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>0</unresolvedNodes>
+    <lifePoints>2.0</lifePoints>
+    <mana_defensePoints>1.0</mana_defensePoints>
+    <itemCount>108</itemCount>
+    <gemCount>188</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Tree,Skills,Items,TreeView,Calcs,Notes,Import,Party,Config</topLevelOrder>
+    <nodeCount>10</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

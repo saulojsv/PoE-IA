@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000018" createdAt="2026-07-18T14:44:53+00:00" schemaVersion="phase0-1" subphase="0.11">
+  <pair pobXml="combo_00000018.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\mikodragon_5520_singingclaimer.xml" sha256="cb0dca6eddf19853fbc2959ecb942ade7e9454047e198df0b72bda7063cda6ef" />
+  <phaseZeroProfile class="Marauder" ascendancy="Ancestral Commander" mainSkill="Vengeful Cry" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>128</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>128</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>exact_budget_gate</scope>
+  </audit>
+</pobBuildAnalysis>

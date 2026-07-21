@@ -1,4 +1,4 @@
-import { createReadStream, existsSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { join, normalize, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
@@ -10,18 +10,19 @@ const repositoryRoot = resolve(fileURLToPath(new URL('..', import.meta.url)))
 function localDataAssets() {
   return {
     name: 'poe-local-data-assets',
+    enforce: 'pre',
     configureServer(server) {
       server.middlewares.use((request, response, next) => {
         const pathname = decodeURIComponent((request.url || '').split('?')[0])
-        const root = pathname.startsWith('/dashboard/') ? join(repositoryRoot, 'dashboard') : pathname.startsWith('/assets/') ? join(repositoryRoot, 'assets') : ''
+        const root = pathname.startsWith('/dashboard/') ? join(repositoryRoot, 'dashboard') : pathname.startsWith('/assets/') ? join(repositoryRoot, 'assets') : pathname.startsWith('/phase0/') ? join(repositoryRoot, 'PoE - Combinacoes para Treino Futuro') : ''
         if (!root) return next()
-        const relative = pathname.replace(/^\/(dashboard|assets)\//, '')
+        const relative = pathname.replace(/^\/(dashboard|assets|phase0)\//, '')
         const file = normalize(join(root, relative))
         if (!file.startsWith(root) || !existsSync(file)) return next()
         if (file.endsWith('.json')) response.setHeader('Content-Type', 'application/json; charset=utf-8')
         else if (file.endsWith('.png')) response.setHeader('Content-Type', 'image/png')
         else if (file.endsWith('.webp')) response.setHeader('Content-Type', 'image/webp')
-        createReadStream(file).pipe(response)
+        response.end(readFileSync(file))
       })
     },
   }

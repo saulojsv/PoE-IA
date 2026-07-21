@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000019" createdAt="2026-07-18T14:44:51+00:00" schemaVersion="phase0-1" subphase="0.9">
+  <pair pobXml="combo_00000019.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ancestral_cry\roflolmaoxd_6868_total_retard.xml" sha256="ed1658670612a6df85990baeb3fddde0567f2435cda8c5bc684b5d327b0b0262" />
+  <phaseZeroProfile class="Marauder" ascendancy="Behemoth" mainSkill="Seismic Cry" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>132</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>132</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>connectivity_gate</scope>
+  </audit>
+</pobBuildAnalysis>

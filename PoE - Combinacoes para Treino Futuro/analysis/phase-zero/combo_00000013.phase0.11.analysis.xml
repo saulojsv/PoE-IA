@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000013" createdAt="2026-07-18T14:44:53+00:00" schemaVersion="phase0-1" subphase="0.11">
+  <pair pobXml="combo_00000013.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\ambush\3_28_DfSB4HyHWHg_404716a1.xml" sha256="fb7c7c52256432e682831dffbcb00a2d262fbe5c4dc00eaa6b130ac1d5c56971" />
+  <phaseZeroProfile class="Duelist" ascendancy="Slayer" mainSkill="Clarity" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>130</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Items,Calcs,Notes,Party,Tree,TreeView,Skills,Import,Config</topLevelOrder>
+    <nodeCount>130</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>exact_budget_gate</scope>
+  </audit>
+</pobBuildAnalysis>

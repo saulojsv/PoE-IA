@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000009" createdAt="2026-07-18T14:44:52+00:00" schemaVersion="phase0-1" subphase="0.10">
+  <pair pobXml="combo_00000009.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution_of_inspiring\AQRI8e00be1U.xml" sha256="74ca1185a05114c882025a4c462140a8f72e1a654ae20cb14dfb7ab68f566e6f" />
+  <phaseZeroProfile class="Witch" ascendancy="Elementalist" mainSkill="Absolution of Inspiring" treeVersion="3_26" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>133</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>133</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>regression_gate</scope>
+  </audit>
+</pobBuildAnalysis>

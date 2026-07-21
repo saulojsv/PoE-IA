@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000003" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000003.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\5hfezli6lrvf\5hfezli6lrvf_75c63ee4.xml" sha256="0c4ed9265fa768318a4036e8ef7396667c9d3ae89614c5d9b8a04c43db398cb5" />
+  <phaseZeroProfile class="Duelist" ascendancy="Champion" mainSkill="Precision" treeVersion="3_26" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>101</totalPassivePoints>
+    <defensiveNodeCount>32</defensiveNodeCount>
+    <defensiveWeightedPoints>24.583</defensiveWeightedPoints>
+    <travelPoints>69</travelPoints>
+    <offensivePoints>28.0</offensivePoints>
+    <utilityPoints>27.417</utilityPoints>
+    <hybridPoints>15</hybridPoints>
+    <masteryCount>8</masteryCount>
+    <jewelSocketCount>1</jewelSocketCount>
+    <keystoneCount>0</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>0</unresolvedNodes>
+    <armourPoints>2.5</armourPoints>
+    <evasionPoints>2.667</evasionPoints>
+    <ailment_avoidancePoints>3.833</ailment_avoidancePoints>
+    <lifePoints>8.917</lifePoints>
+    <bleed_defensePoints>1.5</bleed_defensePoints>
+    <leechPoints>1.0</leechPoints>
+    <physical_mitigationPoints>0.5</physical_mitigationPoints>
+    <avoidancePoints>1.333</avoidancePoints>
+    <recovery_ratePoints>0.25</recovery_ratePoints>
+    <recovery_on_blockPoints>0.25</recovery_on_blockPoints>
+    <regenerationPoints>1.833</regenerationPoints>
+    <itemCount>39</itemCount>
+    <gemCount>62</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>101</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

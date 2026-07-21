@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000004" createdAt="2026-07-18T14:44:51+00:00" schemaVersion="phase0-1" subphase="0.9">
+  <pair pobXml="combo_00000004.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution\Absolution - ID 1.xml" sha256="ef9dc6abdc422067bd30ccdf1361b215203789cb63ca6a6409033473e0f882f0" />
+  <phaseZeroProfile class="Templar" ascendancy="Guardian" mainSkill="Zealotry" treeVersion="3_27" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>10</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Tree,Skills,Items,TreeView,Calcs,Notes,Import,Party,Config</topLevelOrder>
+    <nodeCount>10</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>connectivity_gate</scope>
+  </audit>
+</pobBuildAnalysis>

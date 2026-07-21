@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000007" createdAt="2026-07-18T14:48:27+00:00" schemaVersion="phase0-1" subphase="0.5">
+  <pair pobXml="combo_00000007.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution\loxxxxx_1650_schizoposting.xml" sha256="a3ce984afb43f93a0276475d3ee7bb77e900f1ee926e7369d9412b8a58c0e8fe" />
+  <phaseZeroProfile class="Templar" ascendancy="Architect of Chaos" mainSkill="Raise Spectre" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>133</totalPassivePoints>
+    <defensiveNodeCount>39</defensiveNodeCount>
+    <defensiveWeightedPoints>30.467</defensiveWeightedPoints>
+    <travelPoints>70</travelPoints>
+    <offensivePoints>28.867</offensivePoints>
+    <utilityPoints>31.667</utilityPoints>
+    <hybridPoints>20</hybridPoints>
+    <masteryCount>4</masteryCount>
+    <jewelSocketCount>9</jewelSocketCount>
+    <keystoneCount>2</keystoneCount>
+    <clusterCount>0</clusterCount>
+    <unresolvedNodes>24</unresolvedNodes>
+    <curse_defensePoints>2.333</curse_defensePoints>
+    <elemental_resistancePoints>1.2</elemental_resistancePoints>
+    <lifePoints>9.667</lifePoints>
+    <mana_defensePoints>5.167</mana_defensePoints>
+    <attack_blockPoints>1.45</attack_blockPoints>
+    <spell_blockPoints>3.533</spell_blockPoints>
+    <maximum_resistancesPoints>0.2</maximum_resistancesPoints>
+    <energy_shieldPoints>3.917</energy_shieldPoints>
+    <recovery_on_blockPoints>0.5</recovery_on_blockPoints>
+    <regenerationPoints>0.667</regenerationPoints>
+    <rechargePoints>0.5</rechargePoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <armourPoints>0.5</armourPoints>
+    <physical_mitigationPoints>0.5</physical_mitigationPoints>
+    <itemCount>26</itemCount>
+    <gemCount>30</gemCount>
+    <defenseClassifier>rules-v2-semantic-tags</defenseClassifier>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>133</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>coverage_and_human_approval</scope>
+  </audit>
+</pobBuildAnalysis>

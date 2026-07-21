@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000007" createdAt="2026-07-18T14:44:49+00:00" schemaVersion="phase0-1" subphase="0.8">
+  <pair pobXml="combo_00000007.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\absolution\loxxxxx_1650_schizoposting.xml" sha256="a3ce984afb43f93a0276475d3ee7bb77e900f1ee926e7369d9412b8a58c0e8fe" />
+  <phaseZeroProfile class="Templar" ascendancy="Architect of Chaos" mainSkill="Raise Spectre" treeVersion="3_28_alternate" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>133</totalPassivePoints>
+    <unresolvedNodes>0</unresolvedNodes>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>133</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>reproducibility</scope>
+  </audit>
+</pobBuildAnalysis>

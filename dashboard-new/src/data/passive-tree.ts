@@ -44,6 +44,86 @@ export function disconnectedNodes(selected: string[], tree?: PassiveTreeData, cl
   return selected.filter(id => !seen.has(id))
 }
 
+export function connectedSelection(selected: string[], tree?: PassiveTreeData, className?: string) {
+  if (!tree) return selected
+  const start = tree.classes.find(item => item.name.toLowerCase() === className?.toLowerCase())?.startNodeId
+  if (!start || !tree.nodes[start]) return selected
+  const allowed = new Set(selected)
+  allowed.add(start)
+  const seen = new Set<string>([start])
+  const originBranches = (tree.nodes[start]!.neighbors || []).filter(id => allowed.has(id) && !tree.nodes[id]?.isClassStart)
+  const branchReach = (root: string) => { const branchSeen = new Set([start, root]); const queue = [root]; while (queue.length) { const current = queue.shift()!; for (const next of tree.nodes[current]?.neighbors || []) if (allowed.has(next) && !branchSeen.has(next) && !tree.nodes[next]?.isClassStart) { branchSeen.add(next); queue.push(next) } } return branchSeen.size }
+  const first = originBranches.sort((a, b) => branchReach(b) - branchReach(a) || Number(a) - Number(b))[0]
+  const queue = first ? [first] : []
+  while (queue.length) {
+    const current = queue.shift()!
+    for (const next of tree.nodes[current]?.neighbors || []) if (allowed.has(next) && !seen.has(next) && (!tree.nodes[next]?.isClassStart || next === start)) { seen.add(next); queue.push(next) }
+  }
+  return selected.filter(id => seen.has(id) && !tree.nodes[id]?.isClassStart)
+}
+
+export function selectedComponents(selected: string[], tree?: PassiveTreeData, className?: string) {
+  if (!tree) return []
+  const start = tree.classes.find(item => item.name.toLowerCase() === className?.toLowerCase())?.startNodeId
+  const pending = new Set(selected)
+  if (start) pending.add(start)
+  const components: string[][] = []
+  while (pending.size) {
+    const root = pending.values().next().value as string
+    const queue = [root]
+    const component: string[] = []
+    pending.delete(root)
+    while (queue.length) {
+      const current = queue.shift()!
+      component.push(current)
+      for (const next of tree.nodes[current]?.neighbors || []) if (pending.has(next)) { pending.delete(next); queue.push(next) }
+    }
+    components.push(component)
+  }
+  return components
+}
+
+function connectedPrefix(tree: PassiveTreeData, selected: Set<string>, start: string, requested: number) {
+  const seen = new Set([start])
+  const originBranches = (tree.nodes[start]?.neighbors || []).filter(id => selected.has(id) && !tree.nodes[id]?.isClassStart)
+  const branchReach = (root: string) => { const branchSeen = new Set([start, root]); const queue = [root]; while (queue.length) { const current = queue.shift()!; for (const next of tree.nodes[current]?.neighbors || []) if (selected.has(next) && !branchSeen.has(next) && !tree.nodes[next]?.isClassStart) { branchSeen.add(next); queue.push(next) } } return branchSeen.size }
+  const first = originBranches.sort((a, b) => branchReach(b) - branchReach(a) || Number(a) - Number(b))[0]
+  const queue = first ? [first] : []
+  if (first) seen.add(first)
+  const result: string[] = first ? [first] : []
+  while (queue.length && result.length < requested) {
+    const current = queue.shift()!
+    for (const next of tree.nodes[current]?.neighbors || []) {
+      if (!selected.has(next) || seen.has(next)) continue
+      seen.add(next)
+      result.push(next)
+      queue.push(next)
+      if (result.length >= requested) break
+    }
+  }
+  return result
+}
+
+function expandSingleOrigin(tree: PassiveTreeData, nodes: string[], start: string, requested: number) {
+  if (nodes.length >= requested) return nodes.slice(0, requested)
+  const first = nodes[0]
+  if (!first) return nodes
+  const forbidden = new Set((tree.nodes[start]?.neighbors || []).filter(id => id !== first))
+  const seen = new Set([start, ...nodes])
+  const queue = [...nodes]
+  while (queue.length && nodes.length < requested) {
+    const current = queue.shift()!
+    for (const next of tree.nodes[current]?.neighbors || []) {
+      if (seen.has(next) || next === start || forbidden.has(next) || tree.nodes[next]?.isClassStart) continue
+      seen.add(next)
+      nodes.push(next)
+      queue.push(next)
+      if (nodes.length >= requested) break
+    }
+  }
+  return nodes
+}
+
 export interface PassiveTreeGenerationStats {
   requested: number
   generated: number
@@ -357,7 +437,7 @@ export function generateRandomTreeResult(tree: PassiveTreeData, className: strin
     prunedNodes += pruneRedundant(tree, best, start)
     fillConnected(tree, best, internalBudget, random)
   }
-  const nodes = [...best.selected].filter(id => id !== start && !tree.nodes[id]?.isClassStart).slice(0, requested)
+  const nodes = expandSingleOrigin(tree, connectedPrefix(tree, best.selected, start, requested).filter(id => !tree.nodes[id]?.isClassStart), start, requested)
   for (const id of nodes) if (!best.reasons.has(id)) best.reasons.set(id, nodeValue(tree.nodes[id]) >= 10 ? 'investment' : 'fill')
   const disconnected = disconnectedNodes(nodes, tree, className).length
   const frontierRemaining = new Set(nodes.flatMap(id => tree.nodes[id]?.neighbors || [])).size - best.selected.size

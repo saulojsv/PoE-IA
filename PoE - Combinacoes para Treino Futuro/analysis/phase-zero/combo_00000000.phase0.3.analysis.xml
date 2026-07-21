@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pobBuildAnalysis id="combo_00000000" createdAt="2026-07-17T21:33:16+00:00" schemaVersion="phase0-1" subphase="0.3">
+  <pair pobXml="combo_00000000.xml" source="C:\Users\saulo\Documents\PoE-IA\data\poe_ninja\poe_ninja_dataset\xml\00000000_elliot1735-2647_God.xml" sha256="466057a566fa1ea632ac51e90cb9e6d5abc3996f4369426cebc23979923a1ff2" />
+  <phaseZeroProfile class="Templar" ascendancy="Hierophant" mainSkill="Wrath" treeVersion="3_28" status="observed">
+    <externalDefense defenseFromItems="unknown" defenseFromAuras="unknown" defenseFromAscendancy="known_or_unknown" defenseFromFlasks="unknown" />
+  </phaseZeroProfile>
+  <defenseMetrics status="observed">
+    <totalPassivePoints>134</totalPassivePoints>
+    <defensiveNodeCount>49</defensiveNodeCount>
+    <defensiveWeightedPoints>37.167</defensiveWeightedPoints>
+    <travelPoints>85</travelPoints>
+    <offensivePoints>38.25</offensivePoints>
+    <utilityPoints>38.583</utilityPoints>
+    <hybridPoints>26</hybridPoints>
+    <unresolvedNodes>0</unresolvedNodes>
+    <spell_blockPoints>3.917</spell_blockPoints>
+    <lifePoints>11.833</lifePoints>
+    <mana_defensePoints>5.833</mana_defensePoints>
+    <physical_mitigationPoints>1.0</physical_mitigationPoints>
+    <energy_shieldPoints>3.667</energy_shieldPoints>
+    <recovery_on_blockPoints>0.25</recovery_on_blockPoints>
+    <elemental_resistancePoints>4.167</elemental_resistancePoints>
+    <ailment_avoidancePoints>1.167</ailment_avoidancePoints>
+    <regenerationPoints>3.75</regenerationPoints>
+    <chaos_resistancePoints>0.333</chaos_resistancePoints>
+    <curse_defensePoints>0.333</curse_defensePoints>
+    <armourPoints>0.583</armourPoints>
+    <evasionPoints>0.333</evasionPoints>
+  </defenseMetrics>
+  <audit>
+    <encoding>utf-8</encoding>
+    <rootTag>PathOfBuilding</rootTag>
+    <topLevelOrder>Build,Import,Party,Tree,Notes,Skills,Calcs,TreeView,Items,Config</topLevelOrder>
+    <nodeCount>134</nodeCount>
+    <parseStatus>parsed</parseStatus>
+    <roundTripStatus>preserved_original_copy</roundTripStatus>
+    <scope>classification</scope>
+  </audit>
+</pobBuildAnalysis>

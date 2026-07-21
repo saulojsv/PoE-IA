@@ -84,3 +84,17 @@ Estatísticas por grupo usam mediana, P25/P75, P10/P90, média, mínimo, máximo
 ## Limite atual
 
 Classificação por texto dos stats oficiais do passive tree. Timeless jewels, clusters gerados e itens ainda ficam como desconhecidos/pendentes.
+## Gates 0.6-0.11
+
+As etapas posteriores a aprovacao geram manifests em `reports/global` e permanecem bloqueadas para a Fase 1 ate revisao humana.
+
+| Subfase | Artefato | Gate |
+|---|---|---|
+| 0.6 | `*.gate.json` | entrada da Fase 1 |
+| 0.7 | `*.gate.json` | handoff controlado |
+| 0.8 | `*.gate.json` | reprodutibilidade |
+| 0.9 | `*.gate.json` | origem unica e componente unico |
+| 0.10 | `*.gate.json` | regressao |
+| 0.11 | `*.gate.json` | orcamento exato |
+
+A subfase 0.4 produz `*.quality.json`; a 0.5 produz o registro de aprovacao humana. Nenhum gate gera ou aplica arvore.
