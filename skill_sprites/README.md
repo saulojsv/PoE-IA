@@ -5,7 +5,7 @@ Este diretório registra a relação canônica `nome da skill → sprite` usando
 ## Fontes e prioridade
 
 1. Página da skill no PoE Wiki: `https://www.poewiki.net/wiki/<título>`.
-2. API MediaWiki da mesma página (`prop=images`), usada para localizar todas as imagens referenciadas.
+2. Categoria MediaWiki `Category:Skill icons`, consultada de forma agregada e paginada, sem uma requisição por skill.
 3. Página do arquivo (`File:<nome>`), usada como evidência visual e origem do download.
 
 O candidato principal é o arquivo cujo nome contém `skill icon`; os demais candidatos de imagem ficam registrados no JSON para auditoria. Não há fallback para ícone genérico: quando não houver sprite específica, o estado é `missing`.
@@ -23,7 +23,7 @@ Saídas:
 
 ## Parsing
 
-O scraper descobre as skills na tabela de `Skill_gem`, normaliza e deduplica os links, consulta a API com paginação (`continue`), filtra imagens por `skill icon` e baixa a URL oficial retornada por `imageinfo`. Erros individuais são preservados no índice; uma falha não interrompe o lote.
+O scraper descobre as skills na tabela de `Skill_gem`, consulta a categoria de ícones em poucos lotes paginados, associa pelo nome do arquivo (`<skill> skill icon.png`) e consulta os metadados em lotes de até 50 arquivos. Há cache local, atraso curto entre downloads e backoff para `429`; erros individuais são preservados no índice.
 
 ## Verificação
 
