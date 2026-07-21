@@ -27,6 +27,6 @@ O scraper descobre as skills na tabela de `Skill_gem`, consulta a categoria de �
 
 ## Verificação
 
-O índice contém `checked_at`, `source_page`, `api_page` e `file_page` para permitir revalidação posterior. A validação visual manual do padrão foi feita no navegador in-app no exemplo:
+O índice contém `checked_at`, `source_page` e `file_page` para permitir revalidação posterior. A validação visual manual do padrão foi feita no navegador in-app no exemplo:
 
 `https://www.poewiki.net/wiki/Alchemist%27s_Mark#/media/File:Alchemist%27s_Mark_skill_icon.png`
