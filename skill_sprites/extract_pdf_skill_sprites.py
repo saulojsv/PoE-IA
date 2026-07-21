@@ -60,6 +60,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("pdf", nargs="*", type=Path, default=DEFAULT_PDFS)
     parser.add_argument("--no-upscale", action="store_true")
+    parser.add_argument("--hd-size", type=int, default=512, help="lado mínimo da versão HD")
     args = parser.parse_args()
 
     index_path = ROOT / "skill_sprite_index.json"
@@ -76,7 +77,8 @@ def main() -> None:
     native_dir = output / "native_png"
     raw_dir = output / "raw_embedded"
     upscale_dir = output / "upscaled_2x"
-    for directory in (native_dir, raw_dir, upscale_dir):
+    hd_dir = output / f"hd_{args.hd_size}"
+    for directory in (native_dir, raw_dir, upscale_dir, hd_dir):
         directory.mkdir(parents=True, exist_ok=True)
 
     associations = []
@@ -91,12 +93,18 @@ def main() -> None:
         raw_path.write_bytes(item["image"].data)
 
         upscale_path = None
+        hd_path = None
         if not args.no_upscale:
             enlarged = item["image"].image.resize(
                 (item["width"] * 2, item["height"] * 2), Image.Resampling.LANCZOS
             )
             upscale_path = upscale_dir / f"{stem}.png"
             enlarged.save(upscale_path, format="PNG")
+            scale = max(args.hd_size / item["width"], args.hd_size / item["height"], 1)
+            hd_size = (round(item["width"] * scale), round(item["height"] * scale))
+            hd_image = item["image"].image.resize(hd_size, Image.Resampling.LANCZOS)
+            hd_path = hd_dir / f"{stem}.png"
+            hd_image.save(hd_path, format="PNG")
 
         associations.append({
             "skill": name,
@@ -108,6 +116,7 @@ def main() -> None:
             "native_png": str(native_path.relative_to(ROOT)),
             "raw_embedded": str(raw_path.relative_to(ROOT)),
             "upscaled_2x": str(upscale_path.relative_to(ROOT)) if upscale_path else None,
+            "hd": str(hd_path.relative_to(ROOT)) if hd_path else None,
             "association_status": "matched" if record else "unmatched",
         })
 
