@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import argparse
+import hashlib
 import re
 import time
 from datetime import datetime, timezone
@@ -16,9 +18,11 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent
 SPRITES = ROOT / "sprites"
+CACHE = ROOT / "cache"
+FILE_CACHE = ROOT / "file_page_cache.json"
 BASE = "https://www.poewiki.net"
 CATEGORY_URL = f"{BASE}/wiki/Category:Skill_icons"
-REQUEST_DELAY = 0.35
+REQUEST_DELAY = 1.0
 HEADERS = {"User-Agent": "PoE-IA skill sprite catalog/1.0 (local research)"}
 
 
@@ -58,25 +62,36 @@ class FilePageParser(HTMLParser):
                     self.direct.append(value)
 
 
-def get_text(url: str, retry_429: bool = True) -> str:
+def cache_path(url: str, suffix: str) -> Path:
+    key = hashlib.sha256(url.encode("utf-8")).hexdigest()[:24]
+    return CACHE / f"{key}{suffix}"
+
+
+def get_text(url: str, retry_429: bool = True, refresh: bool = False) -> str:
+    CACHE.mkdir(parents=True, exist_ok=True)
+    cached = cache_path(url, ".html")
+    if cached.exists() and not refresh:
+        return cached.read_text(encoding="utf-8")
     request = Request(url, headers=HEADERS)
     for attempt in range(6):
         try:
             with urlopen(request, timeout=45) as response:
-                return response.read().decode("utf-8", "replace")
+                body = response.read().decode("utf-8", "replace")
+                cached.write_text(body, encoding="utf-8")
+                return body
         except HTTPError as exc:
             if exc.code != 429 or not retry_429 or attempt == 5:
                 raise
             time.sleep(2 ** attempt)
 
 
-def category_skill_icons() -> list[str]:
+def category_skill_icons(refresh: bool = False) -> list[str]:
     """Discover files by parsing paginated category HTML only."""
     files = set()
     url = CATEGORY_URL
     while url:
         parser = CategoryParser()
-        parser.feed(get_text(url))
+        parser.feed(get_text(url, refresh=refresh))
         files.update(parser.files)
         url = parser.next_page
         if url and url.startswith("/"):
@@ -85,16 +100,23 @@ def category_skill_icons() -> list[str]:
     return sorted(files)
 
 
-def file_info(file_titles: list[str]) -> dict[str, dict]:
+def file_info(file_titles: list[str], refresh: bool = False,
+              refresh_failed: bool = False, max_pages: int | None = None) -> dict[str, dict]:
     """Open each file page and parse its original /images/ link."""
-    output = {}
+    output = json.loads(FILE_CACHE.read_text(encoding="utf-8")) if FILE_CACHE.exists() else {}
+    pending = [title for title in file_titles if title not in output or
+               (refresh_failed and output[title].get("error"))]
+    if max_pages is not None:
+        pending = pending[:max_pages]
     for title in file_titles:
+        if title not in pending:
+            continue
         file_name = title.rsplit("/", 1)[-1]
         page_url = BASE + title
         parser = FilePageParser()
         page_error = None
         try:
-            parser.feed(get_text(page_url, retry_429=False))
+            parser.feed(get_text(page_url, retry_429=False, refresh=refresh))
         except HTTPError as exc:
             page_error = f"HTTP {exc.code}"
         direct = next(iter(parser.direct), None)
@@ -102,6 +124,7 @@ def file_info(file_titles: list[str]) -> dict[str, dict]:
             "file": unquote(file_name), "url": direct,
             "file_page": page_url, "error": page_error,
         }
+        FILE_CACHE.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
         time.sleep(REQUEST_DELAY)
     return output
 
@@ -111,8 +134,14 @@ def is_sprite(file_title: str) -> bool:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--refresh", action="store_true", help="ignora o cache HTML")
+    parser.add_argument("--refresh-failed", action="store_true", help="reprocessa falhas salvas")
+    parser.add_argument("--max-file-pages", type=int, help="limita páginas nesta execução")
+    parser.add_argument("--no-download", action="store_true", help="gera o índice sem baixar novas imagens")
+    args = parser.parse_args()
     SPRITES.mkdir(parents=True, exist_ok=True)
-    category_files = [image for image in category_skill_icons() if is_sprite(image)]
+    category_files = [image for image in category_skill_icons(refresh=args.refresh) if is_sprite(image)]
     # The category is the authoritative one-request index of skill sprites;
     # using it also avoids repeatedly fetching the 394 individual skill pages.
     skills = []
@@ -129,7 +158,8 @@ def main() -> None:
         for skill in skills
     }
     candidate_titles = category_files
-    infos = file_info(candidate_titles)
+    infos = file_info(candidate_titles, refresh=args.refresh,
+                      refresh_failed=args.refresh_failed, max_pages=args.max_file_pages)
     checked_at = datetime.now(timezone.utc).isoformat()
     records = []
     for skill in skills:
@@ -141,21 +171,26 @@ def main() -> None:
         error = None
         if primary:
             local = f"sprites/{safe_filename(primary['file'])}"
-            try:
-                target = ROOT / local
-                if not target.exists():
-                    target.write_bytes(urlopen(Request(primary["url"], headers=HEADERS), timeout=45).read())
-                    time.sleep(0.2)
-            except HTTPError as exc:  # preserve per-skill failure in the catalog
-                error = f"HTTP {exc.code}"
-            except Exception as exc:  # preserve per-skill failure in the catalog
-                error = f"{type(exc).__name__}: {exc}"
+            if args.no_download:
+                error = None
+            elif not primary.get("url"):
+                error = "download deferred: direct URL not discovered"
+            else:
+                try:
+                    target = ROOT / local
+                    if not target.exists():
+                        target.write_bytes(urlopen(Request(primary["url"], headers=HEADERS), timeout=45).read())
+                        time.sleep(REQUEST_DELAY)
+                except HTTPError as exc:  # preserve per-skill failure in the catalog
+                    error = f"HTTP {exc.code}"
+                except Exception as exc:  # preserve per-skill failure in the catalog
+                    error = f"{type(exc).__name__}: {exc}"
         records.append({
             "name": skill["name"], "wiki_title": skill["title"],
             "source_page": CATEGORY_URL,
             "sprite": primary, "local_file": local, "status": "ok" if primary and not error and not primary.get("error") else "missing" if not primary else "error",
             "file_page": primary.get("file_page") if primary else None,
-            "all_images": category_files,
+            "all_images": all_candidates,
             "all_sprite_candidates": all_candidates, "error": error,
             "checked_at": checked_at,
         })
