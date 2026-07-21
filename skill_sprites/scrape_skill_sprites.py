@@ -67,22 +67,41 @@ def cache_path(url: str, suffix: str) -> Path:
     return CACHE / f"{key}{suffix}"
 
 
+def write_atomic(path: Path, content: str) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(content, encoding="utf-8")
+    temporary.replace(path)
+
+
 def get_text(url: str, retry_429: bool = True, refresh: bool = False) -> str:
     CACHE.mkdir(parents=True, exist_ok=True)
     cached = cache_path(url, ".html")
     if cached.exists() and not refresh:
         return cached.read_text(encoding="utf-8")
-    request = Request(url, headers=HEADERS)
-    for attempt in range(6):
-        try:
-            with urlopen(request, timeout=45) as response:
-                body = response.read().decode("utf-8", "replace")
-                cached.write_text(body, encoding="utf-8")
-                return body
-        except HTTPError as exc:
-            if exc.code != 429 or not retry_429 or attempt == 5:
-                raise
-            time.sleep(2 ** attempt)
+    meta = cache_path(url, ".json")
+    validators = json.loads(meta.read_text(encoding="utf-8")) if meta.exists() else {}
+    headers = dict(HEADERS)
+    if refresh and validators.get("etag"):
+        headers["If-None-Match"] = validators["etag"]
+    if refresh and validators.get("last_modified"):
+        headers["If-Modified-Since"] = validators["last_modified"]
+    request = Request(url, headers=headers)
+    try:
+        with urlopen(request, timeout=45) as response:
+            body = response.read().decode("utf-8", "replace")
+            write_atomic(cached, body)
+            write_atomic(meta, json.dumps({
+                "url": url,
+                "etag": response.headers.get("ETag"),
+                "last_modified": response.headers.get("Last-Modified"),
+                "cached_at": datetime.now(timezone.utc).isoformat(),
+            }, ensure_ascii=False, indent=2))
+            return body
+    except HTTPError as exc:
+        if exc.code == 304 and cached.exists():
+            return cached.read_text(encoding="utf-8")
+        # Do not retry 429: the checkpoint lets the next run resume safely.
+        raise
 
 
 def category_skill_icons(refresh: bool = False) -> list[str]:
@@ -124,7 +143,7 @@ def file_info(file_titles: list[str], refresh: bool = False,
             "file": unquote(file_name), "url": direct,
             "file_page": page_url, "error": page_error,
         }
-        FILE_CACHE.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_atomic(FILE_CACHE, json.dumps(output, ensure_ascii=False, indent=2))
         time.sleep(REQUEST_DELAY)
     return output
 
