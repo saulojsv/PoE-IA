@@ -1,47 +1,23 @@
 {
-  "cycle": 102,
+  "cycle": 141,
   "last_batch": [
-    "Summon Flame Golem of Hordes"
+    "Shock Nova of Procession"
   ],
-  "next_az_order": 284,
-  "next_skill": "Summon Flame Golem of the Meteor",
+  "next_az_order": 243,
+  "next_skill": "Shockwave Totem",
   "league": "mirage",
-  "version": "0819-20260716-26215",
-  "snapshot": "mirage",
-  "updated_at": "2026-07-16T09:00:21Z",
+  "version": "0857-20260721-34033",
+  "snapshot": "standard",
+  "updated_at": "2026-07-21T10:09:57Z",
   "results": [
     {
-      "status": "partial",
-      "skill": "Summon Flame Golem of Hordes",
-      "normalized_name": "summon_flame_golem_of_hordes",
-      "generated": [
-        "crashbug_6689_cheetodustbug",
-        "kinggaia_6634_jerryflamegolemsobv"
-      ],
-      "xml_count": 2,
-      "unique_class_count": 2,
-      "skipped_same_class": [
-        {
-          "account": "Flav606-5460",
-          "character": "LucemilianoSalvador",
-          "class": "Elementalist"
-        },
-        {
-          "account": "Rogerz-5140",
-          "character": "RogerzWastedleaguestart",
-          "class": "Elementalist"
-        },
-        {
-          "account": "Prophecy2014-1538",
-          "character": "Mirage_Elfife",
-          "class": "Elementalist"
-        },
-        {
-          "account": "Shiu-6998",
-          "character": "ShiuMirageGolem",
-          "class": "Elementalist"
-        }
-      ]
+      "status": "already_complete",
+      "skill": "Shock Nova of Procession",
+      "normalized_name": "shock_nova_of_procession",
+      "generated": [],
+      "xml_count": 3,
+      "unique_class_count": 3,
+      "next_action": "advance"
     }
   ],
   "status": "advanced"

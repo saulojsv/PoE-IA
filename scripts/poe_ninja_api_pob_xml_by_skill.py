@@ -366,6 +366,7 @@ def main():
             result.get("next_action") == "advance"
             or result.get("status") in {"already_complete", "complete", "no_profiles", "pending"}
             or (result.get("unique_class_count") or 0) >= args.target_per_skill
+            or (result.get("xml_count") or 0) >= 2
             or len(result.get("generated", [])) >= 2
             or not made_progress
         )

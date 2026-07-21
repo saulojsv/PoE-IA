@@ -6,4 +6,6 @@ import './index.css'
 import './sprites.css'
 import './equipment-layout.css'
 import './polish.css'
+import './dps-deep.css'
+import './dps-official.css'
 createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>)

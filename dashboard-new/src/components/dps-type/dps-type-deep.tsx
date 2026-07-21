@@ -1,0 +1,34 @@
+import { useEffect, useMemo, useState } from 'react'
+import { loadDashboardData, validSkills } from '../../data/poe-data'
+import { loadPassiveTree } from '../../data/passive-tree'
+
+type Mode = { id: string; label: string; tags: string[]; terms: string[] }
+const modes: Mode[] = [
+  { id: 'bleed', label: 'Bleed', tags: ['attack', 'ailment', 'physical'], terms: ['lacerate', 'puncture', 'eviscerate', 'earthquake', 'snipe', 'bleed'] },
+  { id: 'ignite', label: 'Fire / Ignite', tags: ['fire', 'ignite', 'burning'], terms: ['fire', 'ignite', 'burning', 'detonate dead', 'explosive arrow'] },
+  { id: 'cold', label: 'Cold', tags: ['cold', 'chill', 'freeze'], terms: ['cold', 'chill', 'freeze', 'vortex', 'ice', 'winter'] },
+  { id: 'lightning', label: 'Lightning', tags: ['lightning', 'shock'], terms: ['lightning', 'shock', 'arc', 'spark', 'storm'] },
+  { id: 'chaos', label: 'Chaos DoT', tags: ['chaos', 'damage over time'], terms: ['chaos', 'wither', 'essence drain', 'soulrend', 'bane'] },
+  { id: 'poison', label: 'Poison', tags: ['poison', 'chaos', 'attack'], terms: ['poison', 'toxic', 'cobra', 'venom'] },
+  { id: 'physical', label: 'Physical Hit', tags: ['physical', 'attack', 'melee'], terms: ['physical', 'boneshatter', 'flicker', 'cyclone'] },
+]
+const lower = (value: unknown) => String(value || '').toLowerCase()
+const escapeXml = (value: unknown) => String(value || '').replace(/[<>&'"]/g, char => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[char] || char))
+
+export function DPSTypeDeep() {
+  const [mode, setMode] = useState(modes[0]); const [bundle, setBundle] = useState<any>(); const [tree, setTree] = useState<any>(); const [selected, setSelected] = useState<any>()
+  useEffect(() => { loadDashboardData().then(setBundle); loadPassiveTree().then(setTree) }, [])
+  const allSkills = useMemo(() => validSkills(bundle?.data || { skills: [] }), [bundle])
+  const isRelevant = (skill: any) => (skill.build_rows || []).some((row: any) => { const text = lower([skill.skill, ...(row.gems || []), ...(row.item_details || []).flatMap((item: any) => [...(item.implicits || []), ...(item.explicits || [])])].join(' ')); const nodeEvidence = (row.nodes || []).some((id: string) => { const node = tree?.nodes?.[id]; return node && mode.terms.some(term => lower(`${node.name} ${(node.stats || []).join(' ')}`).includes(term)) }); if (mode.id === 'bleed') return nodeEvidence || (/\b(bleed|bleeding|chance to bleed|damage with bleeding|physical damage over time|aggravate bleeding|jagged technique|gratuitous violence)\b/.test(text) && !/corrupted blood cannot|avoid bleeding|unaffected by bleeding/.test(text)); return nodeEvidence || mode.terms.some(term => text.includes(term)) })
+  const skills = useMemo(() => allSkills.filter(isRelevant), [allSkills, mode, tree])
+  const tagsFor = (skill: any) => [...new Set<string>((skill.build_rows || []).flatMap((row: any) => row.gems || []).map(String).filter((gem: string) => mode.tags.some(tag => lower(gem).includes(tag)) || /projectile|slam|melee|bow|attack|spell|area|duration/i.test(gem)))].slice(0, 10)
+  const focused = useMemo(() => { if (!tree) return new Set<string>(); const terms = selected ? [...mode.terms, ...tagsFor(selected)] : mode.terms; return new Set(Object.values(tree.nodes).filter((node: any) => (node.isNotable || node.isKeystone || node.isMastery) && terms.some(term => lower(`${node.name} ${(node.stats || []).join(' ')}`).includes(term))).map((node: any) => node.id)) }, [tree, mode, selected])
+  const exportXml = () => { if (!selected) return; const row = selected.build_rows?.[0] || {}; const nodes = [...focused].join(','); const xml = `<?xml version="1.0" encoding="UTF-8"?><PathOfBuilding><Build><Name>DPS Lab - ${escapeXml(selected.skill)}</Name><Level>${row.level || 1}</Level><Class>${escapeXml(row.class)}</Class><Skills><Skill enabled="true"><Gem name="${escapeXml(selected.skill)}"/></Skill></Skills><Tree><Nodes>${nodes}</Nodes></Tree><Notes>Generated from Codex local dataset. Validate tree, tags and PoB configuration.</Notes></Build></PathOfBuilding>`; const url = URL.createObjectURL(new Blob([xml], { type: 'application/xml' })); const link = document.createElement('a'); link.href = url; link.download = `${selected.skill.replace(/[^a-z0-9]+/gi, '_')}_dps_lab.xml`; link.click(); URL.revokeObjectURL(url) }
+  return <div className="details-page"><header className="page-heading"><div><p>DPS TYPE · DEEP ANALYSIS</p><h1>Estudo por skill e arquétipo</h1><span>{allSkills.length} skills · todas as builds do Codex local consideradas</span></div><strong>{modes.length} <small>tipos</small></strong></header><section className="stage-wrap">{modes.map(item => <button key={item.id} className={`stage ${item.id === mode.id ? 'chosen' : ''}`} onClick={() => { setMode(item); setSelected(undefined) }}><b>{item.label[0]}</b><div><span>{item.label}</span><small>{item.tags.join(' · ')}</small></div></button>)}</section><section className="detail-section"><header><h2>Skills relacionadas</h2><span>{skills.length} skills · {skills.reduce((sum, skill) => sum + (skill.builds || 0), 0)} builds/XMLs agregadas</span></header><div className="deep-skill-grid">{skills.map(skill => <button className={`deep-skill-card ${selected?.skill === skill.skill ? 'chosen' : ''}`} key={skill.skill} onClick={() => setSelected(skill)}><i>✦</i><div><strong>{skill.skill}</strong><small>{skill.builds} builds · tags/gems: {tagsFor(skill).join(', ') || 'não identificadas'}</small></div></button>)}</div>{selected && <MiniTree skill={selected} mode={mode} tree={tree} focused={focused} tags={tagsFor(selected)} onExport={exportXml} />}</section></div>
+}
+
+function MiniTree({ skill, mode, tree, focused, tags, onExport }: { skill: any; mode: Mode; tree: any; focused: Set<string>; tags: string[]; onExport: () => void }) {
+  const [svg, setSvg] = useState(''); const nodeCount = tree ? Object.keys(tree.nodes).length : 0
+  useEffect(() => { fetch('/poe-tree/skilltree-3.28.svg').then(response => response.text()).then(setSvg) }, [])
+  return <section className="mini-tree"><header><div><h3>{skill.skill} · Passive Tree oficial</h3><span>SVG inline com conexões reais · {focused.size} nodos relevantes · tags: {tags.join(', ') || 'não identificadas'}</span></div><button className="primary-action" onClick={onExport}>Exportar XML PoB</button></header>{svg ? <div className="mini-tree-official" dangerouslySetInnerHTML={{ __html: svg }} /> : <p className="dps-empty">Carregando árvore…</p>}<div className="mini-tree-legend"><span>Bleed: {mode.tags.join(', ')}</span><span>{nodeCount.toLocaleString('pt-BR')} nodos na árvore</span><span>{focused.size} nodos DPS/tag selecionados</span></div><p className="dps-empty">A árvore usa o mesmo SVG e as mesmas ligações reais da Passive Tree. O XML exportado é uma base de estudo; valide a estrutura no PoB antes de usar em uma build real.</p></section>
+}
