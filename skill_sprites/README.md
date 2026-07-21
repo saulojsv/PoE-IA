@@ -30,3 +30,19 @@ O scraper descobre as skills na tabela de `Skill_gem`, consulta a categoria de �
 O índice contém `checked_at`, `source_page` e `file_page` para permitir revalidação posterior. A validação visual manual do padrão foi feita no navegador in-app no exemplo:
 
 `https://www.poewiki.net/wiki/Alchemist%27s_Mark#/media/File:Alchemist%27s_Mark_skill_icon.png`
+
+## Extracao a partir dos PDFs
+
+Os tres PDFs podem ser processados sem novos requests:
+
+```powershell
+$py = "C:\Users\saulo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+& $py skill_sprites\extract_pdf_skill_sprites.py
+```
+
+Saidas em `pdf_extracted`:
+
+- `native_png`: imagem convertida para PNG sem nova compressao.
+- `raw_embedded`: bytes originais incorporados no PDF.
+- `upscaled_2x`: ampliacao Lanczos 2x; nao adiciona detalhe inexistente.
+- `manifest.json`: associacao skill, PDF, pagina, dimensao e arquivo.
