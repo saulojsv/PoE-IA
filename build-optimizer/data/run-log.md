@@ -38,3 +38,12 @@
 - Learned Rules: nenhuma regra promovida; original preservado.
 - Unknowns: identidade visual, legalidade/causalidade da árvore e ranking Show Node Power.
 - Next Frontier: uma janela PoB controlável, seleção concreta do cursor 0 e confirmação visual; depois normalização.
+## 2026-07-22T20:20:00+01:00 — cursor 0
+- Objective: executar inventário/hash/validação XML e priorizar bloqueios do PoB.
+- Inputs: 940 XMLs; cursor 0; `-26z68CIDwLz.xml`; SHA-256 `02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d`.
+- Tests: inventário completo e inspeção estática única; XML raiz `PathOfBuilding`, Shadow/Trickster, nível 90, targetVersion `3_0`.
+- Comparisons: nenhum candidato, mutação, métrica antes/depois ou causalidade PoB.
+- Failures/Rollbacks: execução inicial bloqueada pela política PowerShell; repetida com bypass; `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, Computer Use indisponível.
+- Learned Rules: nenhuma regra promovida; original preservado; 940/940 válidos, 0 inválidos.
+- Unknowns: identidade/skills/árvore/configuração visual, legalidade e ranking Show Node Power.
+- Next Frontier: carregar exatamente o XML no PoB em uma única janela; cursor permanece 0.

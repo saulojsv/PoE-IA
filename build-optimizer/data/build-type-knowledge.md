@@ -25,3 +25,7 @@
 - Evidência 2026-07-22T19:42:00+01:00: XML `-26z68CIDwLz.xml`, nível 90, métricas estáticas; PoB visual não confirmado.
 - Status: `NÃO VALIDADO`; não transferir regras para outros arquétipos.
 - Próximo teste: confirmar skills, árvore e Show Node Power no PoB.
+## Shadow/Trickster — cursor 0 — 2026-07-22T20:20:00+01:00
+- confirmed: XML válido, raiz `PathOfBuilding`, nível 90, targetVersion `3_0`, hash estável.
+- unvalidated: skills/árvore/configuração visual, legalidade causal, Show Node Power e candidatos.
+- verdict: `NÃO VALIDADO`; não transferir regras sem validação PoB compatível.

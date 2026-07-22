@@ -44,3 +44,11 @@
 - Rejected Rules: nenhuma.
 - Unknowns: identidade visual, árvore, skills, causalidade e legalidade permanecem não confirmadas.
 - Next Frontier: carregar exatamente este XML no PoB e observar Show Node Power; cursor permanece 0.
+## 2026-07-22T20:20:00+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua
+- patch: 3_0; baseline_hash: 02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d
+- experiment: inventário/hash/validação e inspeção única do cursor 0.
+- observed: 940/940 válidos, 0 inválidos; raiz `PathOfBuilding`; Shadow/Trickster nível 90; métricas estáticas presentes; PoB visual indisponível.
+- classification: inconclusive; verdict: `NÃO VALIDADO`.
+- rule_delta: nenhum; divergência 940 vs 930 e 44 duplicatas permanecem pendentes.
+- next_retest: carga visual confirmada e Show Node Power no PoB.
