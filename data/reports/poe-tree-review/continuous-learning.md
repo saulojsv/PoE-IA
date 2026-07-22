@@ -114,6 +114,32 @@ Reindexar o arquivo, detectar alteracoes e preservar a fronteira sem mutar XMLs.
 Abrir um XML homogeneo por classe/ascendancy/tree_version no PoB e observar a UI; depois testar, com checkpoint, uma rota de dano, uma de defesa/recurso e uma de eficiencia.
 ## Ciclo sequencial do arquivo
 
+## Run 2026-07-22 05:25:00
+
+### Objective
+Retestar a pendência no XML índice 3 e preservar a evidência.
+
+### Inputs
+`_fast_more_8_build_3.xml`; Templar/Hierophant, nível 100, árvore 3_28, 135 nós; CombinedDPS 5.188.054,69, TotalDPS 5.183.879,83, vida 3.548, ES 1.356, armour 40.154, evasion 26, resistências 84, mana cost 19, warnings 0. Reindexação: 940/940 XMLs válidos, 0 falhas.
+
+### Tests
+PoB existente PID 10692 responsivo; Computer Use observável não disponível. Não foi possível confirmar seleção, Open, identidade, Show Node Power, mutação ou recálculo.
+
+### Comparisons
+Nenhum antes/depois; cursor permanece 3. Veredito: `NÃO VALIDADO`.
+
+### Failures/Rollbacks
+`POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. Nenhuma mutação ou rollback; Google Sheets não conectado.
+
+### Learned Rules
+Processo responsivo não prova build carregada; sem identidade e métricas visíveis, não avançar cursor nem promover rota. Regra operacional, confiança alta; gameplay, zero.
+
+### Unknowns
+Ranking Show Node Power, rota legal, delta PoB, uptime e impacto defensivo.
+
+### Next Frontier
+Repetir o índice 3 com controle visual observável; confirmar carga e Show Node Power antes de testar.
+
 ## Run 2026-07-22 02:52:10
 
 Reteste do XML índice 3 `_fast_more_8_build_3.xml`: Computer Use indisponível, sem carga visual, Show Node Power, mutação, recálculo ou delta. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `NÃO VALIDADO`, `NO_NEW_LEARNING`; cursor permanece 3. `git pull --rebase` falhou por alterações unstaged preexistentes.
