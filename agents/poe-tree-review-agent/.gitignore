@@ -1,0 +1,13 @@
+# Dados locais e potencialmente grandes
+*.xml
+reports/
+logs/
+tmp/
+*.zip
+*.7z
+
+# Segredos e estado local
+.env
+credentials*
+token*
+
