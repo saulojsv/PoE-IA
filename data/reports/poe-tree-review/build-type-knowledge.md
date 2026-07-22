@@ -62,6 +62,8 @@ Run 2026-07-22 02:20:00: executable process path was verified, but GUI state rem
 Run 2026-07-22 02:35:00: `_fast_more_8_build_3.xml` retried; two responsive PoB processes appeared but GUI control was unavailable. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`; no rule promoted, cursor remains index 3.
 
 Run 2026-07-22 02:45:00: same XML retried; one responsive process, no observable GUI. Static baseline CombinedDPS 5.188M, life 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072. `NO_NEW_LEARNING`; no rule promoted and cursor remains index 3.
+
+Run 2026-07-22 03:15:00: same XML retried with no PoB process initially present. Computer Use unavailable; no load identity, Show Node Power, mutation, or delta. `NÃO VALIDADO`; no rule promoted, cursor remains index 3.
 ## 2026-07-22 — Witch Elementalist / DoT / Saresh Bloodline
 
 - Evidência: `run-20260722-030000.md`, PoB 2.65.0, tree 3.28.

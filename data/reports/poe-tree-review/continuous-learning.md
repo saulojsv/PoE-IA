@@ -374,6 +374,10 @@ Verify all PoB instances are closed, then retry this same XML only with observab
 ## Run 2026-07-22 02:45:00
 
 Retried `_fast_more_8_build_3.xml` from the canonical root. Static baseline: Templar/Hierophant level 100, targetVersion 3_0, CombinedDPS 5.188M, life 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072. PoB was responsive, but GUI control was unavailable; `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `NO_NEW_LEARNING`. No mutation or delta; cursor remains index 3. Next: retry the same XML with observable controls.
+
+## Run 2026-07-22 03:15:00
+
+Objective: retry queued index 3 `_fast_more_8_build_3.xml`. Static baseline unchanged: CombinedDPS 5.188M, life 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072. No PoB process was present before the attempt, but Computer Use was unavailable; no visual load, Show Node Power, mutation, recalculation, or close verification. All adjustments: `NÃO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`. No new learning; cursor remains 3. Next: retry same XML with observable Computer Use.
 ## Run 20260722-030000
 
 ### Objective
