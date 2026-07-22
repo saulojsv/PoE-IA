@@ -20,6 +20,10 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 
 Cada execução é um ciclo curto e persistente: carregar estado → escolher uma pendência ou um XML → normalizar baseline → gerar hipóteses → testar o candidato de maior informação → validar no PoB → emitir veredito → atualizar memórias/planilha → commit/push → salvar o próximo cursor. O run deve continuar do último checkpoint, reaprender as regras anteriores e priorizar erros não resolvidos antes de abrir uma nova frente.
 
+## Reorganização incremental
+
+Ao final de cada ciclo, comparar o procedimento executado com o resultado: registrar ação eficiente, desperdício, erro, causa e correção. Só adicionar uma nova regra à skill/automação quando houver evidência suficiente; caso contrário, guardar como hipótese. Atualizar a ordem dos testes, o cursor, os limites de exploração e a fila de retestes para aumentar informação por ação/token no ciclo seguinte.
+
 ## Fluxo obrigatório por run
 
 1. **Preparar:** ler memória, cursor e pendências; selecionar um XML e preservar o baseline.
