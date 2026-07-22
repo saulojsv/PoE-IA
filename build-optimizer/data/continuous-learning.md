@@ -52,3 +52,36 @@
 - classification: inconclusive; verdict: `NÃO VALIDADO`.
 - rule_delta: nenhum; divergência 940 vs 930 e 44 duplicatas permanecem pendentes.
 - next_retest: carga visual confirmada e Show Node Power no PoB.
+# Estado atual
+- Último ciclo: 2026-07-22T20:31:00+01:00; cursor 0/940.
+- Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
+
+## Objective
+Revalidar o próximo XML e priorizar pendências persistentes.
+
+## Inputs
+`-26z68CIDwLz.xml`; SHA-256 `02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d`; inventário 940 válidos/0 inválidos.
+
+## Candidates
+Nenhum candidato legal promovido; PoB visual não carregado.
+
+## Tests
+Inspeção única estática do XML; Shadow/Trickster nível 90, Blade Trap of Laceration, árvore 3_23, 6 sockets.
+
+## Comparisons
+Baseline estático: CombinedDPS 1,207,243.85; TotalDPS 16,903.58; TotalDotDPS 1,069,688.24; vida 2,647; supressão 84.79%; caos 10%; mana livre 71. Sem delta antes/depois.
+
+## Failures/Rollbacks
+PoB/Computer Use não confirmaram carga, identidade, cálculo ou Show Node Power. Veredito: `NÃO VALIDADO`; cursor preservado em 0.
+
+## Learned Rules
+Nenhuma regra nova: frequência e previsão estática não substituem validação PoB.
+
+## Rejected Rules
+Não transformar esta baseline em recomendação de árvore.
+
+## Unknowns
+Legalidade causal, ranking Show Node Power, mutação e métricas pós-mudança.
+
+## Next Frontier
+Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade antes de qualquer mutação.

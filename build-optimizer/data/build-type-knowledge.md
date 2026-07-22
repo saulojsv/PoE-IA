@@ -29,3 +29,7 @@
 - confirmed: XML válido, raiz `PathOfBuilding`, nível 90, targetVersion `3_0`, hash estável.
 - unvalidated: skills/árvore/configuração visual, legalidade causal, Show Node Power e candidatos.
 - verdict: `NÃO VALIDADO`; não transferir regras sem validação PoB compatível.
+# 2026-07-22T20:31:00+01:00 — Shadow/Trickster / Blade Trap of Laceration
+- Evidência estática: XML válido, árvore 3_23, nível 90; CombinedDPS 1,207,243.85; vida 2,647; caos 10%.
+- Estado: `NÃO VALIDADO`; PoB/Show Node Power indisponíveis nesta execução.
+- Escopo: não promover regra; repetir com carga visual confirmada.

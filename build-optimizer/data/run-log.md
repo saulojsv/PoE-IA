@@ -47,3 +47,8 @@
 - Learned Rules: nenhuma regra promovida; original preservado; 940/940 válidos, 0 inválidos.
 - Unknowns: identidade/skills/árvore/configuração visual, legalidade e ranking Show Node Power.
 - Next Frontier: carregar exatamente o XML no PoB em uma única janela; cursor permanece 0.
+# 2026-07-22T20:31:00+01:00
+- Inventário: 940/940 válidos, 0 inválidos; cursor 0, XML `-26z68CIDwLz.xml`, hash estável.
+- Inspeção: Shadow/Trickster 90, Blade Trap of Laceration, árvore 3_23; baseline estático CombinedDPS 1,207,243.85, vida 2,647, supressão 84.79%, caos 10%.
+- Falhas: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
+- Sem mutação, candidato, delta, regra ou avanço de cursor; original preservado. Próximo: carga visual confirmada do mesmo XML.
