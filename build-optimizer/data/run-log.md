@@ -68,3 +68,8 @@
 - Result: sem carga visual, cálculo, candidato, mutação, delta ou causalidade PoB; original preservado; `NÃO VALIDADO`.
 - Failures: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`; pull/rebase bloqueado por unstaged preexistentes.
 - Next Frontier: confirmar seleção/Open e identidade visual do mesmo XML numa única janela PoB.
+## Run 2026-07-22T21:25:00+01:00
+- Inventário/hash: 940/940 válidos; cursor 0; `-26z68CIDwLz.xml`; hash estável `02bacb2e...87b2d`.
+- Inspeção: estática apenas; PoB/Computer Use indisponível.
+- Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
+- Sem candidato, mutação, delta, regra ou avanço; veredito `NÃO VALIDADO`.

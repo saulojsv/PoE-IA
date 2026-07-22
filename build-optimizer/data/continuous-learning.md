@@ -86,6 +86,15 @@ Legalidade causal, ranking Show Node Power, mutação e métricas pós-mudança.
 ## Next Frontier
 Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade antes de qualquer mutação.
 
+## Run 2026-07-22T21:25:00+01:00
+- Objective: reteste do cursor 0 e erros pendentes.
+- Inputs: 940 XMLs observados; `-26z68CIDwLz.xml`; SHA-256 `02bacb2e...87b2d`; original preservado.
+- Tests: inventário/hash e inspeção XML estática; carga visual/Show Node Power indisponíveis.
+- Result: sem candidato, mutação, delta causal ou regra; veredito `NÃO VALIDADO`.
+- Failures/Rollbacks: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`; cursor mantido em 0.
+- Learned Rules: `NO_NEW_LEARNING`; frequência/predição estática não promove regra.
+- Next Frontier: confirmar identidade e métricas no PoB antes de testar rota.
+
 ## Run 2026-07-22T20:55:00+01:00
 - Reteste estático do cursor 0: 940/940 válidos; hash estável; raiz `PathOfBuilding`, Shadow/Trickster, nível 90, targetVersion `3_0`.
 - `unresolved`; `NÃO VALIDADO`; `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`; sem candidato, mutação, delta ou regra.

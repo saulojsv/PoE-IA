@@ -42,3 +42,6 @@
 ## Run 2026-07-22T20:55:00+01:00
 - Shadow/Trickster, cursor 0: evidência estrutural estática confirmada; PoB visual, legalidade causal e Show Node Power não validados.
 - Não transferir nem promover heurísticas sem validação PoB compatível.
+## 2026-07-22T21:25:00+01:00
+- Shadow/Trickster + Blade Trap of Laceration: reteste estático do XML do cursor 0; sem nova evidência causal.
+- Status: `NÃO VALIDADO`; aguarda carga PoB confirmada e Show Node Power.
