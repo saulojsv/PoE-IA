@@ -16,6 +16,10 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 - **Leitura causal:** reconstruir (a) caminho e alternativas, (b) dependências da build, (c) métrica esperada e (d) teste de remoção/substituição. Registrar `node_role`, `depends_on`, hipótese, variante, delta de métrica, veredito e escopo; sem ablação, marcar como hipótese.
 - **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
+## Protocolo agendado de 5 minutos
+
+Cada execução é um ciclo curto e persistente: carregar estado → escolher uma pendência ou um XML → normalizar baseline → gerar hipóteses → testar o candidato de maior informação → validar no PoB → emitir veredito → atualizar memórias/planilha → commit/push → salvar o próximo cursor. O run deve continuar do último checkpoint, reaprender as regras anteriores e priorizar erros não resolvidos antes de abrir uma nova frente.
+
 ## Fluxo obrigatório por run
 
 1. **Preparar:** ler memória, cursor e pendências; selecionar um XML e preservar o baseline.
