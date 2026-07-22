@@ -1,5 +1,10 @@
 # Build-type knowledge
 
+## Shadow/Trickster — cursor 0 — 2026-07-22T20:00:00+01:00
+- confirmed: identidade XML, nível 90, targetVersion 3_0 e métricas estáticas.
+- unvalidated: skill/árvore/configuração visual, legalidade causal, Show Node Power e qualquer candidato.
+- verdict: `NÃO VALIDADO`; transfer_policy: `conditional_transfer` somente após validação PoB compatível.
+
 ## Shadow / Trickster — XML cursor 0
 - scope: patch targetVersion 3_0; nível 90; build específica.
 - confirmed: identidade de classe/ascendência no XML.

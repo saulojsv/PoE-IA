@@ -1,5 +1,14 @@
 # Continuous learning
 
+## 2026-07-22T20:00:00+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua
+- patch: 3_0; baseline_hash: 02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d
+- experiment: reindexação/hash/XML e inspeção única do cursor 0 (`-26z68CIDwLz.xml`).
+- observed: 940/940 válidos, 0 inválidos; Shadow/Trickster, nível 90; métricas estáticas presentes; PoB visual/Computer Use não disponível.
+- classification: inconclusive; verdict: NÃO VALIDADO.
+- rule_delta: nenhum; 44 duplicatas e divergência 940 vs 930 continuam pendentes; originais preservados.
+- next_retest: abrir uma única janela PoB, carregar exatamente o XML, confirmar identidade/métricas e observar Show Node Power.
+
 ## 2026-07-22T19:30:00+01:00
 - run_id: poe-tree-review-aprendizagem-cont-nua
 - patch: 3_0; pob_version: não disponível no XML

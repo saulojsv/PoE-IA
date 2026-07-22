@@ -1,5 +1,12 @@
 # Run log
 
+## 2026-07-22T20:00:00+01:00 — cursor 0
+- inventário: 940 XMLs, 940 válidos, 0 inválidos; hash do cursor estável (`02bacb2e...87b2d`).
+- inspeção: `-26z68CIDwLz.xml`, Shadow/Trickster, nível 90, targetVersion `3_0`; TotalDPS estático 16903.58, CombinedDPS 1207243.85.
+- candidato/mutação: nenhum; sem baseline PoB carregado, Show Node Power, causalidade ou delta antes/depois. Veredito: `NÃO VALIDADO`.
+- falhas: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; pull/rebase bloqueado por alterações unstaged preexistentes.
+- próximo: carga visual confirmada do cursor 0; não avançar cursor nem promover regra.
+
 ## 2026-07-22T19:42:00+01:00
 - objetivo: reindexar e retestar o cursor 0, priorizando normalização e falhas PoB.
 - inventário: 940 XMLs, 940 válidos, 0 inválidos; hash do cursor 0 estável (`02bacb2e...87b2d`).
