@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "required": ["id", "baselineId", "request", "tree", "gems", "items", "config", "validation", "metrics", "label"],
+  "label": ["VIÁVEL", "INVIÁVEL", "CONDICIONAL", "NÃO VALIDADO"],
+  "fields": {
+    "tree": ["nodeIds", "addedNodeIds", "removedNodeIds", "route", "remainingBudget"],
+    "validation": ["legalConnectedTree", "legalPassiveBudget", "legalAscendancy", "legalMasteries", "legalTreeVersion", "supportGemsCompatible", "configSourcesPresent", "pobValidated", "blockers", "warnings"],
+    "metrics": ["baseline", "candidate", "delta", "scope"],
+    "causality": ["nodeRole", "dependsOn", "hypothesis", "prediction", "testVariant", "confidence"],
+    "provenance": ["sourceXml", "sourceHash", "patch", "rulesVersion"]
+  }
+}
