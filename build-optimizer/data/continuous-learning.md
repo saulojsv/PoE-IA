@@ -124,3 +124,9 @@ Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade a
 - rule_delta: nenhum; original preservado.
 - confidence: alta para a validação XML, nula para otimização PoB.
 - next_retest: importação visual confirmada e Show Node Power na mesma janela PoB.
+## 2026-07-22T22:34:00+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua-20260722-223400; patch: `3_0`; baseline_hash: `02bacb2e...87b2d`.
+- experiment: inspeção estática do cursor 0 após inventário/hash.
+- observed: 940/940 XMLs válidos; Shadow/Trickster 90; Blade Trap of Laceration; CombinedDPS `1207243.8489`; vida `2647`; supressão `84.79%`.
+- classification: `unresolved`; confounder: GUI/Computer Use indisponível; `NO_NEW_LEARNING`.
+- next_retest: importar visualmente o XML exato, confirmar métricas e executar Show Node Power.

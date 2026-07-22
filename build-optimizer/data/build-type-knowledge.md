@@ -53,3 +53,6 @@
 - Evidência estática: nível 90, targetVersion `3_0`, CombinedDPS `1207243.8489`, vida `2647`, supressão efetiva `84.79%`, caos `10%`.
 - Limitação: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; nenhuma rota ou regra promovida.
 - Próximo teste: confirmar carga visual do XML exato antes de qualquer mutação.
+## 2026-07-22T22:34:00+01:00 — Shadow/Trickster / Blade Trap of Laceration
+- Evidência estática: XML válido, nível 90, `targetVersion 3_0`, CombinedDPS `1207243.8489`, vida `2647`, supressão `84.79%`.
+- Causalidade não inferida sem ablação/Show Node Power. Veredito: `NÃO VALIDADO`.

@@ -84,3 +84,11 @@
 - Learned Rules: nenhuma promoção; frequência não convertida em regra.
 - Unknowns: identidade visual, árvore legal, configuração e ranking Show Node Power.
 - Next Frontier: importar exatamente o cursor 0 em uma única janela PoB e confirmar identidade visual.
+## Run 2026-07-22T22:34:00+01:00
+- Objective: priorizar `POB_LOAD_FAILED` e retestar estaticamente o cursor 0.
+- Inputs/Tests: inventário/hash/XML; 940/940 válidos, 0 inválidos; `-26z68CIDwLz.xml`, hash `02bacb2e...87b2d`, Shadow/Trickster 90, targetVersion `3_0`.
+- Observed: CombinedDPS `1207243.8489`, TotalDPS `16903.5799`, BleedDPS `1069688.2385`, vida `2647`, EHP `38725.2390`, supressão `84.79%`, resistências elementais `75%`, caos `10%`.
+- Decision: sem carga PoB confirmada, Show Node Power, candidato, mutação, delta ou causalidade; veredito `NÃO VALIDADO`; original preservado; cursor permanece 0.
+- Failures: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `git pull --rebase origin main` bloqueado por unstaged preexistentes; Google Sheet não identificado.
+- Learned Rules: `NO_NEW_LEARNING`; frequência não promovida a regra.
+- Next Frontier: seleção/Open visual do XML exato numa única janela PoB e confirmação de identidade/métricas antes de Show Node Power.
