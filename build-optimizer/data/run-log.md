@@ -1,5 +1,11 @@
 # Run log
 
+## 2026-07-22T20:12:00+01:00 - cursor 0
+- inventario: 940 XMLs, 940 validos, 0 invalidos; cursor `-26z68CIDwLz.xml` preservado, SHA-256 `02bacb2e...87b2d`.
+- inspeccao estatica: Shadow/Trickster, nivel 90, targetVersion `3_0`, Blade Trap of Laceration; TotalDPS `16903.58`, CombinedDPS `1207243.85`, Life `2647`, ES `23`.
+- candidato/mutacao: nenhum; PoB/Computer Use indisponivel, Show Node Power pendente. Veredito: `NAO VALIDADO`.
+- proximo: carregar exatamente este XML no PoB e confirmar identidade, metricas e Show Node Power.
+
 ## 2026-07-22T20:00:00+01:00 — cursor 0
 - inventário: 940 XMLs, 940 válidos, 0 inválidos; hash do cursor estável (`02bacb2e...87b2d`).
 - inspeção: `-26z68CIDwLz.xml`, Shadow/Trickster, nível 90, targetVersion `3_0`; TotalDPS estático 16903.58, CombinedDPS 1207243.85.

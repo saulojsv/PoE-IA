@@ -1,5 +1,11 @@
 # Continuous learning
 
+## 2026-07-22T20:12:00+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua; patch `3_0`; baseline_hash `02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d`.
+- experiment: inventario/hash e inspeccao unica do cursor 0; observed: 940/940 validos e identidade/skill recuperadas estaticamente.
+- classification: inconclusive; verdict `NAO VALIDADO`; nenhum rule_delta. PoB visual/Computer Use indisponivel.
+- next_retest: carga visual confirmada no PoB; nao avancar cursor nem promover regra.
+
 ## 2026-07-22T20:00:00+01:00
 - run_id: poe-tree-review-aprendizagem-cont-nua
 - patch: 3_0; baseline_hash: 02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d
