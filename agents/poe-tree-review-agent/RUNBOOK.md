@@ -9,6 +9,7 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 - **Dataset:** XMLs imutáveis, normalizados por build, skill, árvore, itens, configuração e métricas.
 - **Experimento:** baseline → hipótese → mutação legal → cálculo comparável → classificação → rollback ou promoção.
 - **Otimização:** priorizar legalidade, funcionamento, defesa/recursos, eficiência de pontos e só depois dano; penalizar dependência de item, uptime falso e risco de brick.
+- **Autonomia:** escolher a ordem e as combinações de teste dentro do escopo; cobrir famílias de nodos, rotas, skills, suportes, itens e configurações por busca adaptativa, sem prometer enumeração literal quando o espaço for inviável.
 - **Validação:** abrir a candidata no PoB, confirmar identidade/configuração/métricas e usar `Show Node Power` antes de aceitar a rota.
 - **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
