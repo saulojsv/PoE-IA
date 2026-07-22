@@ -413,3 +413,26 @@ Nomes/ranking final e qualquer delta de rota.
 
 ### Next Frontier
 Repetir a mesma build com seleção de nó por tooltip e checkpoint antes da alocação.
+## Current state
+- Cursor: XML índice 3; bloqueio recorrente de carga visual/Computer Use.
+- Regra ativa: parse estático não promove ajuste sem recálculo PoB e Show Node Power.
+
+## Run 2026-07-22 02:47:11+01:00
+
+### Objective
+Retestar `_fast_more_8_build_3.xml` priorizando o gate de carga.
+
+### Inputs
+Templar Hierophant nível 100, árvore 3.28, 135 nós, SHA-256 `5530FF45E2C3B711EAD96F15D8A7317A98550E51775417712ECDAC234DF682BA`.
+
+### Tests
+Tentativa de validação visual; Computer Use indisponível. Baseline estático normalizado: 5,183,879.83 Total DPS, 3,548 vida, 1,356 ES, 40,154 armadura.
+
+### Failures/Rollbacks
+`POB_LOAD_FAILED`; `SHOW_NODE_POWER_PENDING`; sem mutação e sem rollback necessário.
+
+### Learned Rules
+Hipótese não promovida: a fronteira de validação permanece após carga confirmada, cálculo atualizado e Show Node Power.
+
+### Next Frontier
+Retestar o mesmo XML somente com GUI observável; cursor permanece 3.

@@ -77,3 +77,7 @@ Run 2026-07-22 03:15:00: Computer Use initialization failed with `Windows Comput
 - Static baseline re-read: CombinedDPS 5.188M; life 3,548; ES 1,356; armour 40,154; chaos 75.
 - No build-specific rule promoted: PoB load, Show Node Power and candidate delta were not observable.
 - Scope: 3_28; status `NÃO VALIDADO`; next test requires visual PoB confirmation.
+## Templar Hierophant — Totem/crit — 2026-07-22
+- Baseline XML índice 3: árvore 3.28, nível 100, 135 nós, Total DPS 5,183,879.83, vida 3,548, ES 1,356, armadura 40,154.
+- Estado: `NÃO VALIDADO`; carga visual e Show Node Power pendentes.
+- Não transferir conclusões de dano/rota até recálculo no PoB.
