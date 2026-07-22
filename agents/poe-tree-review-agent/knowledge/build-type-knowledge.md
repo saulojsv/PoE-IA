@@ -73,3 +73,7 @@ Run 2026-07-22 02:45:00: same XML retried; one responsive process, no observable
 - GUI validation remains pending; do not promote route or node-power rules.
 
 Run 2026-07-22 03:15:00: Computer Use initialization failed with `Windows Computer Use Sky runtime is unavailable`; no PoB load, Show Node Power, mutation, or rule promotion. Cursor remains index 3.
+### Run 20260722-032000 — Kinetic Blast/Kinetic Fusillade Hierophant
+- Static baseline re-read: CombinedDPS 5.188M; life 3,548; ES 1,356; armour 40,154; chaos 75.
+- No build-specific rule promoted: PoB load, Show Node Power and candidate delta were not observable.
+- Scope: 3_28; status `NÃO VALIDADO`; next test requires visual PoB confirmation.

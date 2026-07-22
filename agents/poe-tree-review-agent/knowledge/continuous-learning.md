@@ -437,3 +437,11 @@ Loaded identity, metrics, node-power ranking, and route delta.
 
 ### Next Frontier
 Retry this same XML only with observable Computer Use.
+## Run 20260722-032000
+
+- `run_id`: 20260722-032000; `patch`: targetVersion 3_0/tree 3_28; `pob_version`: não observado.
+- `baseline_hash`: `_fast_more_8_build_3.xml`; Templar Hierophant nível 100, 135 nós.
+- `experiment`: reteste visual do XML índice 3; `prediction`: confirmar carga e medir rota de maior informação.
+- `observed`: parser 940/940, baseline CombinedDPS 5,188,054.69, vida 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072; GUI indisponível.
+- `classification`: inconclusive; `confounders`: ausência de Computer Use/PoB visual; `rule_delta`: parser não substitui recálculo PoB; `confidence`: alta para o gate operacional.
+- `next_retest`: mesma build, carga visual confirmada, Show Node Power, checkpoint, mutação legal e rollback.
