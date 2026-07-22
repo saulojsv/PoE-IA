@@ -60,3 +60,11 @@
 - Result: sem baseline PoB, candidato, mutação ou delta; original preservado.
 - Failures: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
 - Next: confirmar carga visual do XML do cursor 0.
+
+## Run 2026-07-22T20:55:00+01:00
+- Objective: retestar cursor 0 e priorizar `POB_LOAD_FAILED`/`SHOW_NODE_POWER_PENDING`.
+- Inputs: 940/940 XMLs válidos; `-26z68CIDwLz.xml`; SHA-256 `02bacb2e...87b2d`.
+- Tests: hash/XML e inspeção estática única; raiz `PathOfBuilding`, Shadow/Trickster, nível 90, targetVersion `3_0`.
+- Result: sem carga visual, cálculo, candidato, mutação, delta ou causalidade PoB; original preservado; `NÃO VALIDADO`.
+- Failures: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`; pull/rebase bloqueado por unstaged preexistentes.
+- Next Frontier: confirmar seleção/Open e identidade visual do mesmo XML numa única janela PoB.

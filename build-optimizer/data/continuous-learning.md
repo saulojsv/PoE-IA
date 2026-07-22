@@ -85,6 +85,11 @@ Legalidade causal, ranking Show Node Power, mutação e métricas pós-mudança.
 
 ## Next Frontier
 Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade antes de qualquer mutação.
+
+## Run 2026-07-22T20:55:00+01:00
+- Reteste estático do cursor 0: 940/940 válidos; hash estável; raiz `PathOfBuilding`, Shadow/Trickster, nível 90, targetVersion `3_0`.
+- `unresolved`; `NÃO VALIDADO`; `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`; sem candidato, mutação, delta ou regra.
+- Próximo reteste: carga visual confirmada, identidade e métricas não vazias.
 -
 ## Run 2026-07-22T20:42:00+01:00
 - 940/940 XMLs válidos; cursor 0 e hash estáveis.

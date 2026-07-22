@@ -38,3 +38,7 @@
 - Shadow/Trickster, Blade Trap of Laceration; evidência estática apenas.
 - Veredito: `NÃO VALIDADO`; nenhuma regra promovida.
 - Próximo teste: carga visual e Show Node Power confirmados.
+
+## Run 2026-07-22T20:55:00+01:00
+- Shadow/Trickster, cursor 0: evidência estrutural estática confirmada; PoB visual, legalidade causal e Show Node Power não validados.
+- Não transferir nem promover heurísticas sem validação PoB compatível.
