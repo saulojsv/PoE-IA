@@ -1,5 +1,11 @@
 # Continuous learning
 
+## 2026-07-22T19:49:14+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua; patch `3_0`; baseline_hash `02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d`.
+- experiment: inventário/hash e inspeção única do cursor 0; observed: 940/940 válidos, 0 inválidos; Shadow/Trickster nível 90; TotalDPS estático 16903.58, CombinedDPS 1207243.85, Life 2647, ES 23, resistências elementais 75, chaos 10.
+- classification: inconclusive; verdict `NÃO VALIDADO`; nenhum candidato, mutação, delta causal ou rule_delta. PoB visual/Computer Use indisponível.
+- next_retest: carregar exatamente este XML no PoB, confirmar identidade/métricas e observar Show Node Power; cursor não avança.
+
 ## 2026-07-22T20:12:00+01:00
 - run_id: poe-tree-review-aprendizagem-cont-nua; patch `3_0`; baseline_hash `02bacb2e26489e8364fbcf15dea327fa141a653de0e8122d490884bbaee87b2d`.
 - experiment: inventario/hash e inspeccao unica do cursor 0; observed: 940/940 validos e identidade/skill recuperadas estaticamente.

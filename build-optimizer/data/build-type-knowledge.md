@@ -1,5 +1,10 @@
 # Build-type knowledge
 
+## Shadow/Trickster - Blade Trap of Laceration - 2026-07-22T19:49:14+01:00
+- confirmed: XML válido, nível 90, targetVersion `3_0`, métricas estáticas presentes.
+- unvalidated: carga visual, árvore/configuração, legalidade causal, Show Node Power e candidatos.
+- verdict: `NÃO VALIDADO`; transfer_policy `conditional_transfer` somente após validação PoB compatível.
+
 ## Shadow/Trickster - Blade Trap of Laceration - 2026-07-22T20:12:00+01:00
 - confirmed: XML valido, nivel 90, targetVersion `3_0`, skill principal e metricas estaticas presentes.
 - unvalidated: carga visual, arvore, configuracao, legalidade causal, Show Node Power e candidatos.
