@@ -12,6 +12,7 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 - **Autonomia:** escolher a ordem e as combinações de teste dentro do escopo; cobrir famílias de nodos, rotas, skills, suportes, itens e configurações por busca adaptativa, sem prometer enumeração literal quando o espaço for inviável.
 - **Validação:** abrir a candidata no PoB, confirmar identidade/configuração/métricas e usar `Show Node Power` antes de aceitar a rota.
 - **Veredito:** todo ajuste termina como `VIÁVEL`, `INVIÁVEL`, `CONDICIONAL` ou `NÃO VALIDADO`, com métricas baseline/candidata, legalidade, regressões, premissas e evidência. Sem veredito, não há promoção.
+- **Causalidade:** para cada nodo/rota, explicar posição no grafo, distância, custo de oportunidade, skill/tags, escala, defesa/recursos, atributos, itens, configuração, ascendência e momento de uso; separar motivo específico da build, padrão reutilizável e simples frequência.
 - **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
 ## Fluxo obrigatório por run
