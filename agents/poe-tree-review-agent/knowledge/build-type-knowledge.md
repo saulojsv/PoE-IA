@@ -58,6 +58,8 @@ Run 2026-07-22 00:48:00: nova tentativa visual do mesmo XML; a janela intitulada
 ### 2026-07-22 — Fast More 8 / Templar Hierophant
 
 Current evidence remains static-only for `_fast_more_8_build_3.xml` (level 100, targetVersion 3_0). No Show Node Power ranking or tree mutation is validated. Scope: do not transfer DPS/path rules until PoB load identity and recalculation are observable.
+
+Run 2026-07-22 12:17: reindexação 940/940 válida e hash estático estável; GUI não observável. Instância iniciada pelo run fechada normalmente. `NÃO VALIDADO`; sem nova evidência de gameplay ou regra promovida; reteste permanece no índice 3.
 ### 2026-07-22 01:11:36 — Templar Hierophant / `_fast_more_8_build_3.xml`
 
 Interactive validation unresolved: `COMPUTER_USE_UNAVAILABLE`, `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. No rule promoted.
@@ -81,3 +83,32 @@ Run 2026-07-22 03:15:00: Computer Use initialization failed with `Windows Comput
 - Baseline XML índice 3: árvore 3.28, nível 100, 135 nós, Total DPS 5,183,879.83, vida 3,548, ES 1,356, armadura 40,154.
 - Estado: `NÃO VALIDADO`; carga visual e Show Node Power pendentes.
 - Não transferir conclusões de dano/rota até recálculo no PoB.
+## Templar Hierophant — Kinetic Blast/Kinetic Fusillade — 3_28
+
+- 2026-07-22 12:47:15+01:00: baseline estático preservado (135 nós; TotalDPS 5.183.879,83; vida 3.548; ES 1.356; armadura 40.154). Carga PoB e Show Node Power não confirmados; `NÃO VALIDADO`; nenhuma regra transferida ou promovida.
+## 2026-07-22T05:57:05+01:00
+
+ReindexaÃ§Ã£o 940/940 vÃ¡lida; baseline do XML no cursor 3 permanece imutÃ¡vel. Sem GUI observÃ¡vel, `NÃƒO VALIDADO`; nenhuma regra de rota, dano ou defesa Ã© promovida.
+## Templar Hierophant — Kinetic Blast/Kinetic Fusillade — 2026-07-22 06:07:16
+
+Baseline estático repetido e estável; carga PoB, Show Node Power e qualquer rota continuam não validados. Não transferir nem promover regra de árvore.
+# 2026-07-22T13:15:00+01:00 — Templar/Hierophant Kinetic Blast/Kinetic Fusillade
+
+- Evidência estática repetida e estável; não constitui validação PoB. Sem nova regra promovida (`NO_NEW_LEARNING`).
+- Limite: qualquer otimização de árvore, Show Node Power ou delta permanece não validada até a carga visual do XML ser confirmada.
+## 2026-07-22 06:52:28 +01:00
+- Templar/Hierophant Kinetic Blast/Kinetic Fusillade, cursor 3; baseline/hash estáticos estáveis.
+- `NÃO VALIDADO`: GUI indisponível; sem carga, Show Node Power ou delta. Nenhuma regra promovida.
+
+## 2026-07-22 15:47:17 +01:00
+- Templar/Hierophant Kinetic Blast/Kinetic Fusillade, tree 3_28, cursor 3; baseline/hash estÃ¡veis.
+- `NÃƒO VALIDADO`: carga PoB e Show Node Power pendentes por GUI indisponÃ­vel; nenhuma regra promovida.
+
+## 2026-07-22 14:00:00 +01:00
+- Templar/Hierophant Kinetic Blast/Kinetic Fusillade, tree 3_28, cursor 3; baseline/hash estáveis.
+- `NÃO VALIDADO`: carga PoB e Show Node Power pendentes por GUI indisponível; nenhuma regra promovida.
+- 2026-07-22T07:32:11+01:00 — Templar/Hierophant Kinetic Blast/Kinetic Fusillade, tree 3_28: baseline estático/hash estáveis; GUI bloqueada. Sem regra transferida ou promovida; próxima validação exige carga visual e Show Node Power.
+## Templar Hierophant — Kinetic Blast/Kinetic Fusillade — 2026-07-22T19:19:49+01:00
+- Baseline estático imutável: tree 3_28, 135 nós, Total DPS 5.183.879,83, vida 3.548, ES 1.356, armadura 40.154.
+- Carga PoB e Show Node Power não confirmados; `NÃO VALIDADO`.
+- Não transferir nem promover regras de rota, dano ou defesa.

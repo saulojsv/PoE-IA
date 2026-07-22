@@ -114,6 +114,12 @@ Reindexar o arquivo, detectar alteracoes e preservar a fronteira sem mutar XMLs.
 Abrir um XML homogeneo por classe/ascendancy/tree_version no PoB e observar a UI; depois testar, com checkpoint, uma rota de dano, uma de defesa/recurso e uma de eficiencia.
 ## Ciclo sequencial do arquivo
 
+## Run 2026-07-22 06:52:28
+
+- Reteste do cursor 3: 940/940 XMLs válidos; hash/baseline estáticos estáveis.
+- GUI/Computer Use indisponível; `NÃO VALIDADO`, `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`; sem mutação, delta ou promoção.
+- Retrospectiva: reindexação/hash eficientes; repetição sem GUI foi desperdício; próximo método requer canal visual observável.
+
 ## Run 2026-07-22 01:58:46
 
 Objective: retry cursor build index 3, `_fast_more_8_build_3.xml`, through PoB's visible saved-build list.
@@ -445,3 +451,100 @@ Retry this same XML only with observable Computer Use.
 - `observed`: parser 940/940, baseline CombinedDPS 5,188,054.69, vida 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072; GUI indisponível.
 - `classification`: inconclusive; `confounders`: ausência de Computer Use/PoB visual; `rule_delta`: parser não substitui recálculo PoB; `confidence`: alta para o gate operacional.
 - `next_retest`: mesma build, carga visual confirmada, Show Node Power, checkpoint, mutação legal e rollback.
+## Run 2026-07-22 04:32:21
+
+### Objective
+Retestar o XML canônico no cursor 3 com validação PoB.
+
+### Inputs
+`_fast_more_8_build_3.xml`; Templar Hierophant nível 100, target 3_0, árvore 3_28, 135 nós; CombinedDPS estático 5.188M, vida 3.548, ES 1.356, armour 40.154, chaos 75%, mana 1.072.
+
+### Tests
+Reindexação: 940/940 válidos, 0 falhas. PoB responsivo (PID 10692), mas Computer Use indisponível.
+
+### Comparisons
+Sem carga confirmada, Show Node Power, mutação, recálculo ou delta.
+
+### Failures/Rollbacks
+`POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`; nenhum rollback necessário.
+
+### Learned Rules
+Processo responsivo e parse estático não comprovam build carregada. Nenhuma regra de gameplay promovida.
+
+### Unknowns
+Identidade/configuração visível, ranking de nós e efeito de rota.
+
+### Next Frontier
+Repetir o mesmo XML com GUI observável; cursor permanece 3.
+## Run 20260722-043715
+
+Objective: retestar o XML do cursor 3 e resolver o gate de carga antes de otimizar.
+
+Inputs: `_fast_more_8_build_3.xml`, hash imutável `5530FF45E2C3B711EAD96F15D8A7317A98550E51775417712ECDAC234DF682BA`; baseline estático Templar Hierophant nível 100, árvore 3.28, 135 nós, Combined DPS 5.188M, vida 3.548, ES 1.356, armour 40.154, chaos 75%, mana 1.072.
+
+Tests: PoB PID 10692 responsivo; Computer Use/GUI observável indisponível. Sem carga confirmada, Show Node Power, mutação, recálculo ou delta.
+
+Failures/Rollbacks: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`; sem rollback.
+
+Learned Rules: `NO_NEW_LEARNING`; nenhuma regra de gameplay promovida. Ação eficiente: revalidar hash e baseline. Desperdício: nenhuma mutação possível sem GUI. Causa: ausência de controle observável. Correção: manter o mesmo XML na fila e exigir GUI no próximo ciclo.
+
+Unknowns: rota causal, ranking Show Node Power e deltas PoB.
+
+Next Frontier: carregar o mesmo XML via lista Builds com GUI observável.
+
+Run 20260722-123000: reindexacao 940/940 valida; reteste do XML no cursor 3 sem carga PoB confirmada por indisponibilidade do Computer Use. NAO VALIDADO; sem mutacao, delta ou regra promovida. Cursor permanece 3. Artefatos proprios gravados; Git bloqueado por alteracoes unstaged preexistentes.
+## Run 2026-07-22 12:47:15 +01:00
+
+### Objective
+Retestar primeiro a pendência do cursor 3 e não promover ajuste sem carga PoB confirmada.
+
+### Inputs
+`_fast_more_8_build_3.xml`; Templar/Hierophant, nível 100, árvore 3_28, 135 nós; SHA-256 `5530FF45E2C3B711EAD96F15D8A7317A98550E51775417712ECDAC234DF682BA`. Reindexação canônica: 940/940 PoBs válidos, 0 falhas. Baseline estático: TotalDPS 5.183.879,83; CombinedDPS 5.188.054,69; vida 3.548; ES 1.356; armadura 40.154; evasão 26; resistências 84; mana cost 19; warnings 0.
+
+### Candidates
+Confirmar carga pela lista Builds; depois Show Node Power e uma rota de dano, uma de defesa/recurso e uma de eficiência.
+
+### Tests
+PoB PID 10692 responsivo e com título correto, mas controle visual Computer Use indisponível. Não houve seleção/Open observáveis, identidade carregada, Show Node Power, mutação, recálculo ou comparação.
+
+### Comparisons
+Sem antes/depois; veredito único: `NÃO VALIDADO`.
+
+### Failures/Rollbacks
+`POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. Nenhuma mutação; XML imutável preservado. Google Sheets não conectado. Git não publicado porque há alterações unstaged preexistentes.
+
+### Learned Rules
+`NO_NEW_LEARNING`: reindexação/hash/baseline estáticos são triagem, não evidência de carga ou delta PoB. Nenhuma regra de gameplay promovida.
+
+### Rejected Rules
+Frequência de nó ou processo responsivo prova eficácia: rejeitada.
+
+### Unknowns
+Ranking Show Node Power, nomes/rotas legais, deltas, uptime e brick risk.
+
+### Next Frontier
+Repetir o mesmo XML somente quando a lista, seleção/Open, identidade e métricas estiverem visualmente confirmados.
+## Run 2026-07-22 06:07:16 +01:00
+
+Reindexação 940/940 válida; `_fast_more_8_build_3.xml` permanece imutável no cursor 3. PoB responsivo, mas sem GUI observável: `NÃO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. Sem mutação, delta ou promoção. Retrospectiva: ação eficiente foi reindexar e comparar hash; desperdício foi repetir triagem estática sem desbloquear Computer Use; correção é manter o reteste em fila, sem avançar cursor.
+# 2026-07-22T13:15:00+01:00 — ciclo automático
+
+- `run_id`: `20260722-131500`; reindexação canônica: 940/940 XMLs válidos, 0 falhas.
+- XML imutável no cursor 3: `_fast_more_8_build_3.xml`; SHA-256 `5530FF45E2C3B711EAD96F15D8A7317A98550E51775417712ECDAC234DF682BA`; baseline estático: Templar/Hierophant, nível 100, tree 3_28, 135 nós, Total DPS 5.183.879,83.
+- PoB PID 10692 responsivo, porém Computer Use/GUI não observável: sem carga confirmada, Show Node Power, recálculo, mutação ou delta. Resultado: `NÃO VALIDADO`; erros: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`.
+- Hipótese causal: nenhuma testável sem estado carregado. Cursor permanece 3; nenhuma regra promovida. Reteste prioritário: importar/abrir o XML pela lista de Builds com GUI observável e confirmar identidade/métricas antes de Show Node Power.
+## Run 2026-07-22 15:47:17 +01:00
+
+ReindexaÃ§Ã£o 940/940 vÃ¡lida; `_fast_more_8_build_3.xml` permanece imutÃ¡vel no cursor 3. Sem GUI/Computer Use observÃ¡vel, `NÃƒO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. `NO_NEW_LEARNING`; nenhuma regra promovida. Retrospectiva: reindexaÃ§Ã£o/hash foram eficientes; repetiÃ§Ã£o estÃ¡tica sem desbloqueio foi desperdÃ­cio; correÃ§Ã£o Ã© priorizar carga visual.
+
+## Run 2026-07-22 14:00:00 +01:00
+
+Retestei `_fast_more_8_build_3.xml` no cursor 3. Reindexação: 940/940 XMLs válidos, 0 falhas; hash estável. PoB PID 10692 responsivo, mas GUI/Computer Use não observável: sem carga confirmada, Show Node Power, mutação, recálculo ou delta. Veredito `NÃO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`. `NO_NEW_LEARNING`; cursor permanece 3. Próximo teste: confirmar carga visual do mesmo XML pela lista Builds.
+- 2026-07-22T07:32:11+01:00 — Reindexação 940/940 válida, 0 falhas; cursor 3 retestado. Sem GUI observável/carga confirmada/Show Node Power/recálculo; `NÃO VALIDADO`, `NO_NEW_LEARNING`, cursor permanece 3.
+## Run 2026-07-22 07:52:22+01:00
+
+Reindexação 940/940 válida; cursor 3 retestado estaticamente, sem GUI/carga/Show Node Power/mutação. `NÃO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `NO_NEW_LEARNING`.
+## 2026-07-22T19:19:49+01:00
+- Cursor 3, `_fast_more_8_build_3.xml`, hash estável; 940/940 XMLs válidos.
+- PoB observado na lista, mas a build-alvo não foi confirmada; `POB_LOAD_FAILED`, `COMPUTER_USE_INPUT_UNCONFIRMED`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`.
+- `NÃO VALIDADO`; sem mutação, delta ou regra promovida. Próximo teste: janela única controlável e seleção concreta.
