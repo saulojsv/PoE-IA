@@ -440,3 +440,10 @@ Hipótese não promovida: a fronteira de validação permanece após carga confi
 
 ### Next Frontier
 Retestar o mesmo XML somente com GUI observável; cursor permanece 3.
+## Run 20260722-030707
+
+- Objective: retestar `_fast_more_8_build_3.xml` no índice 3.
+- Inputs: Templar Hierophant 100, 3_28, 135 nós; baseline estático Total DPS 5,183,879.83, vida 3,548, EHP 292,930.91.
+- Tests: carga visual, mutação e Show Node Power bloqueados por `COMPUTER_USE_UNAVAILABLE`; processo PoB preexistente não foi encerrado.
+- Result: `NÃO VALIDADO`; `POB_LOAD_FAILED`; cursor 3.
+- Learning: nenhum aprendizado promovido; manter a mesma pendência como próxima ação.

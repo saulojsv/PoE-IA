@@ -72,3 +72,9 @@ Run 2026-07-22 03:15:00: same XML retried with no PoB process initially present.
 - Confirmado: identidade, 123/123 pontos, configuração Default, métricas visíveis e Show Node Power disponível após carregamento.
 - Não confirmado: qualquer rota, nome de nó, ganho ou perda; o clique candidato não mutou a árvore.
 - Próximo teste: tooltip legível + checkpoint + uma rota legal + recálculo + rollback.
+## Templar Hierophant — Kinetic Fusillade / Svalinn — 20260722-030707
+
+- Baseline estático: nível 100, árvore 3_28, 135 nós, 5.184M Total DPS, 3,548 vida, 1,356 ES, 89.76% block/spell block.
+- Evidência: XML local; carga visual e Show Node Power não confirmados.
+- Status: `NÃO VALIDADO`; nenhum route/node rule promovido.
+- Próximo teste: importação visual do mesmo XML e comparação controlada de rota.
