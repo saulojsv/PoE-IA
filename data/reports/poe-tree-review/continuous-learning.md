@@ -447,3 +447,15 @@ Retestar o mesmo XML somente com GUI observável; cursor permanece 3.
 - Tests: carga visual, mutação e Show Node Power bloqueados por `COMPUTER_USE_UNAVAILABLE`; processo PoB preexistente não foi encerrado.
 - Result: `NÃO VALIDADO`; `POB_LOAD_FAILED`; cursor 3.
 - Learning: nenhum aprendizado promovido; manter a mesma pendência como próxima ação.
+
+## Run 20260722-042500
+
+Objective: retestar o XML índice 3 `_fast_more_8_build_3.xml` e resolver primeiro o gate de carga.
+
+Inputs: Templar Hierophant nível 100, árvore 3_28, 135 nós, SHA-256 `5530FF45E2C3B711EAD96F15D8A7317A98550E51775417712ECDAC234DF682BA`; baseline estático Total DPS 5,183,879.83, Combined DPS 5,188,054.69, vida 3,548, ES 1,356, armadura 40,154, evasão 26, caos 75%, mana 1,072.
+
+Tests: reindexação 940/940 PoBs válidos, 0 falhas. Computer Use indisponível; sem carga visual, Show Node Power, mutação, recálculo ou delta. `NÃO VALIDADO`; `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`.
+
+Learning: `NO_NEW_LEARNING`; baseline estático continua somente triagem. Cursor permanece 3. Google Sheets indisponível. Não promover regras de dano, defesa ou rota.
+
+Next Frontier: repetir este mesmo XML somente com GUI observável.

@@ -66,6 +66,7 @@ Run 2026-07-22 02:35:00: `_fast_more_8_build_3.xml` retried; two responsive PoB 
 Run 2026-07-22 02:45:00: same XML retried; one responsive process, no observable GUI. Static baseline CombinedDPS 5.188M, life 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072. `NO_NEW_LEARNING`; no rule promoted and cursor remains index 3.
 
 Run 2026-07-22 03:15:00: same XML retried with no PoB process initially present. Computer Use unavailable; no load identity, Show Node Power, mutation, or delta. `NÃO VALIDADO`; no rule promoted, cursor remains index 3.
+Run 2026-07-22 04:25:00: static baseline/hash unchanged; bulk index 940/940 valid. Computer Use unavailable, so `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `POB_CLOSE_BLOCKED`; no mutation or delta. `NO_NEW_LEARNING`; cursor remains index 3.
 ## 2026-07-22 — Witch Elementalist / DoT / Saresh Bloodline
 
 - Evidência: `run-20260722-030000.md`, PoB 2.65.0, tree 3.28.
