@@ -13,6 +13,7 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 - **Validação:** abrir a candidata no PoB, confirmar identidade/configuração/métricas e usar `Show Node Power` antes de aceitar a rota.
 - **Veredito:** todo ajuste termina como `VIÁVEL`, `INVIÁVEL`, `CONDICIONAL` ou `NÃO VALIDADO`, com métricas baseline/candidata, legalidade, regressões, premissas e evidência. Sem veredito, não há promoção.
 - **Causalidade:** para cada nodo/rota, explicar posição no grafo, distância, custo de oportunidade, skill/tags, escala, defesa/recursos, atributos, itens, configuração, ascendência e momento de uso; separar motivo específico da build, padrão reutilizável e simples frequência.
+- **Leitura causal:** reconstruir (a) caminho e alternativas, (b) dependências da build, (c) métrica esperada e (d) teste de remoção/substituição. Registrar `node_role`, `depends_on`, hipótese, variante, delta de métrica, veredito e escopo; sem ablação, marcar como hipótese.
 - **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
 ## Fluxo obrigatório por run
