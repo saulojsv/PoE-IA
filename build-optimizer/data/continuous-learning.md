@@ -85,3 +85,9 @@ Legalidade causal, ranking Show Node Power, mutação e métricas pós-mudança.
 
 ## Next Frontier
 Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade antes de qualquer mutação.
+-
+## Run 2026-07-22T20:42:00+01:00
+- 940/940 XMLs válidos; cursor 0 e hash estáveis.
+- `NO_NEW_LEARNING`: sem carga PoB, Show Node Power, mutação ou delta antes/depois.
+- Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
+- Próximo reteste: carga visual confirmada do mesmo XML.

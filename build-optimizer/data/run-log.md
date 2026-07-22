@@ -52,3 +52,11 @@
 - Inspeção: Shadow/Trickster 90, Blade Trap of Laceration, árvore 3_23; baseline estático CombinedDPS 1,207,243.85, vida 2,647, supressão 84.79%, caos 10%.
 - Falhas: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
 - Sem mutação, candidato, delta, regra ou avanço de cursor; original preservado. Próximo: carga visual confirmada do mesmo XML.
+-
+## 2026-07-22T20:42:00+01:00 — cursor 0
+- Objective: reteste estático e priorização dos bloqueios PoB.
+- Inputs: 940 XMLs válidos; `-26z68CIDwLz.xml`; SHA-256 `02bacb2e...87b2d`.
+- Tests: inventário/hash/XML; PoB iniciado, GUI não observável.
+- Result: sem baseline PoB, candidato, mutação ou delta; original preservado.
+- Failures: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
+- Next: confirmar carga visual do XML do cursor 0.

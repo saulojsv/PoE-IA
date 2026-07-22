@@ -33,3 +33,8 @@
 - Evidência estática: XML válido, árvore 3_23, nível 90; CombinedDPS 1,207,243.85; vida 2,647; caos 10%.
 - Estado: `NÃO VALIDADO`; PoB/Show Node Power indisponíveis nesta execução.
 - Escopo: não promover regra; repetir com carga visual confirmada.
+-
+## Run 2026-07-22T20:42:00+01:00
+- Shadow/Trickster, Blade Trap of Laceration; evidência estática apenas.
+- Veredito: `NÃO VALIDADO`; nenhuma regra promovida.
+- Próximo teste: carga visual e Show Node Power confirmados.
