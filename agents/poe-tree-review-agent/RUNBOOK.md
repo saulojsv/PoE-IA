@@ -11,6 +11,7 @@ Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. 
 - **Otimização:** priorizar legalidade, funcionamento, defesa/recursos, eficiência de pontos e só depois dano; penalizar dependência de item, uptime falso e risco de brick.
 - **Autonomia:** escolher a ordem e as combinações de teste dentro do escopo; cobrir famílias de nodos, rotas, skills, suportes, itens e configurações por busca adaptativa, sem prometer enumeração literal quando o espaço for inviável.
 - **Validação:** abrir a candidata no PoB, confirmar identidade/configuração/métricas e usar `Show Node Power` antes de aceitar a rota.
+- **Veredito:** todo ajuste termina como `VIÁVEL`, `INVIÁVEL`, `CONDICIONAL` ou `NÃO VALIDADO`, com métricas baseline/candidata, legalidade, regressões, premissas e evidência. Sem veredito, não há promoção.
 - **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
 ## Fluxo obrigatório por run
