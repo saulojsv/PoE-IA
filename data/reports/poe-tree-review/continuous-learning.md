@@ -417,6 +417,10 @@ Nomes/ranking final e qualquer delta de rota.
 
 ### Next Frontier
 Repetir a mesma build com seleção de nó por tooltip e checkpoint antes da alocação.
+## Run 2026-07-22 03:23:05+01:00
+
+Computer Use encontrou uma única janela do PoB, mas `Ctrl+I` não confirmou importação, identidade ou métricas. XML índice 3 e hash permaneceram estáveis; baseline estático preservado. Resultado `NÃO VALIDADO`; `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `POB_CALC_STALE`, `POB_CLOSE_BLOCKED`; cursor permanece 3. Nova hipótese: disponibilidade da GUI não equivale a carga confirmada. Não promover; retestar quando a tela de importação for observável.
+
 ## Current state
 - Cursor: XML índice 3; bloqueio recorrente de carga visual/Computer Use.
 - Regra ativa: parse estático não promove ajuste sem recálculo PoB e Show Node Power.
