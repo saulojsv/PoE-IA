@@ -114,6 +114,10 @@ Reindexar o arquivo, detectar alteracoes e preservar a fronteira sem mutar XMLs.
 Abrir um XML homogeneo por classe/ascendancy/tree_version no PoB e observar a UI; depois testar, com checkpoint, uma rota de dano, uma de defesa/recurso e uma de eficiencia.
 ## Ciclo sequencial do arquivo
 
+## Run 2026-07-22 02:52:10
+
+Reteste do XML índice 3 `_fast_more_8_build_3.xml`: Computer Use indisponível, sem carga visual, Show Node Power, mutação, recálculo ou delta. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `NÃO VALIDADO`, `NO_NEW_LEARNING`; cursor permanece 3. `git pull --rebase` falhou por alterações unstaged preexistentes.
+
 ## Run 2026-07-22 03:30:00
 
 Reteste do XML índice 3 `_fast_more_8_build_3.xml`: Computer Use indisponível; sem carga visual, Show Node Power, mutação, recálculo ou delta. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `NÃO VALIDADO`, `NO_NEW_LEARNING`, cursor permanece 3. Próximo: mesma build com GUI observável.

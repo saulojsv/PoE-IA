@@ -13,6 +13,8 @@ Persistent, scoped memory for PoE Tree Review. Create a section when a new skill
 - Frontier: untested, testing, measured, rejected, retest, next experiment.
 - Interpretation: helped/hurt/neutral/conditional/unresolved; why the change likely caused the result; hidden costs; rollback; follow-up test.
 - Transfer map: habits/rules inherited from compatible builds, compatibility checks, build-specific exceptions, rejected transfers, and evidence for each reuse.
+
+Run 2026-07-22 02:52:10: `_fast_more_8_build_3.xml` retestado sem Computer Use; nenhuma carga visual, Show Node Power, mutação ou delta. `NÃO VALIDADO`; `NO_NEW_LEARNING`; cursor permanece 3. Não promover regras de dano, caminho ou defesa.
 - Resolution queue: unresolved/pending items, attempted methods, next changed method, blocker evidence, retry count, and final resolution.
 - PoB validation proof: loaded-build identity, visible tabs/metrics, active configuration, Show Node Power state, mutation/recalculation evidence, before/after values, and export/checkpoint reference.
 - Task lifecycle: `OPEN_POB`, `LOAD_MEMORY`, `TEST_ERRORS_FIRST`, `INSPECT_XML`, `TEST_ACTION`, `MEASURE`, `RECORD_UPDATE`, `CHECKPOINT/EXPORT`, `CLOSE_POB`, `VERIFY_CLOSED`.
