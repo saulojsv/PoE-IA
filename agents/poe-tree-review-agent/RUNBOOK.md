@@ -2,18 +2,25 @@
 
 ## Objetivo
 
-Revisar uma única build por execução, validar a carga real no Path of Building Community, explorar a árvore com `Show Node Power`, comparar alterações e transformar cada erro em regra reutilizável.
+Gerar builds otimizadas por análise estruturada e experimentos reproduzíveis. O PoB visual valida a candidata e diagnostica falhas; não é o dataset principal.
+
+## Arquitetura de aprendizado
+
+- **Dataset:** XMLs imutáveis, normalizados por build, skill, árvore, itens, configuração e métricas.
+- **Experimento:** baseline → hipótese → mutação legal → cálculo comparável → classificação → rollback ou promoção.
+- **Otimização:** priorizar legalidade, funcionamento, defesa/recursos, eficiência de pontos e só depois dano; penalizar dependência de item, uptime falso e risco de brick.
+- **Validação:** abrir a candidata no PoB, confirmar identidade/configuração/métricas e usar `Show Node Power` antes de aceitar a rota.
+- **Memória:** guardar evidência, versão/patch, confiança, regra aprendida e escopo; hipóteses não viram regras automaticamente.
 
 ## Fluxo obrigatório por run
 
-1. **Preparar:** ler memória, cursor, pendências e último erro; escolher uma única build.
-2. **Abrir:** iniciar `Path of Building.exe`, observar a janela e clicar `Back` até `Builds`.
-3. **Carregar:** clicar uma linha concreta, observar, clicar `Open` e observar novamente. Confirmar identidade, classe, ascendência, nível, versão, skills e métricas. Sem isso: `POB_LOAD_FAILED`.
-4. **Mapear PoB:** registrar Tree, Skills, Items, Calcs, Config, Notes, Compare, versão da árvore, pontos e avisos.
-5. **Explorar árvore:** selecionar skill/configuração, clicar `Show Node Power`, registrar candidatos, custo e ranking; testar rota original, rota defensiva e rota de eficiência.
-6. **Experimentar:** criar checkpoint, alterar uma hipótese por vez, recalcular, comparar dano/defesa/recursos/custo; classificar `helped`, `hurt`, `neutral`, `conditional` ou `unresolved`; desfazer regressões.
-7. **Aprender:** comparar com builds anteriores, consultar fontes relevantes apenas para hipóteses, transformar somente evidência medida em regra e enfileirar pendências.
-8. **Registrar:** escrever `run-YYYYMMDD-HHMMSS.md`, JSON, memórias locais e a aba `Updates` com data, objetivo, testes, erro, correção e próximo teste. Sempre que houver conquista nova confirmada, repetir o registro na aba `Avanços e Aprendizado`, incluindo evidência PoB, métricas, regra aprendida, confiança e próximo aprendizado.
+1. **Preparar:** ler memória, cursor e pendências; selecionar um XML e preservar o baseline.
+2. **Estruturar:** normalizar a build e extrair árvore, skills, itens, configuração, tags e métricas.
+3. **Gerar:** criar candidatos legais de árvore/skills/itens/configuração e escolher os testes com maior informação por token.
+4. **Comparar:** medir cada candidato contra o mesmo baseline/configuração; registrar ganhos, perdas, custos, defesa e risco.
+5. **Validar:** abrir somente a melhor candidata no PoB, confirmar identidade/métricas e usar `Show Node Power`; se divergir, corrigir o parser ou marcar falha.
+6. **Aprender:** promover apenas regras sustentadas por evidência; manter hipóteses e pendências na fila.
+7. **Registrar:** escrever `run-YYYYMMDD-HHMMSS.md`, JSON, memórias locais, `Updates` e, para cada conquista, `Avanços e Aprendizado`.
 9. **Versionar:** executar `git pull --rebase` quando houver remoto, commit dos artefatos próprios e `git push`; registrar falhas Git sem fingir publicação.
 10. **Encerrar:** fechar apenas a instância aberta pelo run e confirmar ausência de PoB duplicado.
 
