@@ -73,3 +73,4 @@
 - Inspeção: estática apenas; PoB/Computer Use indisponível.
 - Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
 - Sem candidato, mutação, delta, regra ou avanço; veredito `NÃO VALIDADO`.
+2026-07-22T21:37:00+01:00 — Inventory 940/940 valid, cursor 0 `-26z68CIDwLz.xml` hash stable; static identity Shadow/Trickster 90, Blade Trap of Laceration, CombinedDPS 1207243.8489. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; no candidate/mutation/delta/rule; verdict `NÃO VALIDADO`. Pull --rebase blocked by unstaged pre-existing changes. Next: confirmed visual import in one PoB window.

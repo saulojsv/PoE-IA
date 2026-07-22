@@ -105,3 +105,12 @@ Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade a
 - `NO_NEW_LEARNING`: sem carga PoB, Show Node Power, mutação ou delta antes/depois.
 - Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
 - Próximo reteste: carga visual confirmada do mesmo XML.
+## 2026-07-22T21:37:00+01:00
+
+- Objective: revalidate cursor 0 and clear PoB/Show Node Power blockers.
+- Inputs: 940 XMLs; `-26z68CIDwLz.xml`, SHA-256 `02bacb2e...87b2d`.
+- Tests: inventory/hash/XML parse and one-XML static inspection.
+- Observed: 940 valid, 0 invalid; Shadow/Trickster 90; Blade Trap of Laceration; CombinedDPS 1207243.8489.
+- Failures/Rollbacks: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; no mutation or delta.
+- Verdict: `NÃO VALIDADO`; no rule promoted. Pull/rebase blocked by pre-existing unstaged changes.
+- Next test: one controllable PoB window, concrete import, identity confirmation, then Show Node Power.

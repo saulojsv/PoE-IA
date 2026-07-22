@@ -45,3 +45,7 @@
 ## 2026-07-22T21:25:00+01:00
 - Shadow/Trickster + Blade Trap of Laceration: reteste estático do XML do cursor 0; sem nova evidência causal.
 - Status: `NÃO VALIDADO`; aguarda carga PoB confirmada e Show Node Power.
+## 2026-07-22T21:37:00+01:00 — Blade Trap of Laceration / Trickster
+
+- Static identity confirmed for cursor 0: level 90, targetVersion 3_0, CombinedDPS 1207243.8489.
+- No causal rule or candidate promoted: PoB load and Show Node Power remain unvalidated.
