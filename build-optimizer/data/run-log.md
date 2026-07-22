@@ -74,3 +74,13 @@
 - Bloqueios: `POB_LOAD_FAILED`, `SHOW_NODE_POWER_PENDING`, `COMPUTER_USE_UNAVAILABLE`.
 - Sem candidato, mutação, delta, regra ou avanço; veredito `NÃO VALIDADO`.
 2026-07-22T21:37:00+01:00 — Inventory 940/940 valid, cursor 0 `-26z68CIDwLz.xml` hash stable; static identity Shadow/Trickster 90, Blade Trap of Laceration, CombinedDPS 1207243.8489. `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; no candidate/mutation/delta/rule; verdict `NÃO VALIDADO`. Pull --rebase blocked by unstaged pre-existing changes. Next: confirmed visual import in one PoB window.
+
+## Run 2026-07-22T22:00:00+01:00
+- Objective: retestar cursor 0 e priorizar bloqueios PoB.
+- Inputs: 940/940 XMLs válidos; `-26z68CIDwLz.xml`; SHA-256 estável `02bacb2e...87b2d`.
+- Tests: inventário/hash/validação XML e inspeção estática única; identidade Shadow/Trickster 90, targetVersion `3_0`, CombinedDPS `1207243.8489`, vida `2647`, supressão `84.79%`, caos `10%`.
+- Result: candidato, mutação, delta e causalidade não validados; original preservado; veredito `NÃO VALIDADO`.
+- Failures/Rollbacks: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; `git pull --rebase origin main` bloqueado por alterações unstaged preexistentes; Google Sheet não identificado.
+- Learned Rules: nenhuma promoção; frequência não convertida em regra.
+- Unknowns: identidade visual, árvore legal, configuração e ranking Show Node Power.
+- Next Frontier: importar exatamente o cursor 0 em uma única janela PoB e confirmar identidade visual.

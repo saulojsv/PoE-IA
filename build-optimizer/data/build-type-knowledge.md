@@ -49,3 +49,7 @@
 
 - Static identity confirmed for cursor 0: level 90, targetVersion 3_0, CombinedDPS 1207243.8489.
 - No causal rule or candidate promoted: PoB load and Show Node Power remain unvalidated.
+## 2026-07-22T22:00:00+01:00 — Shadow/Trickster / Blade Trap of Laceration
+- Evidência estática: nível 90, targetVersion `3_0`, CombinedDPS `1207243.8489`, vida `2647`, supressão efetiva `84.79%`, caos `10%`.
+- Limitação: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; nenhuma rota ou regra promovida.
+- Próximo teste: confirmar carga visual do XML exato antes de qualquer mutação.

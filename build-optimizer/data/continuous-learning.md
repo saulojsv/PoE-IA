@@ -114,3 +114,13 @@ Carregar visualmente o mesmo XML numa única janela PoB e confirmar identidade a
 - Failures/Rollbacks: `POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; no mutation or delta.
 - Verdict: `NÃO VALIDADO`; no rule promoted. Pull/rebase blocked by pre-existing unstaged changes.
 - Next test: one controllable PoB window, concrete import, identity confirmation, then Show Node Power.
+## 2026-07-22T22:00:00+01:00
+- run_id: poe-tree-review-aprendizagem-cont-nua
+- patch: 3_0; baseline_hash: `02bacb2e...87b2d`
+- experiment: reteste estático do XML cursor 0.
+- prediction: sem importação visual não há medição causal confiável.
+- observed: 940/940 válidos; Shadow/Trickster 90; CombinedDPS 1207243.8489; PoB/Computer Use indisponíveis.
+- classification: unresolved; verdict: `NÃO VALIDADO`.
+- rule_delta: nenhum; original preservado.
+- confidence: alta para a validação XML, nula para otimização PoB.
+- next_retest: importação visual confirmada e Show Node Power na mesma janela PoB.
