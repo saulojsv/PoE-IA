@@ -411,3 +411,29 @@ Visible identity, calculated state, node-power candidates, and controlled mutati
 
 ### Next Frontier
 Retry this same XML only when observable PoB controls are available; then follow Back -> Builds -> select row -> Open -> verify -> Show Node Power.
+
+## Run 2026-07-22 03:15:00
+
+### Objective
+Retry cursor index 3 with visual PoB control and measure one route.
+
+### Inputs
+`_fast_more_8_build_3.xml`; Templar Hierophant level 100, target 3_0, tree 3_28.
+
+### Tests
+Computer Use initialization failed: `Windows Computer Use Sky runtime is unavailable`. No PoB action was taken.
+
+### Comparisons
+No interactive baseline or delta. Static baseline remains CombinedDPS 5.188M, life 3,548, ES 1,356, armour 40,154, chaos 75, mana 1,072.
+
+### Failures/Rollbacks
+`POB_LOAD_FAILED`, `COMPUTER_USE_UNAVAILABLE`, `SHOW_NODE_POWER_PENDING`; no mutation or rollback; cursor remains index 3.
+
+### Learned Rules
+Verify Computer Use availability before PoB control; static XML cannot validate a route.
+
+### Unknowns
+Loaded identity, metrics, node-power ranking, and route delta.
+
+### Next Frontier
+Retry this same XML only with observable Computer Use.

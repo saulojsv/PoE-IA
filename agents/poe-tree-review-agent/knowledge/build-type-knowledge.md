@@ -71,3 +71,5 @@ Run 2026-07-22 02:45:00: same XML retried; one responsive process, no observable
 - Static identity: Templar Hierophant, level 100, tree 3_28, 135 nodes.
 - Static baseline: CombinedDPS 5.188M, life 3548, ES 1356, armour 40154, chaos resistance 75, mana 1072.
 - GUI validation remains pending; do not promote route or node-power rules.
+
+Run 2026-07-22 03:15:00: Computer Use initialization failed with `Windows Computer Use Sky runtime is unavailable`; no PoB load, Show Node Power, mutation, or rule promotion. Cursor remains index 3.
